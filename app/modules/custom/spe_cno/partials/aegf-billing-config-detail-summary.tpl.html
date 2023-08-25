@@ -1,0 +1,75 @@
+<div class="padding-10" style="height: 1800px;">
+    <fieldset>
+        <legend>Definition <a href="#definition" data-toggle="tab"
+                ng-click="vmDetail.functions.setActiveTab('definition');"><i class='fa fa-pencil'></i></a></legend>
+        <b>
+            Column Order and Values
+        </b>
+        <div
+            data-smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-definition-grid.tpl.html" />
+    </fieldset>
+    <fieldset class="margin-top-10">
+        <legend>Filter <a href="#filter" data-toggle="tab" ng-click="vmDetail.functions.setActiveTab('filter');"><i
+                    class='fa fa-pencil'></i></a></legend>
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                <b>No. of Days:</b><br>
+                <label>{{vmDetail.model.summary.executionMonth}}{{vmDetail.model.filter.days.value}}</label>
+
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                <b>Policy Status:</b><br>
+                {{vmDetail.model.summary.policyStatus}}
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                <b>Aggregate All products to one line</b><br>
+                <label >{{vmDetail.model.summary.aggregateAllProducts}}</label>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                <b>Only changes since last run</b><br>
+                <label>{{vmDetail.model.summary.changesSinceLastRun}}</label>
+               
+            </div>
+
+        </div>
+    </fieldset>
+    <fieldset class="margin-top-10">
+        <legend>Output <a href="#output" data-toggle="tab" ng-click="vmDetail.functions.setActiveTab('output');"><i
+                    class='fa fa-pencil'></i></a></legend>
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
+                <b>Output Parameter:</b><br>
+                <label 
+                  >{{vmDetail.model.summary.outPutType.name}}</label>
+
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                <b>Exclude Header:</b><br>
+                <label>{{vmDetail.model.summary.excludeHeader}}</label>
+            </div>
+        </div>
+        <div class="row" ng-if="vmDetail.model.output.type == 0">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
+                <b>Delimiter:</b><br>
+                <label 
+                   >{{vmDetail.model.summary.outPutDelimiter.name}}</label>
+
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                <b>Text Delimiter:</b><br>
+                <label >{{vmDetail.model.summary.outPutTextDelimiter.name}}</label>
+            </div>
+        </div>
+    </fieldset>
+
+    <div
+    data-smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-delivery-notification-summary.tpl.html" />
+
+    <div
+        data-smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-delivery-summary.tpl.html" />
+    <div
+        data-smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-schedule-summary.tpl.html" />
+    <div
+        data-smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-pay-periods-summary.tpl.html" />
+
+</div>

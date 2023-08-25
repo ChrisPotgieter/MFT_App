@@ -1,0 +1,22 @@
+
+<div>
+    <script id="templateToolbar" type="text/x-kendo-template">
+
+        <div class="btn-group dropdown" uib-dropdown>
+            <a class="btn btn-default" uib-dropdown-toggle><i class="k-icon k-i-excel"></i> Export to Excel <span class="caret"> </span> </a>
+            <ul class="dropdown-menu">
+                <li class="padding-bottom-5">
+                    <a class="k-button k-button-icontext" ng-click="functionManager.performOperation(0);">
+                        <span class="fa fa-dashboard"></span> Business Intelligence Export...
+                    </a>
+                </li>
+                <li>
+                    <a class="k-button k-button-icontext k-grid-excel">
+                        <span class="k-icon k-i-excel"></span> Standard Export...
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </script>
+    <mqa-kendo-grid data="vmGridDetail.data" options="vmGridDetail.gridOptions" refreshFlag="vmGridDetail.refreshFlag" height="{{vmGridDetail.height}}" function-manager="vmGridDetail.functionManager" rebuild="vmGridDetail.model.rebuild"/>
+</div>

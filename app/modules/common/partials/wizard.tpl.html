@@ -1,0 +1,62 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!--- WIDGET GRID -->
+    <section id="widget-grid" widget-grid>
+
+        <!-- row -->
+        <div class="row">
+
+            <!-- NEW WIDGET START -->
+            <article class="col-sm-12 col-md-12 col-lg-12">
+
+                <div jarvis-widget id="wizard-widget" data-widget-color="darken" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa {{vm.wizard.icon}}"></i> </span>
+                        <h2 class="longHeader" style="width: 60%; text-overflow: ellipsis;">{{vm.wizard.title}}</h2>
+                        <ul class="nav nav-tabs pull-right in">
+                            <li ng-repeat="step in vm.wizard.steps" data-ui-sref-active="active" data-toggle="tab"  class="{{$index == 0 ? 'active' : ''}}" >
+                                <a ng-if="step.allowed" ng-click="vm.wizard.navigation(step);" style="background-color:#333"> <span class="step" ng-if="!step.complete">{{$index + 1}}</span><span class="step" ng-if="step.complete"><span style="color:#fff" class="title">{{step.description}}</span></a>
+                                <a ng-if="!step.allowed" href=""> <span class="step">{{$index + 1}}</span></i></span> <span class="title">{{step.description}}</span></a>
+                            </li>
+                        </ul>
+                    </header>
+
+                    <div class="widget-body">
+                        <!--- WIDGET TAB CONTAINER --->
+                        <div class="row">
+                            <div id="wizard-1">
+                                <div id="bootstrap-wizard-1" class="col-sm-12">
+                                  
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab1">
+                                            <div class="row">
+                                                <br/>
+                                                <div class="col-sm-12">
+                                                    <div><data-ui-view/></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-actions">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <ul class="pager wizard no-margin">
+                                                        <li ng-class="{'disabled':button.disabled, '{{button.baseType}}': button.baseType}" ng-repeat="button in vm.wizard.buttons"   id="{{button.id}}">
+                                                            <a class="btn btn-lg" mqa-anchor-disable="button.disabled" ng-class="button.class" ng-click="button.action()">{{button.text}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+
+

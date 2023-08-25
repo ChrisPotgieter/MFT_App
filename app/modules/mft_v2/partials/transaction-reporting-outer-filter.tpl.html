@@ -1,0 +1,41 @@
+<fieldset>
+    <legend class="padding-top-10 no-margin margin-bottom-5">Additional Filtering</legend>
+
+    <div class="form-group">
+        <label for="input_source_agent">Source Agents:</label>
+        <ui-select id="input_source_agent" name="input_source_agent"
+                   ng-model="vm.model.filter.sourceAgent" multiple theme="select2"
+                   style="width:100%">
+            <ui-select-match placeholder="Please select the Source Agent(s)">
+                {{$item.code}}
+            </ui-select-match>
+            <ui-select-choices
+                    repeat="listItem.code as listItem in vm.model.lists.agent_at_qm | filter:$select.search">
+                <div ng-bind-html="listItem.code | highlight: $select.search"></div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <div class="form-group">
+        <label for="input_destination_agent">Destination Agents:</label>
+        <ui-select id="input_destination_agent" name="input_destination_agent"
+                   ng-model="vm.model.filter.destinationAgent" multiple theme="select2"
+                   style="width:100%">
+            <ui-select-match placeholder="Please select the Destination Agent(s)">
+                {{$item.code}}
+            </ui-select-match>
+            <ui-select-choices
+                    repeat="listItem.code as listItem in vm.model.lists.agent_at_qm | filter:$select.search">
+                <div ng-bind-html="listItem.code | highlight: $select.search"></div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+    <div class="form-group">
+        <label for="input_source_resource">Source Resource:</label>
+        <input class="form-control" placeholder="Enter Source Resource" type="text" id="input_source_resource" ng-model="vm.model.filter.sourceResource"/>
+    </div>
+    <div class="form-group">
+        <label for="input_destination_resource">Destination Resource:</label>
+        <input class="form-control" placeholder="Enter Destination Resource" type="text" id="input_destination_resource" ng-model="vm.model.filter.destinationResource"/>
+    </div>
+</fieldset>

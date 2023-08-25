@@ -1,0 +1,63 @@
+<div class="row">
+    <article class="col-sm-12">
+        <div jarvis-widget id="cnoAdmTpProfileEdit"  data-widget-editbutton="false">
+            <header>
+                <h2>{{headingText}}</h2>
+            </header>
+            <div>
+                <div class="widget-body padding-5">
+                    <form name="frmCNOAdmTpProfileEdit">
+                        <div class="row">
+                            <div class="form-group col-sm-12 col-lg-12 col-md-12">
+                                <div id="div_code">
+                                    <label class="control-label">TIN Number:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-money fa-fw "></i></span>
+                                        <input type="text" placeholder="Tax Payer Identification Number (TIN)" class="form-control" name="code" ng-model="editRow.code">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-12 col-lg-12 col-md-12">
+                                <div id="div_desc">
+                                    <label class="control-label">Name:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-comment fa-fw"></i></span>
+                                        <input type="text" placeholder="Name" class="form-control" name="description" ng-model="editRow.description">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-12 col-lg-12 col-md-12">
+                                <div id="div_sname">
+                                    <label class="control-label">Short Name:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-search fa-fw "></i></span>
+                                        <ui-select id="tp_name" name="tp_name" ng-model="editRow.jsonData.name" mqa-combo="TP_Name" mqa-list-source="1" input-Placeholder="Select the Short Name"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <footer>
+                            <div class="row">
+                                <button type="button" id="saveButton" class="btn btn-primary" ng-click="onSave();">
+                                    {{buttonText}}
+                                </button>
+
+                                <button type="button"  class="btn btn-danger"   ng-click="userDelete();" ng-if="editRow.recordStatus == 0">
+                                    Delete
+                                </button>
+                                <button type="button" class="btn btn-default" ng-click="cancelRecord();">
+                                    Cancel
+                                </button>
+                            </div>
+                        </footer>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+

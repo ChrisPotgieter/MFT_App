@@ -1,0 +1,108 @@
+<div>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDetailDialog.functions.cancelDialog();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class="fa fa-exchange"></i> Request {{vmDetailDialog.model.record._id}}</h6></div>
+
+        <div class="row alert no-margin-bottom" ng-class="vmDetailDialog.model.status.alertClass">
+            <article>
+               <h3 class="alert-heading no-margin pull-left">
+                        <i ng-class="vmDetailDialog.model.status.icon" class="fa"></i> <span>{{vmDetailDialog.model.record.status_desc}}</span>
+                        <br>
+                        <span><small style="color:inherit;">{{vmDetailDialog.model.record.supplemental}}</small></span>
+                    </h3>
+               <div class="pull-right">
+                        <h7>
+                            <div><b>Requested:&nbsp;</b>{{vmDetailDialog.model.record.action_date}}</div>
+                            <div><b>Completed:&nbsp;</b>{{vmDetailDialog.model.record.complete_date}}</div>
+                            <div><b>Running Time:&nbsp;</b>{{vmDetailDialog.model.record.running_time_desc}}</div>
+                            <div><b>Processing Time:&nbsp;</b>{{vmDetailDialog.model.record.processing_time_desc}}</div>
+                        </h7>
+                    </div>
+            </article>
+        </div>
+    </div>
+
+    <div class="modal-body dialog-content">
+        <form id="frmDetailEdit" name="frmDetailEdit" class="form-horizontal" novalidate>
+            <ul id="tabs" class="nav nav-tabs tabs-left bordered">
+                <li class="active">
+                    <a href="#request" data-toggle="tab">Request</a>
+                </li>
+                <li ng-if="vmDetailDialog.model.flags.showMeta">
+                    <a href="#meta" data-toggle="tab">Meta-Data</a>
+                </li>
+            </ul>
+
+            <div id="tabContent" class="tab-content padding-10">
+                <!-- REQUEST TAB -->
+                <div class="tab-pane fade in active" id="request">
+                    <fieldset>
+                        <div id="request-grid" class="col-md-6">
+                            <div jarvis-widget id="detail-request-grid"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                                <header>
+                                    <span class="widget-icon"> <i class="fa fa-info-circle"></i> </span>
+                                    <h2>Request Properties</h2>
+                                </header>
+                                <div class="widget-body">
+                                    <div class="col-sm-12 col-lg-12 col-md-12 no-padding no-margin">
+                                        <mqa-meta-data-grid data="vmDetailDialog.model.requestGrid.data" options="vmDetailDialog.model.requestGrid.options" id="grid2"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="message-grid" class="col-md-6">
+                            <div jarvis-widget id="detail-message-grid"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                                <header>
+                                    <span class="widget-icon"> <i class="fa fa-info-circle"></i> </span>
+                                    <h2>Message Properties</h2>
+                                </header>
+                                <div class="widget-body">
+                                    <div class="col-sm-12 col-lg-12 col-md-12 no-padding no-margin">
+                                        <mqa-meta-data-grid data="vmDetailDialog.model.messageGrid.data" options="vmDetailDialog.model.requestGrid.options" id="grid3"/>
+                                        <!--
+                                        <section>
+                                            <mqa-kendo-grid id="test" options="vmDetailDialog.model.messageGrid.options" data="vmDetailDialog.model.messageGrid.data" refresh-flag="vm.model.flags.gridRefresh" height="600"></mqa-kendo-grid>
+                                        </section>
+                                        -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <!-- META DATA -->
+                <div class="tab-pane fade" id="meta"  ng-if="vmDetailDialog.model.flags.showMeta">
+                    <fieldset>
+                        <div id="meta-property-grid" class="col-md-12">
+                            <div jarvis-widget id="meta-detail-property-grid"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                                <header>
+                                    <span class="widget-icon"> <i class="fa fa-info-circle"></i> </span>
+                                    <h2>Meta-Data</h2>
+                                </header>
+                                <div class="widget-body">
+                                    <div class="col-sm-12 col-lg-12 col-md-12 no-padding no-margin">
+                                        <mqa-meta-data-grid data="vmDetailDialog.model.metaGrid.data" options="vmDetailDialog.model.metaGrid.options"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer" >
+        <div class="row">
+            <button type="button" id="confirmButton" class="btn btn-primary" ng-click="vmDetailDialog.functions.cancelDialog();">
+                OK
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vmDetailDialog.functions.cancelDialog();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

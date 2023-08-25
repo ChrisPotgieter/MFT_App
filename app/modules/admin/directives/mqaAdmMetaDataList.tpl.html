@@ -1,0 +1,22 @@
+<div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <button class="btn btn-primary" data-ng-click="vmMetaList.functions.insertRecord();" mqa-role-security="['ADMIN_APP']">
+                <i class="fa fa-plus"></i> <span class="hidden-mobile">Add Meta-Data...</span>
+            </button>
+        </div>
+    </div>
+    <div class="row padding-top-10">
+        <div class="col-md-12">
+            <mqa-kendo-grid id="metaListGrid" options="vmMetaList.model.gridOptions"
+                            data="vmMetaList.model.gridData"
+                            ondrill="vmMetaList.functions.editRecord"
+                            refresh-flag="vmMetaList.model.flags.gridRefresh"></mqa-kendo-grid>
+        </div>
+    </div>
+</div>
+
+
+
+
+

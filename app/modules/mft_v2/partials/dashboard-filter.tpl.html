@@ -1,0 +1,79 @@
+<div>
+    <fieldset>
+        <legend class="margin-bottom-5">Filters</legend>
+        <div class="margin-bottom-10">
+            <label for="input_jobNames">Job Names:</label>
+            <ui-select id="input_jobNames" name="input_jobNames" tagging multiple
+                       ng-model="vmDialog.dataModel.filter.jobNames" mqa-tag
+                       input-Placeholder="Enter Job Names"/>
+        </div>
+
+        <div class="margin-bottom-10">
+
+            <label for="input_source_agent">Source Agents:</label>
+            <ui-select id="input_source_agent" name="input_source_agent"
+                       ng-model="vmDialog.dataModel.filter.sourceAgent" multiple theme="select2"
+                       style="width:100%">
+                <ui-select-match placeholder="Please select the Source Agent(s)">
+                    {{$item.code}}
+                </ui-select-match>
+                <ui-select-choices
+                        repeat="listItem.code as listItem in vmDialog.model.lists.agent_at_qm | filter:$select.search">
+                    <div ng-bind-html="listItem.code | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="margin-bottom-10">
+            <label for="input_destination_agent">Destination Agents:</label>
+            <ui-select id="input_destination_agent" name="input_destination_agent"
+                       ng-model="vmDialog.dataModel.filter.destinationAgent" multiple theme="select2"
+                       style="width:100%">
+                <ui-select-match placeholder="Please select the Destination Agent(s)">
+                    {{$item.code}}
+                </ui-select-match>
+                <ui-select-choices
+                        repeat="listItem.code as listItem in vmDialog.model.lists.agent_at_qm | filter:$select.search">
+                    <div ng-bind-html="listItem.code | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="no-margin-bottom">Settings</legend>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-6">
+                <label class="control-label" for="txtTransLimit">Transaction Limit:</label>
+            </div>
+            <div class="col-md-6">
+                <label class="control-label" for="div_jobLimit">Job Limit:</label>
+            </div>
+        </div>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-6" id="div_transLimit">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-table"></i></span>
+                    <input class="form-control" type="number" title="Enter the No. of Transactions to Display" name="txtTransLimit" id="txtTransLimit"  ng-model="vmDialog.dataModel.filter.topCount" min="1" max="5000" required/>
+                </div>
+            </div>
+            <div class="col-md-6" id="div_jobLimit">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-bar-chart"></i></span>
+                    <input class="form-control" type="number" title="Enter the No. of Jobs to Display" name="txtJobLimit" id="txtJobLimit"  ng-model="vmDialog.dataModel.filter.barLimit" min="1" max="10" required/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>&nbsp;</label>
+                <div class="input-group">
+                    <mqa-switch title="Job Grouping" label="transGroup" ng-model="vmDialog.dataModel.filter.jobGroup"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>&nbsp;</label>
+                <div class="input-group">
+                    <mqa-switch title="Errors Only" label="transErrors" ng-model="vmDialog.dataModel.filter.errors"/>
+                </div>
+            </div>
+
+        </div>
+    </fieldset>
+</div>

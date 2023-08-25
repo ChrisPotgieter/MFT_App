@@ -1,0 +1,46 @@
+<div ng-repeat="msgGroup in notifyvm.model.tabData.msgs | orderBy: msgGroup._id | filter: filter track by msgGroup._id">
+    <h5 class="todo-group-title"><i class="fa fa-{{msgGroup.icon}}"></i> {{msgGroup.title}} (
+        <small class="num-of-tasks">{{msgGroup.items.length}}</small>
+        )
+    </h5>
+    <ul class="notification-body">
+        <li ng-repeat="msg in msgGroup.items">
+            <span class="padding-5" ng-click="notifyvm.functions.navigateItem(msg);">
+                <div>
+                    <em class="badge padding-5 no-border-radius pull-left margin-right-5 bg-color-{{msg.icon.color}}" >
+                        <i class="fa fa-{{msg.icon.icon}} fa-fw fa-2x"></i>
+                    </em>
+                    <div>
+                        <time class="padding-right-10">{{msg.moduleDisplay}}</time>
+                        <strong><span class="subject">{{msg.subject}}</span></strong>
+                        <hr class="no-margin"/>
+                    </div>
+                </div>
+                <br/>
+		        <div>
+                    <span class="msg-body text-muted" ng-bind-html="msg.display" style="max-height: none; white-space: normal"/>
+                    <span class="pull-right font-xs text-muted notification-time"><i>{{msg.timeDisplay}}</i></span>
+                </div>
+            </span>
+        </li>
+    </ul>
+    <!---
+    <ul class="notification-body">
+        <li ng-repeat="msg in msgType.items">
+            <span class="padding-10">
+                <a href="javascript:void(0);" class="msg" ng-click="navigateItem(msg);">
+                    <em class="badge padding-5 no-border-radius bg-color-blueLight pull-left margin-right-5">
+				        <i class="fa {{msgType.icon}} fa-fw fa-2x"></i>
+			        </em>
+                    <span>
+                         <time>{{msg.moduleDesc}}</time>
+				        <strong><span class="subject">{{msg.subject}}</span></strong>
+				    </span>
+    				<span class="msg-body text-muted" ng-bind-html="msg.display" style="max-height: none; white-space: normal"/>
+                    <span class="pull-right font-xs text-muted"><i>{{msg.time}}</i></span>
+                </a>
+		</span>
+        </li>
+    </ul>
+    -->
+</div>

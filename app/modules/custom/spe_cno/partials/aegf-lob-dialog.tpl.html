@@ -1,0 +1,85 @@
+<div>
+    <div class="modal-header">
+        <div data-smart-include="app/modules/common/partials/common-dialog-modal-header.tpl.html"/>
+    </div>
+    <div class="modal-body">
+        <ul id="tabForm" class="nav nav-tabs bordered">
+            <li class="active">
+                <a href="#lob_info" data-toggle="tab">Mapping Details</a>
+            </li>
+            <li ng-if="vmDialog.dataModel.rowId > -1">
+                <a href="#audit" data-toggle="tab">Audit History </a>
+            </li>
+        </ul>
+        <div id="tabContent" class="tab-content padding-10">
+            <div class="tab-pane fade in active" id="lob_info">
+                <form id="frmEdit" name="frmEdit">
+                    <div class="form-group">
+                        <!--Code Information -->
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6" id="div_crs_code">
+                                <label class="control-label">CRS Coverage:</label>
+                                <input class="form-control input-md" id="crs_code" name="crs_code"
+                                       ng-model="vmDialog.dataModel.jsonData.coverage_code" disabled/>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6" id="div_code">
+                                <label class="control-label">Mapped Code:</label>
+                                <input class="form-control input-md" id="mapping_code" name="mapping_code"
+                                       ng-model="vmDialog.dataModel.jsonData.mapping_code"
+                                       placeholder="Please enter Mapped Code"/>
+                            </div>
+                            <input type="hidden" name="hiddenValidation"/>
+                        </div>
+                    </div>
+                    <!--Description Information -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6" id="div_crs_desc">
+                                <label class="control-label">CRS Description:</label>
+                                <input class="form-control input-md" id="crs_description" name="crs_description"
+                                       ng-model="vmDialog.dataModel.jsonData.crs_description" readonly="true"/>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6" id="div_desc">
+                                <label class="control-label">Mapped Description:</label>
+                                <input class="form-control input-md" id="description" name="description"
+                                       ng-model="vmDialog.dataModel.description"
+                                       placeholder="Please enter the Alternative Long Description"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4" id="div_deduction">
+                                <label class="control-label">Payroll Deduction Code:</label>
+                                <input class="form-control input-md" id="deduction" name="deduction"
+                                       ng-model="vmDialog.dataModel.jsonData.deduction"
+                                       placeholder="Please enter the Payroll Deduction Code"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!--CRS Policy Identification -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-9 col-md-9 col-sm-9" id="div_product_lob">
+                                <label class="control-label">Product:</label>
+                                <input class="form-control input-md" id="product_lob" name="product_lob"
+                                       ng-model="vmDialog.dataModel.jsonData.product_lob" readonly="true"/>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3" id="div_carrier">
+                                <label class="control-label">Carrier:</label>
+                                <input class="form-control input-md" id="carrier_id" name="carrier_id"
+                                       ng-model="vmDialog.dataModel.jsonData.carrier_id" readonly="true"/>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="tab-pane fade" id="audit" ng-if="vmDialog.dataModel.rowId > -1">
+                <mqa-audit-display data="vmDialog.model.auditHistory"></mqa-audit-display>
+            </div>
+        </div>
+    </div>
+    <div data-smart-include="app/modules/common/partials/common-dialog-modal-footer.tpl.html"/>
+</div>

@@ -1,0 +1,24 @@
+<section id="widget-grid" data-widget-grid>
+    <div class="row">
+        <article kendo-splitter="splitter"  k-panes="panes"  k-orientation="orientation" ng-style="$state.current.data.splitHeight ? {'height': $state.current.data.splitHeight} : {'height':'640px'}">
+            <div>
+                <!-- Tree -->
+                <article>
+                    <div data-ui-view="tabContent@content"></div>
+                </article>
+            </div>
+            <div>
+                <article>
+                    <div smart-include="app/modules/common/partials/tab-widget.tpl.html"></div>
+                </article>
+            </div>
+            <div>
+                <article style="width:100%">
+                    <div smart-include="app/modules/transaction-reporting/partials/transaction-detail-summary.tpl.html"></div>
+                </article>
+            </div>
+        </article>
+    </div>
+    <!--- Content detailContent@content--->
+    <div data-ui-view="detailOuterContent@content"></div>
+</section>

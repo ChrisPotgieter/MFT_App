@@ -1,0 +1,31 @@
+<fieldset>
+    <legend class="no-padding no-margin margin-bottom-5">Reference Information</legend>
+    <ul  class="list-unstyled">
+
+        <li>
+            <span class="text-muted">
+                Name:&nbsp;&nbsp;<span class="txt-color-darken">{{data.baseTransaction.jobName}}</span>
+            </span>
+        </li>
+        <li>
+            <span class="text-muted">
+                Job Id:&nbsp;&nbsp;<span class="txt-color-darken">{{data.baseTransaction.jobId}}</span>
+            </span>
+        </li>
+        <li ng-if="data.baseTransaction.docId > 0 && data.baseTransaction.docType">
+            <span class="text-muted">
+                Document:&nbsp;&nbsp;<span class="txt-color-darken">{{data.baseTransaction.docTypeDesc}}&nbsp;({{data.baseTransaction.docId}})</span>
+            </span>
+        </li>
+        <li ng-if="data.baseTransaction.sla_Class">
+            <span class="text-muted">
+                SLA Class:&nbsp;&nbsp;<span class="txt-color-darken">{{data.baseTransaction.slaClassDesc}}&nbsp;({{data.baseTransaction.sla_Class}})</span>
+            </span>
+        </li>
+        <li ng-if="data.baseTransaction.originatorHost">
+            <span class="text-muted">
+                Originator:&nbsp;&nbsp;<span class="txt-color-darken">{{data.baseTransaction.originatorHost}}&nbsp;({{data.baseTransaction.originatorUser}})</span>
+            </span>
+        </li>
+    </ul>
+</fieldset>

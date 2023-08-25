@@ -1,0 +1,67 @@
+<div>
+    <fieldset>
+        <legend class="no-margin padding-bottom-5 padding-top-0">EDI Information
+            <small>
+                <span class="label" ng-class="data.module_data.module_status >= 90 ? 'bg-color-red': 'bg-color-darken'">{{data.info.status}}</span>&nbsp;
+                <span class="label bg-color-darken">{{data.info.transaction_type_desc}}</span>&nbsp;
+                <span class="label bg-color-darken">{{data.info.operation.desc}}</span>&nbsp;
+            </small>
+        </legend>
+        <ul class="list-unstyled">
+            <li class="padding-top-10">
+                <span class="text-muted">
+                    <i class="glyphicon glyphicon-list-alt"></i> Document Type:&nbsp;&nbsp;
+                    <span class="txt-color-darken">{{data.info.document}} ({{data.transaction.document_type}})</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="{{data.info.operation.icon}}"></i> Exchange:
+                    <span class="txt-color-darken truncate">&nbsp;&nbsp;{{data.transaction.module_data.sender_id}}</span>
+                      <i class="fa fa-exchange"></i>
+                    <span class="txt-color-darken truncate">&nbsp;&nbsp;{{data.transaction.module_data.receiver_id}}</span>
+                    <span class="txt-color-darken truncate">&nbsp;({{data.info.direction}})</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-envelope"></i> Envelope: <span class="txt-color-darken truncate">&nbsp;&nbsp;{{data.transaction.module_data.envelope_name}} ({{data.transaction.module_data.envelope_type}}) </span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-file-o"></i> Transaction Count:&nbsp;<span class="txt-color-darken">&nbsp;{{data.transaction.module_data.statistics.edi_transaction_count | number}}</span>
+                    <i class="fa fa-money"></i> Transaction Value:&nbsp;<span class="txt-color-darken">&nbsp;{{data.transaction.module_data.statistics.edi_transaction_value | currency}}</span>
+                </span>
+            </li>
+            <li  ng-if="data.transaction.document_id">
+                <span class="text-muted">
+                    <i class="fa fa-rocket"></i> Document ID:&nbsp;&nbsp;<span class="txt-color-darken">&nbsp;{{data.transaction.document_id}}</span>
+                </span>
+            </li>
+        </ul>
+    </fieldset>
+
+    <!--- ITX Information -->
+    <fieldset>
+        <legend class="no-padding no-margin">ITX Information</legend>
+
+        <ul class="list-unstyled">
+            <li class="padding-top-10">
+                <span class="text-muted">
+                   <i class="fa fa-building"></i> Environment: <span class="txt-color-darken truncate">&nbsp;&nbsp;{{data.transaction.module_data.environment}}</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-laptop"></i> Container:&nbsp;&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.transaction.module_data.execution.container}} ({{data.transaction.module_data.execution.system}})</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-map-marker"></i> Map:&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.transaction.module_data.execution.map}}</span>
+                </span>
+            </li>
+        </ul>
+    </fieldset>
+</div>

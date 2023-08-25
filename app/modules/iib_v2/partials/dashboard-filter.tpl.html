@@ -1,0 +1,67 @@
+<div>
+    <fieldset>
+        <legend class="no-margin-bottom">Filters</legend>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-6">
+                <label class="control-label">Application:</label>
+            </div>
+            <div class="col-md-6">
+                <label class="control-label">Server:</label>
+            </div>
+        </div>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-6">
+                <ui-select id="input_app" name="input_app"
+                           ng-model="vmDialog.dataModel.filter.application" theme="select2"
+                           style="width:100%">
+                    <ui-select-match placeholder="Please select the Application">
+                        {{$select.selected.description}}
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="listItem.code as listItem in vmDialog.model.applications | filter:$select.search">
+                        <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+
+            <div class="col-md-6">
+                <ui-select id="input_eg" name="input_eg"
+                           ng-model="vmDialog.dataModel.filter.executionGroup" theme="select2"
+                           style="width:100%">
+                    <ui-select-match placeholder="Please select the Integration Server">
+                        {{$select.selected.description}}
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="listItem.code as listItem in vmDialog.model.executionGroups | filter:$select.search">
+                        <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="no-margin-bottom">Settings</legend>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-6">
+                <label class="control-label" for="txtTransLimit">Transaction Limit:</label>
+            </div>
+            <div class="col-md-6">
+                <label class="control-label" for="div_appLimit">Application Limit:</label>
+            </div>
+        </div>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-6" id="div_transLimit">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-table"></i></span>
+                    <input class="form-control" type="number" title="Enter the No. of Active Transactions to Display" name="txtTransLimit" id="txtTransLimit"  ng-model="vmDialog.dataModel.filter.recordLimit" min="1" max="5000" required/>
+                </div>
+            </div>
+            <div class="col-md-6" id="div_appLimit">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-bar-chart"></i></span>
+                    <input class="form-control" type="number" title="Enter the No. of Applications to Display" name="txtAppLimit" id="txtAppLimit"  ng-model="vmDialog.dataModel.filter.applicationLimit" min="1" max="10" required/>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

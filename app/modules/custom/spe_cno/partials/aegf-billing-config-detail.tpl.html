@@ -1,0 +1,103 @@
+<style>
+  .k-grid tbody td>.k-grid-delete
+  {
+    margin: 2px;
+    padding: 4px;
+
+  }
+</style>
+
+
+<div class="row">
+  <article class="alert fade in col-md-12" ng-class="vmDetail.model.status.alertClass">
+    <h4 class="alert-heading no-margin pull-left">
+      <i ng-class="vmDetail.model.status.icon" class="fa"></i> <span>Billing Configuration: {{vmDetail.model.status.id}} for {{vmDetail.model.status.groupName}}</span>
+      <br>
+      <span><small style="color:inherit;">{{vmDetail.model.status.supplemental}}</small></span>
+      <br>
+      <small>
+        <span class="label bg-color-darken" class="label">Group Code: {{vmDetail.model.status.group_id}}</span>&nbsp;
+        <span class="label bg-color-darken" class="label" ng-if="vmDetail.model.status.group_code">CRS Code: {{vmDetail.model.status.group_code}}</span>&nbsp;
+        <span class="label bg-color-darken" class="label" ng-if="vmDetail.model.status.names.sub_group">Sub Group: {{vmDetail.model.status.names.sub_group}}</span>&nbsp;
+        <span class="label bg-color-darken" class="label" ng-if="vmDetail.model.status.desc">{{vmDetail.model.status.desc}}</span>&nbsp;
+      </small>
+    </h4>
+    <div class="pull-right">
+      <h7>
+        <div ng-if="vmDetail.model.status.last_run != null"><b>Last Run:&nbsp;</b>{{vmDetail.model.status.last_run}}</div>
+        <div  ng-if="vmDetail.model.status.next_run != null"><b>Next Run:&nbsp;</b>{{vmDetail.model.status.next_run}}</div>
+      </h7>
+      <br/>
+      <div>
+        <button class="btn btn-sm bg-color-blueDark txt-color-white" ng-click="vmDetail.functions.confirm();">
+          <i class="fa fa-save"></i> <span>Save Definition...</span>
+        </button>
+
+        <button class="btn btn-sm bg-color-blueDark txt-color-white" ng-click="vmDetail.functions.run();" ng-if="vmDetail.model.recordStatus != 1">
+          <i class="fa fa-play"></i> <span>Run Now...</span>
+        </button>
+
+      </div>
+
+    </div>
+  </article>
+</div>
+
+<div class="row">
+  <div class="col-md-12" id="widget-grid" widget-grid>
+    <div id="tab-detail" class="col-md-12">
+      <div jarvis-widget id="config-detail-tabs" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+        <header>
+          <span class="widget-icon"> <i class="fa fa-dollar"></i> </span>
+          <h2>Billing Configuration Details</h2>
+        </header>
+        <div class="modal-body padding-bottom-10">
+          <div name="frmConfigEdit" id="frmConfigEdit" novalidate>
+            <!-- TABS -->
+            <ul id="tabs" class="nav nav-tabs tabs-left bordered">
+              <li ng-class="{'active': vmDetail.model.activeTab == '{{tab.id}}'}" ng-repeat="tab in vmDetail.model.tabs">
+                <a href="#{{tab.id}}" data-toggle="tab" ng-click="vmDetail.functions.setActiveTab(tab.id);">
+                  <span>{{tab.caption}} </span><span ng-if="tab.hasValidator"><i class="fa" ng-class="vmDetail.model.validators[tab.id].isValid ? 'fa-check-circle': 'fa-exclamation-circle'"></i></span>
+                </a>
+              </li>
+            </ul>
+
+            <!-- TAB CONTENT -->
+            <div id="tabContent" class="tab-content padding-10">
+              <!--Summary-->
+              <div class="tab-pane fade in active" id="summary">
+                  <div data-smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-summary.tpl.html" />
+              </div>
+              <!--Definition-->
+              <div class="tab-pane fade in" id="definition" >
+                <div data-smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-definition.tpl.html" />
+              </div>
+              <!--Filtering-->
+              <div class="tab-pane fade in" id="filter">
+                  <div data-smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-filter.tpl.html" />
+              </div>
+              <!--Output-->
+              <div class="tab-pane fade in" id="output">
+                <div data-smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-output.tpl.html" />
+              </div>
+              <!--Delivery-->
+              <div class="tab-pane fade in" id="delivery">
+                <div data-smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-delivery.tpl.html" />
+              </div>
+              <!--Schedule-->
+              <div class="tab-pane fade in" id="schedule">
+                <div data-smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-schedule.tpl.html" />
+              </div>
+
+              <!--Pay Period-->
+              <div class="tab-pane fade in" id="pay_period">
+                <div data-smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-pay-period.tpl.html" />
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

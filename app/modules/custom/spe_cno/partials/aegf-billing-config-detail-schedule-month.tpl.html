@@ -1,0 +1,8 @@
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-1">
+            <label for="input_schedule_month_days" class="control-label">Month-End Minus:</label>
+            <input class="form-control" type="number" title="Enter the No. of " name="input_schedule_month_days" id="input_schedule_month_days"  ng-model="vmDetail.dataModel.schedule.parameters.month" min="0" max="60" ng-change="vmDetail.functions.calculateCron();"/>
+        </div>
+    </div>
+</div>

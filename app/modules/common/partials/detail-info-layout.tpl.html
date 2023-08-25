@@ -1,0 +1,21 @@
+<section id="widget-grid" data-widget-grid>
+    <div class="row">
+        <!--- create a kendo splitter with 2 panes -->
+        <article kendo-splitter="splitter"  k-panes="vmDetailAbstract.model.splitter.panes"  k-orientation="vmDetailAbstract.model.splitter.orientation" ng-style="$state.current.data.splitHeight ? {'height': $state.current.data.splitHeight} : {'height':'640px'}">
+            <div>
+                <!-- pane 1: widget content -->
+                <div class="scroll-body" slimscroll="$state.current.data.detailHeight ? {'height': $state.current.data.detailHeight} : {'height':'595'}">
+                    <article>
+                        <div smart-include="app/modules/common/partials/tab-widget.tpl.html"></div>
+                    </article>
+                </div>
+            </div>
+            <div>
+                <!-- pane 1: info content -->
+                <article style="width:100%">
+                    <div smart-include="app/modules/common/partials/detail-summary-layout.tpl.html"></div>
+                </article>
+            </div>
+        </article>
+    </div>
+</section>

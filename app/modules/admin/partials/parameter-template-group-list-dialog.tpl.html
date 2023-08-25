@@ -1,0 +1,57 @@
+<div>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelRecord();"> × </button>
+      <div class='widget-header'>
+        <h6>
+          {{vmDialog.model.title}}
+        </h6>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="col-md-14">
+        <form id="frmGroupCode" name="frmGroupCode" ng-hide="showSubEdit">
+            <fieldset>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <input type="text" placeholder="Group Code" class="form-control" name="code"
+                                   ng-model="vmDialog.dataModel.code">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <input type="text" placeholder="Description" class="form-control" name="description"
+                                   ng-model="vmDialog.dataModel.description">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <input type="hidden" name="hiddenValidation"/>
+              </div>
+            </fieldset>
+       
+        </form>
+        <div >
+             <notification-grouping data="vmDialog.dataModel"/>
+          </div> 
+           
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+        <div class="widget-footer margin-top-10 dialog-border">
+          <button type="button" id="submit" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord();">
+              {{vmDialog.model.buttonText}}
+          </button>
+          <button class="btn btn-success" type="button" ng-click="vmDialog.functions.duplicateRecord();" ng-if="vmDialog.dataModel.rowId > -1">
+              Copy...
+          </button>
+          <button class="btn btn-danger" type="button" ng-click="vmDialog.functions.userDelete();" ng-if="vmDialog.dataModel.rowId > -1">
+              Delete 
+          </button>
+        <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();"> Cancel </button>
+      </div>
+    </div>
+  </div>
+

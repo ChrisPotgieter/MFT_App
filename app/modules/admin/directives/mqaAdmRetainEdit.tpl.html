@@ -1,0 +1,79 @@
+    <form name="frmAdmRetainDetailEdit" class="form-horizontal" id="frmAdmRetainDetailEdit" novalidate>
+        <ul id="tabs" class="nav nav-tabs tabs-left bordered">
+            <li ng-class="{active: tab.active == true}" ng-repeat="tab in vmRetainDetail.model.tabs">
+                <a href="#{{tab.id}}" data-toggle="tab">{{tab.name}}</a>
+            </li>
+        </ul>
+        <div id="tabContent" class="tab-content padding-10">
+            <!-- COMMON TRANSACTION MODULE -->
+            <div class="tab-pane fade in active" id="transaction">
+
+                <div class="semi-bold">
+                    <div class="form-group" style="margin-bottom: 5px;">
+                        <div class="col-md-6">
+                            <label class="control-label">Retain Completed For (Days):</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Retain In-Progress For (Days):</label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <div class="col-md-6" id="div_txtPurgeComplete">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw "></i></span>
+                                <input class="form-control input-lg" type="number" title="Days to Retain Completed Transactions" placeholder="Days to Retain Completed Transactions"
+                                       name="txtPurgeComplete" ng-model="vmRetainDetail.data.jsonData.purge_complete" min="2">
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="div_txtPurgeProgress">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw "></i></span>
+                                <input class="form-control input-lg" type="number" title="Days to Retain Transactions that Do not Complete" placeholder="Days to Retain Transactions that Do not Complete"
+                                       name="txtPurgeProgress" ng-model="vmRetainDetail.data.jsonData.purge_progress" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITXA TRANSACTION MODULE -->
+            <div class="tab-pane fade in" id="spe">
+
+                <div class="semi-bold">
+                    <div class="form-group" style="margin-bottom: 5px;">
+                        <div class="col-md-6">
+                            <label class="control-label">Retain Completed For (Days):</label>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="control-label">Retain GWID For (Days 0=Forever):</label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <div class="col-md-6" id="div_txtPurgeSPEComplete">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw "></i></span>
+                                <input class="form-control input-lg" type="number" title="Days to Retain Completed Transactions" placeholder="Days to Retain Completed Transactions"
+                                       name="txtPurgeSPEComplete" ng-model="vmRetainDetail.data.jsonData.modules.itx.complete" min="5">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" id="div_txtPurgeSPEGWID">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw "></i></span>
+                                <input class="form-control input-lg" type="number" title="Days to Retain GWID Documents" placeholder="Days to Retain GWID Documents"
+                                       name="txtPurgeSPEGWID" ng-model="vmRetainDetail.data.jsonData.modules.itx.gwid" min="10">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+

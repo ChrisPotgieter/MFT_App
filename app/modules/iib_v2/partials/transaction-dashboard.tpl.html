@@ -1,0 +1,31 @@
+<div id="content">
+    <!-- HEADER CONTENT -->
+    <div data-smart-include="app/modules/common/partials/common-dashboard-header.tpl.html"/>
+    <section id="widget-grid" widget-grid>
+        <!-- COMPARISION DASHBOARD -->
+        <div data-smart-include="app/modules/iib_v2/partials/transaction-dashboard-compare.tpl.html" ng-if="vm.model.flags.showCompare"/>
+
+        <!--- NO COMPARISION -->
+        <div data-smart-include="app/modules/iib_v2/partials/transaction-dashboard-no-compare.tpl.html" ng-if="!vm.model.flags.showCompare"/>
+
+        <!-- TRANSACTION TABLE WIDGET -->
+        <div class="row">
+            <article class="col-sm-12">
+                <div jarvis-widget id="transaction-data-widget"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>Last {{vm.model.dialogData.filter.recordLimit}} {{vm.model.transactionTable.label}}</h2>
+                   </header>
+                    <div>
+                        <div class="widget-body no-padding">
+                            <mqa-kendo-grid id="transactionGrid" options="vm.model.transactionTable.options"
+                                            data="vm.model.transactionTable.data"
+                                            ondrill="vm.functions.viewTransaction"
+                                            refresh-flag="vm.model.transactionTable.update"></mqa-kendo-grid>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>

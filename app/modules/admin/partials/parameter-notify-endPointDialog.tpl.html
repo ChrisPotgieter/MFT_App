@@ -1,0 +1,84 @@
+<div>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelRecord();"> × </button>
+    <div class='widget-header'>
+      <h6>
+        <i class='fa fa-code-fork'></i> {{vmDialog.model.endPointHeaderText}} End Point
+      </h6>
+    </div>
+  </div>
+  <div class="modal-body">
+
+    <form name="frmEndPointBinding" id="frmEndPointBinding" class="form-horizontal" novalidate >
+      
+      <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-sm-12" id="div_id">
+          <label class="control-label">Code:</label>
+          <input class="form-control " placeholder="Code" type="text" name="id" ng-model="vmDialog.dataModel.id" />
+      </div>
+    </div>
+      
+      <div class="form-group">
+        <div class="col-lg-6 col-md-6 col-sm-6" id="div_requestType">
+          <label class="control-label">Type:</label>
+          <div class="input-group col-sm-12">
+            
+
+<select class="form-control " name="requestType" ng-model="vmDialog.dataModel.requestType">
+  <option ng-repeat="o in vmDialog.requestTypeOptions" value="{{o.value}}">{{o.name}}</option>
+</select>
+
+          </div>
+        </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" id="div_requestContentType" class="dropdown-menu">
+            <label class="control-label">Content Type:</label>
+            <div class="input-group col-sm-12">
+              <select class="form-control " name="requestContentType" ng-model="vmDialog.dataModel.requestContentType">
+                <option value="{{'JSON'}}">{{'JSON'}}</option>
+                <option value="{{'XML'}}">{{'XML'}}</option>
+                <option value="{{'TXT'}}">{{'TXT'}}</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-12 col-md-12 col-sm-12" id="div_url">
+            <label class="control-label">Url:</label>
+            <input class="form-control " placeholder="Url" type="text" name="url" ng-model="vmDialog.dataModel.url" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-6 col-md-6 col-sm-6" id="div_username">
+            <label class="control-label">UserName:</label>
+            <input class="form-control " placeholder="UserName" type="text" name="username" ng-model="vmDialog.dataModel.userName" />
+          </div>
+       
+          <div class="col-lg-6 col-md-6 col-sm-6" id="div_password" >
+            <label class="control-label">Password:</label>
+            <input class="form-control " placeholder="Password" type="text" name="password" ng-model="vmDialog.dataModel.password" />
+            <input type="hidden" name="hiddenValidation" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-12 col-md-12 col-sm-12" id="div_templatePath">
+            <label class="control-label">File Path:</label>
+            <input class="form-control " placeholder="Path" type="text" name="templatePath" ng-model="vmDialog.dataModel.templatePath" ng-required="vmDialog.dataModel.userName!= '' "/>
+          </div>
+        </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <div class="row">
+      <button type="button" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord();">
+        {{vmDialog.model.buttonText}}
+      </button>
+      <button type="button" class="btn btn-danger" ng-click="vmDialog.functions.userDelete();" ng-if="vmDialog.dataModel.rowId > -1"> Delete </button>
+      <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();"> Cancel </button>
+    </div>
+  </div>
+</div>
+
+

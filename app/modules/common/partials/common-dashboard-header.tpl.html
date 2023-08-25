@@ -1,0 +1,24 @@
+<div class="row">
+    <!-- HEADING SECTION -->
+    <div class="col-md-7">
+            <div class="col-md-5">
+                <mqa-big-breadcrumbs></mqa-big-breadcrumbs>
+            </div>
+            <div class="col-md-7 padding-top-10">
+               <button class="btn btn-default" id="filter_select" ng-click="vm.functions.showFilterDialog();" ng-disabled="vm.model.flags.inProgress">
+                   <i class="fa fa-filter"></i>
+                   {{vm.model.filterCaption}}
+                </button>
+                <button class="btn btn-success" id="refresh_select" ng-click="vm.functions.manageRefresh(false);" ng-disabled="vm.model.flags.inProgress">
+                    <i class="fa fa-refresh"></i>
+                </button>
+            </div>
+    </div>
+    <!-- REAL TIME CONTENT -->
+    <div class="col-md-5">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div data-ui-view="realtime@content"  data-autoscroll="true"/>
+        </div>
+    </div>
+</div>
+

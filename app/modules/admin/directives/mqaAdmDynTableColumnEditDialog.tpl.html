@@ -1,0 +1,84 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelRecord();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class='fa fa-columns'></i> {{vmDialog.model.title}}</h6></div>
+    </div>
+    <div class="modal-body">
+        <form id="frmDynTableColumnEdit" name="frmDynTableColumnEdit" novalidate>
+            <div class="row">
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>Mapping</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" placeholder="REST Call Column" class="form-control" id="source"
+                               name="source" ng-model="vmDialog.dataModel.source">
+
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" placeholder="Storage Column" class="form-control" id="destination"
+                               name="destination" ng-model="vmDialog.dataModel.destination"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="margin-top-10">Display</label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <input type="text" placeholder="Caption" class="form-control" id="caption" name="caption"
+                               ng-model="vmDialog.dataModel.caption" class="col-sm-10 col-md-10"/>
+                    </div>
+                </div>
+                <div class="col-md-6" id="div_width">
+                    <div class="form-group">
+                        <input class="form-control spinner spinner-left ui-spinner-input" placeholder="Width"
+                               name="input_width"
+                               id="input_width" ng-model="vmDialog.dataModel.width" min="10"
+                               mqa-spinner>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6" id="div_aggregate">
+                    <div class="form-group">
+                        <label class="control-label margin-top-10">Summary Type</label>
+                        <select class="form-control" name="aggregateSelect" ng-model="vmDialog.dataModel.aggregate">
+                            <option value="99">None</option>
+                            <option value="0">Sum</option>
+                            <option value="1">Average</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="control-label">&nbsp;</label>
+                        <mqa-switch title="Mandatory" label="mandatory" ng-model="vmDialog.dataModel.mandatory"
+                                    class="form-control no-border margin-top-5"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord();">
+                {{vmDialog.model.buttonText}}
+            </button>
+
+            <button type="button" class="btn btn-danger" ng-click="vmDialog.functions.userDelete();"
+                    ng-if="vmDialog.dataModel.recordStatus == 0">
+                Delete
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

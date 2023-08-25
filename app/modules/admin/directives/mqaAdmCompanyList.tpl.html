@@ -1,0 +1,24 @@
+<div jarvis-widget id="companyListWidget" data-widget-color="darken" data-widget-editbutton="false">
+    <header>
+        <span class="widget-icon"> <i class="fa fa-building"></i> </span>
+        <h2>Companies </h2>
+    </header>
+    <div>
+        <div class="widget-body padding-5">
+            <div mqa-role-security="['ADMIN_APP']">
+                <button class="btn btn-primary" ng-click="insertRecord();" type="button">
+                    <i class="fa fa-plus"></i>
+                    Add Company...
+                </button>
+                <p></p>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <mqa-kendo-grid  id="companyListGrid" options="dataGridOptions"  data="data" ondrill="editRecord"></mqa-kendo-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

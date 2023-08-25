@@ -1,0 +1,73 @@
+<div class="row">
+	<article class="col-md-12">
+		<!-- counts -->
+		<div class="col-md-12">
+			<div class="row">
+				<mft-dashboard-count data="vm.model.currentData.counts" id="counts" on-drill="vm.functions.onCountDrill" view-type="0"/>
+			</div>
+		</div>
+		<!-- transaction grid -->
+		<div data-smart-include="app/modules/mft_v2/partials/dashboard-recent.tpl.html"/>
+		<!-- donuts -->
+		<div class="col-sm-12">
+			<div jarvis-widget id="group-morris-chart-widget-current" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-tachometer"></i> </span>
+					<h2>Groupings</h2>
+				</header>
+				<div>
+					<div class="widget-body no-padding">
+						<div class="col-sm-4 col-lg-4 col-md-4 padding-left-gutter padding-5" ng-repeat="group in vm.model.currentData.groups.data">
+							<div data-smart-include="app/modules/common/partials/common-donut-content.tpl.html"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--- jobs --->
+		<div class="col-sm-12">
+			<div jarvis-widget id="job-chart-widget-current"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+					<h2>Top {{vm.model.dialogData.filter.barLimit}} Jobs</h2>
+				</header>
+				<div class="widget-body">
+					<div class="col-sm-12 col-lg-12 col-md-12">
+						<mqa-chartjs dataset="vm.model.currentData.jobBar.series" chart-type="horizBar" height="120" options="vm.model.currentData.jobBar.options" update-flag="vm.model.currentData.jobBar.updateFlag" refresh-flag="vm.model.currentData.jobBar.refreshFlag" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--- agent source --->
+		<div class="col-sm-6">
+			<div jarvis-widget id="source-chart-widget-current"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-laptop"></i> </span>
+					<h2>Top 5 Source Agents</h2>
+				</header>
+				<div class="widget-body">
+					<div class="col-sm-12 col-lg-12 col-md-12">
+						<mqa-chartjs dataset="vm.model.currentData.sourceBar.series" options="vm.model.currentData.sourceBar.options" update-flag="vm.model.currentData.sourceBar.updateFlag" refresh-flag="vm.model.currentData.sourceBar.refreshFlag" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- agent destination chart -->
+		<div class="col-sm-6">
+			<div jarvis-widget id="dest-chart-widget-current"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-laptop"></i> </span>
+					<h2>Top 5 Destination Agents</h2>
+				</header>
+				<div class="widget-body">
+					<div class="col-sm-12 col-lg-12 col-md-12">
+ 					<mqa-chartjs dataset="vm.model.currentData.destBar.series" options="vm.model.currentData.destBar.options" update-flag="vm.model.currentData.destBar.updateFlag" refresh-flag="vm.model.currentData.destBar.refreshFlag" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</article>
+</div>

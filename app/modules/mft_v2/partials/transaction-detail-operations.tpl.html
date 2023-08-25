@@ -1,0 +1,14 @@
+<div class="widget-footer">
+    <button class="btn btn-lg btn-primary btn-default" ng-click="vmOperations.functions.requestResubmit();" ng-show="vmOperations.model.flags.allowResubmit" ng-disabled="vmOperations.model.flags.inProgress">
+        <i class="fa fa-recycle"></i>
+        Resubmit
+    </button>
+    <button class="btn btn-lg btn-warning" ng-click="vmOperations.functions.requestRepair();" ng-show="vmOperations.model.flags.allowRepair" ng-disabled="vmOperations.model.flags.inProgress">
+        <i class="fa fa-wrench"></i>
+        Repair
+    </button>
+    <button class="btn btn-lg btn-danger" ng-click="vmOperations.functions.requestCancellation();" ng-show="vmOperations.model.flags.allowCancel" ng-disabled="vmOperations.model.flags.inProgress">
+        <i class="fa fa-times-circle"></i>
+        Cancel
+    </button>
+</div>

@@ -1,0 +1,62 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelDialog();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class='{{vmDialog.model.icon}}'></i>&nbsp;{{vmDialog.model.title}} Details</h6></div>
+    </div>
+    <div class="modal-body">
+        <form name="frmDashboardFilterDialog" class="form-horizontal" id="frmDashboardFilterDialog" novalidate>
+
+            <ul id="tabs" class="nav nav-tabs tabs-left bordered">
+                <li class="active">
+                    <a href="#date_filter" data-toggle="tab">Date and Comparison</a>
+                </li>
+                <li ng-if="vmDialog.model.flags.showTab || vmDialog.model.settingsGrid">
+                    <a href="#settings" data-toggle="tab">Filters and Settings</a>
+                </li>
+            </ul>
+
+            <div id="tabContent" class="tab-content padding-10">
+                <!-- DATE AND COMPARISION TAB -->
+                <div class="tab-pane fade in active" id="date_filter">
+                    <div smart-include="app/modules/common/partials/common-dashboard-filter-date-entry.tpl.html"></div>
+                </div>
+                <!-- SETTINGS TAB -->
+                <div class="tab-pane fade" id="settings">
+                    <!-- CUSTOM TAB -->
+                    <div ng-html-compile="vmDialog.model.settingsTabHTML" ng-if="vmDialog.model.flags.showTab"></div>
+
+                    <!-- SETTINGS GRID -->
+                    <mqa-meta-data-grid data="vmDialog.model.settingsGrid.data" options="vmDetail.model.settingsGrid.options" ng-if="vmDetail.model.settingsGrid"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4 text-right">
+            <button type="button" id="submit" class="btn btn-success btn-default" ng-click="closeOK()" ng-disabled="!progressInfo.allowOK" ng-if="progressInfo.showOK">{{progressInfo.OKText}}</button>
+            <button type="button" class="btn btn-danger" ng-click="closeCancel()" ng-disabled="!progressInfo.allowCancel" ng-if="progressInfo.showCancel">Cancel</button>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-sm-8 text-left">
+                <button type="button" class="btn bg-color-blueDark txt-color-white" ng-click="vmDialog.functions.saveAsDefault();">
+                    Save As My Default...
+                </button>
+            </div>
+            <div class="col-md-4 text-right">
+                <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDialog.functions.saveDialog();">
+                    OK
+                </button>
+                <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelDialog();">
+                    Cancel
+                </button>
+            </div>
+        </div>
+   </div>
+</div>

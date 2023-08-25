@@ -1,0 +1,21 @@
+<div jarvis-widget id="tr-transaction-detail-tree-widget" data-widget-colorbutton="false" data-widget-editbutton="false"
+     data-widget-custombutton="false" xmlns="http://www.w3.org/1999/html" data-widget-fullscreenbutton="false"
+     data-widget-togglebutton="false" data-widget-deletebutton="false" style="padding-right: 5px;">
+    <header>
+        <span class="widget-icon"> <i class="fa fa-sitemap"></i> </span>
+        <h2>Workflow Tree</h2>
+    </header>
+    <div>
+        <!-- widget content -->
+        <div class="widget-body no-padding">
+            <div class="scroll-body"
+                 slimscroll="$state.current.data.treePanelHeight ? {'height': $state.current.data.treePanelHeight, alwaysVisible: 'true', 'position': 'left', color: 'silver'} : {'height': '600', alwaysVisible: 'true', 'position': 'left', color: 'silver'}">
+                <div class="tree">
+                    <ul data-mqa-tree-view data-items="tree" onnav="navTree" role="tree"></ul>
+                </div>
+            </div>
+            <!-- end widget content -->
+        </div>
+    </div>
+    <!-- widget div-->
+</div>

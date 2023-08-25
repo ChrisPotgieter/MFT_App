@@ -1,0 +1,63 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelDialog();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class='{{vmDialog.model.icon}}'></i>&nbsp;{{vmDialog.model.title}} Details</h6></div>
+    </div>
+    <div class="modal-body">
+        <form name="frmRepairForm" id="frmRepair" novalidate>
+            <fieldset>
+                <div class="form-group row">
+                    <div class="col-md-6 col-lg-6 col-sm-12" id="div_destination_param">
+                        <label class="control-label">Destination:</label>
+                        <input type="text" placeholder="Destination" class="form-control" name="code"
+                               ng-model="vmDialog.model.destination.param" disabled>
+                    </div>
+                    <div class="col-md-5 col-lg-6 col-sm-12" id="div_destination_type">
+                        <label class="control-label">Destination Type:</label>
+                        <input type="text" placeholder="Destination" class="form-control" name="type"
+                               ng-model="vmDialog.model.destination.typeDesc" disabled>
+                    </div>
+                </div>
+            </fieldset>
+            <div id="tabSet" ng-if="!vmDialog.progressInfo.inProgress">
+                <ul id="tabs" class="nav nav-tabs tabs-left bordered">
+                    <li class="active">
+                        <a href="#general" data-toggle="tab"  ng-click="vmDialog.functions.switchTab('submission');">Submission</a>
+                    </li>
+                    <li>
+                        <a href="#headers" data-toggle="tab">Headers</a>
+                    </li>
+                </ul>
+                <div id="tabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="general" ng-show="!vmDialog.progressInfo.inProgress">
+                        <form name="frmCMView" class="form-horizontal" id="frmCMView" novalidate>
+                            <mqa-code-mirror data="vmDialog.model.data" ui-object="vmDialog.model.cm" read-only="false"/>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="headers" ng-show="!vmDialog.progressInfo.inProgress">
+                        <div class="col-sm-12 col-lg-12 col-md-12 no-padding no-margin">
+                            <mqa-meta-data-grid data="vmDialog.model.headerGrid.data"
+                                                options="vmDialog.model.headerGrid.options" height="0"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="progress" ng-if="vmDialog.progressInfo.inProgress">
+                <mqa-progress-dialog title-data="vmDialog.titleData" data="vmDialog.progressInfo"
+                                     on-cancel="vmDialog.cancel" on-ok="vmDialog.ok"
+                                     buttons="vmDialog.model.buttons"></mqa-progress-dialog>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer" ng-if="!vmDialog.progressInfo.inProgress">
+        <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDialog.functions.confirmDialog();">
+            OK
+        </button>
+        <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelDialog();">
+            Cancel
+        </button>
+    </div>
+</div>

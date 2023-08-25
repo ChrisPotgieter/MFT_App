@@ -1,0 +1,67 @@
+<!--
+    <summary>
+        app.layout.partials - layout.tpl.html
+        /// General Layout of the Application Template
+        /// This will be the "root" layout all pages and inserted as the "root" view into index.html
+        /// This is part of the abstract routing for the ui-router "app" state allowing a consistent UI
+        /// This has been adapted from SmartAdmin Layout to include our own nested views
+        ///
+        /// Copyright © 2009 - MQAttach Canada Inc. and All associated Companies
+        /// Written By: Mac Bhyat
+        /// Date: 11/26/2014
+        ///
+    </summary>
+-->
+
+<!-- HEADER -->
+<div data-smart-include="app/modules/layout/partials/header.tpl.html" class="placeholder-header"></div>
+<!-- END HEADER -->
+
+
+<!-- Left panel : Navigation area -->
+<!-- UI Routing: Left Navigation Area-->
+<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+
+<div data-ui-view="nav" data-autoscroll="false" class="left-panel"></div>
+<!-- END NAVIGATION -->
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+    <demo-states></demo-states>
+
+    <!-- RIBBON -->
+    <div id="ribbon">
+
+                <!--
+				<span class="ribbon-button-alignment">
+					<span id="refresh" class="btn btn-ribbon" reset-widgets
+                          tooltip-placement="bottom"
+                          tooltip-html-unsafe="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings.">
+						<i class="fa fa-refresh"></i>
+					</span>
+				</span>
+				-->
+
+        <!-- breadcrumb from smart-admin -->
+        <state-breadcrumbs></state-breadcrumbs>
+        <!-- end breadcrumb -->
+
+
+    </div>
+    <!-- END RIBBON -->
+
+
+    <div data-smart-router-animation-wrap="content content@app" data-wrap-for="#content">
+        <div data-ui-view="content" data-autoscroll="false"></div>
+    </div>
+</div>
+<!-- END MAIN PANEL -->
+
+
+<!-- PAGE FOOTER -->
+<div data-smart-include="app/modules/layout/partials/footer.tpl.html"></div>
+<div data-smart-include="app/modules/layout/partials/shortcut.tpl.html"></div>
+<!-- END PAGE FOOTER -->
+
+

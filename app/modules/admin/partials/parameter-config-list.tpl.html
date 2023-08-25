@@ -1,0 +1,24 @@
+<div class="widget-body">
+    <div >
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <button class="btn btn-primary" data-ng-click="vmConfigList.functions.insertRecord();" ng-show="vmConfigList.model.flags.allowAdd">
+                    <i class="fa fa-plus"></i> <span class="hidden-mobile">Add {{vmConfigList.stateInfo.subTitle}}...</span>
+                </button>
+
+                <button class="btn btn-success"  ng-disabled="!vmConfigList.model.flags.allowSave" ng-click="vmConfigList.functions.updateFunction();">
+                    <i class="fa fa-save"></i> <span class="hidden-mobile">Apply Changes...</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+    <div class="col-sm-12">
+        <mqa-kendo-grid id="configGrid" options="vmConfigList.model.gridOptions"
+                        data="vmConfigList.model.gridData"
+                        ondrill="vmConfigList.functions.editRecord"
+                        refresh-flag="vmConfigList.model.flags.gridRefresh"></mqa-kendo-grid>
+    </div>
+</div>
+</div>

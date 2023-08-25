@@ -1,0 +1,48 @@
+<br>
+<div>
+    <p></p>
+    <div class="alert alert-block alert-success">
+        <h4 class="alert-heading"><i class="fa fa-check-square-o"></i> Ready to Commit!</h4>
+        <p>
+            Please Confirm the Summary of the Updates about to be Completed to Add this New Company
+            Use the Previous Button to Navigate Back and make any Changes
+        </p>
+    </div>
+    <div>
+        <h6>Summary Checklist for New Company {{vm.model.company.name}}</h6></h3>
+    </div>
+    <div class="col-md-6">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th width="50%">Check Item</th>
+                <th width="50%">Result</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Basic Information Completed</td>
+                <td><span class="text-success">Completed</span></td>
+            </tr>
+            <tr>
+                <td>Number of Departments</td>
+                <td><span class="badge bg-color-greenLight">{{vm.model.departmentNames.length}}</span></td>
+
+            </tr>
+
+            <tr ng-if="vm.model.hasActiveDirectory">
+                <td>Active Directory Domains</td>
+                <td><span class="badge bg-color-greenLight">{{vm.model.domains.length}}</span></td>
+            </tr>
+            <tr>
+                <td>Roles</td>
+                <td><span class="badge bg-color-greenLight">{{vm.model.roles.length}}</span></td>
+            </tr>
+            <tr>
+                <td>Admin User</td>
+                <td><span class="text-success">{{vm.model.adminUser.name}}</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div>
+    <!-- TIME SELECTOR -->
+    <div class="form-group">
+        <div class="col-md-12 col-lg-12 col-sm-12">
+            <label for="input_daterange" class="control-label">Date Selection:</label>
+            <ul class="demo-btns">
+                <li ng-repeat="button in vmDialog.model.timeButtons" class="margin-right-5">
+                    <a href="javascript:void(0);"  ng-click="vmDialog.functions.selectTime(button)" class="btn btn-default" ng-class="vmDialog.dataModel.selectedDate.caption === button.caption ? 'btn-primary active' : ''">
+                        {{button.caption}}
+                    </a>
+                </li>
+            </ul>
+            <div class="input-group">
+                <input date-range-picker name="input_daterange" id="input_daterange" class="form-control date-picker"
+                       type="text" ng-model="vmDialog.dataModel.selectedDateRange"
+                       options="vmDialog.model.dateSelectorOptions"  ng-disabled="!vmDialog.model.flags.allowDate"/>
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <input type="hidden" name="hdn_select_date"/>
+            </div>
+
+        </div>
+    </div>
+    <!-- REFRESH SELECTOR -->
+    <div class="form-group" ng-show="vmDialog.model.flags.allowRefresh">
+        <div class="col-md-12 col-md-12 col-sm-12" id="div_refresh">
+            <label class="control-label">Refresh Every:</label>
+            <ul class="demo-btns">
+                <li ng-repeat="button in vmDialog.model.intervals" class="margin-right-5">
+                    <a href="javascript:void(0);"  ng-click="vmDialog.functions.selectInterval(button)" class="btn btn-default" ng-class="vmDialog.dataModel.refreshInterval === button.value ? 'btn-primary active' : ''">
+                        {{button.caption}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- COMPARISION SELECTOR -->
+            <div class="form-group" ng-show="vmDialog.model.compareButtons">
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <label for="input_compare_daterange" class="control-label">Comparision Selection:</label>
+                    <ul class="demo-btns">
+                        <li ng-repeat="button in vmDialog.model.compareButtons" class="margin-right-5">
+                            <a href="javascript:void(0);"  ng-click="vmDialog.functions.selectCompare(button)" class="btn btn-default" ng-class="vmDialog.dataModel.selectedCompare.caption === button.caption ? 'btn-primary active' : ''">
+                                {{button.caption}}
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="input-group"  ng-show="vmDialog.dataModel.selectedCompare.value.time > -1">
+                        <input date-range-picker name="input_compare_daterange" id="input_compare_daterange" class="form-control date-picker" type="text"  ng-model="vmDialog.dataModel.selectedCompareDateRange" options="vmDialog.model.dateSelectorOptions" ng-disabled="!vmDialog.model.flags.allowCompareDate"/>
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input type="hidden" name="hdn_select_compare"/>
+                    </div>
+
+                </div>
+            </div>
+</div>
+    
+
+
+
+

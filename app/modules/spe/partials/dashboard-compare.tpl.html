@@ -1,0 +1,80 @@
+<article>
+	<!-- COMPARISION -->
+	<div class="row">
+		<!--- CURRENT SIDE -->
+		<div class="col-md-6">
+
+			<!-- header -->
+			<div class="col-md-12">
+				<div>
+					<h6 class="no-margin-bottom"> {{vm.model.currentData.title}}</h6>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<hr class="bordered"/>
+			</div>
+			<!-- counts current -->
+			<div class="col-md-12">
+				<div class="row">
+					<spe-dashboard-count data="vm.model.currentData.counts" id="counts" on-drill="vm.functions.onCountDrill" view-type="1"/>
+				</div>
+			</div>
+			<!-- donut current -->
+			<div class="col-sm-12">
+				<div jarvis-widget id="group-morris-chart-widget-current" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+					<header>
+						<span class="widget-icon"> <i class="fa fa-tachometer"></i> </span>
+						<h2>Groupings</h2>
+					</header>
+					<div>
+						<div class="widget-body no-padding">
+							<div class="col-sm-4 col-lg-4 col-md-4 padding-left-gutter padding-10" ng-repeat="group in vm.model.currentData.groups.data">
+								<div data-smart-include="app/modules/common/partials/common-donut-content.tpl.html"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- COMPARISION SIDE -->
+		<div class="col-md-6">
+			<!-- header -->
+			<div class="col-md-12">
+				<div>
+					<h6 class="no-margin-bottom"> {{vm.model.compareData.title}}</h6>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<hr class="bordered"/>
+			</div>
+			<div class="col-md-12">
+				<div class="row">
+					<spe-dashboard-count data="vm.model.compareData.counts" id="compareCounts" on-drill="vm.functions.onCompareCountDrill" view-type="1"/>
+				</div>
+			</div>
+			<!-- donut compare -->
+			<div class="col-sm-12">
+				<div jarvis-widget id="group-morris-chart-widget-compare" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+					<header>
+						<span class="widget-icon"> <i class="fa fa-tachometer"></i> </span>
+						<h2>Groupings</h2>
+					</header>
+					<div>
+						<div class="widget-body no-padding">
+							<div class="col-sm-4 col-lg-4 col-md-4 padding-left-gutter padding-10" ng-repeat="group in vm.model.compareData.groups.data">
+								<div data-smart-include="app/modules/common/partials/common-donut-content.tpl.html"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- TRANSACTION GRID -->
+	<div class="row">
+		<div data-smart-include="app/modules/spe/partials/dashboard-recent.tpl.html"/>
+	</div>
+</article>
+

@@ -1,0 +1,22 @@
+<div class="alert fade in" ng-class="data.baseTransaction.alertClass">
+    <h3 class="alert-heading no-margin">
+        <i ng-class="data.baseTransaction.statusIcon" class="fa"></i> <span>Transaction Id:</span>
+        <br>
+        <span><small style="color:inherit;">{{data.baseTransaction.transactionId}}</small></span>
+        <br>
+        <small>
+            <span ng-class="data.baseTransaction.labelClass" class="label">{{data.baseTransaction.statusDesc}}</span>&nbsp;&nbsp;
+            <span class="label bg-color-darken">{{data.baseTransaction.mqaTransTypeDesc}}</span>&nbsp;&nbsp;
+            <span class="label bg-color-darken">{{data.baseTransaction.mqaModuleDesc}} Module</span>
+            <span class="label bg-color-darken" ng-if="data.baseTransaction.operationDesc != 'None'">{{data.baseTransaction.operationDesc}}</span>
+        </small>
+        <div ng-if="data.baseTransaction.stats.progress <= 100 && data.baseTransaction.stats.progress > 0">
+            <div class="progress margin-bottom-5 margin-top-5">
+                <div class="progress-bar" ng-class="data.baseTransaction.progressClass"
+                     ng-style="data.baseTransaction.progressStyle"> {{data.baseTransaction.stats.progress}}%
+                </div>
+            </div>
+        </div>
+        <div><mqa-attachment-button data="data.baseTransaction.attachments" module="1000" ng-if="data.baseTransaction.attachments"/></div>
+    </h3>
+</div>

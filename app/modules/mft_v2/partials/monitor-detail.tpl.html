@@ -1,0 +1,255 @@
+<div class="row">
+    <!-- STATUS HEADER -->
+    <article class="alert fade in col-md-12" ng-class="vmDetail.model.status.alertClass">
+        <h3 class="alert-heading no-margin pull-left">
+            <i ng-class="vmDetail.model.status.icon" class="fa"></i> <span>MFT Monitor: {{vmDetail.model.monitor.monitor_name}} : {{vmDetail.model.status.description}}</span>
+            <br>
+            <i class="fa fa-laptop"></i> <span><a
+                data-ui-sref="app.mft_v2.agent({id: vmDetail.model.monitor.mftagent_id})" title="View Agent Details">{{vmDetail.model.monitor.agent_name}}@{{vmDetail.model.monitor.queue_manager}}</a></span>
+            <br/>
+            <span><small style="color:inherit;">{{vmDetail.model.status.headingDesc}}</small></span>
+            <br/>
+            <small>
+                <span class="label bg-color-darken">{{vmDetail.model.monitor.typeDesc}}</span>
+                <span class="label bg-color-darken">{{vmDetail.model.status.description}}</span>
+                <span class="label bg-color-darken" ng-if="vmDetail.model.monitor.job_name">{{vmDetail.model.monitor.job_name}}</span>
+            </small>
+        </h3>
+
+        <div class="pull-right">
+            <h7>
+                <div><b>Last Update:&nbsp;</b>{{vmDetail.model.monitor.sys_date}}</div>
+            </h7>
+            <br/>
+            <div class="pull-right">
+                <div data-smart-include="app/modules/common/partials/common-cli-operation-button-list.tpl.html" ng-if="vmDetail.model.operations && vmDetail.model.operations.length > 0"/>
+            </div>
+        </div>
+    </article>
+</div>
+
+<div class="row">
+    <div class="col-md-12" id="widget-grid" widget-grid>
+        <div id="tab-detail" ng-class="vmDetail.model.flags.showProperties ? 'col-md-8': 'col-md-12'">
+            <div jarvis-widget id="monitor-detail-tabs" data-widget-sortable="false" data-widget-colorbutton="false"
+                 data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false"
+                 data-widget-deletebutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-search"></i> </span>
+                    <h2>Details</h2>
+                    <div class="jarviswidget-ctrls" role="menu">
+                        <a href="javascript:void(0);" class="button-icon" rel="tooltip" data-placement="bottom"
+                           title="Toggle Properties" ng-click="vmDetail.functions.toggleProperties();"><i class="fa"
+                                                                                                          ng-class="vmDetail.model.flags.showProperties ? 'fa-arrow-right': 'fa-arrow-left'"></i></a>
+                    </div>
+                </header>
+                <div class="modal-body">
+                    <form name="frmMFTMonitorDetailEdit" class="form-horizontal" id="frmMFTMonitorDetailEdit"
+                          novalidate>
+                        <ul id="tabs" class="nav nav-tabs tabs-left bordered">
+                            <li class="active">
+                                <a href="#trigger" data-toggle="tab"  ng-click="vmDetail.functions.switchTab('trigger');">Details</a>
+                            </li>
+
+                            <li>
+                                <a href="#last-result" data-toggle="tab"
+                                   ng-click="vmDetail.functions.switchTab('result');" ng-if="vmDetail.model.last.alert">Last
+                                    Activity</a>
+                            </li>
+                            <li>
+                                <a href="#create" data-toggle="tab" ng-click="vmDetail.functions.switchTab('create');" ng-if="vmDetail.model.create.data.content">Creation Request</a>
+                            </li>
+                            <li>
+                                <a href="#notifications" data-toggle="tab">Notifications</a>
+                            </li>
+                        </ul>
+                        <div id="tabContent" class="tab-content padding-10 margin-bottom-5">
+                            <div class="tab-pane fade in padding-top-15" id="last-result">
+                                <!-- STATUS HEADER -->
+                                <div class="row" ng-if="vmDetail.model.last.alert">
+                                    <article class="col-sm-12 no-margin">
+                                        <div class="alert alert-{{vmDetail.model.last.alert}}">
+                                            <h6>
+                                                <i class="fa-fw fa fa-{{vmDetail.model.last.icon}}"></i>
+                                                {{vmDetail.model.last.message}}
+                                                <button class="btn btn-sm bg-color-blueDark txt-color-white pull-right"
+                                                        ng-click="vmDetail.functions.viewLastTransaction();"
+                                                        ng-if="vmDetail.model.last.task_message_id">
+                                                    <i class="fa fa-exchange"></i> <span
+                                                        class="hidden-mobile hidden-sm">View Last Transaction...</span>
+                                                </button>
+                                                <small class="txt-color-darken">
+                                                    <ul class="list-unstyled">
+                                                        <li ng-if="vmDetail.model.last.check_date">
+                                                            <b>Trigger Date:</b>&nbsp;&nbsp;{{vmDetail.model.last.check_date
+                                                            | localUTCDateFilter}}
+                                                        </li>
+                                                        <li ng-if="vmDetail.model.last.job_name != null">
+                                                            <b>Job Name:</b>&nbsp;&nbsp;{{vmDetail.model.last.job_name}}
+                                                        <li>
+                                                        <li ng-if="vmDetail.model.last.fileSpace != null">
+                                                            <b>File-Space:</b>&nbsp;&nbsp;{{vmDetail.model.last.fileSpace}}
+                                                        <li>
+                                                        <li ng-if="vmDetail.model.last.originator != null">
+                                                            <b>Originator:</b>&nbsp;&nbsp;<a href="javascript:void(0)"
+                                                                                             ng-click="vmDetail.functions.showOriginatorDialog();"
+                                                                                             title="View Originator">Details...</a>
+                                                        <li>
+                                                        <li ng-if="vmDetail.model.last.result_code != null">
+                                                            <b>Result Code:</b>&nbsp;&nbsp;{{vmDetail.model.last.result_code}}
+                                                        <li>
+                                                    </ul>
+                                                </small>
+                                            </h6>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div ng-if="vmDetail.model.last.supplemental">
+                                    <b>Supplemental</b>
+                                    <div class="alert alert-block alert-{{vmDetail.model.last.alert}}">
+                                        <div class="custom-scroll monospaced">{{vmDetail.model.last.supplemental}}</div>
+                                    </div>
+                                </div>
+                                <!-- ORIGINAL XML -->
+                                <div ng-if="vmDetail.model.last.original">
+                                    <h6>Original Request</h6>
+                                    <hr class="no-margin"/>
+                                    <mft-monitor-last-request
+                                            data="vmDetail.model.last.original"></mft-monitor-last-request>
+                                </div>
+                                <!-- UPDATED XML -->
+                                <div ng-if="vmDetail.model.last.updated">
+                                    <h6>
+                                        Updated Request
+                                        <span class="pull-right" ng-if="vmDetail.model.last.exits"><i
+                                                class="fa fa-cubes"></i><a href="javascript:void(0)"
+                                                                           ng-click="vmDetail.functions.showExitDialog();"
+                                                                           title="View Exit Invocation">Exit Invocation</a></span>
+                                    </h6>
+                                    <hr class="no-margin"/>
+                                    <mft-monitor-last-request
+                                            data="vmDetail.model.last.updated"></mft-monitor-last-request>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade in active" id="trigger">
+                                <h2>
+                                    <i class="fa" ng-class="vmDetail.model.monitor.pollIcon"></i>&nbsp;<span
+                                        class="semi-bold">{{vmDetail.model.monitor.typeDesc}} Monitor</span>
+                                    <br>
+                                    {{vmDetail.model.monitor.resource.resource}}
+                                    <br/>
+                                    <small>
+                                        <ul class="list-inline padding-top-10">
+                                            <li>
+                                                {{vmDetail.model.monitor.pollDesc}}
+                                            </li>
+                                            <li ng-if="vmDetail.model.monitor.resource.properties && vmDetail.model.monitor.resource.properties.recursionLevel != undefined">
+                                            <span class="text-muted">
+                                                Recursion Level:&nbsp;&nbsp;<span class="txt-color-darken">{{vmDetail.model.monitor.resource.properties.recursionLevel}}</span>
+                                            </span>
+                                            </li>
+                                            <li ng-if="vmDetail.model.monitor.resource.properties && vmDetail.model.monitor.resource.properties.id != undefined">
+                                                <span class="text-muted">
+                                                    Identifier:&nbsp;&nbsp;<span class="txt-color-darken">{{vmDetail.model.monitor.resource.properties.id}}</span>
+                                                </span>
+                                            </li>
+                                            <li ng-if="vmDetail.model.monitor.trigger && vmDetail.model.monitor.trigger.properties && vmDetail.model.monitor.trigger.properties.batchSize != undefined">
+                                                <span class="text-muted">
+                                                    Batch Size:&nbsp;&nbsp;<span class="txt-color-darken">{{vmDetail.model.monitor.trigger.properties.batchSize | number}}</span>
+                                                </span>
+                                            </li>
+
+                                        </ul>
+                                    </small>
+                                </h2>
+                                <div ng-if="vmDetail.model.trigger.condition">
+                                    <h6>Conditions</h6>
+                                    <hr class="no-margin"/>
+                                    <mft-monitor-condition
+                                            item="vmDetail.model.trigger.condition"></mft-monitor-condition>
+                                </div>
+                                <div ng-if="vmDetail.model.task.data.content">
+                                    <h6>
+                                        Task
+                                        <span ng-if="vmDetail.model.task.properties.name">
+                                              <small>{{vmDetail.model.task.properties.name}}</small>
+                                        </span>
+                                        <span ng-if="vmDetail.model.task.properties.description">
+                                              <small>{{vmDetail.model.task.properties.description}}</small>
+                                        </span>
+                                        <hr class="no-margin"/>
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <mqa-code-mirror data="vmDetail.model.task.data"
+                                                             ui-object="vmDetail.model.task.cm" read-only="true"/>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-if="vmDetail.model.task.defaults">
+                                        <div class="col-md-12">
+                                            <mqa-meta-data-grid data="vmDetail.model.task.defaults" options="{title:'Default Variables'}" height="0"/>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-if="vmDetail.model.task.exit_meta">
+                                        <div class="col-md-12 padding-top-15">
+                                            <mqa-meta-data-grid data="vmDetail.model.task.exit_meta" options="{title:'Exit Meta-Data'}" height="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="create">
+                                <div class="row" ng-if="vmDetail.model.create.data.content">
+                                        <div class="col-md-12">
+                                            <mqa-code-mirror data="vmDetail.model.create.data"
+                                                             ui-object="vmDetail.model.create.cm" read-only="true"/>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="notifications">
+                                <div class="padding-bottom-10" ng-if="vmDetail.model.notification.data">
+                                    <div>
+                                        <mqa-adm-notify-rule-edit company-id="{{vmDetail.model.monitor.company_id}}"
+                                                                  data="vmDetail.model.notification.data"
+                                                                  validation="vmDetail.model.notification.validator"/>
+                                    </div>
+                                    <div class="widget-footer dialog-border"
+                                         style="margin-left: -10px; margin-right: -10px;">
+                                        <button type="button" id="submit" class="btn btn-primary"
+                                                ng-click="vmDetail.functions.updateNotification();">
+                                            Update
+                                        </button>
+                                        <button type="button" class="btn btn-danger"
+                                                ng-click="vmDetail.functions.userNotificationDelete();"
+                                                ng-if="!vmDetail.model.notification.isNew">
+                                            Clear All
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="property-grid" ng-if="vmDetail.model.flags.showProperties" class="col-md-4">
+            <div jarvis-widget id="agent-detail-property-grid" data-widget-sortable="false"
+                 data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false"
+                 data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-info-circle"></i> </span>
+                    <h2>Properties</h2>
+                </header>
+                <div class="widget-body">
+                    <div class="col-sm-12 col-lg-12 col-md-12 no-padding no-margin">
+                        <mqa-meta-data-grid data="vmDetail.model.propertyGrid.data"
+                                            options="vmDetail.model.propertyGrid.options" height="0"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

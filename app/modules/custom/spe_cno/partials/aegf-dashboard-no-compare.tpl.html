@@ -1,0 +1,45 @@
+<div class="row">
+    <article class="col-md-12">
+        <!-- counts -->
+        <div class="col-md-12">
+            <div class="row">
+                <aegf-dashboard-count data="vm.model.currentData.counts" id="counts" on-drill="vm.functions.onCountDrill"/>
+            </div>
+        </div>
+
+        <!-- donuts -->
+        <div class="col-sm-12">
+            <div jarvis-widget id="group-morris-chart-widget-current" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-tachometer"></i> </span>
+                    <h2>Groupings</h2>
+                </header>
+                <div>
+                    <div class="widget-body no-padding">
+                        <div class="col-sm-4 col-lg-4 col-md-4 padding-left-gutter padding-5" ng-repeat="group in vm.model.currentData.groups.data">
+                            <div data-smart-include="app/modules/common/partials/common-donut-content.tpl.html"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- transaction grid -->
+        <div data-smart-include="app/modules/custom/spe_cno/partials/aegf-dashboard-recent.tpl.html"/>
+
+        <!--- employer-->
+        <div class="col-sm-12">
+            <div jarvis-widget id="source-chart-widget-current"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-laptop"></i> </span>
+                    <h2>Top {{vm.model.dialogData.filter.barLimit}} Employer Groups</h2>
+                </header>
+                <div class="widget-body">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <mqa-chartjs dataset="vm.model.currentData.employerBar.series" options="vm.model.currentData.employerBar.options" update-flag="vm.model.currentData.employerBar.updateFlag" refresh-flag="vm.model.currentData.employerBar.refreshFlag" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>

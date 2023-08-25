@@ -1,0 +1,152 @@
+<div class="content">
+    <div jarvis-widget id="spe-instamed-transaction-reporting-filter-widget" data-widget-colorbutton="false"
+         data-widget-editbutton="false" data-widget-custombutton="false" xmlns="http://www.w3.org/1999/html">
+        <header>
+            <span class="widget-icon"> <i class="fa fa-filter"></i> </span>
+            <h2>Filter</h2>
+            <ul class="nav nav-tabs pull-right in">
+                <li class="active">
+                    <a data-toggle="tab" href="#filterTab"> <i class="fa fa-lg fa-search"></i></a>
+                </li>
+            </ul>
+        </header>
+        <div>
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+                <form name="inputForm" novalidate>
+                    <div class="custom-scroll tab-content padding-5">
+                        <fieldset class="padding-top-10">
+                            <div class="form-group">
+                                <label>Return Top:</label>
+                                <input class="form-control spinner-left" name="input_spinner" id="input-spinner"
+                                       ng-model="vm.model.filter.topCount" min="0" mqa-spinner>
+                            </div>
+                            <div class="form-group">
+                                <label for="input_daterange">Date Selection:</label>
+                                <div class="input-group">
+                                    <input date-range-picker name="input_daterange" id="input_daterange"
+                                           class="form-control date-picker" type="text" name="date"
+                                           ng-model="vm.model.filter.dateRange" options="vm.model.dateOptions"
+                                           required/>
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input_hcompany">{{vm.model.titles.holdingCompany}}:</label>
+                                <ui-select id="input_hcompany" name="input_hcompany"
+                                           ng-model="vm.model.filter.holdingCompany" mqa-combo="HoldingCompany"
+                                           mqa-list-source="1" mqa-company-id="{{vm.model.companyId}}"
+                                           input-Placeholder="Select the {{vm.model.titles.holdingCompany}}"
+                                           on-select="vm.functions.onHoldingCompanyChange(true);"
+                                           ng-disabled="!vm.model.flags.allowHoldingSelect"/>
+                                </ui-select>
+                            </div>
+                            <div class="form-group">
+                                <label for="input_division">{{vm.model.titles.division}}:</label>
+                                <ui-select id="input_division" name="input_division"
+                                           ng-disabled="!vm.model.flags.allowDivisionSelect"
+                                           ng-model="vm.model.filter.divisions" multiple theme="select2"
+                                           style="width:100%">
+                                    <ui-select-match placeholder="Please select the {{vm.model.titles.division}}">
+                                        {{$item.description}}
+                                    </ui-select-match>
+                                    <ui-select-choices
+                                            repeat="listItem.code as listItem in vm.model.divisions | filter:$select.search">
+                                        <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <div class="form-group">
+                                <label for="input_division">Payment Methods:</label>
+                                <ui-select id="input_method" name="input_method" ng-model="vm.model.filter.methods"
+                                           multiple theme="select2" style="width:100%">
+                                    <ui-select-match placeholder="Please select the Payment Method(s)">
+                                        {{$item.description}}
+                                    </ui-select-match>
+                                    <ui-select-choices
+                                            repeat="listItem.code as listItem in vm.model.methods | filter:$select.search">
+                                        <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input_status">Payment Status:</label>
+                                <ui-select id="input_status" name="input_status" ng-model="vm.model.filter.statuses"
+                                           multiple theme="select2" style="width:100%">
+                                    <ui-select-match placeholder="Please select the Payment Status(s)">{{$item.description}}
+                                    </ui-select-match>
+                                    <ui-select-choices
+                                            repeat="listItem.code as listItem in vm.model.statuses | filter:$select.search">
+                                        <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+
+                            <div class="padding-top-10 padding-bottom-10 margin-bottom-5">
+                                <button class="btn btn-primary btn-default btn-lg col-md-12 col-sm-12 col-lg-12"
+                                        ng-click="vm.functions.refreshData();" ng-disabled="vm.model.flags.inProgress">
+                                    <i class="fa fa-lg fa-search"></i>
+                                    Search
+                                </button>
+                            </div>
+                        </fieldset>
+                        <fieldset class="padding-top-10">
+                            <div class="form-group padding-bottom-15">
+                                <div class="col-sm-4 col-lg-4 col-md-4" id="div_val">
+                                    <mqa-switch title="Payment Mis-Match" label="va" ng-model="vm.model.filter.invalid"/>
+                                </div>
+                                <div class="col-sm-4 col-lg-4 col-md-4" id="div_rej">
+                                    <mqa-switch title="999 Rejected" label="film" ng-model="vm.model.filter.rejected"/>
+                                </div>
+                                <div class="col-sm-4 col-lg-4 col-md-4" id="div_reissue">
+                                    <mqa-switch title="Re-Issued" label="rac" ng-model="vm.model.filter.reIssued"/>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group padding-top-10">
+                                <label for="input_claimNum">Claim Number(s):</label>
+                                <ui-select id="input_claimNum" name="input_claimNum" tagging multiple
+                                           ng-model="vm.model.filter.claimNumbers" mqa-tag
+                                           input-Placeholder="Enter Claim Number(s) to Find"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="input_claimNum">Disbursement Trace Number(s):</label>
+                                <ui-select id="input_disbursementTraceNum" name="input_disbursementTraceNum" tagging multiple
+                                           ng-model="vm.model.filter.disbursmentTraceNumbers" mqa-tag
+                                           input-Placeholder="Enter Disbursement Trace Number(s) to Find"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input_claimNum">Policy Number(s):</label>
+                                <ui-select id="input_policyNum" name="input_policyNum" tagging multiple
+                                           ng-model="vm.model.filter.policyNumbers" mqa-tag
+                                           input-Placeholder="Enter Policy Number(s) to Find"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="input_trace">{{vm.model.titles.checkNumber}}(s):</label>
+                                <ui-select id="input_trace" name="input_trace" tagging multiple
+                                           ng-model="vm.model.filter.traceNumbers" mqa-tag
+                                           input-Placeholder="Enter {{vm.model.titles.checkNumber}}(s) to Find"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="input_providerNPI">Provider NPI(s):</label>
+                                <ui-select id="input_providerNPI" name="input_providerNPI" tagging multiple
+                                           ng-model="vm.model.filter.providerNpi" mqa-tag
+                                           input-Placeholder="Enter Provider NPI(s) to Find"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="input_providerTIN">Provider TIN(s):</label>
+                                <ui-select id="input_providerTIN" name="input_providerTIN" tagging multiple
+                                           ng-model="vm.model.filter.providerTin" mqa-tag
+                                           input-Placeholder="Enter Provider TIN(s) to Find"/>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="widget-footer">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

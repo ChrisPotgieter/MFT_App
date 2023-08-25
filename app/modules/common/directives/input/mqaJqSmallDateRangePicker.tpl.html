@@ -1,0 +1,22 @@
+<div class="col-md-12 no-padding">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" id="from" data-mqa-jq-date-picker data-min-restrict="#to"
+                       data-number-of-months="3" data-changes-month="true" type="text"
+                       placeholder="From" ng-model="vmSmallDateRange.model.fromDate.value" options="vmSmallDateRange.model.fromDate.options" name="dateRange_fromDate" on-select="vmSmallDateRange.functions.onFromDate" ng-disabled="vmSmallDateRange.model.disabled">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" id="to" data-mqa-jq-date-picker data-max-restrict="#from"
+                       data-number-of-months="3" data-changes-month="true" type="text"
+                       placeholder="To" ng-model="vmSmallDateRange.model.toDate.value" options="vmSmallDateRange.model.toDate.options" name="dateRange_toDate" on-select="vmSmallDateRange.functions.onToDate" ng-disabled="vmSmallDateRange.model.disabled">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+        </div>
+    </div>
+</div>

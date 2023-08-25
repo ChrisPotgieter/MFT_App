@@ -1,0 +1,29 @@
+<div class="widget-body no-padding">
+    <div style="padding-right: 30px;">
+        <div class="tabbable tabs-below">
+            <div class="tab-content">
+                <div class="tab-pane" id="tab_meta" ng-if="vmDetail.model.meta_data != null && vmDetail.model.meta_data.length > 0">
+                    <!--- DISPLAY THE META-DATA VIEW --->
+                    <div class="scroll-body"
+                         slimscroll="{'height': '450', alwaysVisible: 'true', 'position': 'left', color: 'silver', wheelStep:'1'}">
+                        <mqa-meta-data-grid data="vmDetail.model.meta_data"/>
+                    </div>
+                </div>
+                <div class="tab-pane active" id="tab_detail">
+                    <!-- DISPLAY THE STEPS TIME LINE VIEW -->
+                    <div data-smart-include="app/modules/boomi/partials/transaction-detail-steps.tpl.html"/>
+                </div>
+            </div>
+            <!--- TABS AT THE BOTTOM --->
+            <ul class="nav nav-tabs">
+                <li>
+                    <a href="#tab_meta" data-toggle="tab" ng-if="vmDetail.model.meta_data != null && vmDetail.model.meta_data.length > 0">Meta-Data</a>
+                </li>
+                <li class="active">
+                    <a href="#tab_detail" data-toggle="tab">Steps</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

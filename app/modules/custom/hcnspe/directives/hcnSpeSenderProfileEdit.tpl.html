@@ -1,0 +1,188 @@
+<div class="row">
+    <article class="col-sm-12">
+        <div jarvis-widget id="hcnSpeSrProfileEditWidget"  data-widget-editbutton="false">
+            <header>
+                <h2>{{headingText}}</h2>
+            </header>
+            <div>
+                <div class="row" ng-if="!editRow.isNew">
+                    <article class="col-sm-12 no-margin">
+                        <div class="alert alert-{{sync.messageClass}}">
+                            <button class="btn btn-sm bg-color-blueDark txt-color-white pull-right"  ng-click="requestSync();">
+                                <i class="fa fa-exchange"></i> <span class="hidden-mobile hidden-sm">Sync...</span>
+                            </button>
+                            <i class="fa-fw fa fa-{{sync.icon}}"></i>
+                            <strong>{{sync.caption}}</strong><br/>
+                            {{sync.message}}
+                        </div>
+                    </article>
+                </div>
+
+                <div class="widget-body padding-5">
+
+                    <form name="frmHCNSPEProfileEdit" class="form-horizontal" novalidate>
+                        <div class="row">
+                            <fieldset>
+                                <legend class="no-margin no-padding">Identifier Information</legend>
+                                <div class="form-group">
+                                    <div class="col-lg-8 col-md-8 col-sm-8" id="div_alias">
+                                        <label class="control-label">Identifier:</label>
+                                        <input type="text" class="form-control" name="alias" ng-model="editRow.jsonData.alias" ng-disabled="editRow.recordStatus == 0"/>
+                                    </div>
+                                    <div class="col-sm-4 col-lg-4 col-md-4" id="div_docType">
+                                        <label class="control-label">Document Type:</label>
+                                        <ui-select id="docType" name="docType" ng-model="editRow.jsonData.docType" mqa-combo="SPEDocTypes" mqa-list-source="1" mqa-company-id="0" input-Placeholder="Select Document Type" on-select="onComboChange('docType')" ng-disabled="editRow.recordStatus == 0"/>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 selectContainer" id="div_intEmail">
+                                        <label class="control-label">Internal Email(s):</label>
+                                        <ui-select id="int_email" name="int_email" tagging multiple mqa-tag
+                                                   ng-model="editRow.jsonData.int_email"
+                                                   input-Placeholder="Please enter Email Address(es)" ng-change="onComboChange('int_email')"/>
+
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 selectContainer" id="div_extEmail">
+                                        <label class="control-label">Partner Email(s):</label>
+                                        <ui-select id="ext_email" name="ext_email" tagging multiple mqa-tag
+                                                   ng-model="editRow.jsonData.ext_email"
+                                                   input-Placeholder="Please enter Email Address(es)" ng-change="onComboChange('ext_email')"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <fieldset>
+                                        <legend class="no-margin no-padding">Sender</legend>
+                                    </fieldset>
+
+                                    <div class="form-group">
+                                        <div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4" id="div_isa_id">
+                                                <label class="control-label">ID:</label>
+                                                <input type="text" class="form-control" name="isa_id" ng-model="editRow.jsonData.isa_senderID" placeholder="Please enter the ISA Sender ID" />
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6" id="div_isa_code">
+                                                <label class="control-label">Code:</label>
+                                                <input type="text" class="form-control" name="isa_code" ng-model="editRow.jsonData.gs_senderCode" placeholder="Please enter the GS Sender Code" />
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2" id="div_isa_quali">
+                                                <label class="control-label">Qualifier:</label>
+                                                <input type="text" class="form-control" name="isa_quali" ng-model="editRow.jsonData.senderIDQualifier" placeholder="Qualifier" />
+                                            </div>
+                                            <input type="hidden" name="hdn_id"/>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12" id="div_isa_name">
+                                            <label class="control-label">Name:</label>
+                                            <input type="text" class="form-control" name="isa_name" ng-model="editRow.jsonData.sender_name" placeholder="Please Provide the Sender Name" />
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12" id="div_isa_version">
+                                            <label class="control-label">Version:</label>
+                                            <ui-select id="isa_version" name="isa_version" ng-model="editRow.jsonData.isa_version" mqa-combo="SPEISAVersion" mqa-list-source="1" mqa-company-id="0" input-Placeholder="Select ITXA Version" on-select="onComboChange('isa_version')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <fieldset>
+                                        <legend class="no-margin no-padding">Receiver</legend>
+                                    </fieldset>
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="col-lg-4 col-md-4 col-sm-4" id="div_gsa_id">
+                                                <label class="control-label">ID:</label>
+                                                <input type="text" class="form-control" name="gsa_id" ng-model="editRow.jsonData.isa_receiverID" placeholder="Please enter the Receiver ID" />
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6" id="div_gsa_code">
+                                                <label class="control-label">Code:</label>
+                                                <input type="text" class="form-control" name="gsa_code" ng-model="editRow.jsonData.gs_receiverCode" placeholder="Please enter the GSA Code"/>
+                                            </div>
+
+                                            <div class="col-lg-2 col-md-2 col-sm-2" id="div_gsa_quali">
+                                                <label class="control-label">Qualifier:</label>
+                                                <input type="text" class="form-control" name="gsa_quali" ng-model="editRow.jsonData.receiverIDQualifier" placeholder="Qualifier" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12" id="div_gsa_name">
+                                            <label class="control-label">Name:</label>
+                                            <input type="text" class="form-control" name="gsa_name" ng-model="editRow.jsonData.receiver_name" placeholder="Please Provider the Receiver Name"/>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12" id="div_gsa_version">
+                                            <label class="control-label">Version:</label>
+                                            <ui-select id="gsa_version" name="gsa_version" ng-model="editRow.jsonData.gs_version" mqa-combo="SPEGSAVersion" mqa-list-source="1" mqa-company-id="0" input-Placeholder="Select ITXA Version" on-select="onComboChange('gsa_version');"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <fieldset>
+                                <legend class="no-margin no-padding">Enveloping Information</legend>
+                                <div class="form-group">
+                                    <div class="col-sm-12 col-lg-12 col-md-12"  id="div_hippa">
+                                        <label class="control-label">Envelope Template:</label>
+                                         <ui-select id="hippa" name="hippa" ng-model="editRow.jsonData.hipaa_template" mqa-combo="SPEHIPAA" mqa-list-source="1" mqa-company-id="0" input-Placeholder="Select the Envelope Template" on-select="onComboChange('hippa');"/>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-12 col-md-12" id="div_environment">
+                                        <label class="control-label">Environment:</label>
+                                        <ui-select id="environment" name="environment" ng-model="editRow.jsonData.environment" mqa-combo="SPEEnvironment" mqa-list-source="1" mqa-company-id="0" input-Placeholder="Select Environment" on-select="onComboChange('environment')"/>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-12 col-md-12"  id="div_ediVersion">
+                                        <label class="control-label">EDI Version:</label>
+                                        <ui-select id="ediVersion" name="ediVersion" ng-model="editRow.jsonData.edi_version" mqa-combo="SPEEDIVersion" mqa-list-source="1" mqa-company-id="0" input-Placeholder="Select the EDI Version" on-select="onComboChange('ediVersion')"/>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-12 col-md-12"  id="div_mapName">
+                                        <label class="control-label">Map Name:</label>
+                                        <ui-select id="mapName" name="mapName" ng-model="editRow.jsonData.map_name" mqa-combo="SPEEDIMapName" mqa-list-source="1" mqa-company-id="0" input-Placeholder="Select the EDI Map Name" on-select="onComboChange('mapName')"/>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </div>
+                        <div class="row">
+                            <fieldset>
+                                <legend class="no-margin no-padding">Meta Data</legend>
+                                <div class="form-group">
+                                    <div class="col-sm-12 col-lg-12 col-md-12"  id="div_lob">
+                                        <label class="control-label">Line of Business:</label>
+                                        <ui-select id="lob" name="lob" ng-model="editRow.jsonData.metadata.lob" mqa-combo="SPELob" mqa-list-source="1" mqa-company-id="0" input-Placeholder="Select the Line of Business" on-select="onComboChange('lob')"/>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-12 col-md-12" id="div_region">
+                                        <label class="control-label">Region:</label>
+                                        <ui-select id="region" name="region" ng-model="editRow.jsonData.metadata.region" mqa-combo="SPERegion" mqa-list-source="1" mqa-company-id="0" input-Placeholder="Select the Region" on-select="onComboChange('region')"/>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-12 col-md-12" id="div_group">
+                                        <label class="control-label">Group:</label>
+                                        <ui-select id="group" name="group" ng-model="editRow.jsonData.metadata.group" mqa-combo="SPEGroup" mqa-list-source="1" mqa-company-id="0" input-Placeholder="Select the Group" on-select="onComboChange('group')"/>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-12 col-md-12"  id="div_category">
+                                        <label class="control-label">Category:</label>
+                                        <ui-select id="category" name="category" ng-model="editRow.jsonData.metadata.category" mqa-combo="SPECategory" mqa-list-source="1" mqa-company-id="0" input-Placeholder="Select the Category" on-select="onComboChange('category')"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <footer>
+                            <div class="row">
+                                <button type="button" id="saveButton" class="btn btn-primary" ng-click="onSave();">
+                                    {{buttonText}}
+                                </button>
+                                <button type="button"  class="btn btn-danger"   ng-click="userDelete();" ng-if="editRow.recordStatus == 0">
+                                    Delete
+                                </button>
+                                <button type="button" class="btn btn-default" ng-click="cancelRecord();">
+                                    Cancel
+                                </button>
+                            </div>
+                        </footer>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>

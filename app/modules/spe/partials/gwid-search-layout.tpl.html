@@ -1,0 +1,23 @@
+<div id="content">
+    <section id="widget-grid">
+        <div class="row">
+            <div class="well">
+                <form class="form-horizontal" ng-submit="find();">
+                    <div class="input-group" id="div_id">
+                        <input class="form-control input-lg" type="text" name="identifier" placeholder="Enter the GWID to Find..." ng-model="filter.id" required autofocus>
+                        <div class="input-group-btn">
+                            <button class="btn btn-lg btn-default btn-primary" type="submit" id="submit" style="line-height: 1.40;">
+                                <i class="fa fa-fw fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row" ng-if="gwid != ''">
+            <article class="col-sm-12 col-md-12 col-lg-12 no-padding">
+                <itx-gwid-payload-editor id="{{gwid}}" function-manager="functionManager"/>
+            </article>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,22 @@
+<!--- Transaction Header --->
+<div class="alert fade in" ng-class="vmDetailAbstract.model.status.alertClass">
+    <h3 class="alert-heading no-margin">
+        <i ng-class="vmDetailAbstract.model.status.icon" class="fa"></i> <span>{{vmDetailAbstract.model.status.idCaption}}:</span>
+        <br>
+        <span><small style="color:inherit;">{{vmDetailAbstract.model.status.id}}</small></span>
+        <br>
+        <small>
+            <span ng-class="vmDetailAbstract.model.status.labelClass" class="label">{{vmDetailAbstract.model.status.desc}}</span>&nbsp;&nbsp;
+            <span class="label bg-color-darken">{{vmDetailAbstract.model.status.transTypeDesc}}</span>&nbsp;&nbsp;
+            <span class="label bg-color-darken">{{vmDetailAbstract.model.status.mqaModuleDesc}} Module</span>
+            <span class="label bg-color-darken">{{vmDetailAbstract.model.status.operationDesc}}</span>&nbsp;&nbsp;
+        </small>
+        <div ng-if="vmDetailAbstract.model.status.progress <= 100 && vmDetailAbstract.model.status.progress > 0">
+            <div class="progress margin-bottom-5 margin-top-5">
+                <div class="progress-bar" ng-class="vmDetailAbstract.model.status.progressClass"
+                     ng-style="vmDetailAbstract.model.status.progressStyle"> {{vmDetailAbstract.model.status.progress}}%
+                </div>
+            </div>
+        </div>
+    </h3>
+</div>

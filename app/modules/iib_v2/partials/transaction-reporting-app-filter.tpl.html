@@ -1,0 +1,76 @@
+<div class="content">
+    <div jarvis-widget id="iib-v2-transaction-reporting-app-filter-widget" data-widget-colorbutton="false"
+         data-widget-editbutton="false" data-widget-custombutton="false" xmlns="http://www.w3.org/1999/html">
+        <header>
+            <span class="widget-icon"> <i class="fa fa-filter"></i> </span>
+            <h2>Filter</h2>
+            <ul class="nav nav-tabs pull-right in">
+                <li class="active">
+                    <a data-toggle="tab" href="#filterTab"> <i class="fa fa-lg fa-search"></i></a>
+                </li>
+            </ul>
+        </header>
+        <div>
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+                <form name="inputForm" novalidate>
+                    <div class="custom-scroll tab-content padding-5">
+                        <div class="tab-pane fade active in no-padding-bottom" id="filterTab">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label>Return Top:</label>
+                                    <input class="form-control spinner-left" name="input_spinner" id="input-spinner" ng-model="vm.model.filter.topCount" min="0" mqa-spinner>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_daterange">Date Selection:</label>
+                                    <div class="input-group">
+                                        <input date-range-picker name="input_daterange" id="input_daterange" class="form-control date-picker" type="text" name="date" ng-model="vm.model.filter.dateRange" options="vm.model.dateOptions" required/>
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_status">Status:</label>
+                                    <ui-select id="input_status" name="input_status" multiple ng-model="vm.model.filter.statuses" mqa-list="TRANS_STATUS" mqa-list-source="0" input-Placeholder="Select Status(es)">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="input_app">Application:</label>
+                                    <ui-select id="input_app" name="input_app" ng-model="vm.model.filter.application" mqa-combo="IIB_APP" mqa-list-source="1" mqa-company-id="{{vm.model.companyId}}" input-Placeholder="Select the Application" on-select="vmFilter.functions.onChange(true);" ng-disabled="!vm.model.flags.allowAppSelect" required theme="select2"/>
+                                    </ui-select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_jobNames">Job Names:</label>
+                                    <ui-select id="input_jobNames" name="input_jobNames" tagging multiple ng-model="vm.model.filter.jobNames" mqa-tag input-Placeholder="Enter Job Names"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_transactionIds">Transaction Id(s):</label>
+                                    <ui-select id="input_transactionIds" name="input_transactionIds" tagging multiple ng-model="vm.model.filter.transactionIds" mqa-tag input-Placeholder="Enter Transactions to Find"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Departments:</label>
+                                    <mqa-dept-combo ng-model="vm.model.filter.departments"/>
+                                </div>
+                                <div class="form-group" ng-if="vm.model.inputFilter != null">
+                                    <label>{{vm.model.inputFilter.title}} Filters:</label>
+                                    <mqa-filter-entry data="vm.model.inputFilter.data"
+                                                      key-options="vm.model.inputFilter.options"
+                                                      icon="{{vm.model.inputFilter.icon}}"
+                                                      title="{{vm.model.inputFilter.title}}"/>
+                                </div>
+                                <div class="padding-top-10 padding-bottom-10">
+                                    <button class="btn btn-primary btn-default btn-lg col-md-12 col-sm-12 col-lg-12" ng-click="vm.functions.refreshData();" ng-disabled="vm.model.flags.inProgress">
+                                        <i class="fa fa-lg fa-search"></i>
+                                        Search
+                                    </button>
+                                </div>
+                            </fieldset>
+                            <div data-smart-include="app/modules/iib_v2/partials/transaction-reporting-outer-filter.tpl.html"/>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

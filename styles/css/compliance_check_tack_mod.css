@@ -1,0 +1,93 @@
+/* TAck Compliance Check - Cascading Style Sheet              */
+/*  REVISION HISTORY                                          */
+/*  09/30/2004  SAF  Initial revision                         */
+/*  User may wish to add visual aids such things as borders   */ 
+/*  and backgrounds... this file may be modified as needed    */
+
+pre
+{
+white-space:pre;
+font-size: 12px;
+width:980px; 
+/*overflow:auto;  Uncomment out to enable horizontal scrolling*/
+font-family: Arial, "Arial Unicode", monospace;
+/*Above line may be modified to use browser-friendly font if needed*/
+}
+body:before {
+  float: right;
+  content: url(../img/custom/logo.png);
+}
+
+body {  /*defaults for all body text*/
+margin-left: 8px;
+list-style-type: none; /*Supresses bullets from in front of each line*/
+color: #000000;
+}
+
+p {  /*override body settings for un-indented paragraphs within body*/
+color: #000000;
+white-space: pre;
+}
+
+B { 
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 18px;
+color: silver;
+white-space: pre;
+}
+
+a {
+  position: relative;
+  left: 0;
+  margin: .5em;
+  padding: .3em 0;
+  border-radius: 4px;
+}
+li {
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  font-weight: bold;
+  
+}
+
+a:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+ul { /*set all list starts (bullets) to disc - can be overridden*/
+/*list-style-type: disc;        disc   - circle solid*/
+list-style-type: none;        /*none   - no bullet*/
+/*list-style-type: square;      square - square solid*/
+/*list-style-type: circle;      circle - circle hollow*/
+white-space: pre;
+ border: 1px solid #A9A9A9;
+  margin: .5em;
+  border-radius: 3px;
+}
+
+ul:nth-child(2){
+  border-style: none;
+}
+
+.rejecttext {
+color: #FF0000;//this is RED by default
+font-weight: bolder;
+}
+
+.errortext {
+color: #FF8C00;//this is AMBER by default
+font-weight: bolder;
+}
+
+.accepttext {
+color: #228B57;//this is GREEN by default
+font-weight: bolder;
+}
+
+.plaintext {
+color: #000000; /*this is BLACK by default*/
+font-weight: normal;
+}
+

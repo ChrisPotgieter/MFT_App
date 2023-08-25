@@ -1,0 +1,22 @@
+<div>
+    <div class="row">
+        <b>Original File Name:&nbsp;&nbsp;</b>
+    </div>
+    <div class="row">
+        <span>{{vmDirective.data.response_data.file}}</span>
+    </div>
+    <div class="row">
+        <b>Curl Command:&nbsp;&nbsp;</b>
+    </div>
+    <div class="row">
+        <pre><span>{{vmDirective.model.curlCommand}} </span></pre>
+    </div>
+    <div id="editor" ng-if="vmDirective.model.allowedExt">
+        <mqa-code-mirror ng-if="vmDirective.model.content" data="vmDirective.model.task.data" read-only="true"/>
+    </div>
+    <div>
+        <Button type="button" class="btn btn-primary" ng-click="vmDirective.functions.mongoDownload()"><i
+                class="fa fa-download"></i> Download...
+        </Button>
+    </div>
+</div>

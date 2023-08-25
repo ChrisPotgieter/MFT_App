@@ -1,0 +1,12 @@
+<div  class="widget-body">
+    <fieldset>
+        <legend class="no-margin margin-bottom-5">{{vmDetail.model.partner.title}}</legend>
+        <spe-instamed-payment-charts data="vmDetail.model.partner.data" mode="0"></spe-instamed-payment-charts>
+    </fieldset>
+    <fieldset  ng-if="vmDetail.model.response.isAvailable">
+        <legend class="no-margin margin-bottom-5">{{vmDetail.model.response.title}}</legend>
+        <spe-instamed-payment-charts data="vmDetail.model.response.data" mode="0"></spe-instamed-payment-charts>
+    </fieldset>
+</div>
+
+

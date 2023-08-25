@@ -1,0 +1,28 @@
+<style>
+    .k-grid  .k-grid-header  .k-header  .k-link {
+        height: auto;
+    }
+
+    .k-grid  .k-grid-header  .k-header {
+        white-space: normal;
+    }
+</style>
+<div id="mft-v2-agent-reporting-gridview-widget" data-widget-colorbutton="false" data-widget-togglebutton="false"  data-widget-editbutton="false" data-widget-deletebutton="false" data-jarvis-widget>
+    <header>
+        <span class="widget-icon"> <i class="fa fa-laptop"></i> </span>
+        <h2><b>{{vm.model.reportName}}</b></h2>
+        <mqa-widget-user-save-button toggle-flag="vmgrid.flags.userSave" caption="Save Reporting Configuration" on-save="vmgrid.stateManager.persistUserState"/>
+    </header>
+    <!-- widget content -->
+    <div class="widget-body">
+        <section>
+            <mft-agent-count data="vm.model.counts" ng-if="vm.model.counts != null"/>
+        </section>
+        <section id="grid">
+            <mft-agent-grid data="vm.model.data" function-manager="vmgrid.stateManager" refresh-flag="vm.model.flags.refresh"></mft-agent-grid>
+        </section>
+    </div>
+</div>
+<!-- end widget div -->
+
+

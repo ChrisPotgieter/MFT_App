@@ -1,0 +1,34 @@
+<form name="frmDocTypeMetaItem">
+    <fieldset>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <label class="control-label">Element Name</label>
+                    <input type="text" class="form-control" name="key" ng-model="model.item.code" placeholder="Element Name" autofocus>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <label class="control-label">Caption</label>
+                    <input type="text" class="form-control" name="description" ng-model="model.item.description">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="smart-form flush-panel">
+        <footer>
+            <button type="button" id="submit" class="btn btn-primary" disabled ng-if="mode == 0"
+                    ng-click="save(model.item);">
+                Add
+            </button>
+            <button type="button" id="submit" class="btn btn-primary" ng-if="mode == 1"
+                    ng-click="save(model.item);">
+                Save
+            </button>
+            <button type="button" class="btn btn-danger" ng-show="mode == 1" ng-click="delete(model.item)">
+                Delete
+            </button>
+            <button type="button" class="btn btn-default" ng-click="cancel()">
+                Cancel
+            </button>
+        </footer>
+    </div>
+</form>

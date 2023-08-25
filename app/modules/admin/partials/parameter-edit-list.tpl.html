@@ -1,0 +1,21 @@
+<div class="widget-body">
+    <div class="widget-body-toolbar" ng-show="!vm.model.showEdit">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <button class="btn btn-primary" data-ng-click="insertRecord();">
+                    <i class="fa fa-plus"></i> <span class="hidden-mobile">{{vm.model.mainCaption}}</span>
+                </button>
+
+                <button class="btn btn-success"  ng-disabled="!vm.model.allowSave" ng-click="vm.functions.updateFunction();">
+                    <i class="fa fa-save"></i> <span class="hidden-mobile">Apply Changes...</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div ng-if="vm.model.showEdit">
+        <div ng-html-compile="vm.model.editorHTML"></div>
+    </div>
+    <div class="row padding-10">
+        <mqa-kendo-grid  id="listGrid" options="vm.model.grid.dataOptions"  data="vm.model.gridData" ondrill="editRecord"></mqa-kendo-grid>
+    </div>
+</div>

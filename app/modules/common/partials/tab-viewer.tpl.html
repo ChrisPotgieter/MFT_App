@@ -1,0 +1,23 @@
+<div class="col-sm-12">
+    <!-- tab list-->
+    <ul class="nav nav-tabs tabs-pull-right">
+        <li ng-class="{active: $state.includes(tab.activate)}" ng-repeat="tab in tabs">
+            <a ui-sref="{{tab.state}}"><i class="fa {{tab.icon}}"></i> <span class="hidden-mobile hidden-tablet">{{tab.title}}</span></a>
+        </li>
+    </ul>
+    <!-- end tab list -->
+
+    <div id="tabContent">
+        <!-- widget section div-->
+        <section id="widget-grid" data-widget-grid>
+            <div class="row">
+                <article class="col-sm-12 col-md-12 col-lg-12">
+                    <!-- widget div -->
+                    <div data-ui-view="tabContent@content"/>
+
+                </article>
+            </div>
+            <!-- end widget section div-->
+        </section>
+    </div>
+</div>

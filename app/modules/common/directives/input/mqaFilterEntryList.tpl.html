@@ -1,0 +1,15 @@
+<fieldset>
+    <legend class="no-margin widget-body-toolbar bordered">
+        <button class="btn btn-primary" data-ng-click="vmFilter.functions.insertRecord();">
+            <i class="fa fa-lg fa-plus"></i> <span class="hidden-mobile"> Add Entry</span>
+        </button>
+    </legend>
+    <div class="row">
+        <div class="col-md-12">
+            <mqa-kendo-grid id="columnGrid" options="vmFilter.model.gridOptions"
+                            data="vmFilter.model.gridData"
+                            ondrill="vmFilter.functions.editRecord"
+                            refresh-flag="vmFilter.model.flags.refresh"></mqa-kendo-grid>
+        </div>
+    </div>
+</fieldset>

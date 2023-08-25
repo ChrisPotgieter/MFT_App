@@ -1,0 +1,66 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelDialog();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i ng-class="vmDialog.model.icon"></i>&nbsp;{{vmDialog.model.title}}</h6></div>
+        <!--- STATUS PANEL -->
+        <div class="row">
+            <article class="col-sm-12 no-margin">
+                <div class="alert alert-{{vmDialog.model.status.class}}">
+                    <i class="fa-fw fa {{vmDialog.model.status.icon}}"></i>
+                    <strong>{{vmDialog.model.status.caption}}</strong><br/>
+                    <strong>{{vmDialog.model.status.processing}}</strong><br/>
+                    {{vmDialog.model.status.message}}
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="modal-body">
+        <ul id="tabs" class="nav nav-tabs tabs-left bordered">
+                <li ng-class="{active: vmDialog.model.currentTabIndex == 1}" ng-click="vmDialog.functions.setCurrentTab(1);">
+                    <a href="#summary" data-toggle="tab">Summary</a>
+                </li>
+                <li ng-class="{active: vmDialog.model.currentTabIndex == 2}" ng-click="vmDialog.functions.setCurrentTab(2);">
+                    <a href="#input" data-toggle="tab">{{vmDialog.model.input.title}}</a>
+                </li>
+            <li ng-class="{active: vmDialog.model.currentTabIndex == 3}" ng-click="vmDialog.functions.setCurrentTab(3);" ng-if="vmDialog.model.lifepro_record != null">
+                <a href="#response" data-toggle="tab">Life-Pro</a>
+            </li>
+        </ul>
+
+            <div id="tabContent" class="tab-content padding-10">
+                <!-- SUMMARY TAB -->
+                <div class="tab-pane fade in active" id="summary">
+                   <div data-smart-include="app/modules/custom/spe_cno/partials/tpci-detail-dialog-summary.tpl.html"/>
+                </div>
+                <!-- INPUT TAB -->
+                <div class="tab-pane fade" id="input">
+                    <div class="tab-content padding-10">
+                        <div class="scroll-body"
+                             slimscroll="{'height': '450', alwaysVisible: 'true', 'position': 'right', color: 'silver'}">
+                            <cno-tpci-meta-data-grid data="vmDialog.model.input.data" type="{{vmDialog.model.input.type}}" function-manager="vmDialog.functionManager"/>
+                        </div>
+                    </div>
+                </div>
+                <!-- LIFE-PRO RESPONSE TAB -->
+                <div class="tab-pane fade" id="response">
+                    <div class="tab-content padding-10">
+                        <div data-smart-include="app/modules/custom/spe_cno/partials/tpci-detail-dialog-lifepro-summary.tpl.html"/>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+    <div class="modal-footer no-border">
+        <div class="row">
+            <button type="button" id="confirmButton" class="btn btn-primary" ng-click="vmDialog.functions.cancelDialog();">
+                OK
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelDialog();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="well">
+        <div class="input-group col-md-12 col-lg-12 col-sm-12">
+            <div class="col-sm-12 col-lg-12 col-md-12">
+                <label>Select a date (range):</label>
+            </div>
+            <div class="col-md-5 col-lg-5 col-sm-5">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" id="from" data-mqa-jq-date-picker data-min-restrict="#to"
+                               data-number-of-months="3" data-changes-month="true" type="text"
+                               placeholder="From" ng-model="vmDateRange.model.fromDate.value"  options="vmDateRange.model.fromDate.options" name="dateRange_fromDate" on-select="vmDateRange.functions.onFromDate" ng-disabled="vmDateRange.model.disabled">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-5 col-lg-5 col-sm-5">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" id="to" data-mqa-jq-date-picker data-max-restrict="#from"
+                               data-number-of-months="3" data-changes-month="true" type="text"
+                               placeholder="To" ng-model="vmDateRange.model.toDate.value" options="vmDateRange.model.toDate.options" name="dateRange_toDate" on-select="vmDateRange.functions.onToDate" ng-disabled="vmDateRange.model.disabled">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-2 col-lg-2 col-sm-2">
+                <button class="btn btn-default btn-primary col-lg-12 col-sm-12 col-md-12" id="dateRange_submit" type="button"
+                        ng-click="vmDateRange.functions.execute();" ng-disabled="vmDateRange.model.inProgress">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

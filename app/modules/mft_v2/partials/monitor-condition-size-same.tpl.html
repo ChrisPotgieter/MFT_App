@@ -1,0 +1,21 @@
+<div>
+    <div data-smart-include="app/modules/mft_v2/partials/monitor-condition-common.tpl.html"/>
+    <ul class="list-inline list-unstyled">
+        <li ng-if="item.data.pattern">
+            <span class="text-muted">
+                <b>Pattern:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.data.pattern.value}}</span>
+            </span>
+        </li>
+        <li ng-if="item.data.polls">
+            <span class="text-muted">
+                <b>Interval:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.data.polls}} Interval(s)</span>
+            </span>
+        </li>
+        <li ng-if="item.data.exclude && item.data.exclude.value != ''">
+            <span class="text-muted">
+                <b>Exclusion:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.data.exclude.value}}</span>
+            </span>
+        </li>
+
+    </ul>
+</div>

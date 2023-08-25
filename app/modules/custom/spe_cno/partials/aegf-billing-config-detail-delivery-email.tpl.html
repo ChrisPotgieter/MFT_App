@@ -1,0 +1,26 @@
+<div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-12" id="div_input_email_address">
+                <label class="control-label">To:</label>
+                <ui-select id="input_email_address" name="input_email_address" tagging multiple mqa-tag  ng-model="vmDetail.dataModel.delivery.options.recipients" input-Placeholder="Please enter Delivery Email Address(es)" on-select="vmDetail.functions.onComboChange('delivery', 'input_email_address');" on-remove="vmDetail.functions.onComboChange('delivery', 'input_email_address'); " autocomplete="off"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-12" id="div_input_email_subject">
+                <label class="control-label">Subject:</label>
+                <input class="form-control" placeholder="Please Enter Email Subject"  type="text" name="input_email_subject" id="input_email_subject" ng-model="vmDetail.dataModel.delivery.options.subject" autocomplete="off">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-12" id="div_input_email_message">
+                <label class="control-label">Message:</label>
+                <textarea class="form-control" placeholder="" type="text" name="input_email_message"  id="input_email_message" ng-model="vmDetail.dataModel.delivery.options.message" autocomplete="off"/>
+            </div>
+        </div>
+    </div>
+ </div>

@@ -1,0 +1,62 @@
+<div id="content">
+    <!-- MAIN CONTENT -->
+    <section id="widget-grid" widget-grid>
+        <!-- SELECTOR -->
+        <div class="well no-padding-bottom">
+            <div class="form-group">
+                <div class="input-group col-sm-12">
+                    <select class="form-control input-lg"  name="list"
+                            ng-model="vm.selector.selected"
+                            ng-change="vm.functions.onOptionSelect();" >
+                        <option value="" disabled selected>Select the List</option>
+                        <option ng-repeat="option in vm.selector.options" value="{{option.type}}">{{option.description}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!--- MESSAGE BOX--->
+        <div class="alert alert-block alert-info" ng-if="vm.selector.record != null">
+
+            <h4 class="alert-heading"><i class="fa {{vm.selector.record.icon}}"></i> {{vm.selector.record.description}}</h4>
+            <p>
+                {{vm.selector.record.info}}
+            </p>
+        </div>
+
+        <div class="row" ng-if="vm.selector.record != null">
+            <article class="col-sm-12">
+                <div jarvis-widget id="companyListEditWidget" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-color="darken" data-widget-deletebutton="false" data-widget-togglebutton="false" data-widget-colorbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>{{vm.selector.record.description}}</h2>
+                    </header>
+                    <div>
+                        <div class="widget-body">
+                            <div class="widget-body-toolbar" ng-show="!vm.model.showEdit">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                        <button class="btn btn-primary" data-ng-click="insertRecord();">
+                                            <i class="fa fa-plus"></i> <span class="hidden-mobile">Add Entry...</span>
+                                        </button>
+
+                                        <button class="btn btn-success"  ng-disabled="!vm.model.allowSave" ng-click="vm.functions.updateFunction();">
+                                            <i class="fa fa-save"></i> <span class="hidden-mobile">Apply Changes...</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="vm.model.showEdit">
+                                <mqa-adm-company-list-edit/>
+                            </div>
+                            <div class="row">
+                                <mqa-kendo-grid  id="companyListGrid" options="vm.model.grid.dataOptions"  data="vm.model.gridData" ondrill="editRecord"></mqa-kendo-grid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- END MAIN CONTENT -->
+</div>

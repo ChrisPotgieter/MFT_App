@@ -1,0 +1,78 @@
+<form id="frmUserEdit" class="form-horizontal">
+    <fieldset>
+        <div class="col-sm-12">
+            <!--- LOGIN AND PASSWORD -->
+            <div class="row">
+                <div class="form-group">
+                    <div id="div_userId" class="col-sm-6">
+                         <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                              <input class="form-control input-lg" placeholder="Login Code" type="text" name="userId" ng-model="model.record.userId" ng-disabled="!model.flags.allowUserId" required>
+                         </div>
+                    </div>
+                    <div class="col-sm-6" id="div_userPassword">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key fa-lg fa-fw"></i></span>
+                            <input class="form-control input-lg" type="password" name="userPassword" placeholder="Password" name="userPassword" ng-model="model.record.password" ng-disabled="model.flags.adUser" required >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--- NAME -->
+            <div class="row">
+                <div class="form-group">
+                    <div id="div_name" class="col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-font fa-lg fa-fw"></i></span>
+                            <input class="form-control input-lg" placeholder="Name" type="text" name="name" ng-model="model.record.name" ng-disabled="model.flags.adUser" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--- EMAIL -->
+            <div class="row">
+                <div class="form-group">
+                    <div id="div_email" class="col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+                            <input class="form-control input-lg" type="email" name="emailAddress"  placeholder="Email Address"  ng-disabled="model.flags.adUser" ng-model="model.record.emailAddress">                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--- DEPARTMENTS AND ROLES --->
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-sitemap fa-lg fa-fw"></i></span>
+                            <ui-select id="departments" name="departments" ng-model="model.record.departments" multiple theme="select2" style="width:100%" ng-change="functions.checkDepartments();">
+                                <ui-select-match placeholder="Please select Departments">{{$item.name}}</ui-select-match>
+                                <ui-select-choices repeat="listItem.id as listItem in model.departments | filter:$select.search">
+                                    <div ng-bind-html="listItem.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <input type="hidden" name="hiddenDept"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row"  ng-show="model.flags.allowRoles">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-shield fa-lg fa-fw"></i></span>
+                            <ui-select id="roles" name="roles" ng-model="model.record.roles" multiple theme="select2" style="width:100%" ng-change="functions.checkRoles();">
+                                <ui-select-match placeholder="Please select Roles">{{$item.description}}</ui-select-match>
+                                <ui-select-choices repeat="listItem.code as listItem in model.roles | filter:$select.search">
+                                    <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <input type="hidden" name="hiddenRole"/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>

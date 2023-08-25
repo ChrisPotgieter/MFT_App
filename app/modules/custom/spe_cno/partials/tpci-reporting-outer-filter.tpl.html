@@ -1,0 +1,54 @@
+<fieldset>
+    <legend class="padding-top-10 no-margin margin-bottom-5">Additional Filtering</legend>
+    <div class="form-group" ng-repeat="option in vm.model.filterOptions">
+        <label>{{option.caption}}:</label>
+        <div ng-switch="option.type">
+            <!--- text box -->
+            <div ng-switch-when="1">
+                <input class="form-control" placeholder="Enter {{option.caption}} to Find" type="text" id="input_{{option.id}}" ng-model="vm.model.filter.meta_inputs[option.id]"/>
+            </div>
+            <!-- list selector -->
+            <div ng-switch-when="2">
+                <ui-select id="input_{{option.id}}" name="input_{{option.id}}" multiple
+                           ng-model="vm.model.filter.meta_inputs[option.id]" mqa-list="{{option.params}}"
+                           mqa-list-source="1" input-Placeholder="Select the {{option.caption}}(s)"/>
+
+            </div>
+            <!-- list selector custom array -->
+            <div ng-switch-when="3">
+                <ui-select id="input_{{option.id}}" name="input_{{option.id}}"
+                           ng-model="vm.model.filter.meta_inputs[option.id]" multiple theme="select2"
+                           style="width:100%">
+                    <ui-select-match placeholder="Please select the {{option.caption}}(s)">
+                        {{$item.description}}
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="listItem.code as listItem in option.params | filter:$select.search">
+                        <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <!-- multiple entry text box -->
+            <div ng-switch-when="4">
+                <ui-select name="input_{{option.id}}" tagging multiple
+                           ng-model="vm.model.filter.meta_inputs[option.id]" mqa-tag
+                           input-Placeholder="Enter {{option.caption}} to Find"/>
+            </div>
+            <!-- date entry -->
+            <div ng-switch-when="5">
+                <div class="input-group">
+                    <input date-range-picker name="input_{{option.id}}" id="input_{{option.id}}"
+                           class="form-control date-picker" type="text" name="input_{{option.id}}"
+                           ng-model="vm.model.filter.meta_inputs[option.id]" options="vm.model.otherDateOptions" clearable="true">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="input_transactionIds">Transaction Id(s):</label>
+        <ui-select id="input_transactionIds" name="input_transactionIds" tagging multiple
+                   ng-model="vm.model.filter.transactionIds" mqa-tag
+                   input-Placeholder="Enter Transactions to Find"/>
+    </div>
+</fieldset>

@@ -1,0 +1,78 @@
+<div>
+    <fieldset>
+        <legend class="no-margin padding-bottom-5 padding-top-0">ITX Information
+            <small><span class="label truncate" ng-class="data.transaction.status >= 90 ? 'bg-color-red': 'bg-color-darken'">{{data.info.status}}</span></small>
+        </legend>
+        <ul class="list-unstyled">
+            <li class="padding-top-10 padding-bottom-5">
+                <span class="text-muted">
+                    Sender:&nbsp;<span class="txt-color-darken truncate">&nbsp;&nbsp;{{data.info.senderId}}</span></span>
+            </li>
+            <li class="padding-bottom-5">
+                <span class="text-muted padding-bottom-5">Receiver:&nbsp;<span class="txt-color-darken truncate">&nbsp;&nbsp;{{data.info.receiverId}}</span></span>
+            </li>
+            <li class="padding-bottom-5">
+                <span class="text-muted">
+                    <i class="fa fa-th-large"></i>&nbsp;Document Type:&nbsp;&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.info.docType}}</span>
+                </span>
+            </li>
+            <li class="padding-bottom-5">
+                <span class="text-muted">
+                    <i class="fa fa-envelope"></i>&nbsp;Event Type:&nbsp;&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.info.eventType}}</span>
+                </span>
+            </li>
+            <li class="padding-bottom-5">
+                <p class="text-muted">
+                    <i class="fa fa-file-o"></i>&nbsp;&nbsp;<span class="txt-color-darken">Transaction Count:&nbsp;&nbsp;{{data.info.transactionCount | number}}</span>
+                </p>
+            </li>
+            <li class="padding-bottom-5">
+                <span class="text-muted">Map:&nbsp;<span class="txt-color-darken truncate">&nbsp;&nbsp;{{data.info.mapName}}</span></span>
+            </li>
+
+            <li class="padding-bottom-5">
+                <span class="text-muted">
+                   System:&nbsp;<span class="txt-color-darken truncate">&nbsp;&nbsp;{{data.info.systemName}}</span>
+                </span>
+            </li>
+
+        </ul>
+    </fieldset>
+    <!-- Balancing -->
+    <fieldset ng-if="data.balancing">
+        <legend class="no-padding no-margin margin-bottom-5">Balancing</legend>
+        <section>
+            <div>
+                <div ng-class="data.balancing.alertClass" class="alert alert-block">
+                    <p>
+                        {{data.balancing.status}}
+                    </p>
+                    <a ng-click="viewSPEBalancing();">View Details</a>
+                </div>
+            </div>
+        </section>
+    </fieldset>
+
+    <!-- GWID -->
+    <fieldset ng-if="data.gwidInfo">
+        <legend class="no-padding no-margin margin-bottom-5">GWID Payloads</legend>
+        <div class="scroll-body" slimscroll="{'height':'100'}"  ng-if="data.gwidInfo.ids != null && data.gwidInfo.ids.length > 0">
+            <div ng-class="data.gwidInfo.alertClass" class="alert alert-block">
+                <p data-ng-bind-html="data.gwidInfo.status"/>
+            </div>
+            <ul class="list-inline">
+                <li ng-repeat="gwid in data.gwidInfo.ids | limitTo: 4">
+                    <a ng-click="viewGwid(gwid.id);" class="{{gwid.style}}" >{{gwid.caption}}</a>
+                </li>
+                <!---
+                <li ng-if="data.baseTransaction.addInfo.gwidInfo.total > 4">
+                    <a href="javascript:void(0)" ng-click="viewAllGwid();">View All</a>
+                </li>-->
+                <li>
+                    <a href="javascript:void(0)" ng-click="viewAllGwid('MFT');">View All</a>
+                </li>
+
+            </ul>
+        </div>
+    </fieldset>
+</div>

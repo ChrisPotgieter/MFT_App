@@ -1,0 +1,142 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <div class="modal-header">
+        <div class='widget-header'><h6><i class='fa fa-medkit'></i> Eligibility Verification</h6></div>
+    </div>
+    <div class="modal-body">
+        <!-- SELECTOR -->
+        <div class="well no-padding-bottom">
+            <div class="form-group">
+                <div class="row">
+                    <div class="input-group col-sm-12">
+                        <select class="form-control input-lg" name="parameter"
+                                ng-model="vm.selector.selected"
+                                ng-change="vm.functions.onOptionSelect();" ng-disabled="vm.progressInfo.inProgress">
+                            <option value="" disabled selected>Select the Profile</option>
+                            <option ng-repeat="option in vm.selector.options" value="{{option.code}}">
+                                {{option.description}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CAPTURE AND RESULTS -->
+        <div ng-if="vm.model.postModel != null">
+            <!-- ALERTS -->
+            <div class="alert alert-block alert-success fade-in" ng-if="vm.model.responseModel.data.success">
+                <i class="fa-fw fa fa-check"></i>
+                <strong>Coverage Check has Passed!</strong> - {{vm.model.responseModel.data.success}}
+            </div>
+            <div class="alert alert-block alert-danger fade-in" ng-if="vm.model.responseModel.data.failed">
+                <i class="fa-fw fa fa-times"></i>
+                <strong>Coverage Check has Failed</strong> - {{vm.model.responseModel.data.failed}}
+            </div>
+            <!--- TAB FORM--->
+
+            <form name="frmEligibilityCheck" id="frmEligibilityCheck" novalidate>
+                <ul id="tabs" class="nav nav-tabs tabs-left bordered">
+                    <li class="active">
+                        <a href="#general" data-toggle="tab"  ng-click="vm.functions.switchTab('submission');">Submission</a>
+                    </li>
+                    <li>
+                        <a href="#request" data-toggle="tab"  ng-click="vm.functions.switchTab('request');">Request</a>
+                    </li>
+                    <li>
+                        <a href="#response" data-toggle="tab"  ng-click="vm.functions.switchTab('response');">Response</a>
+                    </li>
+                </ul>
+                <div id="tabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="general">
+                        <!-- CAPTURE FORM -->
+                        <form id="frmEligibilityCapture">
+                            <fieldset ng-disabled="vm.model.flags.submitted">
+                                <div class="form-group">
+                                    <div class="col-lg-6 col-md-6 col-sm-6" id="div_firstName">
+                                        <label class="control-label">First Name:</label>
+                                        <input type="text" class="form-control" name="firstName" ng-model="vm.model.postModel.subscriberInfo.firstName"/>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6" id="div_lastName">
+                                        <label class="control-label">Last Name:</label>
+                                        <input type="text" class="form-control" name="lastName" ng-model="vm.model.postModel.subscriberInfo.lastName"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label>Gender</label>
+                                        <div class="input-group">
+                                            <label class="radio radio-inline no-margin">
+                                                <input type="radio" class="radiobox" name="radio-inline" ng-model="vm.model.postModel.subscriberInfo.gender" value="M">
+                                                <span>Male</span>
+                                            </label>
+                                            <label class="radio radio-inline no-margin">
+                                                <input type="radio" class="radiobox" name="radio-inline" ng-model="vm.model.postModel.subscriberInfo.gender" value="F">
+                                                <span>Female</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-6 col-lg-6 col-md-6" id="div_identifier">
+                                        <label>ID:</label>
+                                        <input type="text" class="form-control" name="identifier" ng-model="vm.model.postModel.subscriberInfo.id"/>
+                                    </div>
+
+                                    <div class="col-sm-6 col-lg-6 col-md-6" id="div_dob">
+                                        <label>Date of Birth:</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="dob" uib-datepicker-popup is-open="vm.model.dob.opened"
+                                                   datepicker-options="vm.model.dob.options" placeholder="DOB" ng-model="vm.model.dob.value" name="dob">
+                                            <span class="input-group-addon" ng-click="vm.functions.openCalendar();"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                            <div class="smart-form margin-top-10" ng-if="!vm.model.flags.submitted">
+                                <footer>
+                                    <button type="button" class="btn btn-primary"
+                                            ng-click="vm.functions.submit();">
+                                        Submit
+                                    </button>
+                                    <button type="button" class="btn btn-default" ng-click="vm.functions.cancel();">
+                                        Cancel
+                                    </button>
+                                </footer>
+                            </div>
+                        </form>
+                        <fieldset>
+                            <!--- PROGRESS DISPLAY -->
+                            <div ng-if="vm.progressInfo.inProgress">
+                                <mqa-progress-dialog title-data="vm.model.titleData" data="vm.progressInfo"
+                                                     on-cancel="vm.functions.cancel" on-ok="vm.functions.ok"
+                                                     buttons="vm.model.buttons"></mqa-progress-dialog>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="tab-pane fade" id="request">
+                        <div class="row" ng-if="vm.model.requestModel.data.content">
+                            <div class="col-md-12">
+                                <mqa-code-mirror data="vm.model.requestModel.data"
+                                                 ui-object="vm.model.requestModel.cm" read-only="true"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="response">
+                        <div class="row" ng-if="vm.model.responseModel.data.content">
+                            <div class="col-md-12">
+                                <mqa-code-mirror data="vm.model.responseModel.data"
+                                                 ui-object="vm.model.responseModel.cm" read-only="true"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

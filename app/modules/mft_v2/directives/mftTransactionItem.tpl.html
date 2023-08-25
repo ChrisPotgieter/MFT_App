@@ -1,0 +1,26 @@
+<div class="col-lg-12 col-md-12">
+    <div class="row well padding-5">
+        <div class="col-lg-5 pull-left">
+            <mft-transaction-item-resource item="vmItem.model.source"/>
+        </div>
+        <div class="col-lg-2" style="text-align: center; vertical-align: middle"  ng-class="vmItem.model.result == 1? 'text-danger' : 'text-success'">
+            <span><i class="fa fa-arrow-right" style="font-size: 100px;"/></span>
+            <span>
+                <h2>
+                    <small><b>{{vmItem.mode | titleCaseFilter}}</b></small>
+                </h2>
+            </span>
+        </div>
+        <div class="col-lg-5 pull-right">
+            <mft-transaction-item-resource item="vmItem.model.destination"/>
+        </div>
+    </div>
+    <div class="row" ng-if="vmItem.model.supplemental">
+        <section class="col-lg-12 col-md-12 col-sm-12">
+            <label class="label">Supplemental</label>
+            <div ng-class="vmItem.model.result == 1 ? 'alert-danger': 'alert-success'" class="alert alert-block">
+                <p class="custom-scroll" style="overflow: auto">{{vmItem.model.supplemental}}</p>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<li data-menu-collapse>
+    <a data-ui-state="vm.data.baseOption.url" data-ui-state-params="vm.data.baseOption.args" data-ui-state-opts="vm.data.baseOption.opts" title="{{vm.data.baseOption.notes}}"><i class="fa fa-lg fa-fw {{vm.data.baseOption.icon}}"></i><span class="menu-item-parent">{{vm.data.baseOption.caption}}</span></a>
+    <ul ng-if="vm.data.menus && vm.data.menus.length > 0">
+        <li data-menu-collapse ng-repeat="menu in vm.data.menus">
+            <a href="javascript:void(0);"><i class="fa fa-fw {{menu.icon}}"></i>{{menu.caption}}</a>
+            <ul style="width: 300px;">
+                <li ng-repeat="item in menu.items">
+                    <a data-ui-state="item.url" data-ui-state-params="item.args" ui-state-opts="item.opts" title="{{item.notes}}"><i class="fa fa-fw {{item.icon}}"></i>
+                        {{item.caption}}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</li>
+

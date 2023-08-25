@@ -1,0 +1,31 @@
+<div class="widget-body">
+    <div class="row widget-body-toolbar" style="min-height: 0px !important;border: 1px solid #ccc;">
+        <div data-smart-include="app/modules/common/partials/search-input.tpl.html"></div>
+    </div>
+    <div class="row">
+            <div class="custom-scroll table-responsive padding-5" style="overflow-y: scroll;">
+            <div class="col-sm-12 col-lg-12 col-md-12 no-margin" style="overflow: auto">
+                <table class="table table-striped table-bordered table-hover table-condensed table-boxed" width="100%">
+                    <thead>
+                    <tr>
+                        <th ng-repeat="header in headers">
+                            {{header}}
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="row in data |  filter: searchIndex" ng-include src="itemTemplateName" ng-click="drillRecord(row)"></tr>
+                    </tbody>
+                    <tfoot ng-if="footers">
+                    <tr>
+                        <td ng-repeat="footer in footers">
+                            {{footer}}
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div>
+    <ul id="sparks" class="">
+        <li class="sparks-info">
+            <h5>Successful <span ng-style="{'color': realtime.palette.colorNames.success}">{{realtime.metrics.success.value}}</span></h5>
+            <div class="sparkline hidden-mobile hidden-md hidden-sm" ng-style="{'color': realtime.palette.colorNames.success}" mqa-sparkline data="realtime.metrics.success.chartData" config="realtime.chartConfig.success"/>
+        </li>
+        <li class="sparks-info">
+            <h5> Failures <span class="txt-color-red">{{realtime.metrics.failures.value}}</span></h5>
+            <div class="sparkline txt-color-red hidden-mobile hidden-md hidden-sm" mqa-sparkline data="realtime.metrics.failures.chartData" config="realtime.chartConfig.failures"/>
+        </li>
+        <li class="sparks-info">
+            <h5>Requests <span ng-style="{'color': realtime.palette.colorNames.requests}">{{realtime.metrics.total.value}}</span></h5>
+        </li>
+        <li class="sparks-info">
+            <h5> Bytes <span ng-style="{'color': realtime.palette.colorNames.send_bytes}"><i class="fa fa-floppy-o"></i>&nbsp;{{realtime.metrics.bytes.value}}</span></h5>
+        </li>
+    </ul>
+</div>

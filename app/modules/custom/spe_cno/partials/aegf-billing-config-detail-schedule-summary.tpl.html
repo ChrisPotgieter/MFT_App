@@ -1,0 +1,46 @@
+<fieldset class="margin-top-10">
+    <legend>Schedule <a href="#schedule" data-toggle="tab"
+            ng-click="vmDetail.functions.setActiveTab('schedule');"><i class='fa fa-pencil'></i></a></legend>
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
+                    <b>Batch Type:</b><br>
+                    <label 
+                      >{{vmDetail.model.summary.batchType.name}}</label>
+                </div>
+
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
+                    <b>Time:</b><br>
+                    <label >{{vmDetail.model.schedule.time}}</label>
+                </div>
+               
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                    <b>Skip Saturday, Sunday or CNO Holiday</b><br>
+                    <label>{{vmDetail.model.summary.scheduledHolidays}}</label>
+                  
+                </div>
+            </div>
+           
+<div ng-if="vmDetail.model.schedule.type == 0">
+    <b> Month-End Minus:</b><br>
+    <label >{{vmDetail.dataModel.schedule.parameters.month}}</label>
+</div>
+
+<div ng-if="vmDetail.model.schedule.type == 1 || vmDetail.model.schedule.type == 2">
+    <b> Day of Week:</b><br>
+    <label 
+   ><label>{{vmDetail.model.summary.daysOfWeek.toString()}} 
+</label>
+</label>
+</div>
+
+<div ng-if="vmDetail.model.schedule.type == 3 ">
+    <b> Days of Month:</b><br>
+    <label>
+        {{vmDetail.model.summary.daysOfMonth.toString()}}
+    </label>
+
+</div>
+
+
+
+</fieldset>

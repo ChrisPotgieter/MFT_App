@@ -1,0 +1,16 @@
+<style>
+    #configGrid .k-grid table tr:hover
+    {
+        /* hover styling */
+        background-color: #006494;
+        color: white;
+    }
+</style>
+<script id="templateAdd" type="text/x-kendo-template">
+    <button class="k-button k-button-icontext" ng-click="functionManager.insertRecord(null);">
+        <span class="k-icon k-i-add"></span>Add Definition...
+    </button>
+</script>
+<div id="configGrid">
+    <mqa-kendo-grid data="vmGridConfig.data" options="vmGridConfig.model.options" refreshFlag="vmGridConfig.refreshFlag" height="{{vmGridConfig.model.height}}" function-manager="vmGridConfig.functionManager" rebuild="vmGridConfig.model.rebuild"/>
+</div>

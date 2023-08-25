@@ -1,0 +1,24 @@
+<div class="row">
+	<article class="col-md-12">
+		<!-- counts -->
+		<div class="col-md-12">
+			<div class="row">
+				<boomi-dashboard-count data="vm.model.currentData.counts" id="counts" view-type="0"/>
+			</div>
+		</div>
+
+		<!-- TRANSACTION GRID -->
+		<div class="row">
+			<div data-smart-include="app/modules/boomi/partials/dashboard-recent.tpl.html"/>
+		</div>
+
+		<!-- BAR STATISTICS -->
+		<div class="row">
+			<div data-smart-include="app/modules/boomi/partials/dashboard-current-bars.tpl.html"/>
+		</div>
+
+
+		<!-- ATOM STATISTICS -->
+		<div data-smart-include="app/modules/boomi/partials/dashboard-atom-detail.tpl.html"/>
+	</article>
+</div>

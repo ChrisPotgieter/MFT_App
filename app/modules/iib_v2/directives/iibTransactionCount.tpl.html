@@ -1,0 +1,27 @@
+<div>
+    <div class="row" id="badges_main">
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.request}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-info" caption="Total Transactions" value="vmCount.data.transaction_count" tooltip="Total No. of Requests with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white" icon="fa-exclamation" caption="Total Failures" value="vmCount.data.failure_count" tooltip="Total No. of Failures <br/>Click to Drill" on-click="vmCount.functions.onDrill"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.time}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-history" caption="Total Runtime" value="vmCount.data.time_count" tooltip="Total Running Time with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.time}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-history" caption="Avg Runtime" value="vmCount.data.avg_time" tooltip="Average Running Time with this Criteria"/>
+        </div>
+    </div>
+    <div class="row" id="badges_types">
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.repair}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-wrench" caption="Repairs" value="vmCount.data.repair_count" id="badge_repairs" tooltip="Total No. of Repairs with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.resubmit}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-recycle" caption="Resubmits" value="vmCount.data.resubmit_count" id="badge_resubmits"  tooltip="Total No. of Resubmits with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-6">
+            <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white" icon="fa-times" caption="Cancellations" value="vmCount.data.cancel_count" tooltip="Total No. of Cancellations with this Criteria"/>
+        </div>
+    </div>
+</div>

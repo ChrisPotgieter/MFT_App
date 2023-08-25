@@ -1,0 +1,52 @@
+<div class="row">
+    <article class="col-md-6">
+        <!-- header -->
+        <div class="col-md-12">
+            <div>
+                <h6 class="no-margin-bottom"> {{vm.model.currentData.title}}</h6>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <hr class="bordered"/>
+        </div>
+        <div class="col-md-12">
+            <iib-transaction-dashboard-count data="vm.model.currentData.total"  on-drill="vm.functions.onCountDrill"/>
+        </div>
+        <div class="col-md-12">
+            <div jarvis-widget id="application-chart-current-widget"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-dashboard"></i> </span>
+                    <h2>Statistics Per Top {{vm.model.dialogData.filter.applicationLimit}} Applications</h2>
+                </header>
+                <div class="widget-body">
+                    <iib-transaction-dashboard-application-chart data="vm.model.currentData.history" height="0"/>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article class="col-md-6">
+        <!-- header -->
+        <div class="col-md-12">
+            <div>
+                <h6 class="no-margin-bottom"> {{vm.model.compareData.title}}</h6>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <hr class="bordered"/>
+        </div>
+        <div class="col-md-12">
+            <iib-transaction-dashboard-count data="vm.model.compareData.total" on-drill="vm.functions.onCompareCountDrill"/>
+        </div>
+        <div class="col-md-12">
+            <div jarvis-widget id="application-chart-compare-widget"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-dashboard"></i> </span>
+                    <h2>Statistics Per Top {{vm.model.settings.appChart.limit}} Applications</h2>
+                </header>
+                <div class="widget-body">
+                    <iib-transaction-dashboard-application-chart data="vm.model.compareData.history"/>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>

@@ -1,0 +1,73 @@
+<form name="frmDocTypeEdit">
+    <div class="padding-gutter">
+        <fieldset>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="control-label">Document Identifier</label>
+                        <input type="text" class="form-control" name="id" ng-model="record.code" disabled>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="control-label">Description:</label>
+                        <input type="text" class="form-control" name="description" ng-model="record.description">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="control-label">Identifier Caption:</label>
+                        <input type="text" class="form-control" name="docIdTitle" ng-model="record.jsonData.docIdTitle">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="smart-form padding-top-10">
+            <legend>
+            Additional Settings
+            </legend>
+            <section>
+                <div class="row">
+
+                    <div class="col col-2">
+                        <label class="toggle">
+                            <input type="checkbox" id="checkbox-resubmit" ng-model="record.jsonData.resubmit">
+                            <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Allow Resubmission</label>
+                    </div>
+                    <div class="col col-2">
+                        <label class="toggle">
+                            <input type="checkbox" id="checkbox-repair" ng-model="record.jsonData.repair">
+                            <i data-swchon-text="ON" data-swchoff-text="OFF"></i>Allow Repair
+                        </label>
+                    </div>
+                </div>
+
+            </section>
+        </fieldset>
+        <fieldset>
+            <legend>
+                Meta-Data Indexes
+                <button type="button" class="btn btn-primary" ng-click="metaIndexAdd();"><i class="fa fa-lg fa-plus"/>Add...</button>
+            </legend>
+            <div>
+                <mqa-table-view rows="record.jsonData.metaIndexes" headers="['Key', 'Value']" data-item-template-name="app/modules/common/partials/list-item.tpl.html" ondrill="metaIndexDrill"/>
+            </div>
+        </fieldset>
+    </div>
+    <div class="smart-form">
+        <footer>
+            <button type="button" id="submit-main" class="btn btn-default btn-primary" ng-click="saveRecord();" ng-disabled="!allowSave">
+                <i class="fa fa-save"/>
+                Save Changes
+            </button>
+        </footer>
+    </div>
+</form>

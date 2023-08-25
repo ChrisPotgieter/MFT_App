@@ -1,0 +1,53 @@
+<div id="content">
+    <div class="row">
+        <mqa-big-breadcrumbs></mqa-big-breadcrumbs>
+    </div>
+    <!-- MAIN CONTENT -->
+    <section id="widget-grid" widget-grid>
+        <div class="row">
+            <article class="col-sm-12">
+                <div jarvis-widget id="cnoSpeSRProfileListWidget" data-widget-color="darken" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-paper-plane"></i> </span>
+                        <h2>Sender Profile List </h2>
+                    </header>
+                    <div>
+                        <div class="widget-body">
+                            <div class="widget-body-toolbar">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                        <button class="btn btn-primary" data-ng-click="insertRecord();">
+                                            <i class="fa fa-plus"></i> <span class="hidden-mobile">Add Profile...</span>
+                                        </button>
+
+                                        <button class="btn btn-success"  ng-disabled="!allowSave" ng-click="updateFunction();">
+                                            <i class="fa fa-save"></i> <span class="hidden-mobile">Apply Changes...</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">
+                                        <button type="file" class="btn bg-color-blue txt-color-white" ngf-select ng-model="uploadImportFile" ngf-multiple="false">
+                                            <i class="fa fa-upload"></i> <span class="hidden-mobile hidden-sm">Import from Excel...</span>
+                                        </button>
+
+
+                                        <button class="btn bg-color-blueDark txt-color-white"  ng-click="requestExport();">
+                                            <i class="fa fa-download"></i> <span class="hidden-mobile hidden-sm">Export to Excel...</span>
+                                        </button>
+                                        <button class="btn bg-color-blueDark txt-color-white"  ng-click="requestSync();">
+                                            <i class="fa fa-exchange"></i> <span class="hidden-mobile hidden-sm">Sync...</span>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <mqa-kendo-grid  id="senderListGrid" options="grid.dataOptions"  data="gridList" ondrill="editRecord"></mqa-kendo-grid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- END MAIN CONTENT -->
+</div>

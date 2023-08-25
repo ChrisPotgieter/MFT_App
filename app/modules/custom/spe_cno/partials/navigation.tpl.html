@@ -1,0 +1,34 @@
+<aside id="left-panel">
+    <div login-info></div>
+    <nav>
+
+        <ul data-smart-menu>
+            <li data-ui-sref-active="active">
+                <a data-ui-sref="app.custom.spe_cno.dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span
+                        class="menu-item-parent">{{getWord('Dashboard')}}</span></a>
+            </li>
+
+            <li mqa-user-menu-option caption="Reporting" icon="fa-file-text-o" base-state="app.custom.spe_cno.reporting.transaction.gridview"/>
+            <li mqa-user-menu-option caption="GWID Reporting" icon="fa-file-text-o" base-state="app.custom.spe_cno.reporting.gwid.gridview"/>
+            <li mqa-user-menu-option caption="Document Summary" icon="fa-calendar" base-state="app.custom.spe_cno.reporting.REP001.gridview"/>
+            <li data-ui-sref-active="active">
+                <a data-ui-sref="app.custom.spe_cno.reporting.gwidsearch" title="{{getWord('GWID Detail')}}"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span
+                        class="menu-item-parent">{{getWord('GWID Detail')}}</span></a>
+            </li>
+            <li data-ui-sref-active="active" mqa-role-security="['ADMIN_ITX_PARTNER']">
+                <a data-ui-sref="app.custom.spe_cno.senderprofile" title="{{getWord('Sender Profiles')}}"><i class="fa fa-lg fa-fw fa-send"></i> <span
+                        class="menu-item-parent">{{getWord('Sender Profiles')}}</span></a>
+            </li>
+            <li data-ui-sref-active="active" mqa-role-security="['ADMIN_ITX_PARTNER']">
+                <a data-ui-sref="app.custom.spe_cno.submitterprofile" title="{{getWord('Submitter Profiles')}}"><i class="fa fa-lg fa-fw fa-sign-in"></i> <span
+                        class="menu-item-parent">{{getWord('Submitter Profiles')}}</span></a>
+            </li>
+
+        </ul>
+    </nav>
+
+  <span class="minifyme" data-action="minifyMenu" minify-menu>
+    <i class="fa fa-arrow-circle-left hit"></i>
+  </span>
+
+</aside>

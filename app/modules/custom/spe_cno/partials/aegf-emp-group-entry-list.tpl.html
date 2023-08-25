@@ -1,0 +1,18 @@
+<div>
+  <div class="modal-header  padding-bottom-5">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelDialog();"> × </button>
+    <div class='widget-header'>
+      <h6>
+        Configured Employer Group(s)
+      </h6>
+      <label>Enter the LHO or CRS Numeric Identifier for the Employer Group</label>
+
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <mqa-kendo-grid id="grid" options="vmDialog.model.grid.options" data="vmDialog.model.grid.data"  function-manager="vmDialog.model.grid.functionManager" refresh-flag="vmDialog.model.grid.refresh"></mqa-kendo-grid>
+    </div>
+  </div>
+  <div data-smart-include="app/modules/common/partials/common-dialog-modal-footer.tpl.html"/>
+</div>

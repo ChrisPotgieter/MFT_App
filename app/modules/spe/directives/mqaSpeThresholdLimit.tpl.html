@@ -1,0 +1,15 @@
+<fieldset>
+    <legend class="no-margin widget-body-toolbar bordered">
+        <button class="btn btn-primary" data-ng-click="vmLimit.functions.insertRecord();">
+            <i class="fa fa-lg fa-plus"></i> <span class="hidden-mobile"> Add Threshold</span>
+        </button>
+    </legend>
+    <div class="row">
+        <div class="col-md-12">
+            <mqa-kendo-grid id="columnGrid" options="vmLimit.model.gridOptions"
+                            data="vmLimit.model.gridData"
+                            ondrill="vmLimit.functions.editRecord"
+                            refresh-flag="vmLimit.model.flags.gridRefresh"></mqa-kendo-grid>
+        </div>
+    </div>
+</fieldset>

@@ -1,0 +1,47 @@
+<div>
+    <fieldset>
+        <legend class="margin-bottom-5 margin-top-5">ITX Filtering</legend>
+        <div class="form-group">
+            <label for="input_system">System:</label>
+            <ui-select id="input_system" name="input_system" ng-model="vm.model.filter.systems" mqa-list="ITX_SYSTEM" multiple mqa-list-source="1" mqa-company-id="{{vm.model.companyId}}" input-Placeholder="Select the System"/>
+        </div>
+        <div class="form-group">
+            <label for="input_container">Container:</label>
+            <ui-select id="input_container" name="input_container" ng-model="vm.model.filter.containers" mqa-list="ITX_CONTAINER" multiple mqa-list-source="1" mqa-company-id="{{vm.model.companyId}}" input-Placeholder="Select the Container"/>
+        </div>
+        <div class="form-group">
+            <label for="input_map">Map:</label>
+            <ui-select id="input_map" name="input_map" ng-model="vm.model.filter.maps" mqa-list="ITX_MAP" multiple mqa-list-source="1" mqa-company-id="{{vm.model.companyId}}" input-Placeholder="Select the Map"/>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="padding-top-10 no-margin margin-bottom-5">Additional Filtering</legend>
+        <div class="form-group">
+            <label for="input_senders">Senders:</label>
+            <ui-select id="input_senders" ng-model="vm.model.filter.senders" multiple theme="select2" style="width:100%">
+                <ui-select-match placeholder="Select the Senders">{{$item.name}}</ui-select-match>
+                <ui-select-choices repeat="listItem.id as listItem in vm.model.lists.senders | filter:$select.search">
+                    <div ng-bind-html="listItem.name | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="form-group">
+            <label for="input_receivers">Receivers:</label>
+            <ui-select id="input_receivers" ng-model="vm.model.filter.receivers" multiple theme="select2" style="width:100%">
+                <ui-select-match placeholder="Select the Receivers">{{$item.name}}</ui-select-match>
+                <ui-select-choices repeat="listItem.id as listItem in vm.model.lists.receivers | filter:$select.search">
+                    <div ng-bind-html="listItem.name | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="form-group">
+            <label for="input_docTypes">EDI Document Types:</label>
+            <ui-select id="input_docTypes" name="input_docType" ng-model="vm.model.filter.docTypes" mqa-list="EDI_DOCUMENT" multiple mqa-list-source="1" input-Placeholder="Select EDI Document Type"/>
+        </div>
+        <div class="form-group">
+            <label for="input_gwidIds">GWID Id(s):</label>
+            <ui-select id="input_gwidIds" name="input_gwidIds" tagging multiple ng-model="vm.model.filter.gwidIds" mqa-tag input-Placeholder="Enter GWID Ids to Find"/>
+        </div>
+    </fieldset>
+
+</div>

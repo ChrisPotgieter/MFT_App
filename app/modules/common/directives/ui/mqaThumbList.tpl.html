@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+    <div class="panel-body status">
+        <div class="who clearfix">
+            <h4>{{header}}</h4>
+        </div>
+        <div class="row padding-5" ng-repeat="row in rows">
+            <div class="text">
+                <div ng-repeat="dataItem in data.slice(6*$index, 6*$index + 6)" class="col-sm-2 col-md-2 col-lg-2">
+                    <div class="well text-center connect" wi>
+                        <img ng-src="{{dataItem.image ? dataItem.image : defaultImage }} " alt="{{altImage}}" class="margin-bottom-5 margin-top-5" width="{{imgSize}}" height="{{imgSize}}">
+                        <br>
+                        <span class="font-xs"><b>{{dataItem.caption}}</b></span>
+                        <div>
+                            <a href="javascript:void(0);" class="btn btn-xs btn-success margin-top-5 margin-bottom-5"  ng-class="btnClass" ng-click="onClick(dataItem);"> <span>{{eventText}}</span> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

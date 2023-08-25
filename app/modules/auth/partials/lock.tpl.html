@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="styles/css/lockscreen.min.css"/>
+<style>
+    .full-screen-background-image {
+        z-index: -999;
+        min-height: 100%;
+        min-width: 1024px;
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+</style>
+<div id="main" role="main">
+
+    <img src="styles/img/custom/{{vm.model.splash.image}}" class="full-screen-background-image" alt="Responsive image">
+
+    <!-- MAIN CONTENT -->
+    <form id="frmLock" class="lockscreen animated flipInY" ng-submit="vm.functions.login();" novalidate>
+        <div class="logo col-sm-12">
+            <h1 class="semi-bold col-sm-4 text-left"><img src="styles/img/custom/{{vm.model.splash.logo}}" alt="{vm.model.product.name}" /></h1>
+            <span class="font-xs text-right col-sm-8 bold" style="margin-top: 25px;">
+                 {{vm.model.product.name}} - {{vm.model.product.environment}} Environment
+            </span>
+        </div>
+        <div>
+            <img src="{{vm.model.user.picture}}" alt="{{vm.model.user.name}}"  width="160" height="160"/>
+            <div>
+                <h1>
+                    <i class="fa fa-user fa-3x text-muted air air-top-right hidden-mobile"/>
+                    {{vm.model.user.name}}
+                    <small><b>{{vm.model.companyName}}</b></small>
+                    <small><i class="fa fa-lock text-muted"/>&nbsp;Locked</small>
+                </h1>
+
+                <p class="text-muted">
+                    <a href="mailto:{{vm.model.user.email}}">{{vm.model.user.email}}</a>
+                </p>
+                <div class="input-group col-sm-12">
+                    <input class="form-control" ng-model="vm.model.password" autofocus type="password" placeholder="Password" name="password">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" ng-class="vm.model.buttonClass" type="submit" id="submit" ng-disabled="vm.model.flags.inProgress">
+                            <i class="fa fa-key"></i>
+                        </button>
+                    </div>
+                </div>
+                <p class="no-margin margin-top-5">
+                    Logged as someone else? <a ng-click="vm.functions.logout();"> Click here</a>
+                </p>
+            </div>
+
+        </div>
+        <div class="font-xs margin-top-5 text-left col-sm-6">
+            {{vm.model.product.copyright}}
+        </div>
+        <div class="font-xs margin-top-5 text-right col-sm-6">
+            v.{{vm.model.product.version}}
+        </div>
+    </form>
+</div>

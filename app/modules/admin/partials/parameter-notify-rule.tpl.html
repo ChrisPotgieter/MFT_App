@@ -1,0 +1,55 @@
+<div class="widget-body">
+    <!--- Initial UI Form -->
+    <div class="row padding-5 padding-bottom-0" ng-if="!vm.model.flags.eventEdit">
+        <form id="frmEditEvent" class="form-horizontal" novalidate>
+            <fieldset>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-12" id="div_groupType">
+                                <label for="groupType_select">Group:</label>
+                                <select class="form-control"  name="groupType_select"
+                                        ng-model="vm.model.data.groupType"
+                                        ng-options="d.code as d.description for d in vm.model.lists.groupType" ng-change="vm.functions.onGroupTypeChange();">
+                                    <option ng-selected="true" value="">Please select Group</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12" ng-if="vm.model.flags.showGroupCodeSelect">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-12" id="div_groupCode">
+                            <label for="notify_select">Sub Code:</label>
+                            <ui-select id="group_select" name="group_select" ng-model="vm.model.data.groupCode" uis-open-close="vm.functions.onOpenClose($select)" on-select="vm.functions.onGroupCodeChange($select);"  theme="select2" tagging style="width:100%">
+                                <ui-select-match placeholder="Please enter the Sub Code...">{{$select.selected.description}}</ui-select-match>
+                                <ui-select-choices repeat="listItem.code as listItem in vm.model.lists.groupCode | filter:$select.search">
+                                    <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <!--- Editor --->
+    <div class="row padding-5" ng-if="vm.model.flags.showEdit">
+        <mqa-adm-notify-rule-edit company-id="{{vm.model.data.companyId}}" data="vm.model.data.record" on-edit="vm.functions.toggleEventEdit" validation="vm.model.data.bvEvent"/>
+    </div>
+    <!--- Button Panel -->
+    <div class="widget-footer"ng-if="vm.model.flags.showEdit && !vm.model.flags.eventEdit">
+        <button type="button" id="submit" class="btn btn-primary" ng-click="vm.functions.saveRecord();">
+            {{vm.model.data.buttonText}}
+        </button>
+        <button type="button" class="btn btn-danger" ng-click="vm.functions.userDelete();" ng-if="!vm.model.data.record.isNew">
+            Delete
+        </button>
+        <button type="button" class="btn btn-default" ng-click="vm.functions.cancelRecord();">
+            Cancel
+        </button>
+    </div>
+</div>

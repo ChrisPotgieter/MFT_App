@@ -1,0 +1,22 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDrillDialog.functions.cancelDialog();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class="fa fa-exchange"></i> Transfer Item Information</h6></div>
+    </div>
+    <div class="modal-body dialog-content">
+         <mft-transaction-item data="vmDrillDialog.model"/>
+    </div>
+    <div class="modal-footer" >
+        <div class="row">
+            <button type="button" id="confirmButton" class="btn btn-primary" ng-click="vmDrillDialog.functions.cancelDialog();">
+                OK
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vmDrillDialog.functions.cancelDialog();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

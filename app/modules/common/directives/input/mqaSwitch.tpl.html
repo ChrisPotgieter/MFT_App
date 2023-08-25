@@ -1,0 +1,11 @@
+<span>
+    <span class="onoffswitch-title">{{title}}</span>
+    <span class="onoffswitch">
+        <input type="checkbox" name="start_interval_{{label}}" ng-model="ngModel" class="onoffswitch-checkbox" id="switch_{{label}}" ng-change="toggle();" ng-disabled="ngDisabled">
+        <label class="onoffswitch-label" for="switch_{{label}}">
+            <span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span>
+
+            <span class="onoffswitch-switch"></span>
+        </label>
+    </span>
+</span>

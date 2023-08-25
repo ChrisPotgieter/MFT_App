@@ -1,0 +1,75 @@
+<div>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelRecord();"> × </button>
+      <div class='widget-header'>
+        <h6>
+          {{vmDialog.model.title}}
+        </h6>
+      </div>
+    </div>
+    <div class="modal-body">
+        <div class="col-md-12">
+          <form id="frmEventEdit" name="frmEventEdit" class="form-horizontal" novalidate>
+                <fieldset>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-12" id="div_template">
+                           
+                                    <label for="template_select">Template Group:</label>
+                                    <select class="form-control" name="template_select"
+                                            ng-model="vmDialog.dataModel.editRow.templateGroup"
+                                            ng-options="d.code as d.description for d in vmDialog.dataModel.lists.templateGroups">
+                                        <option ng-selected="true" value="">Please select a Template Group</option>
+                                        <option  ng-selected="true" value="">Create a Template Group</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+
+                                    <label for="notify_select">Notification Groups:</label>
+                                    <ui-select id="notify_select" name="notify_select"
+                                               ng-model="vmDialog.dataModel.editRow.notifyGroups" multiple theme="select2"
+                                               style="width:100%" on-select="onNotifyChange();" on-remove="onNotifyChange();">
+                                        <ui-select-match placeholder="Please select Notification Groups">
+                                            {{$item.description}}
+                                        </ui-select-match>
+                                       
+                                        <ui-select-choices
+                                                repeat="listItem.code as listItem in vmDialog.dataModel.lists.notificationGroups | filter:$select.search">
+                                            <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                   
+                                    </ui-select>
+                                    <input type="hidden" name="hiddenValidation"/>
+                                </div>
+                            </div>
+                            
+                                          
+                                                    
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+       </div>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+      
+          <button type="button" id="submit" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord();">
+              {{vmDialog.model.buttonText}}
+          </button>
+          
+          <button class="btn btn-danger" type="button" ng-click="vmDialog.functions.userDelete();" ng-if="vmDialog.dataModel.rowId > -1">
+              Delete
+          </button>
+        <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();"> Cancel </button>
+    
+    </div>
+  </div>
+

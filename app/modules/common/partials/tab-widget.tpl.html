@@ -1,0 +1,16 @@
+<div id="tabs-pills-widget-widget" data-widget-colorbutton="false"  data-widget-editbutton="false" data-widget-togglebutton="false"    data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-jarvis-widget>
+     <header>
+         <span class="widget-icon"> <i class="{{widget.icon}}"></i> </span>
+         <h2 class="longHeader" style="width: 60%; text-overflow: ellipsis;">{{widget.title}}</h2>
+         <ul class="nav nav-tabs pull-right in">
+             <li ng-class="{active: $state.includes(tab.activate)}" ng-repeat="tab in tabs">
+                 <a ui-sref="{{tab.state}}"><i class="fa {{tab.icon}}"></i> <span class="hidden-mobile hidden-tablet">{{tab.title}}</span></a>
+             </li>
+         </ul>
+     </header>
+    <!-- widget div-->
+    <div ng-style="widget.style">
+        <div data-ui-view="widgetContent@content"></div>
+    </div>
+    <!-- end widget div -->
+</div>

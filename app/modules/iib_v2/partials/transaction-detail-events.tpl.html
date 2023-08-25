@@ -1,0 +1,50 @@
+<div class="well" style="height:500px">
+    <div class="scroll-body" slimscroll="{'height': '450', alwaysVisible: 'true', 'position': 'left', color: 'silver'}">
+        <div class="smart-timeline">
+        <ul class="smart-timeline-list timeline-list-wide">
+            <li ng-repeat="dataItem in vmDetail.model.displayNodes">
+                <div class="smart-timeline-icon timeline-icon-wide" ng-class="dataItem.background"  ng-click="vmDetail.functions.drill(dataItem);">
+                    <h3 style="margin: 4px">{{$index + 1}}</h3>
+                </div>
+                <div class="smart-timeline-time timeline-time-wide"  ng-click="vmDetail.functions.drill(dataItem);">
+                    <small>{{dataItem.actionDate | localUTCDateFilter : 'YYYY-MM-DD, h:mm:ss:SSS a'}}</small>
+                    <p>
+                        <h1 class="no-margin no-padding text-align-center"><i ng-class="dataItem.icon" class="fa fa-lg"></i></h1>
+                    </p>
+                </div>
+                <div class="smart-timeline-content timeline-content-wide">
+                    <p class="no-margin"  ng-click="vmDetail.functions.drill(dataItem);"> <strong ng-class="dataItem.foreground">{{dataItem.name}}</strong></p>
+                    <p class="no-margin"  ng-click="vmDetail.functions.drill(dataItem);">
+                        {{dataItem.description}}
+                    </p>
+                    <p class="no-margin"  ng-click="vmDetail.functions.drill(dataItem);">
+                        <strong>Terminal:</strong>&nbsp;{{dataItem.terminal}}
+                    </p>
+                    <p class="no-margin" ng-if="dataItem.error_destination">
+                        <strong>Error Destination:</strong>&nbsp;{{dataItem.error_destination}}
+                    </p>
+
+                    <p ng-if="dataItem.drillInfo != null">
+                        <button class="btn txt-color-white btn-primary" ng-click="vmDetail.functions.drill(dataItem);" >{{dataItem.drillInfo.buttonText}}</button>
+                        <button class="btn btn-success" ng-click="vmDetail.functions.viewHeaders(dataItem);" ng-if="dataItem.headers">
+                            <i class="fa fa-search"></i>
+                            View Headers...
+                        </button>
+
+                        <button class="btn btn-default" ng-click="vmDetail.functions.handleResubmit(dataItem);" ng-if="dataItem.allowResubmit">
+                            <i class="fa fa-recycle"></i>
+                            Re-Submit...
+                        </button>
+                        <button class="btn btn-default" ng-click="vmDetail.functions.handleRepair(dataItem);" ng-if="dataItem.allowRepair">
+                            <i class="fa fa-wrench"></i>
+                            Repair...
+                        </button>
+
+                    </p>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+    </div>
+</div>

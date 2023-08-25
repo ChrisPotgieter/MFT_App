@@ -1,0 +1,44 @@
+<div class="row">
+    <article class="col-sm-12">
+        <div jarvis-widget id="editQMHostWidget"  data-widget-editbutton="false">
+            <header>
+                <h2>{{headingText}}</h2>
+            </header>
+            <div>
+                <div class="widget-body padding-5">
+                    <form name="frmBinding" novalidate>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-10" id="div_hostName">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-desktop  fa-lg fa-fw "></i></span>
+                                        <input class="form-control input-lg" placeholder="Host Name " type="text"
+                                               name="hostName"
+                                               ng-model="editRow.hostName">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" id="div_port">
+                                    <input class="form-control input-lg" placeholder="Port " type="text"
+                                           name="port"
+                                           ng-model="editRow.port">
+                                </div>
+                            </div>
+                        </div>
+                        <footer>
+                            <button type="button" id="submit" ng-disabled="true" class="btn btn-primary" ng-click="saveChanges();">
+                                {{buttonText}}
+                            </button>
+
+                            <button type="button"  class="btn btn-danger"   ng-click="userDelete();" ng-if="editRow.recordStatus == 'Update'">
+                                Delete
+                            </button>
+                            <button type="button" class="btn btn-default" ng-click="cancelRecord();">
+                                Cancel
+                            </button>
+                        </footer>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>

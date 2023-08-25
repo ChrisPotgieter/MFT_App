@@ -1,0 +1,24 @@
+<div>
+    <fieldset>
+        <div class="row padding-top-10">
+            <div class="col-md-4">
+                <b>KFA Policy:</b> <span>&nbsp;&nbsp;{{vmDialog.model.lifepro_record.id}}</span>
+            </div>
+            <div class="col-md-4">
+                <b>Processed Date:</b><span>&nbsp;{{vmDialog.model.lifepro_record.processed| localUTCDateFilter}}</span>
+            </div>
+
+            <div class="col-md-4">
+                <b>Response Code:</b> <span>&nbsp;{{vmDialog.model.lifepro_record.response_code}}</span>
+            </div>
+            <div class="col-md-12" ng-if="vmDialog.model.lifepro_record.itx_id">
+                <b>ITX Transaction:</b> <span><a ng-click="vmDialog.functions.navigateTransaction('itx_lifepro');" title="Click here to Navigate to the LifeProITX Transaction">{{vmDialog.model.lifepro_record.itx_id}}</a></span>
+            </div>
+        </div>
+    </fieldset>
+    <div class="row scroll-body padding-10"
+         slimscroll="{'height': '450', alwaysVisible: 'true', 'position': 'right', color: 'silver'}">
+        <cno-tpci-meta-data-grid data="vmDialog.model.response.data" type="{{vmDialog.model.response.type}}" function-manager="vmDialog.functionManager"/>
+    </div>
+
+</div>

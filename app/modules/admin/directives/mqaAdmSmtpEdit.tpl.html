@@ -1,0 +1,73 @@
+<div id="SMTPDetailsForm" name="SMTPDetailsForm" class="form-horizontal" novalidate>
+    <div class="col-sm-12">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 " id="div_hostName">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-desktop  fa-lg fa-fw "></i></span>
+                        <input class="form-control input-lg" placeholder="Server Name " type="text" name="hostName"
+                            ng-model="vmDirective.data.host_name">
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 " id="div_port">
+                    <input class="form-control input-lg" placeholder="Port " type="text" name="port"
+                        ng-model="vmDirective.data.port">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " id="div_fromName">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope  fa-lg fa-fw"></i></span>
+                        <input class="form-control input-lg" placeholder="From Name " type="text" name="fromName"
+                            ng-model="vmDirective.data.from_name">
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " id="div_fromAddress">
+                    <input class="form-control input-lg" placeholder="From Email Address " type="text"
+                        name="fromAddress" ng-model="vmDirective.data.from_address">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " id="div_user">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw "></i></span>
+                        <input class="form-control input-lg" placeholder="User Name" type="text" name="userName"
+                            ng-model="vmDirective.data.user_name" autocomplete="false"
+                            ng-change="vmDirective.functions.checkUserValidation()">
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " id="div_password">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-key fa-lg fa-fw"></i></span>
+                        <input class="form-control input-lg" type="password" name="password" placeholder="Password"
+                            ng-model="vmDirective.data.password" autocomplete="new-password"
+                            ng-change="vmDirective.functions.checkUserValidation()">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " id="div_ssl">
+                    <div class="form-group input-lg" class="checkbox">
+                        <label>
+                            <input name="adCheck" ng-model="vmDirective.data.ssl" type="checkbox"
+                                class="checkbox style-0">
+                            <span></span>
+                        </label>
+                        SSL
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " id="div_hiddenValidation">
+        <input type="hidden" name="hiddenValidation"/>
+    </div>
+    </div>
+    </form>

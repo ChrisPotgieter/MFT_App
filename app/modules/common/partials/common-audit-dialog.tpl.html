@@ -1,0 +1,56 @@
+<div>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelRecord();"> × </button>
+      <h6>  <i class='fa fa-code-fork'></i> Audit History - {{vmDialog.dataModel.description}}
+      </h6>
+
+        <div class="row">
+            <!-- HEADER -->
+            <article class="no-margin in col-md-12" ng-class="vmDialog.model.status.alertClass">
+                <h7 class="no-margin pull-left">
+                    <h7>
+                      <div><b>User Name:&nbsp;</b>{{vmDialog.dataModel.user.name}}</div>
+                  </h7>
+                  <br>
+                  <h7>
+                    <div><b>User Id:&nbsp;</b>{{vmDialog.dataModel.user.id}}</div>
+                </h7>
+                </h7>
+                <div class="pull-right">
+                    <h7>
+                        <div><b>Event Date:&nbsp;</b>{{(vmDialog.dataModel.event_date).substring(0, 10);}}</div>
+                    </h7>
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="modal-body">
+
+<div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 selectContainer">
+      <div><h6>Original</h6></div>
+    </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 selectContainer">
+       <div><h6>Updated</h6></div>
+    </div>
+  </div>
+  <div class="row">
+    <!--Original-->
+    <div class="form-group">
+      <div class="col-lg-6 col-md-6 col-sm-6 selectContainer" id="div_original">
+     <mqa-json-editor data="vmDialog.dataModel.additional.original" id="1" />  <!---->
+      </div>
+      <!--Updated-->
+      <div class="col-lg-6 col-md-6 col-sm-6 selectContainer" id="div_updated">
+        <mqa-json-editor data="vmDialog.dataModel.additional.updated" id="2"/>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+        <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();"> Cancel </button>
+      </div>
+</div>

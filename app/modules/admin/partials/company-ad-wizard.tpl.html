@@ -1,0 +1,17 @@
+<div>
+    <h3><strong>Active Directory Domains</strong></h3>
+    <div class="alert alert-danger fade in" ng-if="formErrorMessage != null">
+        <i class="fa-fw fa fa-times"></i>
+        <strong>Error!</strong> {{formErrorMessage}}
+    </div>
+    <div>
+        <button class="btn btn-primary" ng-click="vmAD.functions.insertRecord();" type="button">
+            <i class="fa fa-plus"></i>
+            Add Domain...
+        </button>
+        <p></p>
+    </div>
+<div>
+    <mqa-kendo-grid  id="listGrid" options="vmAD.model.adGridOptions"  data="vmAD.model.gridData" ondrill="vmAD.functions.editRecord"></mqa-kendo-grid>
+</div>
+</div>

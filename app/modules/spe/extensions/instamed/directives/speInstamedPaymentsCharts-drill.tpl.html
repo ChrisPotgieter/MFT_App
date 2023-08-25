@@ -1,0 +1,23 @@
+<div>
+    <!-- payment methods -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well">
+                <mqa-chartjs dataset="vm.model.methodBar.series" options="vm.model.methodBar.options"
+                             update-flag="vm.model.periodBar.updateFlag"
+                             refresh-flag="vm.model.periodBar.refreshFlag"/>
+            </div>
+        </div>
+    </div>
+    <!-- status  -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well">
+                <mqa-chartjs dataset="vm.model.statusBar.series" options="vm.model.statusBar.options"
+                             update-flag="vm.model.statusBar.updateFlag"
+                             refresh-flag="vm.model.statusBar.refreshFlag"/>
+
+            </div>
+        </div>
+    </div>
+</div>

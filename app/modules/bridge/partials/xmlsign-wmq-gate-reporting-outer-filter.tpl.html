@@ -1,0 +1,28 @@
+<fieldset>
+    <legend class="padding-top-10 no-margin margin-bottom-5">Additional Filtering</legend>
+
+    <div class="form-group">
+        <label for="input_service">Service Group(s):</label>
+        <ui-select id="input_service" name="input_service" multiple
+                   ng-model="vm.model.filter.serviceNames" mqa-list="BRIDGE_SERVICE"
+                   mqa-list-source="1" input-Placeholder="Select Service Group(s)"/>
+    </div>
+    <div class="form-group">
+        <label for="input_source_queue">Source Queue:</label>
+        <ui-select id="input_source_queue" name="input_source_queue" tagging multiple
+                   ng-model="vm.model.filter.inputQueues" mqa-tag
+                   input-Placeholder="Enter the Source Queue(s)"/>
+    </div>
+    <div class="form-group">
+        <label for="input_destination_queue">Destination Queue:</label>
+        <ui-select id="input_destination_queue" name="input_destination_queue" tagging multiple
+                   ng-model="vm.model.filter.outputQueues" mqa-tag
+                   input-Placeholder="Enter the Destination Queue(s)"/>
+    </div>
+    <div class="form-group">
+        <label for="input_messageIds">Message Id(s):</label>
+        <ui-select id="input_messageIds" name="input_messageIds" tagging multiple
+                   ng-model="vm.model.filter.transactionIds" mqa-tag
+                   input-Placeholder="Enter Message Id(s) to Find"/>
+    </div>
+</fieldset>

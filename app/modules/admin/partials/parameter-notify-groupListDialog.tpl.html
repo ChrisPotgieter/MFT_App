@@ -1,0 +1,94 @@
+<div>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelRecord();"> × </button>
+    <div class='widget-header'>
+      <h6>
+        <i class='fa fa-group'></i> {{vmDialog.model.title}}
+      </h6>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="widget-body">
+      <div class="row">
+        <div class="col-md-12">
+          <form id="frmGroupCode" name="frmGroupCode">
+            <fieldset>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                    <input type="text" placeholder="Group Code" class="form-control" name="code" ng-model="vmDialog.dataModel.code">
+                  </div>
+                </div>
+                <input type="hidden" name="hiddenValidation" />
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                    <input type="text" placeholder="Description" class="form-control" name="description" ng-model="vmDialog.dataModel.description">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div>
+        <hr class="simple">
+        <ul id="myTab1" class="nav nav-tabs bordered">
+          <li class="active">
+            <a href="#s1" data-toggle="tab">Users <span class="badge bg-color-blue txt-color-white">{{vmDialog.dataModel.jsonData.users.length}}</span>
+            </a>
+          </li>
+          <li>
+            <a href="#s2" data-toggle="tab">Roles <span class="badge bg-color-blueDark txt-color-white">{{vmDialog.dataModel.jsonData.roles.length}}</span>
+            </a>
+          </li>
+          <li>
+            <a href="#s3" data-toggle="tab">Queues <span class="badge bg-color-purple txt-color-white">{{vmDialog.dataModel.jsonData.queues.length}}</span>
+            </a>
+          </li>
+          <li>
+            <a href="#s4" data-toggle="tab">End Points <span class="badge bg-color-purple txt-color-white">{{vmDialog.dataModel.jsonData.endPoints.length}}</span>
+            </a>
+          </li>
+        </ul>
+        <div id="myTabContent1" class="tab-content padding-10">
+          <div class="tab-pane fade in active" id="s1">
+            <button class="btn btn-primary " style="margin-bottom: 10px;" data-ng-click="vmDialog.functions.insertUserRecord()">
+              <i class="fa fa-plus"></i>
+              <span class="hidden-mobile">Add User</span>
+            </button>
+            <mqa-kendo-grid id="usersGrid" options="vmDialog.model.userGridOptions" data="vmDialog.model.users" ondrill="vmDialog.functions.editUserRecord"></mqa-kendo-grid>
+          </div>
+          <div class="tab-pane fade" id="s2">
+            <button class="btn btn-primary" style="margin-bottom: 10px;" data-ng-click="vmDialog.functions.addRolesRecord()">
+              <i class="fa fa-plus"></i>
+              <span class="hidden-mobile">Add Role</span>
+            </button>
+            <mqa-kendo-grid id="roles" options="vmDialog.model.rolesGridOptions" data="vmDialog.model.roles" ondrill="vmDialog.functions.editRolesRecord"></mqa-kendo-grid>
+          </div>
+          <div class="tab-pane fade" id="s3">
+            <div class="row padding-bottom-10" ng-if="!vmDialog.model.showQueueEdit"></div>
+            <div class="row">
+              <div class="col-md-12">
+                <mqa-notify-queue-edit-list data="vmDialog.dataModel.jsonData.queues" id="queueGrid" />
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="s4">
+            <mqa-notify-end-point-list data="vmDialog.dataModel.jsonData.endPoints" id="endPointGrid"></mqa-notify-end-point-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <button type="button" class="btn btn-danger" ng-click="vmDialog.functions.userDelete();" ng-if="vmDialog.dataModel.rowId > -1"> Delete </button>
+      <button type="submit" id="submit" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord();">
+        {{vmDialog.model.buttonText}}
+      </button>
+      <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();"> Cancel </button>
+    </div>
+  </div>
+</div>

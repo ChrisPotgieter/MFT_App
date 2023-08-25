@@ -1,0 +1,30 @@
+<div>
+    <div class="modal-header  padding-bottom-5">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelDialog();"> × </button>
+        <div class='widget-header'>
+            <h6>
+                Column Options
+            </h6>
+            <br>
+            <label>Drag and drop a column to change order of columns</label>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <mqa-kendo-grid id="grid" options="vmDialog.model.options" data="vmDialog.model.data"  function-manager="vmDialog.functions" refresh-flag="vmDialog.model.flags.refresh"></mqa-kendo-grid>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDialog.functions.confirmDialog();">
+                Save
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelDialog();">
+                Cancel
+            </button>
+            <button class="btn btn-sm bg-color-blueDark txt-color-white pull-left" ng-click="vmDialog.functions.showColumnAddDialog();">
+                <i class="fa fa-plus-circle"></i> <span class="hidden-mobile hidden-sm">Add Custom Column...</span>
+            </button>
+        </div>
+    </div>
+</div>

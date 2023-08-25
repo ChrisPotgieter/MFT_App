@@ -1,0 +1,139 @@
+<div class="row">
+	<!-- transaction grid -->
+	<div class="col-md-12">
+		<div data-smart-include="app/modules/spe/extensions/instamed/partials/dashboard-recent.tpl.html"/>
+	</div>
+
+	<!--- CURRENT SIDE -->
+	<div class="col-md-6">
+		<!-- header -->
+		<div class="col-md-12">
+			<div>
+				<h6 class="no-margin-bottom"> {{vm.model.currentData.title}}</h6>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<hr class="bordered"/>
+		</div>
+		<!-- counts current -->
+		<div class="col-md-12">
+			<div class="row">
+				<spe-instamed-dashboard-count data="vm.model.currentData.counts" id="counts"/>
+			</div>
+		</div>
+		<!-- donut current -->
+		<div class="col-sm-12">
+			<div jarvis-widget id="group-morris-chart-widget-current" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-tachometer"></i> </span>
+					<h2>Groupings</h2>
+				</header>
+				<div>
+					<div class="widget-body no-padding">
+						<div class="col-sm-6 col-lg-6 col-md-6 padding-left-gutter padding-10" ng-repeat="group in vm.model.currentData.groups.data">
+							<div data-smart-include="app/modules/common/partials/common-donut-content.tpl.html"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--- period chart current --->
+		<div class="col-sm-12">
+			<div jarvis-widget id="period-chart-widget-current"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+					<h2>Daily Processing Summary</h2>
+				</header>
+				<div class="widget-body">
+					<div class="col-sm-12 col-lg-12 col-md-12">
+						<mqa-chartjs dataset="vm.model.currentData.periodBar.series" options="vm.model.currentData.periodBar.options" update-flag="vm.model.currentData.periodBar.updateFlag" refresh-flag="vm.model.currentData.periodBar.refreshFlag" ng-if="vm.model.currentData.periodBar.series"/>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--- org chart current --->
+		<div class="col-sm-12">
+			<div jarvis-widget id="org-chart-widget-current"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+					<h2>{{vm.model.orgDesc}} Processing Summary</h2>
+				</header>
+				<div class="widget-body">
+					<div class="col-sm-12 col-lg-12 col-md-12">
+						<mqa-chartjs dataset="vm.model.currentData.orgBar.series" options="vm.model.currentData.orgBar.options" update-flag="vm.model.currentData.orgBar.updateFlag" refresh-flag="vm.model.currentData.orgBar.refreshFlag" ng-if="vm.model.currentData.orgBar.series"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- COMPARISION SIDE -->
+	<div class="col-md-6">
+		<!-- header -->
+		<div class="col-md-12">
+			<div>
+				<h6 class="no-margin-bottom"> {{vm.model.compareData.title}}</h6>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<hr class="bordered"/>
+		</div>
+		<!-- counts compare -->
+		<div class="col-md-12">
+			<div class="row">
+				<spe-instamed-dashboard-count data="vm.model.compareData.counts" id="counts_compare"/>
+			</div>
+		</div>
+		<!-- donut compare -->
+		<div class="col-sm-12">
+			<div jarvis-widget id="group-morris-chart-widget-compare" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-tachometer"></i> </span>
+					<h2>Groupings</h2>
+				</header>
+				<div>
+					<div class="widget-body no-padding">
+						<div class="col-sm-6 col-lg-6 col-md-6 padding-left-gutter padding-10" ng-repeat="group in vm.model.compareData.groups.data">
+							<div data-smart-include="app/modules/common/partials/common-donut-content.tpl.html"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--- period chart compare --->
+		<div class="col-sm-12">
+			<div jarvis-widget id="period-chart-widget-compare"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+					<h2>Daily Processing Summary</h2>
+				</header>
+				<div class="widget-body">
+					<div class="col-sm-12 col-lg-12 col-md-12">
+						<mqa-chartjs dataset="vm.model.compareData.periodBar.series" options="vm.model.compareData.periodBar.options" update-flag="vm.model.compareData.periodBar.updateFlag" refresh-flag="vm.model.compareData.periodBar.refreshFlag" ng-if="vm.model.compareData.periodBar.series" />
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!--- org chart compare --->
+		<div class="col-sm-12">
+			<div jarvis-widget id="org-chart-widget-compare"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+					<h2>{{vm.model.orgDesc}} Processing Summary</h2>
+				</header>
+				<div class="widget-body">
+					<div class="col-sm-12 col-lg-12 col-md-12">
+						<mqa-chartjs dataset="vm.model.compareData.orgBar.series" options="vm.model.compareData.orgBar.options" update-flag="vm.model.compareData.orgBar.updateFlag" refresh-flag="vm.model.compareData.orgBar.refreshFlag" ng-if="vm.model.compareData.orgBar.series" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+

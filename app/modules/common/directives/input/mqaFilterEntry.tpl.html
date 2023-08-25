@@ -1,0 +1,17 @@
+<div class="input-group" id="div_filter">
+    <input class="form-control input" type="text" name="summaryFilter" placeholder="Enter {{vmFilterCapture.model.title}}..." ng-model="vmFilterCapture.model.summary"  disabled>
+    <div class="input-group-btn">
+        <button class="btn btn-default btn-primary btn-sm" style="margin-left: 1px" type="button" id="searchFilter" ng-click="vmFilterCapture.functions.showDialog();">
+            <i class="fa fa-search"></i>
+        </button>
+        <!--
+        <button class="btn btn-success btn-sm"  style="margin-left: 1px" type="button" id="refreshFilter" ng-click="vmFilterCapture.functions.refresh();" ng-if="vmFilterCapture.model.flags.allowRefresh && vmFilterCapture.model.data.length > 0">
+            <i class="fa fa-refresh"></i>
+        </button>
+        -->
+        <button class="btn btn-danger btn-sm" style="margin-left: 1px" type="button" id="clearFilter" ng-click="vmFilterCapture.functions.clear();" ng-if="vmFilterCapture.model.flags.allowClear && vmFilterCapture.model.data.length > 0">
+            <i class="fa fa-trash-o"></i>
+        </button>
+
+    </div>
+</div>

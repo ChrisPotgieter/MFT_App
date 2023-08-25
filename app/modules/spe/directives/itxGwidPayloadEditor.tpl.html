@@ -1,0 +1,63 @@
+    <div jarvis-widget id="itxGwidPayloadEditorWidget" data-widget-color="darken" data-widget-sortable="false"
+         data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" class="no-margin padding-5" >
+        <header>
+            <span class="widget-icon"> <i class="fa fa-book"></i> </span>
+            <h2>EDI Document Information {{vmGwidDetail.id}}</h2>
+
+            <div class="widget-toolbar">
+                <mqa-switch title="Direct Edit:" label="live" ng-model="vmGwidDetail.model.flags.userRawMode"
+                            on-toggle="vmGwidDetail.functions.confirmEditSwap"
+                            ng-disabled="!vmGwidDetail.model.flags.allowToggle"/>
+            </div>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+
+                <!--- MESSAGE PANEL -->
+                <div class="padding-5">
+                    <div class="alert alert-{{vmGwidDetail.model.status.type}} padding-bottom-20">
+                        <i class="fa fa-{{vmGwidDetail.model.status.icon}} "></i><strong>{{vmGwidDetail.model.status.description}}</strong>
+
+                        <div class="pull-right" ng-if="vmGwidDetail.model.operations && vmGwidDetail.model.operations.length > 0">
+                            <div class="btn-group hidden-xs">
+                                <a class="btn btn-sm bg-color-blueDark txt-color-white dropdown-toggle btn-default" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-cog"></i> Operations <span class="caret"> </span> </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li ng-repeat="button in vmGwidDetail.model.operations">
+                                        <a href="javascript:void(0);" ng-click="vmGwidDetail.functions.confirmCLIOperation(button.click_data);"><i ng-class="button.click_data.ui.icon"></i> {{button.description}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <p ng-bind-html="vmGwidDetail.model.status.supplemental"/>
+                    </div>
+                </div>
+                <!--- EDITOR-PANEL -->
+                <div ng-if="vmGwidDetail.model.flags.showEdit" class="no-padding no-margin">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <div ng-show="vmGwidDetail.model.flags.rawMode" id="editor">
+
+                                    <mqa-code-mirror data="vmGwidDetail.model.cm.data"
+                                                     read-only="vmGwidDetail.model.records.flags.readOnly"
+                                                     ui-object="vmGwidDetail.model.cm.component"
+                                                     function-manager="vmGwidDetail.functionManager"/>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div ng-show="!vmGwidDetail.model.flags.rawMode" class="padding-5">
+                                    <mqa-kendo-grid data="vmGwidDetail.model.grid.data" options="vmGwidDetail.model.grid.options"
+                                                    refreshFlag="vmGwidDetail.model.grid.refresh" height="500"
+                                                    function-manager="vmGwidDetail.functionManager"
+                                                    rebuild="vmGwidDetail.model.grid.rebuild"/>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

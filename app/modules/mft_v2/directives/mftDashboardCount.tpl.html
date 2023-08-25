@@ -1,0 +1,44 @@
+<div id="badges_{{vmCount.id}}">
+    <div ng-if="vmCount.viewType == 0">
+        <div class="col-sm-6 col-lg-2">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.color.transfers}" caption-class="txt-color-white" icon="fa-exchange" caption="Total Transfers" value="vmCount.data.transfer_count.value" id="badge_transfers" tooltip="Total No. of MFT Transfers Initiated with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+            <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white" icon="fa-exclamation" caption="Total Errors" value="vmCount.data.failure_count.value" id="badge_errors" tooltip="Total No. of Failures <br/>Click to Drill" on-click="vmCount.functions.onDrill"/>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.color.files}" caption-class="txt-color-white" icon="fa-file-text" caption="Total Files" value="vmCount.data.file_count.value" id="badge_files" tooltip="Total No. of Files Transferred with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.color.bytes}" caption-class="txt-color-white" icon="fa-floppy-o" caption="Total Bytes" value="vmCount.data.byte_count.value" id="badge_bytes" tooltip="Total No. of Bytes Transferred with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.color.agents}" caption-class="txt-color-white" icon="fa-laptop" caption="Agents" value="vmCount.data.agent_count.value" id="badge_agents" tooltip="Agent Status"/>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.color.monitors}" caption-class="txt-color-white" icon="fa-search" caption="Monitors" value="vmCount.data.monitor_count.value" id="badge_monitors" tooltip="Monitor Status"/>
+        </div>
+    </div>
+    <div ng-if="vmCount.viewType == 1">
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.color.transfers}" caption-class="txt-color-white" icon="fa-exchange" caption="Total Transfers" value="vmCount.data.transfer_count.value" id="badge_transfers" tooltip="Total No. of MFT Transfers Initiated with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white" icon="fa-exclamation" caption="Total Errors" value="vmCount.data.failure_count.value" id="badge_errors" tooltip="Total No. of Failures <br/>Click to Drill" on-click="vmCount.functions.onDrill"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.color.files}" caption-class="txt-color-white" icon="fa-file-text" caption="Total Files" value="vmCount.data.file_count.value" id="badge_files" tooltip="Total No. of Files Transferred with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.color.bytes}" caption-class="txt-color-white" icon="fa-floppy-o" caption="Total Bytes" value="vmCount.data.byte_count.value" id="badge_bytes" tooltip="Total No. of Bytes Transferred with this Criteria"/>
+        </div>
+    </div>
+    <div ng-if="vmCount.viewType == 2">
+        <div class="col-sm-6 col-lg-6">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.color.agents}" caption-class="txt-color-white" icon="fa-laptop" caption="Agents" value="vmCount.data.agent_count.value" id="badge_agents" tooltip="Agent Status"/>
+        </div>
+        <div class="col-sm-6 col-lg-6">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.color.monitors}" caption-class="txt-color-white" icon="fa-search" caption="Monitors" value="vmCount.data.monitor_count.value" id="badge_monitors" tooltip="Monitor Status"/>
+        </div>
+    </div>
+</div>

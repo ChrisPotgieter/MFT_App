@@ -1,0 +1,25 @@
+<div>
+    <!-- ENROLLMENTS AND COMMISSIONS-->
+    <div class="col-sm-4 col-lg-4">
+        <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.vendors}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-info" caption="Vendors" value="vmCount.data.vendors.value" tooltip="Total No. of Vendors with this Criteria" on-click="vmCount.functions.onDrill"/>
+    </div>
+    <div class="col-sm-4 col-lg-4">
+        <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.requests}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-info" caption="Transactions Received" value="vmCount.data.requests.value" tooltip="Total No. of Transactions Received with this Criteria" on-click="vmCount.functions.onDrill"/>
+    </div>
+    <div class="col-sm-4 col-lg-4">
+        <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white" icon="fa-exclamation" caption="Errors" value="vmCount.data.failed.value" tooltip="Total No. of Errors with this Criteria" on-click="vmCount.functions.onDrill"/>
+    </div>
+
+    <!-- COMMISSIONS -->
+    <!--
+    <div ng-if="vmCount.module == 2">
+        <div class="col-sm-6 col-lg-6">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.amounts}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-money" caption="Amount" value="vmCount.data.amount.value" tooltip="Total Amount for this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-6">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.amounts}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-money" caption="Premium" value="vmCount.data.premium.value" tooltip="Total Premium for this Criteria"/>
+        </div>
+    </div>
+    -->
+</div>
+

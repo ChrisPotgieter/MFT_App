@@ -1,0 +1,37 @@
+<div>
+    <div class="modal-header">
+        <div data-smart-include="app/modules/common/partials/common-dialog-modal-header.tpl.html"/>
+        <!--- STATUS PANEL -->
+        <div class="row">
+            <!-- STATUS HEADER -->
+            <article class="alert fade no-margin in col-md-12" ng-class="vmDialog.model.status.alertClass">
+                <h3 class="alert-heading no-margin pull-left">
+                    <i ng-class="vmDialog.model.status.icon" class="fa"></i> <span>{{vmDialog.model.record.description}}</span>
+                    <br>
+                    <small>
+                        <span class="label bg-color-darken" class="label">{{vmDialog.model.record.supplemental}}</span>&nbsp;&nbsp;
+                        <span class="label bg-color-darken">{{vmDialog.model.record.status_supplemental}}</span>&nbsp;&nbsp;
+                    </small>
+
+                </h3>
+                <div class="pull-right">
+                    <h7>
+                        <div><b>Event Date:&nbsp;</b>{{vmDialog.model.record.event_date}}</div>
+                    </h7>
+                    <br/>
+                    <div ng-if="vmDialog.model.attachments">
+                        <mqa-attachment-button data="vmDialog.model.attachments" module="2"/>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <article class="col-md-12">
+                <mqa-meta-data-grid data="vmDialog.model.grid.data" height="{{vmDialog.model.grid.height}}"/>
+            </article>
+        </div>
+    </div>
+    <div data-smart-include="app/modules/common/partials/common-dialog-modal-footer.tpl.html"/>
+</div>

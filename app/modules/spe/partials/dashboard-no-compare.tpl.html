@@ -1,0 +1,21 @@
+<article>
+	<!-- COUNTS  -->
+    <div class="row">
+        <article class="col-md-12">
+           	<spe-dashboard-count data="vm.model.currentData.counts" id="counts"/>
+        </article>
+    </div>
+
+   <!-- TRANSACTION GRID -->
+   <div class="row">
+        <div data-smart-include="app/modules/spe/partials/dashboard-recent.tpl.html"/>
+    </div>
+
+
+    <!-- EVENT FEED WIDGET -->
+    <div class="row">
+        <article class="col-sm-12">
+            <div smart-include="app/modules/spe/partials/event-feed-widget.tpl.html" class="placeholder-live-feeds"></div>
+        </article>
+    </div>
+</article>

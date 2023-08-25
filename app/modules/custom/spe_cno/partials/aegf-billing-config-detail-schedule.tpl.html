@@ -1,0 +1,38 @@
+<div class="padding-10"  style="height: 450px;">
+    <form id="frmConfigEditSchedule" name="frmConfigEditSchedule" class="form-horizontal" novalidate>
+                <!-- SELECTOR -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label class="control-label">Execute:</label>
+                </div>
+                <div class="col-xs-3 col-sm-6 col-md-3 col-lg-3" id="div_input_schedule_type">
+                    <select class="form-control" id="input_schedule_type" name="input_schedule_type" ng-model="vmDetail.model.schedule.type" ng-change="vmDetail.functions.onScheduleTypeChange(1);">
+                        <option ng-repeat="option in vmDetail.model.schedule.options"
+                                value={{option.value}}>{{option.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 " id="div_input_schedule_time">
+                    <!--<input class="form-control" type="time" id="input_schedule_time" name="input_schedule_time" ng-model="vmDetail.dataModel.schedule.base_time"  placeholder="HH:mm:ss"/> -->
+                    <input id="input_schedule_time" name="input_schedule_time" required kendo-time-picker="timepicker"  ng-model="vmDetail.model.schedule.time"  k-ng-model="vmDetail.model.schedule.date" style="width: 100%;" k-on-change="vmDetail.functions.onScheduleTimeChange();" />
+                </div>
+
+                <div class="col-md-6 col-lg-6 pull-right">
+                    <span class="pull-right">
+                        <mqa-switch title="Skip Weekends and Public Holidays" label="exclude_holidays" ng-model="vmDetail.dataModel.schedule.holidays" on-toggle="vmDetail.functions.onScheduleChangeHoliday"/>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="div_input_schedule">
+                <input type="hidden" name="hiddenScheduleValidation"/>
+            </div>
+        </div>
+        <div ng-switch="vmDetail.model.schedule.type">
+            <div smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-schedule-month.tpl.html" ng-switch-when="0"/>
+            <div smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-schedule-week.tpl.html" ng-switch-when="1"/>
+            <div smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-schedule-week.tpl.html" ng-switch-when="2"/>
+            <div smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-schedule-grid.tpl.html" ng-switch-when="3"/>
+        </div>
+    </form>
+</div>

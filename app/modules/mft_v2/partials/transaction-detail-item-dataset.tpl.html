@@ -1,0 +1,15 @@
+<div>
+    <div data-smart-include="app/modules/mft_v2/partials/transaction-detail-item-common.tpl.html"/>
+    <ul>
+        <li ng-if="item.info.EOL">
+            <span class="text-muted">
+                <b>EOL:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.EOL}}</span>
+            </span>
+        </li>
+        <li ng-if="item.info.encoding">
+            <span class="text-muted">
+                <b>Encoding:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.encoding}}</span>
+            </span>
+        </li>
+     </ul>
+</div>

@@ -1,0 +1,179 @@
+<div class="row">
+  <article class="col-sm-12 no-margin">
+    <div class="alert alert-{{vmDirective.model.messageClass}}">
+      <i class="fa-fw fa fa-{{vmDirective.model.icon}}"></i>
+      <strong>{{vmDirective.model.licenseMessage}}</strong>
+      <br />
+      {{vmDirective.model.message}}
+    </div>
+  </article>
+</div>
+<form id="frmEnvSettings" name="frmEnvSettings" class="form-horizontal" novalidate>
+  <div class="form-group">
+    <div class="col-lg-12 col-md-12 col-sm-12" id="div_name">
+      <label class="control-label">Tenant Name:</label>
+      <input class="form-control " type="text" name="name" placeholder="Tenant Name" ng-model="vmDirective.data.tenant.name" />
+    </div>
+  </div>
+</form>
+<div class="widget-body">
+  <div>
+    <ul id="myTab1" class="nav nav-tabs bordered">
+      <li class="active">
+        <a href="#s1" data-toggle="tab">Licensing </a>
+      </li>
+      <li>
+        <a href="#s2" data-toggle="tab">Tenant Information </a>
+      </li>
+      <li>
+        <a href="#s3" data-toggle="tab">Portal </a>
+      </li>
+    </ul>
+    <div id="myTabContent1" class="tab-content padding-10">
+      <div class="tab-pane fade in active" id="s1">
+        <!---Tenant Information------>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " id="div_tenant">
+              <label class="control-label"> Tenant:</label>
+              <input class="form-control " placeholder="Tenant" type="text" name="tenant" ng-model="vmDirective.data.tenant.tenant" ng-readonly="true" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" id="div_tanantPath">
+              <label class="control-label"> Path:</label>
+              <input class="form-control" placeholder="Path" type="text" name="tanantPath" ng-model="vmDirective.data.tenant.tenant_path" ng-readonly="true" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" id="div_installDate">
+              <label class="control-label">Install Date:</label>
+              <input class="form-control " type="text" name="installDate" placeholder="Install Date" ng-model="vmDirective.data.tenant.install_date" ng-readonly="true" />
+            </div>
+          </div>
+        </div>
+        <!--Version Numbers-->
+        <legend class="no-margin no-padding">Version Numbers</legend>
+        <div class="row">
+          <div class="form-group">
+            <div class="col-lg-2 col-md-2 col-sm-2" id="div_api_refresh">
+              <label class="control-label">Tenant</label>
+              <input class="form-control spinner-left" name="version" id="version" ng-model="vmDirective.data.tenant.version" ng-readonly="true">
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2" id="div_api_timeout">
+              <label class="control-label">Parameter</label>
+              <input class="form-control spinner-left" name="parameter" id="parameter" ng-model="vmDirective.data.productVersions.jsonData.parameter" ng-readonly="true">
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2" id="div_api_timeout">
+              <label class="control-label">Customer List</label>
+              <input class="form-control spinner-left" name="customerList" id="customerList" ng-model="vmDirective.data.productVersions.jsonData.customerList" ng-readonly="true">
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2" id="div_api_refresh">
+              <label class="control-label">Product List</label>
+              <input class="form-control spinner-left" name="productList" id="productList" ng-model="vmDirective.data.productVersions.jsonData.productList" ng-readonly="true">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="s2">
+        <!---Licensing------>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8" id="div_username">
+              <label class="control-label">Address:</label>
+              <input class="form-control " type="text" name="address" placeholder="Address" ng-model="vmDirective.data.licensing.address" ng-readonly="true" />
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4" id="div_postalCode">
+              <label class="control-label"> Postal Code:</label>
+              <input class="form-control " placeholder="Postal Code" type="text" name="postalCode" ng-model="vmDirective.data.licensing.postal_code" ng-readonly="true" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" id="div_companyName">
+              <label class="control-label">Company Name:</label>
+              <input class="form-control " placeholder="Company Name" type="text" name="companyName" ng-model="vmDirective.data.licensing.company_name" ng-readonly="true" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" id="div_url">
+              <label class="control-label">Url:</label>
+              <input class="form-control " type="text" name="companyUrl" placeholder="Company Url" ng-model="vmDirective.data.licensing.company_url" ng-readonly="true" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" id="div_name">
+              <label class="control-label"> Name:</label>
+              <input class="form-control " placeholder="Name" type="text" name="contact_Name" ng-model="vmDirective.data.licensing.contact_name" ng-readonly="true" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" id="div_email">
+              <label class="control-label">Email:</label>
+              <input class="form-control " type="text" name="contactEmail" placeholder="Company Url" ng-model="vmDirective.data.licensing.contact_email" ng-readonly="true" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" id="div_phone">
+              <label class="control-label"> Phone:</label>
+              <input class="form-control " placeholder="Contact Phone" type="text" name="contactPhone" ng-model="vmDirective.data.licensing.contact_phone" ng-readonly="true" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12" id="div_module">
+              <label class="control-label"> Modules:</label>
+              <br>
+              <span class="label bg-color-darken margin-right-5" ng-repeat="modules in vmDirective.model.modules">{{modules}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12" id="div_productName">
+              <label class="control-label">Product Name:</label>
+              <input class="form-control " type="text" name="productName" placeholder="Product Name" ng-model="vmDirective.data.licensing.product_name" ng-readonly="true" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" id="div_registerTo">
+              <label class="control-label"> Register to:</label>
+              <input class="form-control " placeholder="Register To" type="text" name="registeredTo" ng-model="vmDirective.data.licensing.registered_to" ng-readonly="true" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" id="div_expiryDate">
+              <label class="control-label">Expiry Date:</label>
+              <input class="form-control " type="text" name="expiry_date" placeholder="Date Expired" ng-model="vmDirective.data.licensing.expiry_date" ng-readonly="true" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" id="div_licenseNumber">
+              <label class="control-label"> License Number:</label>
+              <input class="form-control " placeholder="License Number" type="text" name="license_number" ng-model="vmDirective.data.licensing.license_number" ng-readonly="true" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="s3">
+        <!---Portal------>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" id="div_partner">
+              <label class="control-label"> Partner:</label>
+              <input class="form-control" placeholder="Partner" type="text" name="partner" ng-model="vmDirective.data.portal.partner" ng-readonly="true">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" id="div_login">
+              <label class="control-label">Login:</label>
+              <input class="form-control " type="text" name="login" placeholder="Login" ng-model="vmDirective.data.portal.login" ng-readonly="true" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

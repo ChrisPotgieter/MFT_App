@@ -1,0 +1,30 @@
+<div class="row" ng-if="vmDirective.model.options.orientation === 0">
+    <div class="form-group">
+        <div class="col-md-4">
+            <div data-smart-include="app/modules/custom/spe_cno/directives/aegfGroupFilterGroupSelect.tpl.html"/>
+        </div>
+        <div class="col-md-6" ng-if="vmDirective.model.options.showSubGroup">
+            <div data-smart-include="app/modules/custom/spe_cno/directives/aegfGroupFilterSubGroupSelect.tpl.html"/>
+        </div>
+    </div>
+</div>
+
+<div ng-if="vmDirective.model.options.orientation === 1">
+    <div class="row">
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12" id="div_group">
+                <label class="control-label">Group:</label>
+                <div data-smart-include="app/modules/custom/spe_cno/directives/aegfGroupFilterGroupSelect.tpl.html"/>
+            </div>
+        </div>
+    </div>
+    <div class="row padding-top-10" ng-if="vmDirective.model.options.showSubGroup" id="div_subgroup">
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <label class="control-label">Sub Group:</label>
+                <div data-smart-include="app/modules/custom/spe_cno/directives/aegfGroupFilterSubGroupSelect.tpl.html"/>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

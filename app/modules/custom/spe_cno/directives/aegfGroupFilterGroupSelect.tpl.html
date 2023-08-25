@@ -1,0 +1,13 @@
+<div>
+    <ui-select id="input_group" name="input_group" ng-model="vmDirective.model.selectedGroup" ng-change="vmDirective.functions.groupChange()" style="width:100%" title="Select an Employer Group" >
+        <ui-select-match placeholder="Please Select Employer Group...">
+            <button class="clear-btn" ng-click="vmDirective.functions.clear($event, $select)" ng-if="vmDirective.model.options.showClear">
+                <span class="fa fa-remove"></span>
+            </button>
+            <span ng-class="{'clear-btn-offset': vmDirective.model.options.showClear}">{{$select.selected.description || $select.search}}</span>
+        </ui-select-match>
+        <ui-select-choices repeat="item in vmDirective.model.foundGroups | filter: $select.search" refresh-delay="200" refresh="vmDirective.functions.getGroups($select.search)">
+            <div ng-bind-html="item.description | highlight: $select.search"></div>
+        </ui-select-choices>
+    </ui-select>
+</div>

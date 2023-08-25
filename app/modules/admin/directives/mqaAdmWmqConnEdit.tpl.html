@@ -1,0 +1,73 @@
+<form id="queueManageForm" name="queueManageForm" class="form-horizontal" novalidate>
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-12" id="div_queueManager">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-desktop fa-lg fa-fw "></i></span>
+                        <input class="form-control input-lg" placeholder="Queue Manager" type="text"
+                               name="queueManager"
+                               ng-model="vmDirective.data.qm">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-12" id="div_bindingType">
+                    <div class="input-group">
+                        <label class="radio radio-inline">
+                            <input type="radio" ng-model="vmDirective.data.binding" class="radiobox" ng-value="0" ng-change="vmDirective.functions.onBindingChange();" >
+                            <span> Client</span>
+                        </label>
+                        <label class="radio radio-inline">
+                            <input type="radio" ng-model="vmDirective.data.binding" ng-value="1" class="radiobox" ng-change="vmDirective.functions.onBindingChange();" >
+                            <span>Server</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="vmDirective.data.binding == 0">
+            <div class="row">
+                <div class="form-group" >
+                    <div class="col-sm-12" id="div_channel">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-building  fa-lg fa-fw "></i></span>
+                            <input class="form-control input-lg" placeholder="Channel" type="text"  name="channel" ng-model="vmDirective.data.channel">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group" >
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 " id="div_host">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-desktop  fa-lg fa-fw "></i></span>
+                        <input class="form-control input-lg" placeholder="Host Name" type="text"  name="host" ng-model="vmDirective.data.hosts[0].host">
+                    </div>
+                </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 " id="div_port">
+                       
+
+                          <input class="form-control input-lg" placeholder="Port " type="text"
+                                 name="port"
+                                 ng-model="vmDirective.data.hosts[0].port"/>
+                    
+                  </div>
+                 </div>
+          <!--    <button class="btn btn-primary" ng-click="vmDirective.functions.insertRecord();" type="button">
+                    <i class="fa fa-plus"></i>
+                    Add Host...
+                </button>
+                <p></p>
+            </div>
+            <div class="row">
+                <mqa-kendo-grid  id="kendoGrid" options="vmDirective.model.gridDataOptions"  data="vmDirective.data.hosts"  ondrill="vmDirective.functions.editRecord"></mqa-kendo-grid>
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="hiddenHosts"/>
+            </div>-->  
+        </div>
+    </div>
+</form>

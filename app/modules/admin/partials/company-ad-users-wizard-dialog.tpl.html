@@ -1,0 +1,124 @@
+<div>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelRecord();"> × </button>
+      <div class='widget-header'>
+        <h6>
+          {{vmDialog.model.title}}
+        </h6>
+      </div>
+    </div>
+    <div class="modal-body">
+
+        <div>
+            <hr class="simple">
+            <ul id="myTab1" class="nav nav-tabs bordered">
+              <li class="active">
+                <a href="#s1" data-toggle="tab">Provide the Organizational Information
+                </a>
+              </li>
+              <li>
+                <a href="#s2" data-toggle="tab">Users
+                </a>
+              </li>        
+            </ul>
+            <div id="myTabContent1" class="tab-content padding-10">
+                
+              <div class="tab-pane fade in active" id="s1">
+               
+                <div class="row">
+                    <article class="col-sm-12">
+                            <div>
+                                <div class="widget-body padding-5">
+                                    <form id="adUserInsertForm" name="adUserInsertForm" class="form-horizontal" novalidate>
+                                        <fieldset>
+                                            <div class="col-sm-12">
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-sitemap fa-lg fa-fw"></i></span>
+                                                                <ui-select id="insertDepartments" name="insertDepartments" ng-model="vmDialog.dataModel.model.domainRecord.departments" multiple theme="select2" style="width:100%" ng-change="vmStep.functions.checkInsertDepts();">
+                                                                    <ui-select-match placeholder="Please select Departments">{{$item.name}}</ui-select-match>
+                                                                    <ui-select-choices repeat="listItem.id as listItem in vmDialog.dataModel.model.departmentList | filter:$select.search">
+                                                                        <div ng-bind-html="listItem.name | highlight: $select.search"></div>
+                                                                    </ui-select-choices>
+                                                                </ui-select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                            <input type="hidden" name="hiddenDept"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-shield fa-lg fa-fw"></i></span>
+                                                                <ui-select id="roles" name="roles" ng-model="vmDialog.dataModel.model.domainRecord.roles" multiple theme="select2" style="width:100%" ng-change="functions.checkRoles();">
+                                                                    <ui-select-match placeholder="Please select Roles">{{$item.description}}</ui-select-match>
+                                                                    <ui-select-choices repeat="listItem.id as listItem in vmDialog.dataModel.model.roleList| filter:$select.search">
+                                                                        <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                                                                    </ui-select-choices>
+                                                                </ui-select>
+                                                            </div>
+
+
+                                                            <div class="form-group">
+                                                                <input type="hidden" name="hiddenRole"/>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <div class="form-group">
+                                            <input type="hidden" name="hiddenValidation"/>
+                                        </div>
+                                    </form>
+                                </div>
+                        </div>
+                    </article>
+                </div> 
+              </div>
+            
+    
+              <div class="tab-pane fade" id="s2">
+                <div class="row no-margin no-padding" ng-if="vmDialog.dataModel.model.counts.inserted > 0 || vmDialog.dataModel.model.counts.invalid > 0">
+                    <article>
+                        <div class="alert alert-info fade-in">
+                            <i class="fa-fw fa fa-info"></i>
+                            <strong>Information</strong><span> {{vmDialog.dataModel.model.counts.inserted}} User(s) will be Added</span>
+                            <span ng-if="vmDialog.dataModel.model.counts.invalid > 0">
+                                    <span class="txt-color-red">{{vmDialog.dataModel.model.counts.invalid}} Selection(s) are Invalid and will be ignored</span>
+                                </span>
+                        </div>
+                    </article>
+                </div>
+                <div class="row">
+                <div class="col-md-12">
+                    <div kendo-grid="addUserGrid" k-options="vmDialog.model.addUserGridOptions"/>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+       
+          <button type="button" id="submit" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord();">
+              {{vmDialog.model.buttonText}}
+          </button>
+         
+          <button class="btn btn-danger" type="button" ng-click="vmDialog.functions.userDelete();" ng-if="vmDialog.dataModel.rowId > -1">
+              Delete
+          </button>
+        <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();"> Cancel </button>
+     
+    </div>
+{{vmDialog.row.domainRecord.roles}}
+  </div>

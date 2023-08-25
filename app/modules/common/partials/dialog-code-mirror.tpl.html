@@ -1,0 +1,32 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelDialog();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class='{{vmDialog.model.icon}}'></i>&nbsp;{{vmDialog.model.title}} Details</h6></div>
+    </div>
+    <div class="modal-body">
+        <form name="frmCMView" class="form-horizontal" id="frmCMView" novalidate>
+            <!--- CODE MIRROR -->
+            <div class="row" id="editor">
+                <mqa-code-mirror  ng-if="vmDialog.model.data.content" data="vmDialog.model.data" ui-object="vmDialog.model.cm" read-only="true"/>
+            </div>
+            <div ng-if="vmDialog.model.data.partialDesc">
+                <span><strong>Showing {{vmDialog.model.data.partialDesc}}</strong></span>
+            </div>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDialog.functions.confirmDialog();">
+            OK
+        </button>
+        <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelDialog();">
+            Cancel
+        </button>
+        <button type="button" class="btn btn-success pull-left" ng-click="vmDialog.functions.download()" ng-if="vmDialog.model.data.fileName" title="click here to Download Entire Attachment Contents">
+            <i class="fa fa-download"></i> Download...
+        </button>
+    </div>
+</div>

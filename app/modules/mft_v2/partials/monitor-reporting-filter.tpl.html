@@ -1,0 +1,110 @@
+<div class="content">
+    <div jarvis-widget id="mft-monitor-reporting-filter-widget" data-widget-colorbutton="false"
+         data-widget-editbutton="false" data-widget-custombutton="false" xmlns="http://www.w3.org/1999/html">
+        <header>
+            <span class="widget-icon"> <i class="fa fa-filter"></i> </span>
+
+            <h2>Filter</h2>
+            <ul class="nav nav-tabs pull-right in">
+                <li class="active">
+                    <a data-toggle="tab" href="#filterTab"> <i class="fa fa-lg fa-search"></i></a>
+                </li>
+            </ul>
+        </header>
+        <div>
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+                <form name="inputForm" novalidate>
+                    <div class="custom-scroll tab-content padding-5">
+                        <div class="tab-pane fade active in no-padding-bottom" id="filterTab">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="input_names">Names:</label>
+                                    <ui-select id="input_names" name="input_names" tagging multiple
+                                               ng-model="vm.model.filter.names" mqa-tag
+                                               input-Placeholder="Enter Partial Monitor Name(s)"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_status">Status:</label>
+                                    <ui-select id="input_status" name="input_status"
+                                               ng-model="vm.model.filter.statuses" multiple theme="select2"
+                                               style="width:100%">
+                                        <ui-select-match placeholder="Please select the Status(es)">
+                                            {{$item.description}}
+                                        </ui-select-match>
+                                        <ui-select-choices
+                                                repeat="listItem.code as listItem in vm.model.lists.monitor_status | filter:$select.search">
+                                            <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_type">Type:</label>
+                                    <ui-select id="input_type" name="input_type"
+                                               ng-model="vm.model.filter.types" multiple theme="select2"
+                                               style="width:100%">
+                                        <ui-select-match placeholder="Please select the Type(s)">
+                                            {{$item.description}}
+                                        </ui-select-match>
+                                        <ui-select-choices
+                                                repeat="listItem.code as listItem in vm.model.lists.monitor_types | filter:$select.search">
+                                            <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_agent">MFT Agents:</label>
+                                    <ui-select id="input_agent" name="input_agent"
+                                               ng-model="vm.model.filter.agents" multiple theme="select2"
+                                               style="width:100%">
+                                        <ui-select-match placeholder="Please select the Agent(s)">
+                                            {{$item.description}}
+                                        </ui-select-match>
+                                        <ui-select-choices
+                                                repeat="listItem.code as listItem in vm.model.lists.agent_at_qm | filter:$select.search">
+                                            <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="input_coordinator">Coordinator:</label>
+                                    <select class="form-control" id="input_coordinator" name="input_coordinator"
+                                            ng-model="vm.model.filter.coordinator"
+                                            ng-options="d for d in vm.model.lists.coordinators">
+                                        <option ng-selected="true" value="">Please select a Coordinator</option>
+                                    </select>
+                                </div>
+
+                                <div class="padding-top-10 padding-bottom-10">
+                                    <button class="btn btn-primary btn-default btn-lg col-md-12 col-sm-12 col-lg-12"
+                                            ng-click="vm.functions.refreshData();"
+                                            ng-disabled="vm.model.flags.inProgress">
+                                        <i class="fa fa-lg fa-search"></i>
+                                        Search
+                                    </button>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <legend class="padding-top-10 no-margin margin-bottom-5">Additional Filtering
+                                </legend>
+                                <div class="form-group">
+                                    <label for="input_names">Names:</label>
+                                    <ui-select id="input_resource" name="input_resource" tagging multiple
+                                               ng-model="vm.model.filter.resources" mqa-tag
+                                               input-Placeholder="Enter Partial Resources(s)"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_jobname">Job Names:</label>
+                                    <ui-select id="input_jobname" name="input_jobname" tagging multiple
+                                               ng-model="vm.model.filter.jobNames" mqa-tag
+                                               input-Placeholder="Enter Job Name(s)"/>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

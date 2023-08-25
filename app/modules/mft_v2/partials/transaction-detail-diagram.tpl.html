@@ -1,0 +1,6 @@
+<div class="widget-body">
+    <div ng-if="data.info" ng-switch="data.info.type">
+        <div data-smart-include="app/modules/spe/partials/transaction-detail-launcher-header.tpl.html" ng-switch-when="itx_launcher"/>
+    </div>
+    <div kendo-diagram="diagram" k-options="vmDetail.diagramOptions" style="border-style: none; min-height: 600px; max-height: 600px;" k-on-click="vmDetail.functions.navDiagram(kendoEvent);"/>
+</div>

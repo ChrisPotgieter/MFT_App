@@ -1,0 +1,108 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelRecord();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class='fa fa-group'></i> {{vmDialog.model.title}}</h6></div>
+    </div>
+
+
+   
+    <div class="modal-body">
+        <form id="frmUserEdit"  name="frmUserEdit" class="form-horizontal">
+            <fieldset>
+                <div class="col-sm-12">
+                    <!--- LOGIN AND PASSWORD -->
+                    <div class="row">
+                        <div class="form-group">
+                            <div id="div_userId" class="col-sm-6">
+                                 <div class="input-group">
+                                      <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                                      <input class="form-control input-lg" placeholder="Login Code" type="text" name="userId" ng-model="vmDialog.dataModel.record.user_id" ng-disabled="!vmDialog.dataModel.flags.allowUserId" required>
+                                 </div>
+                            </div>
+                            <div class="col-sm-6" id="div_userPassword">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-key fa-lg fa-fw"></i></span>
+                                    <input class="form-control input-lg" type="password" name="userPassword" placeholder="Password" name="userPassword" ng-model="vmDialog.dataModel.record.password" ng-disabled="vmDialog.dataModel.flags.adUser" required >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--- NAME -->
+                    <div class="row">
+                        <div class="form-group">
+                            <div id="div_name" class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-font fa-lg fa-fw"></i></span>
+                                    <input class="form-control input-lg" placeholder="Name" type="text" name="name" ng-model="vmDialog.dataModel.record.name" ng-disabled="vmDialog.dataModel.flags.adUser" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--- EMAIL -->
+                    <div class="row">
+                        <div class="form-group">
+                            <div id="div_email" class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+                                    <input class="form-control input-lg" type="email" name="emailAddress"  placeholder="Email Address"  ng-disabled="vmDialog.dataModel.flags.adUser" ng-model="vmDialog.dataModel.record.emailAddress">                        </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--- DEPARTMENTS AND ROLES --->
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-sitemap fa-lg fa-fw"></i></span>
+                                    <ui-select id="departments" name="departments" ng-model="vmDialog.dataModel.record.departments" multiple theme="select2" style="width:100%" ng-change="functions.checkDepartments();">
+                                        <ui-select-match placeholder="Please select Departments">{{$item.name}}</ui-select-match>
+                                        <ui-select-choices repeat="listItem.id as listItem in vmDialog.dataModel.departments | filter:$select.search">
+                                            <div ng-bind-html="listItem.name | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <input type="hidden" name="hiddenDept"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"  ng-show="vmDialog.dataModel.flags.allowRoles">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-shield fa-lg fa-fw"></i></span>
+                                    <ui-select id="roles" name="roles" ng-model="vmDialog.dataModel.record.roles" multiple theme="select2" style="width:100%" ng-change="functions.checkRoles();">
+                                        <ui-select-match placeholder="Please select Roles">{{$item.description}}</ui-select-match>
+                                        <ui-select-choices repeat="listItem.id as listItem in vmDialog.dataModel.roles | filter:$select.search">
+                                            <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <input type="hidden" name="hiddenRole"/>
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+   </div>
+
+   <div class="modal-footer">
+    <div class="row">
+        <button type="submit" id="submit" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord()">
+            {{vmDialog.model.buttonText}}
+        </button>
+        <button type="button"  class="btn btn-danger"   ng-click="vmDialog.functions.userDelete();" ng-if="vmDialog.dataModel.rowId > -1">
+            Delete
+        </button>
+        <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();">
+            Cancel
+        </button>
+    </div>
+
+   </div>
+</div>
+

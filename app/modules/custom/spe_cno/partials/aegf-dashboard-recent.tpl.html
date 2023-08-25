@@ -1,0 +1,40 @@
+<div class="col-sm-12">
+	<div jarvis-widget id="transaction-data-widget"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+			<header>
+				<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+				<h2>Last {{vm.model.dialogData.filter.topCount}} {{vm.model.transactionTable.desc}}</h2>
+			</header>
+			<div>
+				<div class="widget-body no-padding">
+					<div id="griddisplay">
+						<aegf-transaction-grid data="vm.model.transactionTable.data" refresh-flag="vm.model.transactionTable.refresh" mode="1" function-manager="vm.model.transactionTable.functionManager"></aegf-transaction-grid>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<div jarvis-widget id="schedule-data-widget"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+		<header>
+			<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+			<h2>Scheduled Runs - Next 7 Days</h2>
+		</header>
+		<div>
+			<div class="widget-body no-padding">
+				<aegf-config-grid mode="1" data="vm.model.scheduleTable.data" refresh-flag="vm.model.scheduleTable.refresh"/>
+			</div>
+		</div>
+	</div>
+
+	<div jarvis-widget id="period-data-widget"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+		<header>
+			<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+			<h2>Pay Period Expiration - Next 20 Days</h2>
+		</header>
+		<div>
+			<div class="widget-body no-padding">
+				<aegf-config-grid mode="2" data="vm.model.payPeriodTable.data" refresh-flag="vm.model.payPeriodTable.refresh"/>
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,23 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelDialog()">
+            ×
+        </button>
+        <div class='widget-header'><h6><i ></i>&nbsp; {{vmDialog.model.instruction}}</h6>
+        <p> {{vmDialog.model.supplemental}}</p></div>
+      
+    </div>
+    <div class="modal-body">
+        <mft-exit-instruction data="vmDialog.model"></mft-exit-instruction>
+   </div>
+   <div class="modal-footer" >
+    <div class="row">
+        <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelDialog();">
+           OK
+        </button>
+        <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelDialog();">
+            Cancel
+        </button>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div>
+    <div ng-if="!vm.noData">
+        <button type="button" id="exportButton" class="btn btn-primary pull-left" ng-click="vm.functions.onExport();" ng-if="vm.export.allow">
+            <i class="fa fa-image"></i>
+            Export
+        </button>
+        <canvas id="chartjs-bar" class="chart-bar" chart-data="vm.data" chart-labels="vm.labels" chart-series="vm.series" chart-options="vm.options"  chart-click="vm.onClick" chart-dataset-override="vm.datasetOverride" height="{{vm.height}}" ng-if="vm.chartType === 'bar'"></canvas>
+        <canvas id="chartjs-horiz" class="chart-horizontal-bar" chart-data="vm.data" chart-labels="vm.labels" chart-series="vm.series" chart-options="vm.options"  chart-click="vm.onClick" chart-dataset-override="vm.datasetOverride"  height="{{vm.height}}" ng-if="vm.chartType === 'horizBar'"></canvas>
+    </div>
+    <div ng-if="vm.noData" class="text-center text-danger bordered well">
+        <h3>No Data Available for the Current Selection</h3>
+    </div>
+</div>

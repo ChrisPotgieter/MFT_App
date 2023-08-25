@@ -1,0 +1,24 @@
+<div class="alert fade in" ng-class="vmTransHeader.model.data.alertClass">
+    <h3 class="alert-heading no-margin">
+        <i ng-class="vmTransHeader.model.data.statusIcon" class="fa"></i> <span>Transaction Id:</span>
+        <br>
+        <span><small style="color:inherit;">{{vmTransHeader.model.data.transactionId}}</small></span>
+        <br>
+        <small>
+            <span ng-class="vmTransHeader.model.data.labelClass" class="label">{{vmTransHeader.model.data.statusDesc}}</span>&nbsp;&nbsp;
+            <span class="label bg-color-darken">{{vmTransHeader.model.data.mqaTransTypeDesc}}</span>&nbsp;&nbsp;
+            <span class="label bg-color-darken">{{vmTransHeader.model.data.mqaModuleDesc}} Module</span>
+            <span class="label bg-color-darken" ng-if="vmTransHeader.model.data.operationDesc != 'None'">{{vmTransHeader.model.data.operationDesc}}</span>
+        </small>
+        <div ng-if="vmTransHeader.model.data.stats.progress <= 100 && vmTransHeader.model.data.stats.progress > 0">
+            <div class="progress margin-bottom-5 margin-top-5">
+                <div class="progress-bar" ng-class="vmTransHeader.model.data.progressClass"
+                     ng-style="vmTransHeader.model.data.progressStyle"> {{vmTransHeader.model.data.stats.progress}}%
+                </div>
+            </div>
+        </div>
+        <div>
+            <mqa-attachment-button data="vmTransHeader.model.data.attachments" module="1000" ng-if="vmTransHeader.model.data.attachments"/>
+        </div>
+    </h3>
+</div>

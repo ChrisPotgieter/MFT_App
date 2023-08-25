@@ -1,0 +1,11 @@
+<div ng-cloak>
+    <!--- Transaction Header --->
+    <div data-smart-include="app/modules/transaction-reporting/partials/transaction-detail-summary-info-header.tpl.html"/>
+    <div class="padding-5">
+        <!--- Transaction Detail per Type --->
+        <div class="scroll-body" slimscroll="$state.current.data.infoPanelHeight ? {'height': $state.current.data.infoPanelHeight} : {'height':'300'}">
+            <div data-ui-view="infoContent@content"></div>
+        </div>
+        <div data-smart-include="app/modules/transaction-reporting/partials/transaction-detail-summary-info-supplemental.tpl.html"/>
+    </div>
+</div>

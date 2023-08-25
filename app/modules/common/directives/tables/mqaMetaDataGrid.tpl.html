@@ -1,0 +1,19 @@
+<div>
+    <div ng-if="!vm.model.flags.editable">
+        <section>
+            <mqa-kendo-grid title="{{vm.model.title}}" id="{{vm.model.id}}" options="vm.model.gridOptions" function-manager="vm.functionManager"  data="vm.data" refresh-flag="vm.model.flags.gridRefresh" height="{{vm.model.height}}"></mqa-kendo-grid>
+        </section>
+    </div>
+    <div ng-if="vm.model.flags.editable">
+        <legend class="no-margin widget-body-toolbar bordered" ng-if="vm.model.flags.allowAdd">
+            <button class="btn btn-primary" data-ng-click="vm.functions.insertRecord();">
+                <i class="fa fa-lg fa-plus"></i> <span class="hidden-mobile"> Add Entry</span>
+            </button>
+        </legend>
+        <div class="row">
+            <div class="col-md-12">
+                <mqa-kendo-grid title="{{vm.model.title}}" id="{{vm.model.id}}" options="vm.model.gridOptions" function-manager="vm.functionManager" data="vm.data" refresh-flag="vm.model.flags.gridRefresh" height="{{vm.model.height}}"  ondrill="vm.functions.editRecord"></mqa-kendo-grid>
+            </div>
+        </div>
+    </div>
+</div>

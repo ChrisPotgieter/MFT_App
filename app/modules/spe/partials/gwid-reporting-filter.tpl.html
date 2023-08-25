@@ -1,0 +1,100 @@
+<div class="content">
+    <div jarvis-widget id="spe-transaction-reporting-filter-widget" data-widget-colorbutton="false"
+         data-widget-editbutton="false" data-widget-custombutton="false" xmlns="http://www.w3.org/1999/html">
+        <header>
+            <span class="widget-icon"> <i class="fa fa-filter"></i> </span>
+
+            <h2>Filter</h2>
+            <ul class="nav nav-tabs pull-right in">
+                <li class="active">
+                    <a data-toggle="tab" href="#filterTab"> <i class="fa fa-lg fa-search"></i></a>
+                </li>
+            </ul>
+        </header>
+        <div>
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+                <form name="inputForm" novalidate>
+                    <div class="custom-scroll tab-content padding-5">
+                        <div class="tab-pane fade active in no-padding-bottom" id="filterTab">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label>Return Top:</label>
+                                    <input class="form-control spinner-left" name="input_spinner" id="input-spinner" ng-model="vm.model.filter.topCount" min="0" mqa-spinner>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': inputForm.input_daterange.$invalid && inputForm.input_daterange.$dirty}">
+                                    <label for="input_daterange">Date Selection:</label>
+                                    <div class="input-group">
+                                        <input date-range-picker name="input_daterange" id="input_daterange" class="form-control date-picker" type="text" name="date" ng-model="vm.model.dateRange" options="vm.model.dateOptions" required/>
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label>Document Type:</label>
+                                        <ui-select id="docType" name="input_docType" ng-model="vm.model.filter.docType" mqa-combo="{{vm.model.document_list_type}}" mqa-list-source="1" mqa-company-id="{{vm.model.companyId}}" input-Placeholder="Select the Document Type" on-select="vm.functions.onDocChange(true);" ng-disabled="!vm.model.flags.allowDocSelect" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <div class="input-group">
+                                        <div class="col-md-12">
+                                            <label class="radio radio-inline no-margin">
+                                                <input type="radio" class="radiobox" name="radio-inline" ng-model="vm.model.filter.status" value="0">
+                                                <span>All</span>
+                                            </label>
+                                            <label class="radio radio-inline">
+                                                <input type="radio" class="radiobox" name="radio-inline" ng-model="vm.model.filter.status" value="1">
+                                                <span>Successful</span>
+                                            </label>
+                                            <label class="radio radio-inline">
+                                                <input type="radio" class="radiobox" name="radio-inline" ng-model="vm.model.filter.status" value="90">
+                                                <span>Failed</span>
+                                            </label>
+                                            <label class="radio radio-inline">
+                                                <input type="radio" class="radiobox" name="radio-inline" ng-model="vm.model.filter.status" value="4">
+                                                <span>Repaired</span>
+                                            </label>
+                                            <br/>
+                                            <label class="radio radio-inline">
+                                                <input type="radio" class="radiobox" name="radio-inline" ng-model="vm.model.filter.status" value="2">
+                                                <span>Repaired-Unsubmitted</span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_departments">Departments:</label>
+                                    <mqa-dept-combo ng-model="vm.model.filter.departments"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_gwids">GWID:</label>
+                                    <ui-select id="input_gwids" name="input_gwids" tagging
+                                               multiple ng-model="vm.model.filter.gwidList" mqa-tag
+                                               input-Placeholder="Enter GWID (s) to Find"/>
+                                    </ui-select>
+                                </div>
+                                <div class="padding-top-10 padding-bottom-10">
+                                    <button class="btn btn-primary btn-default btn-lg col-md-12 col-sm-12 col-lg-12" ng-click="vm.functions.refreshData();" ng-disabled="vm.model.flags.inProgress || vm.model.filter.docType == null">
+                                        <i class="fa fa-lg fa-search"></i>
+                                        Search
+                                    </button>
+                                </div>
+                            </fieldset>
+                            <fieldset ng-show="vm.model.filter.docType != null">
+                                <legend class="margin-bottom-5 margin-top-5">Meta-Data Filtering</legend>
+                                 <div class="form-group" ng-repeat="metaIndex in vm.model.metaSearchFields">
+                                     <label for="input_{{metaIndex.name}}">{{metaIndex.filter.caption}}:</label>
+                                        <ui-select id="input_{{metaIndex.name}}" name="input_{{metaIndex.name}}" tagging
+                                                   multiple ng-model="vm.model.filter.inputs[metaIndex.name]" mqa-tag
+                                                   input-Placeholder="Enter {{metaIndex.filter.caption}}(s) to Find"/>
+                                 </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

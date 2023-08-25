@@ -1,0 +1,94 @@
+
+<div>
+    <script id="templateTransaction" type="text/x-kendo-template">
+        <button class="k-button k-button-icontext" ng-click="vm.functions.navigateTransaction();"
+                ng-hide="!linkTransaction">
+            <span class="fa fa-info"></span> Transaction Details...
+        </button>
+    </script>
+
+    <div jarvis-widget id="speGwidPayloadEditorWidget" data-widget-color="darken" data-widget-sortable="false"
+         data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false">
+        <header>
+            <span class="widget-icon"> <i class="fa fa-book"></i> </span>
+            <h2>EDI Document Information {{gwid}}</h2>
+
+            <div class="widget-toolbar">
+                <mqa-switch title="Direct Edit:" label="live" ng-model="vm.flags.userRawMode" on-toggle="vm.functions.toggleEditMode"
+                            ng-disabled="!vm.flags.allowEditorToggle"/>
+            </div>
+        </header>
+        <div>
+            <div class="widget-body padding-5">
+                <!--- MESSAGE PANEL -->
+                <div class="alert alert-{{vm.data.notify.type}}"><i class="fa fa-{{vm.data.notify.icon}} "></i><strong>{{vm.data.notify.heading}}</strong><p ng-bind-html="vm.data.notify.msg"/></div>
+                <!--- EDITOR-PANEL -->
+                <div ng-if="vm.flags.showEdit">
+                    <!--- WIDGET TOOLBAR PANEL RAW EDIT READ-ONLY -->
+                    <div class="dialog-footer dialog-flush text-left" ng-if="vm.flags.readOnly && vm.flags.rawMode && linkTransaction">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <button class="btn" data-ng-click="vm.functions.navigateTransaction();">
+                                    <i class="fa fa-info"></i><span class="hidden-mobile"> Transaction Details...</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--- WIDGET TOOLBAR PANEL NON-READONLY -->
+                    <div class="dialog-footer dialog-flush text-right" ng-if="!vm.flags.readOnly">
+                        <div class="row">
+                            <!--- RAW EDIT TRANSACTION LINK-->
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
+                                <div>
+                                    <button class="btn" data-ng-click="vm.functions.navigateTransaction();"
+                                            ng-disabled="vm.flags.inProgress" ng-if="linkTransaction && vm.flags.rawMode">
+                                        <i class="fa fa-info"></i><span class="hidden-mobile"> Transaction Details...</span>
+                                    </button>
+                                    <button class="btn" ng-click="vm.functions.undo();"
+                                            ng-disabled="vm.flags.inProgress || (vm.flags.isOriginal && !vm.flags.hasChanged)">
+                                        <i class="fa fa-undo"></i> <span class="hidden-mobile"> Revert to Original...</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!--- REPAIR AND UNREPAIR -->
+                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-right">
+                                <button class="btn btn-primary" data-ng-click="vm.functions.save();"
+                                        ng-disabled="vm.flags.inProgress">
+                                    <i class="fa fa-save"></i> <span class="hidden-mobile">Save...</span>
+                                </button>
+                                <button class="btn btn-warning" ng-click="vm.functions.validate();"
+                                        ng-disabled="vm.flags.inProgress">
+                                    <i class="fa fa-check"></i> <span class="hidden-mobile">Validate...</span>
+                                </button>
+                                <button class="btn btn-success" data-ng-click="vm.functions.update();"
+                                        ng-disabled="vm.flags.inProgress">
+                                    <i class="fa fa-sign-out"></i> <span class="hidden-mobile"> Fix and Release...</span>
+                                </button>
+
+                                <button class="btn btn-danger" data-ng-click="vm.functions.delete();"
+                                        ng-disabled="vm.flags.inProgress" ng-show="vm.flags.allowDelete">
+                                    <i class="fa fa-times"></i> <span class="hidden-mobile"> Irreparable...</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--- WIDGET INNER BODY -->
+                    <div class="row">
+                        <div class="col-md-12 padding-top-10 padding-bottom-10">
+                            <div class="padding-5  bordered">
+                                <div ng-show="vm.flags.rawMode">
+                                    <ui-codemirror ui-codemirror-opts="vm.options.rawEditorOptions" ng-model="vm.data.rawEditor" ui-refresh="vm.flags.refreshRawEditor"></ui-codemirror>
+                                </div>
+                                <div ng-show="!vm.flags.rawMode">
+                                    <div kendo-grid="gridEditor" id="grid" k-options="vm.options.gridEditorOptions"/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

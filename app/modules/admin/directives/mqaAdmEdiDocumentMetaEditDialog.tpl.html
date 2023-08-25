@@ -1,0 +1,80 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelRecord();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class='fa fa-columns'></i> {{vmDialog.model.title}}</h6></div>
+    </div>
+    <div class="modal-body">
+        <form id="frmEdiDocumentMetaDataEdit" name="frmEdiDocumentMetaDataEdit" novalidate>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-lg-5 col-md-5 col-sm-5" id="div_name">
+                        <label class="control-label">Field Name:</label>
+                        <input type="text" class="form-control" name="name" ng-model="vmDialog.dataModel.name" placeholder="Please Provide the Source Data Field Name"/>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7" id="div_caption">
+                        <label class="control-label">Caption:</label>
+                        <input type="text" class="form-control" name="caption" ng-model="vmDialog.dataModel.filter.caption" placeholder="Please Provide the Display Caption"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 padding-top-10">
+                    <div class="form-group">
+                        <label class="control-label">Filterable</label>
+                        <div class="input-group">
+                            <div class="col-md-12">
+                                <label class="radio radio-inline no-margin">
+                                    <input type="radio" class="radiobox" name="radio-inline" ng-model="vmDialog.dataModel.filter.show" value="1">
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio radio-inline">
+                                    <input type="radio" class="radiobox" name="radio-inline" ng-model="vmDialog.dataModel.filter.show" value="0">
+                                    <span>No</span>
+                                </label>
+                                <label class="radio radio-inline">
+                                    <input type="radio" class="radiobox" name="radio-inline" ng-model="vmDialog.dataModel.filter.show" value="2">
+                                    <span>Internal</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" id="div_filterType" ng-show="vmDialog.dataModel.filter.allowDrill">
+                    <div class="form-group">
+                        <label class="control-label margin-top-10">Filter Type</label>
+                        <select class="form-control" name="aggregateSelect" ng-model="vmDialog.dataModel.filter.filterType">
+                            <option value="0">Equals</option>
+                            <option value="1">Starts With</option>
+                            <option value="2">Ends With</option>
+                            <option value="3">Contains</option>
+                            <option value="4">Not Equal</option>
+                            <option value="5">Not Starts With</option>
+                            <option value="6">Not Ends With</option>
+                            <option value="7">Not Contains</option>
+                            <option value="8">Equals Case-Insensitive</option>
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord();">
+                {{vmDialog.model.buttonText}}
+            </button>
+
+            <button type="button" class="btn btn-danger" ng-click="vmDialog.functions.userDelete();"
+                    ng-if="vmDialog.dataModel.recordStatus == 0">
+                Delete
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div>
+    <!--- USER SELECTOR -->
+    <div class="row">
+        <article class="col-sm-12 no-padding-bottom">
+            <mqa-adm-company-user-list data="vmStep.model.users" title="Current User List" refresh-flag="vmStep.model.flags.userRefreshFlag" grid-options="vmStep.model.userGridOptions"/>
+        </article>
+    </div>
+    <!--- ADD USER BUTTON -->
+    <div class="row no-margin no-padding">
+        <div class="margin-top-5">
+            <button class="btn btn-default btn-primary" ng-click="vmStep.functions.addUser();" type="button"><i class="fa fa-plus"></i> Add User...</button>
+        </div>
+    </div>
+</div>
+

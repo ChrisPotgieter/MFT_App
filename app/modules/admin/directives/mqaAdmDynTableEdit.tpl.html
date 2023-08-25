@@ -1,0 +1,106 @@
+<div class="row">
+    <article class="col-sm-12">
+        <div data-jarvis-widget="frmDynTableWidget" data-widget-editbutton="false" data-widget-fullscreenbutton="false"
+             data-widget-custombutton="false" data-widget-colorbutton="false" data-widget-togglebutton="false"
+             data-widget-deletebutton="false">
+            <header><h2>Configuration Information</h2></header>
+            <div class="widget-body padding-5">
+                <form id="frmDynTableEdit" name="frmDynTableEdit" class="form-horizontal" novalidate>
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="col-md-12 col-lg-12 col-sm-12">
+                                <input type="text" placeholder="Metric Name" class="form-control" name="code"
+                                       ng-model="editRow.code">
+                                <input type="hidden" name="hiddenValidation"/>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 col-lg-12 col-sm-12" id="div_desc">
+                                <input type="text" placeholder="Description" class="form-control" name="description"
+                                       ng-model="editRow.description"/>
+                            </div>
+                        </div>
+                        <div class="form-horizontal" id="div_retention">
+                            <div class="form-group">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                        <input class="form-control" type="number"
+                                               placeholder="Retention Period"
+                                               name="period" ng-model="editRow.jsonData.retentionValue" min="0">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-sm-6">
+                                    <select class="form-control " name="periodSelect"
+                                            ng-model="editRow.jsonData.retentionType">
+                                        <option value="0">Days</option>
+                                        <option value="1">Hours</option>
+                                        <option value="2">Minutes</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-sm-6 col-md-6 col-lg-6" id="div_limit">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-sort-numeric-asc"></i></span>
+                                        <input class="form-control" type="number"
+                                               placeholder="Display Top"
+                                               name="limit" ng-model="editRow.jsonData.limit" min="10">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-sm-6" id="div_dashboard">
+                                    <select class="form-control" name="dashboard"
+                                            ng-model="editRow.jsonData.dashboard"
+                                            ng-options="d.code as d.description for d in vm.model.dashboardOptions">
+                                        <option ng-selected="true" value="">Please select a Dashboard for This Widget</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+                <fieldset>
+                    <legend class="no-margin-bottom">Columns
+                        <button class="btn btn-primary btn-xs" data-ng-click="vm.functions.onNewColumn();">
+                            <i class="fa fa-sm fa-plus"></i>
+                        </button>
+                    </legend>
+                    <div class="row margin-top-10">
+                        <div class="col-md-12">
+                            <mqa-kendo-grid id="columnGrid" options="vm.model.columnGrid.dataOptions"
+                                            data="editRow.jsonData.columns"
+                                            ondrill="vm.functions.onEditColumn"
+                                            refresh-flag="vm.model.flags.gridRefresh"></mqa-kendo-grid>
+                        </div>
+                    </div>
+                </fieldset>
+                <footer class="margin-top-10 padding-left-15">
+                    <div class="row">
+                        <button type="button" id="saveButton" class="btn btn-primary" ng-click="vm.functions.onSave();">
+                            {{vm.model.buttonText}}
+                        </button>
+
+                        <button type="button" class="btn btn-danger" ng-click="vm.functions.userDelete();"
+                                ng-if="editRow.recordStatus == 0">
+                            Delete
+                        </button>
+                        <button type="button" class="btn btn-default" ng-click="vm.functions.cancelRecord();">
+                            Cancel
+                        </button>
+                        <button type="button" class="btn btn-warning" ng-click="vm.functions.simulateInsert();"
+                                ng-show="vm.flags.showInsert">
+                            Simulate Insert
+                        </button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </article>
+</div>

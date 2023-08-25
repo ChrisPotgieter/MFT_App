@@ -1,0 +1,147 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "jsoneditor",
+        "scope": null,
+        "escapedName": "jsoneditor",
+        "name": "jsoneditor",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\MQAttachV2\\Tenants\\DEFAULT\\Node"
+    ]
+  ],
+  "_from": "jsoneditor@latest",
+  "_hasShrinkwrap": false,
+  "_id": "jsoneditor@9.9.2",
+  "_inCache": true,
+  "_location": "/jsoneditor",
+  "_nodeVersion": "16.14.2",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/jsoneditor_9.9.2_1663678801295_0.5046556611890682"
+  },
+  "_npmUser": {
+    "name": "josdejong",
+    "email": "wjosdejong@gmail.com"
+  },
+  "_npmVersion": "8.5.0",
+  "_phantomChildren": {
+    "fast-json-stable-stringify": "2.0.0",
+    "json-schema-traverse": "0.4.1",
+    "uri-js": "4.2.2"
+  },
+  "_requested": {
+    "raw": "jsoneditor",
+    "scope": null,
+    "escapedName": "jsoneditor",
+    "name": "jsoneditor",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/jsoneditor/-/jsoneditor-9.9.2.tgz",
+  "_shasum": "176112f71acbf37e977aae8656a17bc33a7a4269",
+  "_shrinkwrap": null,
+  "_spec": "jsoneditor",
+  "_where": "C:\\MQAttachV2\\Tenants\\DEFAULT\\Node",
+  "author": {
+    "name": "Jos de Jong",
+    "email": "wjosdejong@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/josdejong/jsoneditor/issues"
+  },
+  "dependencies": {
+    "ace-builds": "^1.10.1",
+    "ajv": "^6.12.6",
+    "javascript-natural-sort": "^0.7.1",
+    "jmespath": "^0.16.0",
+    "json-source-map": "^0.6.1",
+    "jsonrepair": "^2.2.1",
+    "mobius1-selectr": "^2.4.13",
+    "picomodal": "^3.0.0",
+    "vanilla-picker": "^2.12.1"
+  },
+  "description": "A web-based tool to view, edit, format, and validate JSON",
+  "devDependencies": {
+    "@babel/core": "7.19.1",
+    "@babel/preset-env": "7.19.1",
+    "@babel/register": "7.18.9",
+    "babel-loader": "8.2.5",
+    "btoa": "1.2.1",
+    "date-format": "4.0.13",
+    "fancy-log": "2.0.0",
+    "gulp": "4.0.2",
+    "gulp-clean-css": "4.3.0",
+    "gulp-concat-css": "3.1.0",
+    "gulp-sass": "5.1.0",
+    "jsdom": "20.0.0",
+    "json-loader": "0.5.7",
+    "mkdirp": "1.0.4",
+    "mocha": "10.0.0",
+    "sass": "1.54.9",
+    "source-map-loader": "4.0.0",
+    "standard": "17.0.0",
+    "uglify-js": "3.17.0",
+    "webpack": "5.74.0"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-hdM6bgGh3fqnbAEgO1zXM3bNdYfFH/9nPWWJYdNP/wyRU9H+t3Wvb+VtBBE8XjkBYv0rIYjeaYgrwDRaXC3zig==",
+    "shasum": "176112f71acbf37e977aae8656a17bc33a7a4269",
+    "tarball": "https://registry.npmjs.org/jsoneditor/-/jsoneditor-9.9.2.tgz",
+    "fileCount": 126,
+    "unpackedSize": 6359103,
+    "signatures": [
+      {
+        "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+        "sig": "MEQCIG/oVzTLjrzFFEtCvMtX4JlWCRriZNPdoklDST/VlTk0AiAFxH1lIDNa2bNa1myn02U8dUl2LaFrvRlM7eq4OrJEVg=="
+      }
+    ],
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjKblRACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmo5PA//XFguOVS1+z+hkQb7T+njQtmpWolE9Utnoiv2ndOmZEdfsRtA\r\ndRvoO3UkeYczH3zXD/OkejnY4rQM/30jn/4D2BtjJEX/gXbzwKm/uPfl3MR8\r\ns9hXYaz7HZQoeL5jRwFtmzuW0NKQTRlN2O5ISIC5lUPPxCXiiH7B0LEsrGXf\r\nfVya0KpDfPmDr4p4sFCBbcxdB8oejwn5Ucteb2i0SEB05usM5M6ZTmULKAdB\r\nBGajCKKl4xeMH7eK5ceAm5q64/zAZXrAorkrcW5s8qqyaiFOKRagu4WfZA/h\r\n2bbEid2lmdy7KoQWteMphFWx2ZVB3VFpmqct5s2xAn7QbN4bBRzPk2A74jyk\r\n1rYtaWlxTTQdxfZS1tDa6H88Mwd68bbTEmNgQFXbAtct5s4oXqQeGAF5/p+W\r\n/s9Ei0iYGVBAf8lrVcdASaXPpkb0CI6yA8rVvm4480bl2ytUQ1h7k31z/w36\r\nEh2yFAPy7EpVZXNHR8EYKEsEq01BI1ofFUOE8jUGj+X+4OqOXvrnXON11Mj1\r\ni4ZIizIOjcL0UCSNda29zkTphgPstpGvwrP0nUdbVCdxqSeXQ4ZF9npTia4H\r\nIZTjLMC67akbC7UXMPrCk93x7EI1rQiu4x8bQ3ERDh+VYOPPgc0LETNrqnIw\r\ncYL8AAec3yUoN65Wx+xDU/uh2AgT4abx79w=\r\n=i14Y\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "gitHead": "9f5483a93a45cbb75111a2e08db61f01d8f0a2af",
+  "homepage": "https://jsoneditoronline.org",
+  "license": "Apache-2.0",
+  "main": "./dist/jsoneditor.min.js",
+  "maintainers": [
+    {
+      "name": "josdejong",
+      "email": "wjosdejong@gmail.com"
+    }
+  ],
+  "name": "jsoneditor",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josdejong/jsoneditor.git"
+  },
+  "scripts": {
+    "build": "gulp",
+    "lint": "standard --env=mocha",
+    "minify": "gulp minify",
+    "prepublishOnly": "npm test && npm run build",
+    "start": "gulp watch",
+    "test": "mocha test --require @babel/register"
+  },
+  "standard": {
+    "ignore": [
+      "src/js/assets",
+      "examples/react*"
+    ]
+  },
+  "tags": [
+    "json",
+    "editor",
+    "viewer",
+    "formatter"
+  ],
+  "version": "9.9.2"
+}

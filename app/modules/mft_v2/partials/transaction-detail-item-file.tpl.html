@@ -1,0 +1,71 @@
+<div>
+    <div data-smart-include="app/modules/mft_v2/partials/transaction-detail-item-common.tpl.html"/>
+    <ul class="list-unstyled">
+        <li ng-if="item.info.size">
+            <span class="text-muted">
+                <b>File Size:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.size | bytesFilter}}</span>
+            </span>
+        </li>
+        <li ng-if="item.info.alias">
+            <span class="text-muted">
+                <b>Alias:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.alias}}</span>
+            </span>
+        </li>
+        <li ng-if="item.info.encoding">
+            <span class="text-muted">
+                <b>Encoding:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.encoding}}</span>
+            </span>
+        </li>
+        <li ng-if="item.info.EOL">
+            <span class="text-muted">
+                <b>EOL:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.eol}}</span>
+            </span>
+        </li>
+        <li ng-if="item.info.filespace">
+            <span class="text-muted">
+                <b>File Space:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.filespace}}</span>
+            </span>
+        </li>
+        <li ng-if="item.info.delimiter">
+            <span class="text-muted">
+                <b>Delimiter:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.delimiter}}</span>
+            </span>
+        </li>
+        <li ng-if="item.info.delimiterPosition">
+            <span class="text-muted">
+                <b>Delimiter Position:</b>&nbsp;&nbsp;<span
+                    class="txt-color-darken">{{item.info.delimiterPosition}}</span>
+            </span>
+        </li>
+        <li ng-if="item.options.recursive || item.info.includeDelimiterInFile || item.info.keepTrailingSpaces || item.info.truncateRecords">
+            <div class="inline-group">
+                <label class="checkbox state-disabled" ng-if="item.options.recursive">
+                    <input type="checkbox" name="checkbox-inline" ng-model="item.options.recursive" disabled="disabled">
+                    <i></i>Recursive
+                </label>
+                <label class="checkbox state-disabled" ng-if="item.info.includeDelimiterInFile">
+                    <input type="checkbox" name="checkbox-inline" ng-model="item.info.includeDelimiterInFile"
+                        disabled="disabled">
+                    <i></i>Include Delimiter
+                </label>
+                <label class="checkbox state-disabled" ng-if="item.info.keepTrailingSpaces">
+                    <input type="checkbox" name="checkbox-inline" ng-model="item.info.keepTrailingSpaces"
+                        disabled="disabled">
+                    <i></i>Keep Trailing Spaces
+                </label>
+                <label class="checkbox state-disabled" ng-if="item.info.truncateRecords">
+                    <input type="checkbox" name="checkbox-inline" ng-model="item.info.truncateRecords"
+                        disabled="disabled">
+                    <i></i>Truncate Records
+                </label>
+            </div>
+        </li>
+        <li ng-if="item.info.last_modified">
+            <span class="text-muted">
+                <b>Last Modified:</b>&nbsp;&nbsp;<span
+                    class="txt-color-darken">{{item.info.last_modified | localUTCDateFilter : 'LLL'}}</span>
+            </span>
+        </li>
+
+    </ul>
+</div>

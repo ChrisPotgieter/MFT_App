@@ -1,0 +1,24 @@
+<div>
+    <div class="row" id="badges_main">
+        <div class="col-sm-6 col-lg-4">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.transfers}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-exchange" caption="Total Transactions" value="vmCount.data.transfer_count.value" id="badge_transfers" tooltip="Total No. of Boomi Transactions with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+            <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white" icon="fa-exclamation" caption="Total Errors" value="vmCount.data.failure_count.value" id="badge_errors" tooltip="Total No. of Failures with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.documents}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-file-text" caption="Total Documents" value="vmCount.data.doc_count.value" id="badge_documents" tooltip="Total No. of Documents Initiated with this Criteria"/>
+        </div>
+    </div>
+    <div class="row" id="badges_avgs">
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.bytes}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-floppy-o" caption="Total Bytes" value="vmCount.data.byte_count.value" id="badge_bytes" tooltip="Total No. of Bytes with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-5">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.atoms}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-clock-o" caption="Total Run Time" value="vmCount.data.time_count.value" id="badge_time"  tooltip="Total Runtime with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.listeners}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-clock-o" caption="Avg. Time" value="vmCount.data.avg_time_count.value" id="badge_avg_time"  tooltip="Avg. Runtime with this Criteria"/>
+        </div>
+    </div>
+</div>

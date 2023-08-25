@@ -1,0 +1,20 @@
+<div id="xmlsign-wmq-gate-reporting-gridview-widget" data-widget-colorbutton="false" data-widget-togglebutton="false"  data-widget-editbutton="false" data-widget-deletebutton="false" data-jarvis-widget>
+    <header>
+        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+        <h2><b>{{vm.model.reportName}}</b></h2>
+        <mqa-widget-user-save-button toggle-flag="vmgrid.flags.userSave" caption="Save Reporting Configuration" on-save="vmgrid.stateManager.persistUserState"/>
+    </header>
+    <!-- widget content -->
+    <div class="widget-body">
+        <section  ng-if="vm.model.counts != null">
+            <cno-tpci-dashboard-count data="vm.model.counts" id="counts" module="{{vm.model.filter.module}}" ng-if="vm.model.counts != null" on-drill="vmgrid.functions.onCountDrill"/>
+        </section>
+        <div id="grid">
+            <div class="row">
+                <div class="col-md-12">
+                    <cno-tpci-transaction-grid data="vm.model.data" function-manager="vmgrid.stateManager" refresh-flag="vm.model.flags.refresh" module="{{vm.model.filter.module}}" mode="1"></cno-tpci-transaction-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

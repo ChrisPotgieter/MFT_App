@@ -1,0 +1,54 @@
+<div class="row">
+	<!--- CURRENT SIDE -->
+	<div class="col-md-6">
+		<!-- header -->
+		<div class="col-md-12">
+			<div>
+				<h6 class="no-margin-bottom"> {{vm.model.currentData.title}}</h6>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<hr class="bordered"/>
+		</div>
+		<!-- counts current -->
+		<div class="col-md-12">
+			<div class="row">
+				<boomi-dashboard-count data="vm.model.currentData.counts" id="counts" view-type="1"/>
+			</div>
+		</div>
+
+		<!-- BAR STATISTICS -->
+		<div data-smart-include="app/modules/boomi/partials/dashboard-current-bars.tpl.html"/>
+	</div>
+
+	<!-- COMPARISION SIDE -->
+	<div class="col-md-6">
+		<!-- header -->
+		<div class="col-md-12">
+			<div>
+				<h6 class="no-margin-bottom"> {{vm.model.compareData.title}}</h6>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<hr class="bordered"/>
+		</div>
+		<div class="col-md-12">
+			<div class="row">
+				<boomi-dashboard-count data="vm.model.compareData.counts" id="compareCounts" view-type="1"/>
+			</div>
+		</div>
+
+		<!-- BAR STATISTICS -->
+		<div data-smart-include="app/modules/boomi/partials/dashboard-compare-bars.tpl.html"/>
+	</div>
+
+	<!-- TRANSACTION GRID -->
+	<div class="col-md-12">
+		<div data-smart-include="app/modules/boomi/partials/dashboard-recent.tpl.html"/>
+	</div>
+	<!-- ATOM STATISTICS -->
+	<div data-smart-include="app/modules/boomi/partials/dashboard-atom-detail.tpl.html"/>
+
+
+</div>
+

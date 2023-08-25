@@ -1,0 +1,12 @@
+<div class="header-dropdown-list hidden-xs dropdown">
+    <li class="dropdown" uib-dropdown>
+        <a class="dropdown-toggle" uib-dropdown-toggle href> <img src="styles/img/blank.gif" alt="{{vm.model.current}}">
+            <span>{{vm.model.current}} </span>
+            <i ng-if="vm.model.modules.length" class="fa fa-angle-down"></i> </a>
+        <ul class="dropdown-menu pull-right" ng-if="vm.model.modules.length">
+            <li ng-repeat="module in vm.model.modules">
+                <a ui-sref="{{module.jsonData.route.startRoute}}">{{module.description}}</a>
+            </li>
+        </ul>
+    </li>
+</div>

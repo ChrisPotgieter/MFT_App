@@ -1,0 +1,136 @@
+<div>
+    <!-- COMMAND INFO -->
+    <section class="col-lg-12 col-md-12 col-sm-12">
+        <h2 class="no-margin" ng-class="vmItem.model.isError ? 'text-danger' : 'text-success'">
+            <!-- ICON AND TYPE -->
+            <i ng-class="vmItem.model.icon"></i><span class="semi-bold"> {{vmItem.model.title}}</span>
+            <br>
+            <!--- COMMAND -->
+            <small class="wrap"><span>{{vmItem.model.command_name}}</span>
+                <!-- COMMAND ARGS use track by as the args may be duplicate and then angular breaks -->
+                <span ng-if="vmItem.model.command_details.arguments">
+                        <span ng-repeat="arg in vmItem.model.command_details.arguments track by $index">&nbsp;{{arg}}</span>
+                    </span>
+                <!--- ANT TARGETS  use track by as the args may be duplicate and then angular breaks -->
+                <div ng-if="vmItem.model.command_details.targets">
+                    <ul class="list-unstyled" ng-if="vmItem.model.command_details.targets">
+                        <li ng-repeat="arg in vmItem.model.command_details.targets track by $index">&nbsp;
+                            <span class="label label-info">{{arg}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </small>
+        </h2>
+    </section>
+
+    <!-- ANT PROPERTIES -->
+    <section class="col-lg-12 col-md-12 col-sm-12" ng-if="vmItem.model.command_details.properties">
+        <mqa-meta-data-grid data="vmItem.model.command_details.properties" height="250"/>
+    </section>
+
+    <!--- EXECUTION SETTINGS -->
+    <section class="col-lg-12 col-md-12 col-sm-12" ng-if="vmItem.model.command_properties">
+        <h6>Settings</h6>
+        <hr class="no-margin"/>
+        <ul class="list-unstyled">
+            <li ng-if="vmItem.model.command_properties.successRC != null">
+                <span class="text-muted">
+                    <b>Expected Success Return Code:</b> &nbsp;{{vmItem.model.command_properties.successRC}}
+                </span>
+            </li>
+            <li ng-if="vmItem.model.command_properties.retryCount > 0 || vmItem.model.command_properties.retryWait > 0">
+                <p class="text-muted">
+                    <b>Max Retries:</b>&nbsp;&nbsp;{{vmItem.model.command_properties.retryCount}}
+                    <span ng-if="vmItem.model.command_properties.retryWait > 0">
+                            <span>&nbsp;(<b>Retry Interval:</b></span>&nbsp;&nbsp;{{vmItem.model.command_properties.retryWait}})
+                    </span>
+                </p>
+            </li>
+            <li ng-if="vmItem.model.command_properties.priority != null">
+                <span class="text-muted">
+                    <b>Priority:</b> &nbsp;{{vmItem.model.command_properties.priority}}
+                </span>
+            </li>
+            <li ng-if="vmItem.model.command_properties.message != null">
+                <b>Message:</b><span class="label label-info">{{vmItem.model.command_properties.message}}</span>
+            </li>
+        </ul>
+    </section>
+    <!--- EXECUTE RESULTS -->
+    <section class="col-lg-12 col-md-12 col-sm-12">
+        <h6>Results</h6>
+        <hr class="no-margin"/>
+
+        <!-- EXECUTION OVERALL -->
+        <div class="row" ng-if="vmItem.model.results.length > 1">
+            <b>Overall Result</b>
+            <article class="col-sm-12 no-margin">
+                <div class="alert alert-{{vmItem.model.resultObject.alert}}">
+                    <h6>
+                        <i class="fa-fw fa fa-{{vmItem.model.resultObject.icon}}"></i>
+                        {{vmItem.model.resultObject.message}}
+                        <small class="txt-color-darken">
+                            <ul class="list-unstyled">
+                                <li ng-if="vmItem.model.resultObject.executeDateTime">
+                                    <b>Execution Date:</b>&nbsp;&nbsp;{{vmItem.model.resultObject.executeDateTime | localUTCDateFilter}}
+                                </li>
+                                <li  ng-if="vmItem.model.resultObject.returnCode != null">
+                                    <b>Return Code:</b>&nbsp;&nbsp;{{vmItem.model.resultObject.returnCode}}
+                                <li>
+                                <li  ng-if="vmItem.model.resultObject.executeRetries > 0">
+                                    <b>No of Retries:</b>&nbsp;{{vmItem.model.resultObject.executeRetries}}
+                                <li>
+                            </ul>
+                        </small>
+                    </h6>
+                </div>
+            </article>
+        </div>
+
+        <!--- EXECUTION RESULT -->
+        <div ng-repeat="result in vmItem.model.results">&nbsp;
+            <div class="row">
+                <article class="col-sm-12 no-margin">
+                    <div class="alert alert-{{result.alert}}">
+                        <h6>
+                            <i class="fa-fw fa fa-{{result.icon}}"></i>
+                                {{result.message}}
+                            <small class="txt-color-darken">
+                                <ul class="list-unstyled">
+                                    <li ng-if="result.command_date">
+                                        <b>Execution Date:</b>&nbsp;&nbsp;{{result.command_date | localUTCDateFilter}}
+                                    </li>
+                                    <li  ng-if="result.return_code != null">
+                                        <b>Return Code:</b>&nbsp;&nbsp;{{result.return_code}}
+                                    <li>
+                                    <li  ng-if="result.executeRetries && result.executeRetries > 0">
+                                        <b>No of Retries:</b>&nbsp;{{result.executeRetries}}
+                                    <li>
+                                </ul>
+                            </small>
+                        </h6>
+                    </div>
+                </article>
+            </div>
+            <div ng-if="result.standard_output">
+                <b>Standard Output</b>
+                <div ng-class="(result.standard_error  || result.error) ? 'alert-warning': 'alert-success'" class="alert alert-block">
+                    <div class="custom-scroll monospaced">{{result.standard_output}}</div>
+                </div>
+            </div>
+            <div ng-if="result.standard_error">
+                <b>Standard Error</b>
+                <div class="alert alert-block alert-danger">
+                    <div class="custom-scroll monospaced">{{result.standard_error}}</div>
+                </div>
+            </div>
+            <div ng-if="result.error">
+                <b>Error</b>
+                <div class="alert alert-block alert-danger">
+                    <div class="custom-scroll monospaced">{{result.error}}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

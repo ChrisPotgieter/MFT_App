@@ -1,0 +1,23 @@
+<div>
+    <span>
+        <i class="fa fa-circle {{data.current_item.class}}"/>
+        Current Item {{data.current_item.item_index}} of {{data.total_items}}
+    </span>
+    <div class="bar-holder">
+        <div class="progress">
+            <div class="progress-bar bg-color-green" data-transitiongoal="{{data.current_progress}}" aria-valuenow="{{data.current_progress}}" style="width: {{data.current_progress}}%;">{{data.current_progress}}%</div>
+        </div>
+    </div>
+    <div class="text-align-left col-lg-12">
+        <div>
+            <b>Source:</b>&nbsp;&nbsp;<span style="text-overflow:ellipsis;white-space:nowrap">{{data.current_item.source_resource}}</span> <span>({{data.current_item.source_type_desc}})</span>
+        </div>
+        <div>
+            <b>Destination:</b>&nbsp;&nbsp;<span style="text-overflow:ellipsis;white-space:nowrap">{{data.current_item.destination_resource}}</span> <span>({{data.current_item.destination_type_desc}})</span>
+        </div>
+        <div>
+            <b>Transfer:</b>&nbsp;&nbsp;{{data.current_item.elapsed_bytes}} of {{data.current_item.total_bytes}} </span> <span>({{data.current_item.rate}})</span>
+        </div>
+    </div>
+
+</div>

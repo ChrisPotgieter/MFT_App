@@ -1,0 +1,38 @@
+<fieldset>
+    <div class="form-group">
+        <label>Return Top:</label>
+        <input class="form-control spinner-left" name="input_spinner" id="input-spinner" ng-model="filter.topCount" min="0" mqa-spinner>
+    </div>
+    <div class="form-group" ng-class="{'has-error': inputForm.input_daterange.$invalid && inputForm.input_daterange.$dirty}">
+        <label for="input_daterange">Date Selection:</label>
+        <div class="input-group">
+            <input date-range-picker name="input_daterange" id="input_daterange" class="form-control date-picker" type="text" name="date" ng-model="$parent.dateRange" options="opts" required/>
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Departments:</label>
+        <mqa-dept-combo ng-model="filter.departments"/>
+    </div>
+    <div class="form-group">
+        <label for="input_status">Status:</label>
+        <ui-select id="input_status" name="input_status" multiple ng-model="filter.statuses" mqa-list="TRANS_STATUS" mqa-list-source="0" input-Placeholder="Select Status(es)"/>
+    </div>
+
+    <div class="form-group">
+        <label for="input_jobNames">Job Names:</label>
+        <ui-select id="input_jobNames" name="input_jobNames" tagging multiple ng-model="filter.jobNames" mqa-tag input-Placeholder="Enter Job Names"/>
+    </div>
+    <div class="form-group">
+        <label for="input_transactionIds">Transaction Id(s):</label>
+        <ui-select id="input_transactionIds" name="input_transactionIds" tagging multiple ng-model="filter.transactionIds" mqa-tag input-Placeholder="Enter Transactions to Find"/>
+    </div>
+    <div class="form-group" ng-if="filter.docTypes && filter.docTypes.length > 0 && !filter.module">
+        <label for="input_docTypes">Document Type:</label>
+        <ui-select id="input_docTypes" name="input_docTypes" ng-model="filter.docTypes" mqa-list="DocType" multiple ng-disabled="true" mqa-list-source="1" input-Placeholder="Select Document Type"/>
+    </div>
+    <div class="form-group" ng-if="filter.docIdTitle">
+        <label for="input_docId">{{filter.docIdTitle}}(s):</label>
+        <ui-select id="input_docId" name="input_docId" ng-model="filter.docIds" tagging multiple mqa-tag input-Placeholder="Enter {{filter.docIdTitle}}(s) to Find"/>
+    </div>
+</fieldset>

@@ -1,0 +1,19 @@
+<div id="content" class="no-padding">
+    <section id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12 col-md-3 col-lg-3 no-padding">
+                <div data-ui-view="filterContent@content"/>
+            </article>
+            <article class="col-sm-12 col-md-9 col-lg-9 no-padding">
+                <div smart-include="app/modules/common/partials/tab-viewer.tpl.html"></div>
+            </article>
+        </div>
+        <div class="row" ng-if="data">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+                <div class="padding-2 no-padding-bottom">
+                    <div data-ui-view="footerContent@content"/>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>

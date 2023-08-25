@@ -1,0 +1,85 @@
+<div>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelDialog();"> × </button>
+    <div class='widget-header'>
+      <h6> Custom Column Properties </h6>
+      <label> You can combine source columns to one or can add a new column </label>
+    </div>
+  </div>
+  <div class="modal-body">
+    <form id="frmEdit" name="frmEdit" novalidate>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"  id="div_caption">
+            <label class="control-label" for="input_caption">Caption:</label>
+            <input class="form-control" id="input_caption" name="input_caption" ng-model="vmDialog.dataModel.caption" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-12 col-lg-12">
+             <label class="control-label">Result:</label>
+            <pre>{{vmDialog.dataModel.data_source}}</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="row padding-5" style="margin-left: -2px">
+        <div ng-repeat="x in [].constructor(vmDialog.model.numberInputs) track by $index">
+          <div ng-if="$index != 0"  class="col-md-6 col-lg-6 padding-top-10">
+            <label class="control-label">Separator</label>
+            <select class="form-control"  name='separator_{{$index-1}}' id="separator_{{$index-1}}"
+                    ng-model="vmDialog.model.source[$index + ($index - 1)]"
+                    ng-options="d.value as d.name for d in vmDialog.model.delimiterOptions">
+              <option ng-selected="true" value="">Please select Separator</option>
+            </select>
+
+            <!--
+            <input class="form-control" name='separator_{{$index-1}}' ng-model="vmDialog.dataModel.source[$index + ($index - 1)]"/>
+            -->
+          </div>
+          <div class="col-md-6 col-lg-6 no-padding padding-top-10">
+            <label class="control-label">Value {{$index+1}} (Choose or Add)</label>
+
+            <ui-select name="input_{{$index+1}}" id="input_{{$index+1}}" tagging="vmDialog.functions.tagTransform" tagging-label="false" ng-model="vmDialog.model.source[2 * $index]" theme="select2" style="width: 100%;" title="Choose a Field or Type a Name">
+              <ui-select-match placeholder="Choose or Add">{{$select.selected.label}}</ui-select-match>
+              <ui-select-choices repeat="station.value as station in vmDialog.model.fields | filter: { label: $select.label }">
+                <div ng-bind-html="station.label | highlight: $select.search"></div>
+              </ui-select-choices>
+            </ui-select>
+<!--
+            <ui-select name="input_{{$index+1}}" id="input_{{$index+1}}" multiple tagging tagging-label="(custom 'new' label)"  ng-model="vmDialog.model.source[2 * $index]" theme="select2" sortable="true" style="width: 100%;" title="Choose a Field">
+              <ui-select-match>{{$item}}</ui-select-match>
+              <ui-select-choices repeat="item as item in vmDialog.model.fields | filter: $select.search">
+                {{item}}
+              </ui-select-choices>
+            </ui-select>
+            -->
+
+
+<!--
+            <select class="form-control"  name='input_{{$index+1}}' id="input_{{$index+1}}"
+                    ng-model="vmDialog.model.source[2 * $index]"
+                    ng-options="d.data_source[0] as d.caption for d in vmDialog.model.fields">
+              <option ng-selected="true" value="">Please select Data Source</option>
+            </select>
+            -->
+
+            <!--
+            <input class="form-control" name='input_{{$index+1}}' ng-model="vmDialog.dataModel.source[2 * $index]"/>
+            -->
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="row padding-5 padding-top-10" style="margin-left: -2px">
+      <button type="button" id="addButton" class="btn bg-color-blueDark txt-color-white" ng-click="vmDialog.functions.addColumn(1);">
+        <i class="fa fa-plus-circle"></i> Add Column...
+      </button>
+    </div>
+  </div>
+  <div data-smart-include="app/modules/common/partials/common-dialog-modal-footer.tpl.html"/>
+</div>
+

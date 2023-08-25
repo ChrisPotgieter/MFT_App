@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="div_delimiter">
+                <label>Delimiter</label>
+                <select class="form-control" name="delimiter" ng-model="vmDetail.dataModel.output.options.delimiter" ng-change="">
+                    <option ng-repeat="parameter in vmDetail.model.output.csv.delimiterOptions" value={{parameter.value}}>{{parameter.name}}</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"  id="div_text_delimiter">
+                <label>Text Delimiter</label>
+                <select class="form-control" name="text_delimiter" ng-model="vmDetail.dataModel.output.options.text_delimiter">
+                    <option ng-repeat="parameter in vmDetail.model.output.csv.textDelimiterOptions" value={{parameter.value}}>{{parameter.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+

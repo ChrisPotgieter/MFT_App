@@ -1,0 +1,117 @@
+<div style="height: 600px">
+    <form name="frmBoomiAdmApiEdit" class="form-horizontal" id="frmBoomiAdmApiEdit" novalidate>
+        <div class="col-sm-12">
+            <div class="row">
+                <fieldset>
+                    <legend class="margin-bottom-10 no-padding">Environment Classification</legend>
+                    <div class="form-group">
+                        <div class="smart-form" id="input_classification">
+                            <input type="hidden" name="hiddenValidation"/>
+                            <div class="inline-group col-lg-12 col-md-12 col-sm-12 padding-left-15">
+                                <label class="checkbox">
+                                    <input type="checkbox" id="checkbox_prod" ng-model="vmConfig.data.environment.prod"><i></i> Production
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" id="checkbox_test" ng-model="vmConfig.data.environment.test"><i></i> Non-Production
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="row">
+                <fieldset>
+                    <legend class="margin-bottom-10 no-padding">API Account</legend>
+                    <div class="form-group padding-top-5">
+                    <div class="col-sm-12" id="div_account">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-chain fa-fw "></i></span>
+                            <input class="form-control" placeholder="Atomsphere ID" type="text"
+                                   name="txtAccount"
+                                   ng-model="vmConfig.data.account.id">
+                        </div>
+                    </div>
+                </div>
+                </fieldset>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-6" id="div_user">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa-fw "></i></span>
+                            <input class="form-control" placeholder="User" type="text"
+                                   name="txtUser"
+                                   ng-model="vmConfig.data.account.user" autocomplete="false">
+                        </div>
+                    </div>
+                    <div class="col-sm-6" id="div_password">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                            <input class="form-control" type="password" name="txtPassword"
+                                   placeholder="Password"
+                                   ng-model="vmConfig.data.account.password"  autocomplete="new-password">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <fieldset>
+                    <legend class="no-margin no-padding">API Communication</legend>
+                    <div class="form-group" id="div_api">
+                        <div class="col-lg-4 col-md-4 col-sm-2" id="div_api_refresh">
+                            <label class="control-label">Interval (Minutes)</label>
+                            <input class="form-control spinner-left" name="input_api_refresh" id="input_api_refresh" ng-model="vmConfig.data.monitor.api_refresh" min="0" max="60" mqa-spinner>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-2" id="div_api_timeout">
+                            <label class="control-label">Timeout (Seconds)</label>
+                            <input class="form-control spinner-left" name="input_api_timeout" id="input_api_timeout" ng-model="vmConfig.data.monitor.api_timeout" min="5" max="60" mqa-spinner>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="hidden" name="hiddenApiValidation"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="row">
+                <fieldset>
+                    <legend class="no-margin no-padding">Atom Monitoring Defaults</legend>
+                    <div class="form-group" id="div_atom">
+                        <div class="col-lg-4 col-md-4 col-sm-2" id="div_atom_refresh">
+                            <label class="control-label">Interval Running (Minutes)</label>
+                            <input class="form-control spinner-left" name="input_atom_refresh" id="input_atom_refresh" ng-model="vmConfig.data.monitor.atom_refresh" min="5" max="60" mqa-spinner>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-2" id="div_atom_stopped">
+                            <label class="control-label">Interval Stopped (Seconds)</label>
+                            <input class="form-control spinner-left" name="input_atom_stopped" id="input_atom_stopped" ng-model="vmConfig.data.monitor.atom_stopped" min="5" max="60" mqa-spinner>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-2" id="div_atom_max_timeout">
+                            <label class="control-label">Interval Maximum Limit</label>
+                            <input class="form-control spinner-left" name="input_atom_max_timeout" id="input_atom_max_timeout" ng-model="vmConfig.data.monitor.max_timeout" min="60" max="10000" mqa-spinner>
+                        </div>
+
+                        <div class="col-md-12">
+                            <input type="hidden" name="hiddenAtomValidation"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="row">
+                <fieldset>
+                    <legend class="no-margin no-padding">Health Report</legend>
+                    <div class="form-group" id="div_health">
+                        <div class="col-lg-4 col-md-4 col-sm-2" id="div_health_report">
+                            <label class="control-label">Run Every (Hours)</label>
+                            <input class="form-control spinner-left" name="input_health_report" id="input_health_refresh" ng-model="vmConfig.data.monitor.health_report" min="0" max="168" mqa-spinner>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+
+        </div>
+    </form>
+</div>
+
+

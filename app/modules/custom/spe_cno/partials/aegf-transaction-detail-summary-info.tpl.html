@@ -1,0 +1,64 @@
+<div>
+    <fieldset>
+        <legend class="no-margin padding-bottom-5 padding-top-0">Standard Information
+            <small><span class="label truncate"  ng-class="vmDialog.model.statusClass">{{vmDialog.model.status}}</span></small>
+        </legend>
+        <ul class="list-unstyled">
+            <li class="padding-top-10">
+                <span class="text-muted">
+                   Employer Group:<span class="txt-color-darken truncate">&nbsp;&nbsp;{{vmDialog.model.employer.desc}} ({{vmDialog.model.employer.crs_code}})</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                   CRS Identifier:<span class="txt-color-darken truncate">&nbsp;&nbsp;{{vmDialog.model.employer.id}}</span>
+                </span>
+            </li>
+            <li ng-if="vmDialog.model.sub_group != null">
+                <span class="text-muted">
+                   Sub Group:<span class="txt-color-darken truncate">&nbsp;&nbsp;&nbsp;&nbsp;{{vmDialog.model.sub_group.desc}}</span>
+                </span>
+            </li>
+            <li ng-if="vmDialog.model.sub_group != null">
+                <span class="text-muted">
+                   CRS Identifier:<span class="txt-color-darken truncate">&nbsp;&nbsp;{{vmDialog.model.sub_group.id}}</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted" ng-click="vmDialog.functionManager.viewDefinition();">
+                   Definition:<span class="txt-color-darken truncate">&nbsp;&nbsp;<a style="text-decoration: underline" href="javascript:void(0);" title="click here to View Definition">{{vmDialog.model.base_record.module_data.definition_id}}</a></span>
+                </span>
+            </li>
+
+        </ul>
+    </fieldset>
+    <fieldset ng-if="vmDialog.model.errors != null">
+        <legend class="no-margin padding-bottom-5 padding-top-0">Data Issues Encountered</legend>
+        <ul class="list-unstyled">
+            <li class="padding-top-10" ng-repeat="error in vmDialog.model.errors">
+                <a href="javascript:void(0)" title="Click here to Navigate..." ng-click="vmDialog.functionManager.viewError(error);">{{error.value}} {{error.caption}} Issue(s)</a>
+            </li>
+        </ul>
+    </fieldset>
+    <fieldset ng-if="vmDialog.model.delivery != null">
+        <legend class="no-margin padding-bottom-5 padding-top-0">Delivery Information</legend>
+        <ul class="list-unstyled">
+            <li class="padding-top-10">
+                <span class="text-muted">
+                   Delivery Type:<span class="txt-color-darken truncate">&nbsp;&nbsp;{{vmDialog.model.delivery.type}}</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                   Delivery Destination:<span class="txt-color-darken truncate">&nbsp;&nbsp;{{vmDialog.model.delivery.destination}}</span>
+                </span>
+            </li>
+
+            <li ng-if="vmDialog.model.delivery.path != null">
+                <span class="text-muted">
+                   Delivery Path:<span class="txt-color-darken truncate">&nbsp;&nbsp;&nbsp;&nbsp;{{vmDialog.model.delivery.path}}</span>
+                </span>
+            </li>
+        </ul>
+    </fieldset>
+</div>

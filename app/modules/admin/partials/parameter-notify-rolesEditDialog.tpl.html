@@ -1,0 +1,41 @@
+<div>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelRecord();"> × </button>
+      <div class='widget-header'>
+        <h6 ng-if="!vmDialog.dataModel.caption">
+         Add Role
+        </h6>
+        <h6 ng-if="vmDialog.dataModel.rowId > -1"->
+        Remove Role
+        </h6>
+      </div>
+    </div>
+    <div class="modal-body" >
+     
+      <div class="col-md-14" >
+          <div class="row">
+              <div class="col-md-12">
+                  <div kendo-grid="roleGrid" k-options="vmDialog.model.roleGridOptions" />
+              </div>
+          </div>
+      </div>
+    <div class="col-md-14"  ng-if="vmDialog.dataModel.rowId > -1">
+      <form  name="roleSelected" id="roleSelected" class="form-horizontal"novalidate >
+        <div class="form-group">
+          <div class="col-lg-6 col-md-6 col-sm-6" id="div_role">
+            <label class="control-label">Role</label>
+            <input class="form-control input-lg" placeholder="Role" type="text" name="role" ng-model="vmDialog.dataModel.caption" ng-readOnly="true"/>
+          </div>
+         
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+        <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord();" ng-if="!vmDialog.dataModel.caption">
+          {{vmDialog.model.buttonText}}
+        </button>
+        <button type="button" class="btn btn-danger" ng-click="vmDialog.functions.userDelete();" ng-if="vmDialog.dataModel.rowId > -1"> Remove Role </button>
+        <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();"> Cancel </button>
+      </div>
+  </div>

@@ -1,0 +1,22 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelDialog();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class="fa fa-info-circle"></i> {{vmDialog.model.title}}</h6></div>
+    </div>
+    <div class="modal-body">
+        <mqa-meta-data-grid data="vmDialog.model.data" height="{{vmDialog.model.height}}"/>
+    </div>
+    <div class="modal-footer no-border" >
+        <div class="row">
+            <button type="button" id="confirmButton" class="btn btn-primary" ng-click="vmDialog.functions.cancelDialog();">
+                OK
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelDialog();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

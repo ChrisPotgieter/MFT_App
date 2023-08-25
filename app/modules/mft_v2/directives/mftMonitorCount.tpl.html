@@ -1,0 +1,18 @@
+<div class="row" id="badges_main">
+    <div class="col-sm-4 col-lg-4">
+        <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.color.monitors}" div-class="txt-color-white" caption-class="txt-color-white"
+                             icon="fa-arrow-circle-up" caption="Running" value="vmCount.data.up" id="badge_up"
+                             tooltip="Total No of MFT Monitor(s) Running with this Criteria"/>
+    </div>
+    <div class="col-sm-4 col-lg-4">
+        <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white"
+                             icon="fa-arrow-circle-down" caption="Stopped" value="vmCount.data.down"
+                             id="badge_down" tooltip="Total No of MFT Monitor(s) Stopped with this Criteria"/>
+    </div>
+    <div class="col-sm-4 col-lg-4">
+        <mqa-dashboard-count div-class="bg-color-orangeDark txt-color-white" caption-class="txt-color-white"
+                             icon="fa-warning" caption="Paused" value="vmCount.data.paused"
+                             id="badge_warn" tooltip="Total No. of MFT Monitor(s) Paused with this Criteria"/>
+    </div>
+</div>
+

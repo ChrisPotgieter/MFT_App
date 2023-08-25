@@ -1,0 +1,57 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelRecord();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class='fa fa-group'></i> {{vmDialog.model.title}}</h6></div>
+    </div>
+
+
+   
+    <div class="modal-body">
+        <form name="frmRole"  class="form-horizontal" id="frmRole" >
+            <fieldset>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12" id="div_code">
+                            <input type="text" placeholder="Role Code" class="form-control" name="code" ng-model="vmDialog.dataModel.code" ng-disabled="!vmDialog.model.flags.allowCode"
+                         >
+                        </div>
+                    </div>
+                    <input type="hidden" name="hiddenValidation"/>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <input type="text" placeholder="Role Description" class="form-control" name="description" ng-model="vmDialog.dataModel.description">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div kendo-grid="featureGrid" k-options="vmDialog.model.featureGridOptions"/>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+        </form>
+   </div>
+
+   <div class="modal-footer">
+    <div class="row">
+        <button type="submit" id="submit" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord()">
+            {{vmDialog.model.buttonText}}
+        </button>
+        <button type="button"  class="btn btn-danger"   ng-click="vmDialog.functions.userDelete();" ng-if="vmDialog.model.buttonText != 'Create'">
+            Delete
+        </button>
+        <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();">
+            Cancel
+        </button>
+    </div>
+    
+   </div>
+</div>

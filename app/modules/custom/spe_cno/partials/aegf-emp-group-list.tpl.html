@@ -1,0 +1,33 @@
+<div id="content">
+  <script id="templateAdd" type="text/x-kendo-template">
+    <button class="k-button k-button-icontext" ng-click="functionManager.performOperation(1);">
+      <span class="k-icon k-i-add"></span>Manage...
+    </button>
+
+    <button class="k-button k-button-icontext" ng-click="functionManager.performOperation(0);">
+      <span class="k-icon k-i-refresh"></span>Sync...
+    </button>
+  </script>
+  <!-- MAIN CONTENT -->
+  <section id="widget-grid" widget-grid>
+    <div class="row">
+      <article class="col-sm-12">
+        <div jarvis-widget id="aegfGroupListWidget" data-widget-color="darken" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-custombutton="false" data-widget-colorbutton="false">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-group"></i> </span>
+            <h2>Employer Group Listing</h2>
+          </header>
+          <div class="widget-body">
+            <div class="row">
+              <div class="col-md-12">
+                <mqa-kendo-grid data="vmListing.model.gridData" function-manager="vmListing.stateManager" options="vmListing.model.gridOptions" refresh-flag="vmListing.model.flags.refresh" rebuild="vmListing.model.flags.rebuild"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+  <!-- END MAIN CONTENT -->
+</div>
+

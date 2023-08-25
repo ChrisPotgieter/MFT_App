@@ -1,0 +1,8 @@
+<div>
+    <script id="templateTransaction" type="text/x-kendo-template">
+        <button class="k-button k-button-icontext" ng-click="vm.functions.download();" ng-show="vm.model.flags.showDownload">
+            <span class="fa fa-download"></span> Download Documents...
+        </button>
+    </script>
+    <div kendo-grid="grid" id="grid" k-options="vm.gridOptions" k-rebind="vm.columnRebuild"/>
+</div>

@@ -1,0 +1,45 @@
+<div class="row" id="badges_{{vmCount.id}}">
+    <div ng-if="vmCount.viewType == 0">
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.transfers}" caption-class="txt-color-white" icon="fa-exchange" caption="Total Transactions" value="vmCount.data.transfer_count.value" id="badge_transfers" tooltip="Total No. of Transactions Transfers Initiated with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white" icon="fa-exclamation" caption="Total Errors" value="vmCount.data.failure_count.value" id="badge_errors" tooltip="Total No. of Failures"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.bytes}" caption-class="txt-color-white" icon="fa-floppy-o" caption="Total Bytes" value="vmCount.data.byte_count.value" id="badge_bytes" tooltip="Total No. of Bytes Transferred with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.documents}" caption-class="txt-color-white" icon="fa-file-text" caption="Total Documents" value="vmCount.data.doc_count.value" id="badge_docs" tooltip="Total No. of Documents with this Criteria"/>
+       </div>
+        <div class="col-sm-6 col-lg-6">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.atoms}" caption-class="txt-color-white" icon="fa-laptop" caption="Atoms" value="vmCount.data.atom_count.value" id="badge_atom" tooltip="Atom Status"/>
+        </div>
+        <div class="col-sm-6 col-lg-6">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.listeners}" caption-class="txt-color-white" icon="fa-search" caption="Listeners" value="vmCount.data.process_count.value" id="badge_processes" tooltip="Process Listener Status"/>
+        </div>
+    </div>
+
+    <div ng-if="vmCount.viewType == 1">
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.transfers}" caption-class="txt-color-white" icon="fa-exchange" caption="Total Transactions" value="vmCount.data.transfer_count.value" id="badge_transfers" tooltip="Total No. of Transactions Transfers Initiated with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white" icon="fa-exclamation" caption="Total Errors" value="vmCount.data.failure_count.value" id="badge_errors" tooltip="Total No. of Failures"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.bytes}" caption-class="txt-color-white" icon="fa-floppy-o" caption="Total Bytes" value="vmCount.data.byte_count.value" id="badge_bytes" tooltip="Total No. of Bytes Transferred with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.documents}" caption-class="txt-color-white" icon="fa-file-text" caption="Total Documents" value="vmCount.data.doc_count.value" id="badge_docs" tooltip="Total No. of Documents with this Criteria"/>
+        </div>
+    </div>
+    <div ng-if="vmCount.viewType == 2">
+        <div class="col-sm-6 col-lg-6">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.atoms}" caption-class="txt-color-white" icon="fa-laptop" caption="Atoms" value="vmCount.data.atom_count.value" id="badge_atom" tooltip="Atom Status"/>
+        </div>
+        <div class="col-sm-6 col-lg-6">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.listeners}" caption-class="txt-color-white" icon="fa-search" caption="Listeners" value="vmCount.data.process_count.value" id="badge_processes" tooltip="Process Listener Status"/>
+        </div>
+    </div>
+</div>

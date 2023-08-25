@@ -1,0 +1,39 @@
+<div>
+  <div class="row">
+    <div class="col-sm-3" id="div_deliveryType">
+      <label>Batch Type</label>
+      <select class="form-control" name="template_select" ng-model="vmDate.model.batchType" ng-change="vmDate.functions.batchTypeChange()">
+        <option ng-selected="true" value="">Select a Batch Type</option>
+        <option value="EveryOtherWeekday">Every other weekday</option>
+        <option value="FixedDays">Fixed Days</option>
+        <option value="ScheduledDaily">Scheduled Daily</option>
+        <option value="ScheduledMonthEnd">Scheduled Month End Minus</option>
+      </select>
+    </div>
+    
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 " >
+      <br>
+      <label>
+        <input name="skipDate" ng-model="vmDate.model.skipDate" type="checkbox" class="checkbox style-0">
+        <span></span>
+        <label></label>
+      </label> Skip Saturday, Sunday or Public Holiday
+    </div>
+    </div>
+<br>
+<div ng-if="vmDate.model.batchType">
+<div class="row">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
+    <button class="btn bg-color-blueDark txt-color-white" ng-click="vmDate.functions.insertDay()" ng-disable="vmDate.model.disableButton">
+      <i class="fa fa-plus"></i>
+      <span class="hidden-mobile hidden-sm">Add Day</span>
+    </button>
+  </div>
+</div>
+<br>
+    <div class="row">
+      <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 ">
+      <mqa-kendo-grid id="dateSchedule" options="vmDate.model.gridOptions" data="vmDate.model.gridData" ondrill="vmDate.functions.editDay"></mqa-kendo-grid>
+    </div>
+  </div>
+</div></div>

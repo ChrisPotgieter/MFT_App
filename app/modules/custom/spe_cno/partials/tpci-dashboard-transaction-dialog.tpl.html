@@ -1,0 +1,40 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelDialog();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i ng-class="vmDialog.model.icon"></i> {{vmDialog.model.title}}</h6></div>
+    </div>
+    <div class="modal-body dialog-content">
+        <section id="widget-grid" widget-grid>
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                    <div jarvis-widget="" id="dest-chart-widget-current" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="true" data-widget-deletebutton="false" class="jarviswidget jarviswidget-sortable" role="widget">
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                            <h2>Transaction Listing {{vmDialog.model.limit}}</h2>
+                        </header>
+                        <div>
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+                                <div id="dialogGrid">
+                                    <cno-tpci-transaction-grid data="vmDialog.model.data" refresh-flag="vmDialog.model.flags.refresh" module="{{vm.model.module}}" mode="2"></cno-tpci-transaction-grid>
+                                </div>
+                            </div>
+                            <!-- end widget content -->
+                        </div>
+                    </div>
+                </article>
+            </section>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <button type="button" id="confirmButton" class="btn btn-primary" ng-click="vmDialog.functions.cancelDialog();">
+                OK
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelDialog();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

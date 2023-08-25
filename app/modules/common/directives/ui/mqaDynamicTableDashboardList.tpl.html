@@ -1,0 +1,7 @@
+<div>
+<div class="row" ng-repeat="widget in vmDynamicDash.model">
+    <article class="col-sm-12">
+        <mqa-dynamic-table-grid  config-name="{{widget.code}}" filter-data="widget.filterObject"/>
+    </article>
+</div>
+</div>

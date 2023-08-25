@@ -1,0 +1,51 @@
+<form id=SPEConfigForm" class="form-horizontal" novalidate>
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-12" id="div_url">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-globe fa-lg fa-fw "></i></span>
+                        <input class="form-control input-lg" placeholder="Server URL (http://<server>:9080/spe/svc)" type="text"
+                               name="url"
+                               ng-model="vmDirective.data.jsonData.settings.server.url">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-12" id="div_senderID">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-paper-plane fa-lg fa-fw"></i></span>
+                        <input class="form-control input-lg" name="senderID"
+                               placeholder="Template Sender ID"
+                               ng-model="vmDirective.data.jsonData.settings.server.senderID">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-6" id="div_user">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw "></i></span>
+                        <input class="form-control input-lg" placeholder="User" type="text"
+                               name="userName"
+                               ng-model="vmDirective.data.jsonData.settings.server.user" autocomplete="false">
+                    </div>
+                </div>
+                <div class="col-sm-6" id="div_password">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-key fa-lg fa-fw"></i></span>
+                        <input class="form-control input-lg" type="password" name="userPassword"
+                               placeholder="Password"
+                               ng-model="vmDirective.data.jsonData.settings.server.password"  autocomplete="new-password">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</form>

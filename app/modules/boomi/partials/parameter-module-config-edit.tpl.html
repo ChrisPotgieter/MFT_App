@@ -1,0 +1,33 @@
+<section id="widget-grid" widget-grid>
+    <div class="row">
+        <article class="col-sm-12">
+            <div jarvis-widget id="moduleParameterWidget" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="true" data-widget-custombutton="false" data-widget-sortable="false" role="widget">
+                <header role="heading" class="ui-sortable-handle">
+                    <span class="widget-icon"> <i class="fa fa-cog"></i> </span>
+                    <h2>Boomi Configuration</h2>
+                    <ul id="tabs" class="nav nav-tabs pull-right">
+                        <li class="active">
+                            <a href="#atomsphere" data-toggle="tab">Atomsphere & Monitoring</a>
+                        </li>
+                    </ul>
+                </header>
+                <div class="widget-body">
+                    <div id="tabContent" class="tab-content padding-10">
+                        <!-- BOOMI ATOMSPHERE INFORMATION -->
+                        <div class="tab-pane fade in active" id="atomsphere">
+                            <boomi-adm-api-edit data="vm.model.api.data"  validation="vm.model.api.validator"/>
+                        </div>
+
+                    </div>
+                    <div class="widget-footer">
+                        <button type="button" id="submit-main" class="btn btn-default btn-primary" ng-click="vm.functions.saveRecord();">
+                            <i class="fa fa-save"/>
+                            Save Changes
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+    </div>
+</section>

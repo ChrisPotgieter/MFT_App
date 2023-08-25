@@ -1,0 +1,25 @@
+<div>
+    <script id="templateColumn" type="text/x-kendo-template">
+        <button class="k-button k-button-icontext" ng-click="functionManager.showColumnAdjustDialog();">
+            <span class="fa fa-cogs"></span>Column Options...
+        </button>
+    </script>
+    <script id="templateAdd" type="text/x-kendo-template">
+        <button class="k-button k-button-icontext" ng-click="functionManager.showColumnAddDialog();">
+            <span class="k-icon k-i-add"></span>Add Custom Column...
+        </button>
+    </script>
+    <script id="templatePopulateStandard" type="text/x-kendo-template">
+        <button class="k-button k-button-icontext" ng-click="functionManager.populateColumns();">
+            <span class="k-icon k-i-add"></span>Populate Columns...
+        </button>
+    </script>
+    <div class="row">
+        <div class="col-md-12">
+            <mqa-kendo-grid id="definitionGrid" options="vmDetail.model.gridOptions" data="vmDetail.model.gridData" refresh-flag="vmDetail.model.flags.refresh" function-manager="vmDetail.functionManager" rebuild="vmDetail.model.flags.definition_rebuild" />
+        </div>
+    </div>
+</div>
+
+ 
+

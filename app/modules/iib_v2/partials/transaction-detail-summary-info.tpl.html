@@ -1,0 +1,63 @@
+<div>
+    <div data-smart-include="app/modules/common/partials/transaction-detail-summary-header.tpl.html"/>
+    <fieldset  ng-if="data.module_data.reference_info">
+        <legend class="no-padding no-margin margin-bottom-5">Information</legend>
+        <ul class="list-unstyled">
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-exclamation"></i>&nbsp;&nbsp;<span class="txt-color-darken">Error Code:&nbsp;&nbsp;{{data.module_data.module_status}}</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-laptop"></i>&nbsp;&nbsp;<span class="txt-color-darken">Container:&nbsp;&nbsp;{{data.module_data.reference_info.broker_id}}</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="txt-color-darken">Integration Server:&nbsp;&nbsp;{{data.module_data.reference_info.execution_group_id}}</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-cube"></i>&nbsp;&nbsp;<span class="txt-color-darken">Application:&nbsp;&nbsp;{{data.module_data.reference_info.application_id}}</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-sitemap"></i>&nbsp;&nbsp;<span class="txt-color-darken">Flow:&nbsp;&nbsp;{{data.module_data.reference_info.flow_name}}</span>
+                </span>
+            </li>
+            <li ng-if="data.module.flow_info.uuid && data.module.flow_info.uuid != 'NA'">
+                <span class="text-muted">
+                    <i class="fa fa-tasks"></i>&nbsp;&nbsp;<span class="txt-color-darken">UUID:&nbsp;&nbsp;{{data.module_data.flow_info.uuid}}</span>
+
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-rocket"></i>&nbsp;&nbsp;<span class="txt-color-darken">Thread Id:&nbsp;&nbsp;{{data.module_data.flow_info.thread_id}}</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-code-fork"></i>&nbsp;&nbsp;<span class="txt-color-darken">Nodes:&nbsp;&nbsp;{{data.module_data.nodes.length| number}}</span>
+                </span>
+            </li>
+
+        </ul>
+    </fieldset>
+    <fieldset ng-if="data.progress">
+        <legend class="no-padding no-margin margin-bottom-5">Statistics</legend>
+        <ul  class="list-unstyled">
+            <li>
+                <p class="text-muted">
+                    <i class="fa fa-history"></i>&nbsp;Retries:&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.progress.retries | number}}</span>
+                    <i class="fa fa-warning"></i>&nbsp;&nbsp;Warnings:&nbsp;<span class="txt-color-darken">&nbsp{{data.progress.warnings | number}}</span>
+                    <i class="fa fa-exclamation-circle"></i>&nbsp;Failures:&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.progress.failures | number}}</span>
+                </p>
+            </li>
+            </ul>
+    </fieldset>
+    <div data-smart-include="app/modules/common/partials/transaction-detail-summary-reference.tpl.html"/>
+</div>

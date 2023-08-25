@@ -1,0 +1,36 @@
+<div>
+    <div class="row" id="badges_main">
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.color.transfers}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-exchange" caption="Total Transfers" value="vmCount.data.transferCount.value" id="badge_transfers" tooltip="Total No of MFT Transfers Initiated with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white" icon="fa-exclamation" caption="Total Errors" value="vmCount.data.errorCount.value" id="badge_errors" tooltip="Total No. of Failures <br/>Click to Drill"  on-click="vmCount.functions.onDrill"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.color.agents}"  div-class="txt-color-white" caption-class="txt-color-white" icon="fa-tasks" caption="Total Jobs" value="vmCount.data.jobCount.value" id="badge_jobs" tooltip="Total No of Jobs with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.color.files}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-file-text" caption="Total Files" value="vmCount.data.fileCount.value" id="badge_files" tooltip="Total No of Files Transferred with this Criteria"/>
+        </div>
+    </div>
+    <div class="row" id="badges_avgs">
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.color.bytes}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-floppy-o" caption="Total Bytes" value="vmCount.data.byteCount.value" id="badge_bytes" tooltip="Total No of Bytes Transferred with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-5">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.color.time}" div-class="font-sm txt-color-white" caption-class="txt-color-white font-sm" icon="fa-clock-o" caption="Total Run Time" value="vmCount.data.timeCount.value" id="badge_time"  tooltip="Total Runtime with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.color.time}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-clock-o" caption="Avg. Time" value="vmCount.data.avgTimeCount.value" id="badge_avg_time"  tooltip="Avg. Runtime with this Criteria"/>
+        </div>
+
+        <!--
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="bg-color-darkBlue txt-color-white" caption-class="txt-color-white" icon="fa-fighter-jet" caption="Transfer Rate" value="vmCount.data.trfRate.value" id="badge_trfRate" tooltip="Transfer Rate with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="bg-color-darkBlue txt-color-white" caption-class="txt-color-white" icon="fa-clock" caption="Avg Time" value="vmCount.data.avgTimeCount.value" id="badge_avg_time"  tooltip="Avg. Runtime with this Criteria"/>
+        </div>
+        !-->
+    </div>
+</div>

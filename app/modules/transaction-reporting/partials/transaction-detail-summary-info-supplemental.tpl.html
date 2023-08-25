@@ -1,0 +1,12 @@
+<fieldset ng-if="data.baseTransaction.supplementalStatus && data.baseTransaction.supplementalStatus != ''">
+    <legend class="no-padding no-margin margin-bottom-5">Output</legend>
+    <section>
+        <div>
+            <div ng-class="data.baseTransaction.alertClass" class="alert alert-block">
+                <div class="custom-scroll" slimscroll="{height:'50px'}">
+                    <span style="white-space: pre-line;">{{data.baseTransaction.supplementalStatus}}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</fieldset>

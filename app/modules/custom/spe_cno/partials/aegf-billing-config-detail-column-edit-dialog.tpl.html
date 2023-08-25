@@ -1,0 +1,73 @@
+<div>
+    <script id="templateAdd" type="text/x-kendo-template">
+        <button class="k-button k-button-icontext" ng-click="functionManager.addTransformation();">
+            <span class="k-icon k-i-add"></span>Add Transformation...
+        </button>
+    </script>
+    <div class="modal-header padding-bottom-5">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelRecord();"> ×
+        </button>
+        <h6 ng-if="!vmDialog.model.flags.editCaption">{{vmDialog.model.title}}
+            {{vmDialog.dataModel.caption}}
+            <i class='fa fa-pencil' ng-click="vmDialog.functions.toggleCaption();"></i>
+        </h6>
+        <h6 ng-if="vmDialog.model.flags.editCaption">{{vmDialog.model.title}}
+            <label>
+                <input class="form-control" id="caption" name="caption" type="text"
+                       ng-model="vmDialog.dataModel.caption" placeholder="Please Enter a Caption"/>
+            </label>
+            <i class='fa fa-check' ng-click="vmDialog.functions.toggleCaption()"></i>
+        </h6>
+    </div>
+    <div class="modal-body padding-top-10">
+        <form name="frmEdit" class="form-horizontal" id="frmEdit" novalidate>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                        <label class="control-label">Source Data:</label>
+                        <input class="form-control" id="data_source" name="data_source"
+                               ng-model="vmDialog.model.data_source" type="text" disabled/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6 col-xs-6 col-sm-6">
+                        <label for="input_justification">Justification:</label>
+                        <select class="form-control" id="input_justification" name="input_justification"
+                                ng-model="vmDialog.model.justification">
+                            <option value="0">Left</option>
+                            <option value="1">Centered</option>
+                            <option value="2">Right</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-6">
+                        <br/>
+                        <mqa-switch title="Hidden" label="hidden" ng-model="vmDialog.dataModel.hidden" class="pull-right"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                    <mqa-kendo-grid id="transformationGrid" options="vmDialog.model.transformations.options"
+                                    data="vmDialog.model.gridData"
+                                    refresh-flag="vmDialog.model.transformations.refresh" rebuild="vmDialog.model.transformations.rebuild" function-manager="vmDialog.model.transformations.functionManager"></mqa-kendo-grid>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-sm-6 pull-right">
+                <button class="btn btn-danger" type="button" ng-click="vmDialog.functions.userDelete();"
+                        ng-if="vmDialog.dataModel.rowId > -1 && vmDialog.dataModel.custom"> Delete
+                </button>
+                <button type="button" id="saveButton" class="btn btn-primary"
+                        ng-click="vmDialog.functions.saveRecord();">
+                    {{vmDialog.model.buttonText}}
+                </button>
+                <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();"> Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

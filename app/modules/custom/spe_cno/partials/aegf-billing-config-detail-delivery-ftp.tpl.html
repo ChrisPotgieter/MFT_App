@@ -1,0 +1,48 @@
+<div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 " id="div_input_ftp_server">
+            <label class="control-label">Server IP:</label>
+            <input class="form-control" id="input_ftp_server" name="input_ftp_server" ng-model="vmDetail.dataModel.delivery.options.server_ip" placeholder="Please enter a Server IP" />
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 " id="div_input_ftp_port">
+            <label class="control-label">Port:</label>
+            <input class="form-control" id="input_ftp_port" name="input_ftp_port" ng-model="vmDetail.dataModel.delivery.options.port" placeholder="Please enter a Port"  type="number"/>
+        </div>
+    </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " id="div_input_ftp_login">
+                <label class="control-label">Login:</label>
+                <input class="form-control" id="input_ftp_login" name="input_ftp_login" ng-model="vmDetail.dataModel.delivery.options.login" placeholder="Please enter a Login" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " id="div_input_ftp_password">
+                <label class="control-label">Password:</label>
+                <input class="form-control" id="input_ftp_password" name="input_ftp_password" type="password" ng-model="vmDetail.dataModel.delivery.options.password" placeholder="Please enter a Password" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="div_input_ftp_path">
+                <label class="control-label">Destination Path:</label>
+                <input class="form-control" id="input_ftp_path" name="input_ftp_path" ng-model="vmDetail.dataModel.delivery.options.destination_path" placeholder="Please enter a Destination Path" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="div_input_ftp_file">
+                <label class="control-label">File Name:</label>
+                <input class="form-control" id="input_ftp_file" name="input_ftp_file" ng-model="vmDetail.dataModel.delivery.options.filename" placeholder="Please enter a File name" />
+            </div>
+        </div>
+    </div>
+    <!--
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="div_input_ftp_key">
+                <label>Path to Public Key</label>
+                <input class="form-control" id="input_ftp_key" name="input_ftp_key"  ng-model="vmDetail.dataModel.delivery.options.pub_key" placeholder="Please enter a Public Key" />
+            </div>
+        </div>
+    </div>
+    -->
+ </div>

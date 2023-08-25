@@ -1,0 +1,72 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelRecord();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class="fa {{vmDialog.model.icon}}"></i> {{vmDialog.model.title}}</h6></div>
+    </div>
+    <div class="modal-body">
+        <form id="frmFilterEntryEdit" name="frmFilterEntryEdit" novalidate class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12" id="div_key">
+                        <label class="control-label">Field:</label>
+                        <ui-select name="input_name" multiple tagging tagging-label="(custom 'new' label)" ng-model="vmDialog.dataModel.key" theme="select2" sortable="true" style="width: 100%;" title="Choose a Field">
+                            <ui-select-match>{{$item}}</ui-select-match>
+                            <ui-select-choices repeat="item as item in vmDialog.model.keyOptions | filter: $select.search">
+                                {{item}}
+                            </ui-select-choices>
+                        </ui-select>
+                        <input type="hidden" name="hidden_name"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <label class="control-label">Operator:</label>
+                        <select class="form-control" name="input_operator" ng-model="vmDialog.dataModel.operator">
+                            <option value="0">Equals</option>
+                            <option value="1">Starts With</option>
+                            <option value="2">Ends With</option>
+                            <option value="3">Contains</option>
+                            <option value="4">Not Equal</option>
+                            <option value="5">Not Starts With</option>
+                            <option value="6">Not Ends With</option>
+                            <option value="7">Not Contains</option>
+                            <option value="8">Equals Case-Insensitive</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12" id="div_values">
+                        <label class="control-label">Values:</label>
+                        <ui-select id="input_values" name="input_values" tagging
+                                   tagging-label="(custom 'new' label)" multiple ng-model="vmDialog.dataModel.values" mqa-tag
+                                   input-Placeholder="Enter the Value(s) " on-select="vmDialog.functions.onComboChange('input_values');"/>
+                        </ui-select>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord();">
+                {{vmDialog.model.buttonText}}
+            </button>
+
+            <button type="button" class="btn btn-danger" ng-click="vmDialog.functions.userDelete();"
+                    ng-if="vmDialog.dataModel.recordStatus == 0">
+                Delete
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

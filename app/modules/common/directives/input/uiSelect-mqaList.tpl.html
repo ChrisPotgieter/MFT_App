@@ -1,0 +1,4 @@
+<ui-select-match placeholder={{placeHolder}}>{{$item.description}}</ui-select-match>
+<ui-select-choices repeat="listItem.code as listItem in listData">
+    <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+</ui-select-choices>

@@ -1,0 +1,31 @@
+<div>
+    <div class="modal-header">
+        <div class='widget-header'><h6><i class='fa fa-wrench'></i> Repair Transaction Information {{data.baseTransaction.transactionId}}</h6></div>
+    </div>
+    <div class="modal-body">
+        <div class="well">
+            <button type="button" class="btn btn-lg btn-primary btn-block" ng-click="vm.download()">
+                    <i class="glyphicon glyphicon-download"></i>
+                           Download Current EDI Payload
+            </button>
+            <button type="file" class="btn btn-lg btn-block bg-color-blueDark txt-color-white" ngf-select ng-model="vm.uploadFile" ngf-multiple="false" ng-disabled="!vm.progressInfo.allowUpload">
+                <i class="glyphicon glyphicon-upload"></i>
+                &nbsp;&nbsp;&nbsp;&nbsp;Upload Revised EDI Payload
+            </button>
+            <br/>
+            <section ng-show="vm.progressInfo.showProgress">
+                <p>
+                    File Upload Progress <span class="txt-color-blue pull-right"><i ng-class="vm.progressInfo.icon"></i> {{vm.progressInfo.description}}</span>
+                </p>
+                <div class="progress progress-lg">
+                    <div class="progress-bar bg-color-blueLight" role="progressbar" ng-style="{'width': vm.progressInfo.perc}"></div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" id="submit" class="btn btn-success btn-default" ng-click="vm.ok()" ng-disabled="!vm.modalResult">Proceed</button>
+        <button type="button" class="btn btn-danger" ng-click="vm.cancel()">Cancel</button>
+    </div>
+</div>

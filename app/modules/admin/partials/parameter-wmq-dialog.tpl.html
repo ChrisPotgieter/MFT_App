@@ -1,0 +1,42 @@
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelRecord();"> × </button>
+      <div class='widget-header'>
+        <h6>
+          {{vmDialog.model.title}}
+        </h6>
+      </div>
+    </div>
+    <div class="modal-body">
+            <form id="frmBinding" name="frmBinding" novalidate>
+                <div class="form-group">
+                  <div class="row">  
+
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 " id="div_host">
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="fa fa-desktop  fa-lg fa-fw"></i></span>
+                          <input class="form-control input-lg" placeholder="Host Name" type="text" name="host"
+                              ng-model="vmDialog.dataModel.host" autocomplete="false"
+                            >
+                      </div>
+                  </div>
+
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 " id="div_port">
+                            <input class="form-control input-lg" placeholder="Port " type="text"
+                                   name="port"
+                                   ng-model="vmDialog.dataModel.port"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </div>
+  <div class="modal-footer">
+    <div class="row">
+      <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord();">
+        {{vmDialog.model.buttonText}}
+      </button>
+      <button type="button" class="btn btn-danger" ng-click="vmDialog.functions.userDelete();" ng-if="vmDialog.dataModel.rowId > -1"> Delete </button>
+      <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();"> Cancel </button>
+    </div>
+</div>
+
+

@@ -1,0 +1,43 @@
+<style>
+    #configGrid .k-grid  .k-grid-header  .k-header  .k-link {
+        height: auto;
+    }
+
+    #configGrid .k-grid  .k-grid-header  .k-header {
+        white-space: normal;
+    }
+    #configGrid .k-grid-content
+    {
+        min-height: 100px;
+        max-height: 700px;
+    }
+</style>
+<div id="aegf-billing-config-gridview-widget" data-widget-colorbutton="false" data-widget-togglebutton="false"  data-widget-editbutton="false" data-widget-deletebutton="false" data-jarvis-widget>
+    <header>
+        <span class="widget-icon"> <i class="fa fa-dollar"></i> </span>
+        <h2><b>Billing Configuration</b></h2>
+    </header>
+    <!-- widget content -->
+    <div class="widget-body">
+        <div class="widget-body-toolbar">
+            <div class="row">
+                <!-- TOOL BAR LEFT -->
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <aegf-group-filter options="{showSubGroup:true, showClear: true}" function-manager="vm.functions" ng-model="vm.model.groupFilter"></aegf-group-filter>
+                </div>
+
+                <!-- TOOL BAR RIGHT -->
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
+                    <button class="btn bg-color-blueDark txt-color-white" ng-click="vm.functions.findAll();">
+                        <i class="fa fa-search"></i> <span class="hidden-mobile">Find All...</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <aegf-config-grid mode="0" data="vm.model.data" function-manager="vm.stateManager" refresh-flag="vm.model.flags.refresh"/>
+    </div>
+</div>
+<!-- end widget div -->
+
+

@@ -1,0 +1,6 @@
+<script id="templateTitle" type="text/x-kendo-template">
+    <div class="toolbar">
+        <label><b>{{title}}</b></label>
+    </div>
+</script>
+<div kendo-grid="grid" k-options="gridOptions" k-on-change="ngDrillRecord(data, dataItem, columns)" k-ng-delay="gridOptions" ng-style="heightStyle" k-rebind="rebuild"/>

@@ -1,0 +1,9 @@
+<ui-select-match placeholder={{placeHolder}}>
+    <button class="clear-btn" ng-click="clear($event, $select)">
+        <span class="fa fa-remove"></span>
+    </button>
+    <span class="clear-btn-offset">{{$select.selected.description || $select.search}}</span>
+</ui-select-match>
+<ui-select-choices  repeat="listItem.code as listItem in listData| filter: $select.search">
+    <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+</ui-select-choices>

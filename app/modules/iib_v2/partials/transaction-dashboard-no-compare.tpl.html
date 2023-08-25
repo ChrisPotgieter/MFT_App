@@ -1,0 +1,19 @@
+<div class="row">
+    <article class="col-md-12">
+        <div class="col-md-12">
+            <iib-transaction-dashboard-count data="vm.model.currentData.total" on-drill="vm.functions.onCountDrill"/>
+        </div>
+        <div class="col-md-12">
+            <div jarvis-widget id="application-chart-current-widget2"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-dashboard"></i> </span>
+                    <h2>Statistics Per Top {{vm.model.dialogData.filter.applicationLimit}} Applications</h2>
+                </header>
+                <div class="widget-body">
+                    <iib-transaction-dashboard-application-chart data="vm.model.currentData.history" height="60"/>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+

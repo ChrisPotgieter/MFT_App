@@ -1,0 +1,28 @@
+<div>
+    <ul id="sparks" class="">
+        <li class="sparks-info">
+            <h5>Transfers <span ng-style="{'color': realtime.palette.color.transfers}">{{realtime.metrics.total.value}}</span></h5>
+            <div class="sparkline hidden-mobile hidden-md hidden-sm" ng-style="{'color': realtime.palette.color.transfers}" mqa-sparkline data="realtime.metrics.total.chartData" config="realtime.chartConfig.total"/>
+        </li>
+        <li class="sparks-info">
+            <h5> Failures <span class="txt-color-red">{{realtime.metrics.failures.value}}</span></h5>
+            <div class="sparkline txt-color-red hidden-mobile hidden-md hidden-sm" mqa-sparkline data="realtime.metrics.failures.chartData" config="realtime.chartConfig.failures"/>
+        </li>
+        <li class="sparks-info">
+            <h5> Agents
+                <span>
+                    <span class="display-inline" ng-style="{'color': realtime.palette.color.agents}"><i class="fa fa-arrow-circle-up"></i>&nbsp;{{realtime.metrics.agents.valueUp}}</span>
+                    <span class="txt-color-red display-inline"><i class="fa fa-arrow-circle-down"></i>&nbsp;{{realtime.metrics.agents.valueDown}}</span>
+                    <span class="txt-color-orangeDark display-inline"><i class="fa fa-exclamation-triangle"></i>&nbsp;{{realtime.metrics.agents.valueNoComms}}</span>
+                </span>
+            </h5>
+        </li>
+
+        <li class="sparks-info">
+            <h5> Files <span ng-style="{'color': realtime.palette.color.files}"><i class="fa fa-file"></i>&nbsp;{{realtime.metrics.files.value}}</span></h5>
+        </li>
+        <li class="sparks-info">
+            <h5> Bytes <span ng-style="{'color': realtime.palette.color.bytes}"><i class="fa fa-floppy-o"></i>&nbsp;{{realtime.metrics.bytes.value}}</span></h5>
+        </li>
+    </ul>
+</div>

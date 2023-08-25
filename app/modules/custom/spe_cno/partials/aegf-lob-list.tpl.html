@@ -1,0 +1,49 @@
+<div id="content">
+  <!-- MAIN CONTENT -->
+  <section id="widget-grid" widget-grid>
+    <div class="row">
+      <article class="col-sm-12">
+        <div jarvis-widget id="aegfLobListWidget" data-widget-color="darken" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-custombutton="false" data-widget-colorbutton="false">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-suitcase"></i> </span>
+            <h2>Line of Business Short to Long Mapping</h2>
+          </header>
+          <div class="widget-body">
+            <div class="widget-body-toolbar">
+              <div class="row">
+                <!-- TOOL BAR LEFT -->
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                  <aegf-group-filter options="{showSubGroup:false}" function-manager="vmListing.functions" ng-model="vmListing.model.groupFilter"></aegf-group-filter>
+                </div>
+
+                <!-- TOOL BAR RIGHT -->
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
+                  <button class="btn btn-success" ng-click="vmListing.functions.updateFunction();"
+                          ng-disabled="!vmListing.model.flags.allowSave" ng-if="vmListing.model.groupFilter.group">
+                    <i class="fa fa-save"></i> <span class="hidden-mobile">Apply Changes...</span>
+                  </button>
+                  <button type="file" class="btn bg-color-blue txt-color-white" ngf-select ng-model="uploadImportFile" ngf-multiple="false" ng-show="false">
+                    <i class="fa fa-upload"></i> <span class="hidden-mobile hidden-sm">Import from Excel...</span>
+                  </button>
+                  <button class="btn bg-color-blueDark txt-color-white"  ng-click="vmListing.functions.requestExport();" ng-show="false">
+                    <i class="fa fa-download"></i> <span class="hidden-mobile hidden-sm">Export to Excel...</span>
+                  </button>
+                  <button class="btn bg-color-blueDark txt-color-white"  ng-click="vmListing.functions.requestSync();" ng-disabled="!vmListing.model.groupFilter.group">
+                    <i class="fa fa-exchange"></i> <span class="hidden-mobile hidden-sm">Sync...</span>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <mqa-kendo-grid id="listGrid" options="vmListing.model.gridOptions" data="vmListing.model.gridData"></mqa-kendo-grid>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+  <!-- END MAIN CONTENT -->
+</div>

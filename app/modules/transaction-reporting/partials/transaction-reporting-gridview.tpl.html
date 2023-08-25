@@ -1,0 +1,38 @@
+<style>
+    .k-grid  .k-grid-header  .k-header  .k-link {
+        height: auto;
+    }
+
+    .k-grid  .k-grid-header  .k-header {
+        white-space: normal;
+    }
+</style>
+<div id="tr-transaction-reporting-gridview-widget" data-widget-colorbutton="false" data-widget-togglebutton="false"  data-widget-editbutton="false" data-widget-deletebutton="false" data-jarvis-widget>
+    <header>
+        <!---
+        <div class="widget-toolbar" style="float:left">
+            <a class="dropdown-toggle" uib-dropdown-toggle style="color:#333"><i
+                    class="fa fa-lg fa-gear"></i><b class="caret"> </b> </a>
+            <ul class="dropdown-menu pull-right">
+                <li>
+                    <a ng-click="exportPDF();"><i class="fa fa-file-text-alt"></i> Export to PDF</a>
+                </li>
+                <li>
+                    <a href-void><i class="fa fa-question-sign"></i>Export to Excel</a>
+                </li>
+            </ul>
+        </div>
+        --->
+        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+        <h2>{{reportName}}</h2>
+    </header>
+    <!-- widget content -->
+    <div class="widget-body">
+        <section>
+            <div kendo-grid="grid" id= "grid" k-options="gridOptions"/>
+                </section>
+    </div>
+</div>
+<!-- end widget div -->
+
+

@@ -1,0 +1,38 @@
+<div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <h2 ng-class="vmItem.model.isError ? 'text-danger' : 'text-success'"><i ng-class="vmItem.model.icon"></i><span
+                class="semi-bold"> {{vmItem.model.type}} Invocation</span>
+            <br>
+            <small class="wrap"><span>{{vmItem.model.name}}</span>
+            </small>
+            <br/>
+            <small class="text-muted" ng-if="vmItem.model.result > 0">
+                <b>Error Code:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{vmItem.model.result}}</span>
+            </small>
+            <small class="text-muted" ng-if="vmItem.model.result == 0">
+                <b>Result:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{vmItem.model.result}}</span>
+            </small>
+
+        </h2>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12" ng-if="vmItem.model.nodes == undefined">
+        <div ng-if="vmItem.model.standardOutput">
+            <label class="label"><b>Standard Output</b></label>
+
+            <div ng-class="vmItem.model.standardError ? 'alert-warning': 'alert-success'" class="alert alert-block">
+                <div class="custom-scroll monospaced ">{{vmItem.model.standardOutput}}</div>
+            </div>
+        </div>
+        <div ng-if="vmItem.model.standardError">
+            <label class="label"><b>Standard Error</b></label>
+
+            <div class="alert alert-block alert-danger">
+                <p class="custom-scroll monospaced">{{vmItem.model.standardError}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12" ng-if="vmItem.model.nodes && vmItem.model.nodes.length > 0">
+        <div data-smart-include="app/modules/mft_v2/partials/mqa-exit-item.tpl.html"/>
+    </div>
+</div>
+

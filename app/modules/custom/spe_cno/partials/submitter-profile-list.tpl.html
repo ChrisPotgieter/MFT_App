@@ -1,0 +1,42 @@
+<div id="content">
+    <div class="row">
+        <mqa-big-breadcrumbs></mqa-big-breadcrumbs>
+    </div>
+    <!-- MAIN CONTENT -->
+    <section id="widget-grid" widget-grid>
+        <div class="row">
+            <article class="col-sm-12">
+                <div jarvis-widget id="cnoSpeSRProfileListWidget" data-widget-color="darken" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-sign-in"></i> </span>
+                        <h2>Submitter Profile List </h2>
+                    </header>
+                    <div>
+                        <div class="widget-body">
+                            <div class="widget-body-toolbar" ng-show="!showEdit">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                        <button class="btn btn-primary" data-ng-click="insertRecord();">
+                                            <i class="fa fa-plus"></i> <span class="hidden-mobile">Add Profile...</span>
+                                        </button>
+
+                                        <button class="btn btn-success"  ng-disabled="!allowSave" ng-click="updateFunction();">
+                                            <i class="fa fa-save"></i> <span class="hidden-mobile">Apply Changes...</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="showEdit">
+                                <cno-spe-submitter-profile-edit/>
+                            </div>
+                            <div class="row">
+                                <mqa-kendo-grid  id="submitterListGrid" options="grid.dataOptions"  data="gridList" ondrill="editRecord"></mqa-kendo-grid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- END MAIN CONTENT -->
+</div>

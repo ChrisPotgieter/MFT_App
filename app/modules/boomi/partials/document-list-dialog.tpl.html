@@ -1,0 +1,15 @@
+<div>
+    <div class="modal-header">
+        <div data-smart-include="app/modules/common/partials/common-dialog-modal-header.tpl.html"/>
+    </div>
+    <div class="modal-body no-margin-bottom">
+        <form name="inputForm" novalidate>
+            <div class="form-group">
+                <mqa-filter-entry data="vmDialog.model.inputFilter.data" key-options="vmDialog.model.inputFilter.keyOptions" icon="fa-search" title="Meta Data" function-manager="vmDialog.functionManager" options="vmDialog.model.inputFilter.options"/>
+           </div>
+        </form>
+
+        <mqa-kendo-grid  id="document-list" options="vmDialog.model.options"  data="vmDialog.model.data" function-manager="vmDialog.functionManager"></mqa-kendo-grid>
+    </div>
+    <div data-smart-include="app/modules/common/partials/common-dialog-modal-footer.tpl.html"/>
+</div>

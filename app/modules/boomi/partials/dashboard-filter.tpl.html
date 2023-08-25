@@ -1,0 +1,58 @@
+<div>
+    <fieldset>
+        <legend class="margin-bottom-5">Filters</legend>
+        <div class="margin-bottom-10">
+            <label for="input_jobNames">Job Names:</label>
+            <ui-select id="input_jobNames" name="input_jobNames" tagging multiple
+                       ng-model="vmDialog.dataModel.filter.jobNames" mqa-tag
+                       input-Placeholder="Enter Job Names"/>
+        </div>
+
+        <div class="margin-bottom-10">
+
+            <label for="input_atom">Atoms:</label>
+            <ui-select id="input_atom" name="input_atom"
+                       ng-model="vmDialog.dataModel.filter.atoms" multiple theme="select2"
+                       style="width:100%">
+                <ui-select-match placeholder="Please select the Atom(s)">
+                    {{$item.description}}
+                </ui-select-match>
+                <ui-select-choices
+                        repeat="listItem.code as listItem in vmDialog.model.lists.atom_list | filter:$select.search">
+                    <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="no-margin-bottom">Settings</legend>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-6">
+                <label class="control-label" for="txtTransLimit">Transaction Limit:</label>
+            </div>
+            <div class="col-md-6">
+                <label class="control-label" for="div_procLimit">Process Limit:</label>
+            </div>
+        </div>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-6" id="div_transLimit">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-table"></i></span>
+                    <input class="form-control" type="number" title="Enter the No. of Transactions to Display" name="txtTransLimit" id="txtTransLimit"  ng-model="vmDialog.dataModel.filter.recordLimit" min="1" max="5000" required/>
+                </div>
+            </div>
+            <div class="col-md-6" id="div_procLimit">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-bar-chart"></i></span>
+                    <input class="form-control" type="number" title="Enter the No. of Processes to Display" name="txtProcLimit" id="txtProcLimit"  ng-model="vmDialog.dataModel.filter.processLimit" min="1" max="10" required/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>&nbsp;</label>
+                <div class="input-group">
+                    <mqa-switch title="Job Grouping" label="transGroup" ng-model="vmDialog.dataModel.filter.jobGroup"/>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

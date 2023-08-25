@@ -1,0 +1,4 @@
+<li ng-class="{parent_li: item.nodes.length}" ng-repeat="item in items" role="treeitem">
+    <mqa-tree-view-node></mqa-tree-view-node>
+    <ul ng-if="item.nodes.length" mqa-tree-view onnav="$parent.$parent.onnav()" ng-show="item.expanded"  items="item.nodes" role="group" class="smart-treeview-group"></ul>
+</li>

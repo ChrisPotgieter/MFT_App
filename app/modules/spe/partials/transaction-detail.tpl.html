@@ -1,0 +1,30 @@
+<div class="widget-body no-padding">
+    <div data-smart-include="app/modules/spe/partials/transaction-detail-header.tpl.html"/>
+    <div style="padding-right: 30px;">
+        <div class="tabbable tabs-below">
+            <div class="tab-content">
+                <div class="tab-pane" id="tab_meta" ng-if="vmDetail.model.meta_data != null && vmDetail.model.meta_data.length > 0">
+                    <!--- DISPLAY THE META-DATA VIEW --->
+                    <div class="scroll-body"
+                         slimscroll="{'height': '450', alwaysVisible: 'true', 'position': 'left', color: 'silver'}">
+                        <mqa-meta-data-grid data="vmDetail.model.meta_data"/>
+                    </div>
+                </div>
+                <div class="tab-pane active" id="tab_detail">
+                    <!-- DISPLAY THE DIAGRAM VIEW -->
+                    <div kendo-diagram="diagram" k-options="vmDetail.diagramOptions" style="border-style: none; min-height: 490px; max-height: 490px;" k-on-click="vmDetail.functions.navDiagram(kendoEvent);" k-rebind="vmDetail.model.flags.diagram_refresh"/>
+                </div>
+            </div>
+            <!--- TABS AT THE BOTTOM --->
+            <ul class="nav nav-tabs">
+                <li>
+                    <a href="#tab_meta" data-toggle="tab" ng-if="vmDetail.model.meta_data != null && vmDetail.model.meta_data.length > 0">Meta-Data</a>
+                </li>
+                <li class="active">
+                    <a href="#tab_detail" data-toggle="tab">Transaction Information</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

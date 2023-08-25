@@ -1,0 +1,100 @@
+<div class="row">
+    <article class="col-sm-12">
+        <div jarvis-widget id="editRoleWidget" data-widget-color="darken" data-widget-editbutton="false">
+            <header>
+                <h2>{{headingText}}</h2>
+            </header>
+            <div>
+                <div class="widget-body padding-5">
+                    <form id="adForm" class="form-horizontal">
+                        <fieldset>
+                            <div class="col-sm-12">
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-sm-6" id="div_domain">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-building fa-lg fa-fw"></i></span>
+                                                <input class="form-control input-lg" placeholder="Domain Name" type="text" name="domain"
+                                                       ng-model="editRow.domain">
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-6" id="div_host">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-institution  fa-lg fa-fw "></i></span>
+                                                <input class="form-control input-lg"  placeholder="Host" type="text" name="host"
+                                                       ng-model="editRow.host">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group" id="div_nameString">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-th-list fa-lg fa-fw"></i></span>
+                                                <input class="form-control input-lg" type="text" name="nameString"
+                                                       placeholder="Distinguished Name"
+                                                       ng-model="editRow.nameString">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>LDAP://{{editRow.host}}/{{editRow.nameString}}</span>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-sm-6" id="div_ldapLogin">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                                                <input class="form-control input-lg"  type="text" name="ldapLogin"
+                                                       placeholder="Login Name"
+                                                       ng-model="editRow.login">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6" id="div_ldapPassword">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-key fa-lg fa-fw"></i></span>
+                                                    <input class="form-control input-lg" placeholder="Password" type="password" name="ldapPassword"
+                                                           ng-model="editRow.password">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group" id="div_searchString">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-book fa-lg fa-fw"></i></span>
+                                                <input class="form-control input-lg" type="text" name="searchString"
+                                                       placeholder="User Search Criteria"
+                                                       ng-model="editRow.searchString">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                        <footer>
+                            <button type="submit" id="submit" class="btn btn-primary" ng-click="saveChanges();">
+                                {{buttonText}}
+                            </button>
+
+                            <button type="button"  class="btn btn-danger"   ng-click="userDelete();" ng-if="!newRecord">
+                                Delete
+                            </button>
+                            <button type="button" class="btn btn-default" ng-click="cancelRecord();">
+                                Cancel
+                            </button>
+                        </footer>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+

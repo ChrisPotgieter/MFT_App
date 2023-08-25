@@ -1,0 +1,135 @@
+<div class="widget-body">
+    <div class="row">
+        <div class="col-md-12">
+            <form id="frmGroupCode" name="frmGroupCode">
+                <fieldset>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <input type="text" placeholder="Group Code" class="form-control" name="code"
+                                       ng-model="editRow.code">
+                            </div>
+                        </div>
+                        <input type="hidden" name="hiddenValidation"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <input type="text" placeholder="Description" class="form-control" name="description"
+                                       ng-model="editRow.description">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div>
+        <hr class="simple">
+        <ul id="myTab1" class="nav nav-tabs bordered">
+            <li class="active">
+                <a href="#s1" data-toggle="tab">Users <span class="badge bg-color-blue txt-color-white">{{vm.model.viewData.users.length}}</span></a>
+            </li>
+            <li>
+                <a href="#s2" data-toggle="tab">Roles <span class="badge bg-color-blueDark txt-color-white">{{vm.model.viewData.roles.length}}</span></a>
+            </li>
+            <li>
+                <a href="#s3" data-toggle="tab">Queues <span class="badge bg-color-purple txt-color-white">{{editRow.jsonData.queues.length}}</span></a>
+            </li>
+            <!---
+            <li>
+                <a href="#s4" data-toggle="tab">API End Points <span class="badge bg-color-orange txt-color-white">{{editRow.jsonData.endpoints.length}}</span></a>
+            </li>
+            -->
+
+        </ul>
+        <div id="myTabContent1" class="tab-content padding-10">
+            <div class="tab-pane fade in active" id="s1">
+                <p>
+                    <mqa-thumb-list data="vm.model.viewData.users" default-image="styles/img/avatars/avatar.png"
+                                    event-text="Remove" on-select="removeUser"
+                                    header="Users Currently Assigned" btn-class="['btn-lg', 'btn-danger']"
+                                    img-size="100"></mqa-thumb-list>
+                </p>
+                <p>
+                    <mqa-thumb-list data="vm.model.viewData.excludedUsers" default-image="styles/img/avatars/avatar.png"
+                                    event-text="Add" on-select="addUser" header="Users Available"
+                                    btn-class="['btn-lg']" img-size="100"></mqa-thumb-list>
+                </p>
+            </div>
+            <div class="tab-pane fade" id="s2">
+                <p>
+                    <mqa-thumb-list data="vm.model.viewData.roles" default-image="styles/img/avatars/group.png"
+                                    event-text="Remove" on-select="removeRole"
+                                    header="Roles Currently Assigned"
+                                    btn-class="['btn-lg', 'btn-danger']"></mqa-thumb-list>
+                </p>
+                <p>
+                    <mqa-thumb-list data="vm.model.viewData.excludedRoles" default-image="styles/img/avatars/group.png"
+                                    event-text="Add" on-select="addRole" header="Roles Available"
+                                    btn-class="['btn-lg']"></mqa-thumb-list>
+                </p>
+            </div>
+            <div class="tab-pane fade" id="s3">
+                <div class="row" style="padding-bottom: 20px;" ng-if="showQueueEdit">
+                    <div class="col-md-12">
+                        <mqa-adm-notify-queue-edit/>
+                    </div>
+                </div>
+                <div class="row padding-bottom-10" ng-if="!showQueueEdit">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button class="btn btn-primary" data-ng-click="insertQueueRecord();">
+                              <i class="fa fa-plus"></i> <span class="hidden-mobile">Add Queue...</span>
+                             </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <mqa-kendo-grid id="queueGrid" options="queueGridDataOptions" data="editRow.jsonData.queues"
+                                        ondrill="editQueueRecord"></mqa-kendo-grid>
+                    </div>
+                </div>
+            </div>
+            <!---
+            <div class="tab-pane fade" id="s4">
+                <div class="row" style="padding-bottom: 20px;" ng-if="showEndPointEdit">
+                    <div class="col-md-12">
+                        <mqa-adm-notify-endpoint-edit/>
+                    </div>
+                </div>
+                <div class="row padding-bottom-10" ng-if="!showEndPointEdit">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <button class="btn btn-primary" data-ng-click="insertEndPointRecord();">
+                            <i class="fa fa-plus"></i> <span class="hidden-mobile">Add End Point...</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <mqa-kendo-grid id="endPointGrid" options="endPointGridDataOptions" data="editRow.jsonData.endpoints"
+                                        ondrill="editEndPointRecord"></mqa-kendo-grid>
+                    </div>
+                </div>
+            </div>
+            --->
+        </div>
+    </div>
+    <div class="row" ng-if="!showQueueEdit && !showEndPointEdit">
+        <div class="col-md-12 col-sm-12">
+            <div class="widget-footer padding-10 dialog-border">
+                <footer>
+                    <button type="submit" id="submit" class="btn btn-primary" ng-click="saveChanges();">
+                        {{buttonText}}
+                    </button>
+                    <button type="button" class="btn btn-danger" ng-click="userDelete();"
+                            ng-if="!editRow.isNew">
+                        Delete
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="cancelRecord();">
+                        Cancel
+                    </button>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>

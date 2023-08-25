@@ -1,0 +1,57 @@
+<div>
+    <fieldset>
+        <legend class="no-margin padding-bottom-5 padding-top-0">MFT Information
+            <small><span class="label truncate"
+                         ng-class="data.transaction.status >= 90 ? 'bg-color-red': 'bg-color-darken'">{{data.info.status}}</span></small>
+        </legend>
+        <ul class="list-unstyled">
+            <li class="padding-top-10">
+                <span class="text-muted">
+                   Source:<span class="txt-color-darken truncate">&nbsp;&nbsp;{{data.info.source_agent}}</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted padding-bottom-5">
+                   Destination:&nbsp;<span
+                        class="txt-color-darken truncate">&nbsp;&nbsp;{{data.info.destination_agent}}</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-exchange"></i>Type:&nbsp;&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.info.transfer_type}}&nbsp;({{data.info.version}})</span>
+                </span>
+            </li>
+            <li ng-if="data.info.fileSpace">
+                <span class="text-muted">
+                    <i class="fa fa-envelope"></i>&nbsp;File Space:&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.info.fileSpace}}</span>
+                </span>
+            </li>
+            <!-- TODO: Make this linkable -->
+            <li ng-if="data.transaction.module_data.related_id">
+                <span class="text-muted">
+                    <i class="fa fa-link"></i>&nbsp;Related:&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.transaction.module_data.related_id}}</span>
+                </span>
+            </li>
+
+        </ul>
+    </fieldset>
+    <fieldset ng-if="data.transaction.progress">
+        <legend class="no-padding no-margin margin-bottom-5">Statistics</legend>
+        <ul class="list-unstyled">
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-history"></i>&nbsp;Retries:&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.transaction.progress.retries | number}}</span>
+                    <i class="fa fa-warning"></i>&nbsp;&nbsp;Warnings:<span class="txt-color-darken">&nbsp;&nbsp;{{data.transaction.progress.warnings | number}}</span>
+                    <i class="fa fa-exclamation-circle"></i>&nbsp;Failures:<span class="txt-color-darken">&nbsp;{{data.transaction.progress.failures | number}}</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-files-o"></i>&nbsp;Item Count:&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.transaction.progress.total_items | number}}</span>
+                    <i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Size:<span class="txt-color-darken">&nbsp;&nbsp;{{data.transaction.progress.total_bytes | bytesFilter}}</span>
+                    <i class="fa fa-fighter-jet"></i>&nbsp;Transfer Rate:&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.info.transfer_rate}}</span>
+                </span>
+            </li>
+        </ul>
+    </fieldset>
+</div>

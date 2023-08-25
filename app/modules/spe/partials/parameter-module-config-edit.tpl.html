@@ -1,0 +1,45 @@
+<section id="widget-grid" widget-grid>
+    <div class="row">
+        <article class="col-sm-12">
+            <div jarvis-widget id="parameterListMenuWidget" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="true" data-widget-custombutton="false" data-widget-sortable="false" role="widget">
+                <header role="heading" class="ui-sortable-handle">
+                    <span class="widget-icon"> <i class="fa fa-cog"></i> </span>
+                    <h2>ITX Configuration</h2>
+                    <ul id="tabs" class="nav nav-tabs pull-right">
+                        <li class="active">
+                            <a href="#tp_server" data-toggle="tab">ITX Server Information</a>
+                        </li>
+                        <li>
+                            <a href="#tp_meta" data-toggle="tab">Trading Partner Meta-Data</a>
+                        </li>
+                        <li class="pull-right">
+                        </li>
+                    </ul>
+                </header>
+                <div class="widget-body">
+                    <div id="tabContent" class="tab-content padding-10">
+                        <!-- ITX SERVER INFORMATION -->
+                        <div class="tab-pane fade in active" id="tp_server">
+                            <mqa-adm-spe-edit model="vm.model.itx_server.data" watch-flag="vm.model.itx_server.validation.watchFlag" validation="vm.model.itx_server.validation.bv" on-validation="onFieldValidate"/>
+                        </div>
+                        <!-- TRADING PARTNER META-DATA -->
+                        <div class="tab-pane fade in" id="tp_meta">
+                            <mqa-adm-meta-data-config-edit data="vm.model.sender_receiver_meta.data" config="vm.model.sender_receiver_meta.config" validation="vm.model.sender_receiver_meta.validator"/>
+                        </div>
+
+                    </div>
+                    <div class="widget-footer">
+                        <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDetail.functions.saveRecord();">
+                            Save
+                        </button>
+                        <button type="button" class="btn btn-default" ng-click="vmDetail.functions.cancelRecord();">
+                            Cancel
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+        </article>
+    </div>
+</section>

@@ -1,0 +1,39 @@
+<fieldset>
+    <legend>Pay Periods <a href="#pay_period" data-toggle="tab"
+            ng-click="vmDetail.functions.setActiveTab('pay_period');"><i class='fa fa-pencil'></i></a></legend>
+            <div class="form-group">
+            <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12">
+            <b>Pay Period</b><br>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <b>Start Date:</b><br>
+                <label>{{vmDetail.functions.dateFormat(vmDetail.model.pay_period.selectedDateRange.startDate)}}</label>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                <b>End Date:</b><br>
+                <label>{{vmDetail.functions.dateFormat(vmDetail.model.pay_period.selectedDateRange.endDate)}}</label>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
+                <b>Pay Type:</b><br>
+                <label ng-repeat="parameter in vmDetail.model.pay_period.options"
+                ng-if="vmDetail.model.pay_period.type == parameter.value">{{parameter.name}}</label>
+                
+            </div>
+           
+        </div> <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left" ng-if="vmDetail.model.pay_period.type == '24'"">
+                <b>2nd Pay Day:</b><br>
+                <label>{{vmDetail.model.pay_period.semi_pay_day}}</label>
+            </div>
+        
+    </div>
+
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12" style="height: 200px">
+                <mqa-kendo-grid id="periodGrid" options="vmDetail.model.pay_period_summary_grid" data="vmDetail.model.summary.period" function-manager="vmDetail.model.pay_period.grid.functionManager" refresh-flag="vmDetail.model.flags.refreshSummary.value" rebuild="vmDetail.model.pay_period.grid.flags.rebuild"/>
+            </div>
+           
+        </div>
+    </div>
+</fieldset>

@@ -1,0 +1,92 @@
+<div class="widget-body">
+    <!--- Code and Description Form -->
+    <div class="row">
+        <div class="col-md-12">
+            <form id="frmGroupCode" name="frmGroupCode" ng-hide="showSubEdit">
+                <fieldset>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <input type="text" placeholder="Group Code" class="form-control" name="code"
+                                       ng-model="editRow.code">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <input type="text" placeholder="Description" class="form-control" name="description"
+                                       ng-model="editRow.description">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="hiddenValidation"/>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <!--- Summernote Editor -->
+    <div class="row" ng-if="showSubEdit">
+
+        <div class="inbox-info-bar no-margin" ng-if="templateRow.subject !== undefined">
+            <form name="frmEmail" id="frmEmail" novalidate class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <div class="col-sm-1">
+                                    <label class="control-label" for="subject"><strong>Subject:</strong></label>
+                                </div>
+                                <div class="col-sm-11" id="div_subject">
+                                    <input class="form-control" name="subject" placeholder="Subject" type="text" ng-model="templateRow.subject.content" id="subject"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+        </div>
+        <div class="padding-5">
+            <summernote config="editorOptions" ng-model="templateRow.content"></summernote>
+        </div>
+
+        <div class="no-margin margin-top-10 margin-bottom-10 dialog-footer">
+            <button class="btn btn-primary" type="button" data-ng-click="saveSubEdit();">
+                Apply
+            </button>
+            <button class="btn btn-danger pull-right" type="button" ng-click="deleteSubEdit();" ng-if="allowTemplateClear">
+                Clear
+            </button>
+            <button ng-click="cancelSubEdit();" class="btn btn-default pull-right margin-right-5" type="button">
+                Cancel
+            </button>
+        </div>
+    </div>
+    <!--- Template Grid -->
+    <div class="row">
+        <div class="col-md-12">
+            <mqa-kendo-grid id="subGrid" options="subGridDataOptions" data="editRow.subGridData"
+                            ondrill="invokeSubEdit" refresh-flag="gridRefreshFlag"></mqa-kendo-grid>
+        </div>
+    </div>
+    <!--- Button Panel -->
+    <div class="row" ng-if="!showSubEdit">
+        <div class="col-md-12 col-sm-12">
+            <div class="widget-footer margin-top-10 dialog-border">
+                <button type="button" id="submit" class="btn btn-primary" ng-click="saveChanges();">
+                    {{buttonText}}
+                </button>
+                <button class="btn btn-success" type="button" ng-click="duplicateRecord();" ng-if="!editRow.isNew">
+                    Copy...
+                </button>
+                <button type="button" class="btn btn-danger" ng-click="userDelete();" ng-if="!editRow.isNew">
+                    Delete
+                </button>
+                <button type="button" class="btn btn-default" ng-click="cancelRecord();">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,16 @@
+<div>
+    <script id="templateInputBalancing" type="text/x-kendo-template">
+        <button class="k-button k-button-icontext" ng-click="functionManager.showBalancing(1);">
+            <span class="fa fa-dashboard"></span> View Balancing...
+        </button>
+    </script>
+    <script id="templateRequestBalancing" type="text/x-kendo-template">
+        <button class="k-button k-button-icontext" ng-click="functionManager.showBalancing(2);">
+            <span class="fa fa-dashboard"></span> View Balancing...
+        </button>
+    </script>
+
+    <section>
+        <mqa-kendo-grid id="meta-data-grid" options="vmMeta.model.gridOptions" function-manager="vmMeta.functionManager"  data="vmMeta.data" refresh-flag="vmMeta.model.flags.gridRefresh" height="0" rebuild="vmMeta.model.flags.rebuild"></mqa-kendo-grid>
+    </section>
+</div>

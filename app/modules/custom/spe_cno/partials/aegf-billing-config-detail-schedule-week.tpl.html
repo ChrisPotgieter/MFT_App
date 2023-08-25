@@ -1,0 +1,26 @@
+<div class="form-group">
+    <div class="table-responsive">
+        <table class="table table-bordered table-condensed smart-form has-tickbox">
+            <thead>
+            <tr>
+                <th style="width: 100px">Day of Week</th>
+                <th ng-repeat="day in vmDetail.model.schedule.days">
+                    <label class="checkbox">
+                        {{day.name}}
+                        <input type="checkbox" ng-model="day.selected" ng-change="vmDetail.functions.onScheduleScheduleWeekChange()"/>
+                        <i style="top:10px !important;"></i>
+                    </label>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="background-color: #eee">Time</td>
+                <td ng-repeat="day in vmDetail.model.schedule.days">
+                    <input class="form-control " required kendo-time-picker  ng-model="vmDetail.model.schedule.time"  k-ng-model="day.timeobj" style="width: 100%;" disabled />
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

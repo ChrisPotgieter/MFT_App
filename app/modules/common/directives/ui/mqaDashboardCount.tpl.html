@@ -1,0 +1,11 @@
+    <div class="p-3 rounded overflow-hidden position-relative mb-g" ng-class="vmDash.divClass" style="box-sizing: border-box" id="{{vmDash.id}}" title="{{vmDash.tooltip}}" ng-click="vmDash.functions.onClick();">
+        <div class="">
+            <h3 class="display-4 d-block l-h-n m-0 fw-500">
+                <div  ng-repeat="stat in vmDash.stats" class="truncate {{stat.class}}">
+                    {{stat.value}}
+                    <small class="m-0 l-h-n" ng-class="stat.captionClass">{{stat.caption}}</small>
+                </div>
+            </h3>
+        </div>
+        <i class="fa fal position-absolute pos-bottom opacity-15 mb-n1 mr-n1 padding-left-15" style="right: 10px; font-size:6rem" ng-class="vmDash.icon"></i>
+    </div>

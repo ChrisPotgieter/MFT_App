@@ -1,0 +1,24 @@
+<div>
+    <ul id="sparks" class="">
+        <li class="sparks-info">
+            <h5>Events <span ng-style="{'color': realtime.palette.colorNames.ack}">{{realtime.metrics.events.value}}</span></h5>
+            <div class="sparkline hidden-mobile hidden-md hidden-sm" ng-style="{'color': realtime.palette.colorNames.ack}" mqa-sparkline data="realtime.metrics.events.chartData" config="realtime.chartConfig.events"/>
+        </li>
+        <li class="sparks-info">
+            <h5> Enveloping
+                <span>
+                    <span ng-style="{'color': realtime.palette.colorNames.envelope}" class="display-inline"><i class="fa fa-envelope-o"></i>&nbsp;{{realtime.metrics.envelop.value}}</span>
+                    <span ng-style="{'color': realtime.palette.colorNames.de_envelope}" class="display-inline"><i class="fa fa-folder-open"></i>&nbsp;{{realtime.metrics.deenvelope.value}}</span>
+                </span>
+            </h5>
+        </li>
+        <li class="sparks-info">
+            <h5> Transforms <span ng-style="{'color': realtime.palette.colorNames.transform}"><i class="fa fa-cubes"></i>{{realtime.metrics.transforms.value}}</span></h5>
+        </li>
+
+        <li class="sparks-info">
+            <h5> Failures <span class="txt-color-red">{{realtime.metrics.failures.value}}</span></h5>
+            <div class="sparkline txt-color-red hidden-mobile hidden-md hidden-sm" mqa-sparkline data="realtime.metrics.failures.chartData" config="realtime.chartConfig.failures"/>
+        </li>
+    </ul>
+</div>

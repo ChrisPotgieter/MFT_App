@@ -1,0 +1,34 @@
+<div class="col-md-12">
+    <div class="row">
+        <!--- TOP PROCESSES -->
+        <div class="col-sm-12">
+            <div jarvis-widget id="process-chart-widget-compare"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+                    <h2>Top {{vm.model.dialogData.filter.processLimit}} Processes</h2>
+                </header>
+                <div class="widget-body">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <mqa-chartjs dataset="vm.model.compareData.processBar.series" chart-type="horizBar" height="120" options="vm.model.compareData.processBar.options" update-flag="vm.model.compareData.processBar.updateFlag" refresh-flag="vm.model.compareData.processBar.refreshFlag" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!--- TOP 5 ATOMS -->
+        <div class="col-sm-12">
+            <div jarvis-widget id="atom-chart-widget-current"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-laptop"></i> </span>
+                    <h2>Top 5 Atoms</h2>
+                </header>
+                <div class="widget-body">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <mqa-chartjs dataset="vm.model.compareData.atomBar.series" options="vm.model.compareData.atomBar.options" update-flag="vm.model.compareData.atomBar.updateFlag" refresh-flag="vm.model.compareData.atomBar.refreshFlag" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

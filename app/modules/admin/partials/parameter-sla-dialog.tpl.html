@@ -1,0 +1,210 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDetail.functions.cancelRecord();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class='fa fa-clock-o'></i> {{vmDetail.model.title}}</h6></div>
+    </div>
+    <div class="modal-body">
+        <form id="frmSLAConfigEdit" name="frmSLAConfigEdit" class="form-horizontal" novalidate>
+            <fieldset>
+                <div class="form-group">
+                    <div class="col-md-12 col-lg-12 col-sm-12" id="div_code">
+                        <label class="control-label">Code:</label>
+                        <input type="text" placeholder="Enter the Code" class="form-control" name="code"
+                               ng-model="vmDetail.dataModel.code" ng-disabled="!vmDetail.model.flags.allowCode">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 col-lg-12 col-sm-12" id="div_desc">
+                        <label class="control-label">Description:</label>
+                        <input type="text" placeholder="Description" class="form-control" name="description"
+                               ng-model="vmDetail.dataModel.description"/>
+                    </div>
+                </div>
+            </fieldset>
+            <ul id="tabs" class="nav nav-tabs tabs-left bordered">
+                <li class="active">
+                    <a href="#timing" data-toggle="tab">Timing</a>
+                </li>
+                <li ng-if="vmDetail.model.modules.mft">
+                    <a href="#mft" data-toggle="tab">{{vmDetail.model.modules.mft.header}}</a>
+                </li>
+                <li ng-if="vmDetail.model.modules.iib">
+                    <a href="#iib" data-toggle="tab">{{vmDetail.model.modules.iib.header}}</a>
+                </li>
+                <li ng-if="vmDetail.model.modules.spe">
+                    <a href="#spe" data-toggle="tab">{{vmDetail.model.modules.spe.header}}</a>
+                </li>
+                <li ng-if="vmDetail.model.modules.boomi">
+                    <a href="#boomi" data-toggle="tab">{{vmDetail.model.modules.boomi.header}}</a>
+                </li>
+
+            </ul>
+
+            <div id="tabContent" class="tab-content padding-10">
+                <!-- TIMING TAB -->
+                <div class="tab-pane fade in active" id="timing">
+                    <div>
+                        <fieldset>
+                            <legend class="no-margin no-padding">Execution Time</legend>
+                            <div class="form-group" id="div_exec_time">
+                                <div class="col-lg-2 col-md-2 col-sm-2" id="div_exec_day">
+                                    <label class="control-label">Days</label>
+                                    <input class="form-control spinner-left" name="input_exec_day" id="input_exec_day" ng-model="vmDetail.dataModel.jsonData.timing.exec.days" min="0" max="10" mqa-spinner>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2" id="div_exec_hr">
+                                    <label class="control-label">Hours</label>
+                                    <input class="form-control spinner-left" name="input_exec_hr" id="input_exec_hr" ng-model="vmDetail.dataModel.jsonData.timing.exec.hours" min="0" max="23" mqa-spinner>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2" id="div_exec_min">
+                                    <label class="control-label">Minutes</label>
+                                    <input class="form-control spinner-left" name="input_exec_min" id="input_exec_min" ng-model="vmDetail.dataModel.jsonData.timing.exec.minutes" min="0" max="59" mqa-spinner>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2" id="div_exec_sec">
+                                    <label class="control-label">Seconds</label>
+                                    <input class="form-control spinner-left" name="input_exec_sec" id="input_exec_sec" ng-model="vmDetail.dataModel.jsonData.timing.exec.seconds" min="0" max="59" mqa-spinner>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2" id="div_exec_mill">
+                                    <label class="control-label">Milliseconds</label>
+                                    <input class="form-control spinner-left" name="input_exec_mill" id="input_exec_mill" ng-model="vmDetail.dataModel.jsonData.timing.exec.milli" min="0" max="999" mqa-spinner>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="hidden" name="hiddenValidation"/>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div>
+                        <fieldset>
+                            <legend class="no-margin no-padding">Cancellation Time</legend>
+                            <div class="form-group" id="div_cancel_time">
+                                <div class="col-lg-2 col-md-2 col-sm-2" id="div_cancel_day">
+                                    <label class="control-label">Days</label>
+                                    <input class="form-control spinner-left" name="input_cancel_day" id="input_cancel_day" ng-model="vmDetail.dataModel.jsonData.timing.cancel.days" min="0" max="10" mqa-spinner>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2" id="div_cancel_hr">
+                                    <label class="control-label">Hours</label>
+                                    <input class="form-control spinner-left" name="input_cancel_hr" id="input_cancel_hr" ng-model="vmDetail.dataModel.jsonData.timing.cancel.hours" min="0" max="23" mqa-spinner>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2" id="div_cancel_min">
+                                    <label class="control-label">Minutes</label>
+                                    <input class="form-control spinner-left" name="input_cancel_min" id="input_cancel_min" ng-model="vmDetail.dataModel.jsonData.timing.cancel.minutes" min="0" max="59" mqa-spinner>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2" id="div_cancel_sec">
+                                    <label class="control-label">Seconds</label>
+                                    <input class="form-control spinner-left" name="input_cancel_sec" id="input_cancel_sec" ng-model="vmDetail.dataModel.jsonData.timing.cancel.seconds" min="0" max="59" mqa-spinner>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div>
+                        <fieldset>
+                            <legend class="no-margin no-padding">Reminder Time</legend>
+                            <div class="form-group" id="div_remind_time">
+                                <div class="col-lg-2 col-md-2 col-sm-2" id="div_remind_day">
+                                    <label class="control-label">Days</label>
+                                    <input class="form-control spinner-left" name="input_remind_day" id="input_remind_day" ng-model="vmDetail.dataModel.jsonData.timing.remind.days" min="0" max="10" mqa-spinner>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2" id="div_remind_hr">
+                                    <label class="control-label">Hours</label>
+                                    <input class="form-control spinner-left" name="input_remind_hr" id="input_remind_hr" ng-model="vmDetail.dataModel.jsonData.timing.remind.hours" min="0" max="23" mqa-spinner>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2" id="div_remind_min">
+                                    <label class="control-label">Minutes</label>
+                                    <input class="form-control spinner-left" name="input_remind_min" id="input_remind_min" ng-model="vmDetail.dataModel.jsonData.timing.remind.minutes" min="0" max="59" mqa-spinner>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                </div>
+                <!-- MFT TAB -->
+                <div class="tab-pane fade" id="mft"  ng-if="vmDetail.model.modules.mft">
+                    <fieldset>
+                        <legend class="no-margin no-padding">Notifications</legend>
+                        <div class="form-group col-md-6 padding-top-15">
+
+                                <label for="input_export">Export:</label>
+                                <ui-select id="input_export" name="input_export"
+                                           ng-model="vmDetail.model.modules.mft.notification.jsonData.export_type" theme="select2"
+                                           style="width:100%">
+                                    <ui-select-match placeholder="Please select the Export Type">
+                                        {{$select.selected.description}}
+                                    </ui-select-match>
+                                    <ui-select-choices
+                                            repeat="listItem.code as listItem in vmDetail.model.lists.mft.export | filter:$select.search">
+                                        <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                        </div>
+                        <div>
+                            <mqa-adm-notify-rule-edit company-id="{{vmDetail.dataModel.companyId}}"
+                                                      data="vmDetail.model.modules.mft.notification"
+                                                      validation="vmDetail.model.modules.mft.validator" id="mft_events"/>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- IIB TAB -->
+                <div class="tab-pane fade" id="iib"  ng-if="vmDetail.model.modules.iib">
+                    <fieldset>
+                        <legend class="no-margin no-padding">Notifications</legend>
+                        <div>
+                            <mqa-adm-notify-rule-edit company-id="{{vmDetail.dataModel.companyId}}"
+                                                      data="vmDetail.model.modules.iib.notification"
+                                                      validation="vmDetail.model.modules.iib.validator" id="iib_events"/>
+                        </div>
+                    </fieldset>
+
+                </div>
+
+                <!-- ITXA TAB -->
+                <div class="tab-pane fade" id="spe"  ng-if="vmDetail.model.modules.spe">
+                    <fieldset>
+                        <legend class="no-margin no-padding">Notifications</legend>
+                        <div>
+                            <mqa-adm-notify-rule-edit company-id="{{vmDetail.dataModel.companyId}}"
+                                                      data="vmDetail.model.modules.spe.notification"
+                                                      validation="vmDetail.model.modules.spe.validator" id="spe_events"/>
+                        </div>
+                    </fieldset>
+
+                </div>
+
+                <!-- BOOMI TAB -->
+                <div class="tab-pane fade" id="boomi"  ng-if="vmDetail.model.modules.boomi">
+                    <fieldset>
+                        <legend class="no-margin no-padding">Notifications</legend>
+                        <div>
+                            <mqa-adm-notify-rule-edit company-id="{{vmDetail.dataModel.companyId}}"
+                                                      data="vmDetail.model.modules.boomi.notification"
+                                                      validation="vmDetail.model.modules.boomi.validator" id="boomi_events"/>
+                        </div>
+                    </fieldset>
+
+                </div>
+
+
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDetail.functions.saveRecord();">
+                {{vmDetail.model.buttonText}}
+            </button>
+
+            <button type="button" class="btn btn-danger" ng-click="vmDetail.functions.userDelete();"
+                    ng-if="vmDetail.dataModel.rowId > -1">
+                Delete
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vmDetail.functions.cancelRecord();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

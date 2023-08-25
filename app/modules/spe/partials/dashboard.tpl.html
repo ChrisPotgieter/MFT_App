@@ -1,0 +1,50 @@
+<div id="content">
+	<!-- HEADER CONTENT -->
+	<div data-smart-include="app/modules/common/partials/common-dashboard-header.tpl.html"/>
+	<section id="widget-grid" widget-grid>
+		<div data-smart-include="app/modules/spe/partials/dashboard-compare.tpl.html" ng-if="vm.model.flags.showCompare"/>
+
+		<div data-smart-include="app/modules/spe/partials/dashboard-no-compare.tpl.html" ng-if="!vm.model.flags.showCompare"/>
+		<!-- EVENT BREAKDOWN WIDGET -->
+		<div class="row">
+			<article class="col-sm-12">
+				<div jarvis-widget id="group-flotbar-chart-widget" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+					<header>
+						<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+						<h2>Event Breakdown</h2>
+					</header>
+					<div>
+						<div class="widget-body no-padding">
+							<div class="text-center text-danger bordered well" ng-if="vm.model.eventBar.series.length == 0">
+								<h3>No Data Available for the Current Selection</h3>
+							</div>
+
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" height="300px;" ng-if="vm.model.eventBar.series.length > 0">
+								<div mqa-flot-bar dataset="vm.model.eventBar.series" options="vm.model.eventBar.options" refresh-flag="vm.model.eventBar.update"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+
+		<!-- MAP STATISTICS WIDGET -->
+		<div class="row">
+			<article class="col-sm-12">
+				<div jarvis-widget id="group-map-chart-widget" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+					<header>
+						<span class="widget-icon"> <i class="fa fa-dashboard"></i> </span>
+						<h2>Statistics Per Top 10 Maps</h2>
+					</header>
+					<div class="widget-body">
+						<spe-transaction-dashboard-grouping-chart data="vm.model.eventGroupings.maps" height="0"/>
+					</div>
+				</div>
+			</article>
+		</div>
+
+		<!-- DYNAMIC TABLES -->
+		<mqa-dynamic-table-dashboard-list filter-data="vm.model.dynamicFilterObject" identifier="spe"/>
+	</section>
+</div>
+<!-- END MAIN CONTENT -->

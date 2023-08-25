@@ -1,0 +1,13 @@
+.lockscreen .logo img
+{
+    width:200px !important;
+    height: 40px !important;
+}
+#logo img
+{
+    height: 30px !important;
+}
+.smart-style-3 #logo img
+{
+    height: 30px !important;
+}

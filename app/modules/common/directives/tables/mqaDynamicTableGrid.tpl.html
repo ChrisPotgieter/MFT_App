@@ -1,0 +1,19 @@
+<div jarvis-widget id="DynamicTableWidget_{{vm.model.configModel.code}}" data-widget-color="darken" data-widget-editbutton="false" data-widget-fullscreenbutton="false"
+     data-widget-custombutton="false" data-widget-colorbutton="false" data-widget-togglebutton="false"
+     data-widget-deletebutton="false">
+    <header>
+        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+        <h2>Last {{vm.model.configModel.jsonData.limit}} - {{vm.model.configModel.description}}</h2>
+    </header>
+    <div>
+        <div class="widget-body no-padding">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <mqa-kendo-grid  id="DynamicTableGrid_{{vm.model.configModel.code}}" options="vm.model.gridOptions"  data="vm.model.data"  refresh-flag="vm.model.flags.gridRefresh"></mqa-kendo-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

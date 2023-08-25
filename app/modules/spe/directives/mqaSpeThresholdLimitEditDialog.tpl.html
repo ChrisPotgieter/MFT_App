@@ -1,0 +1,80 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelRecord();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class='fa fa-gavel'></i> {{vmDialog.model.title}}</h6></div>
+    </div>
+    <div class="modal-body">
+        <form id="frmThresholdEdit" name="frmThresholdEdit" novalidate>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <label class="control-label">Threshold:</label>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-9" id="div_key">
+                                    <ui-select id="key" name="key" ng-model="vmDialog.dataModel.key"
+                                               mqa-combo="SPELimit" mqa-list-source="1" mqa-company-id="0"
+                                               input-Placeholder="Select the Threshold"
+                                               on-select="vmDialog.functions.onComboChange('key')"
+                                               ng-disabled="vmDialog.dataModel.recordStatus == 0"/>
+                                </div>
+                                <div class="col-md-3" id="div_app">
+                                    <mqa-switch title="Applicable" label="app" ng-model="vmDialog.dataModel.applicable"
+                                                on-toggle="vmDialog.functions.onAppToggle"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-show="vmDialog.dataModel.applicable">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <label class="control-label">Limit:</label>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-9" id="div_limit">
+                                    <input class="form-control"
+                                           placeholder="Limit" name="limit" id="limit"
+                                           ng-model="vmDialog.dataModel.limit" min="1">
+                                </div>
+                                <div class="col-md-3" id="div_perc">
+                                    <mqa-switch title="Percentage" label="limitApp"
+                                                ng-model="vmDialog.model.perc"
+                                                on-toggle="vmDialog.functions.onPercToggle"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="row">
+                         <div class="col-sm-12 col-lg-12 col-md-12" id="div_action">
+                         <label class="control-label">Action:</label>
+                            <ui-select id="action" name="action" ng-model="vmDialog.dataModel.action"
+                                       mqa-combo="SPELimitAction" mqa-list-source="1" mqa-company-id="0"
+                                       input-Placeholder="Select the Action"
+                                       on-select="vmDialog.functions.onComboChange('action')"/>
+                        </div>
+                 </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord();">
+                {{vmDialog.model.buttonText}}
+            </button>
+
+            <button type="button" class="btn btn-danger" ng-click="vmDialog.functions.userDelete();"
+                    ng-if="vmDialog.dataModel.recordStatus == 0">
+                Delete
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

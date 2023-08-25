@@ -1,0 +1,66 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelDialog();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class='{{vmDialog.model.icon}}'></i>&nbsp;{{vmDialog.model.title}} Details</h6></div>
+    </div>
+    <div class="modal-body">
+        <form name="frmTimeLineDialog" class="form-horizontal" id="frmTimeLineDialog" novalidate>
+                <div class="scroll-body" slimscroll="{'height': '500', 'width':'800', alwaysVisible: 'true', 'position': 'left', color: 'silver'}">
+                    <div class="smart-timeline">
+                        <ul class="smart-timeline-list timeline-list-wide">
+                            <li ng-repeat="dataItem in vmDialog.model.events">
+                                <div class="smart-timeline-icon timeline-icon-wide" ng-class="dataItem.background">
+                                    <i ng-class="dataItem.icon" class="fa"></i>
+                                </div>
+                                <div class="smart-timeline-time timeline-time-wide">
+                                    <small>{{dataItem.actionDate | localUTCDateFilter : 'YYYY-MM-DD, h:mm:ss:SSS a'}}</small>
+                                </div>
+                                <div class="smart-timeline-content timeline-content-wide">
+                                    <p ng-click="dataItem.blobFormat ? vmDialog.functions.viewDoc(dataItem) : false" ng-class="{'hoverLink': dataItem.blobFormat}">
+                                        <strong ng-class="dataItem.foreground">{{dataItem.action}}</strong>
+                                    </p>
+                                    <p ng-click="dataItem.blobFormat ? vmDialog.functions.viewDoc(dataItem) : false" ng-class="{'hoverLink': dataItem.blobFormat}">
+                                        {{dataItem.description}}
+                                    </p>
+                                    <p  ng-if="dataItem.error_destination">
+                                        <span class="txt-color-red"><strong>Error Destination:</strong></span>
+                                        {{dataItem.error_destination}}
+                                    </p>
+                                    <p ng-if="dataItem.blobFormat">
+
+                                        <button ng-click="vmDialog.functions.viewDoc(dataItem)" class="btn txt-color-white btn-primary" ng-class="dataItem.background">View...</button>
+                                        <button class="btn btn-success" ng-click="vmDialog.functions.handleButton(dataItem, 2);" ng-if="dataItem.headers">
+                                            <i class="fa fa-search"></i>
+                                            View Headers...
+                                        </button>
+
+                                        <button class="btn btn-default" ng-click="vmDialog.functions.handleButton(dataItem, 0);" ng-if="dataItem.allowResubmit">
+                                            <i class="fa fa-recycle"></i>
+                                            Re-submit...
+                                        </button>
+                                        <button class="btn btn-default" ng-click="vmDialog.functions.handleButton(dataItem, 1);" ng-if="dataItem.allowRepair">
+                                            <i class="fa fa-wrench"></i>
+                                            Repair...
+                                        </button>
+
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDialog.functions.confirmDialog();">
+            OK
+        </button>
+        <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelDialog();">
+            Cancel
+        </button>
+    </div>
+</div>

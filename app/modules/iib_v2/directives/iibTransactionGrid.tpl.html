@@ -1,0 +1,8 @@
+<div>
+    <script id="templateExport" type="text/x-kendo-template">
+        <button class="k-button k-button-icontext" ng-click="vm.functions.export();"  ng-if="vm.model.flags.showExport > 0">
+            <span class="fa fa-recycle"></span> Export/Resubmit Payloads...
+        </button>
+    </script>
+    <div kendo-grid="grid" id="grid" k-options="vm.gridOptions" k-rebind="vm.columnRebuild"/>
+</div>

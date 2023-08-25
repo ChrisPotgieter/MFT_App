@@ -1,0 +1,15 @@
+<div class="modal-footer">
+    <div class="row">
+        <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDetail.functions.saveRecord();">
+            {{vmDetail.model.buttonText}}
+        </button>
+
+        <button type="button" class="btn btn-danger" ng-click="vmDetail.functions.userDelete();"
+                ng-if="vmDetail.dataModel.recordStatus == 0">
+            Delete
+        </button>
+        <button type="button" class="btn btn-default" ng-click="vmDetail.functions.cancelRecord();">
+            Cancel
+        </button>
+    </div>
+</div>

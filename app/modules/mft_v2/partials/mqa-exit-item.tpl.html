@@ -1,0 +1,31 @@
+<div class="no-padding no-content-padding no-margin">
+    <div class="scroll-body" slimscroll="{'height': '400', alwaysVisible: 'true', 'position': 'left', color: 'silver'}">
+        <div class="smart-timeline">
+            <ul class="smart-timeline-list">
+                <li ng-repeat="dataItem in vmItem.model.nodes">
+                    <div class="smart-timeline-icon" ng-class="dataItem.background">
+                        <h3 style="margin: 2px">{{$index + 1}}</h3>
+                    </div>
+                    <!--
+                    <div class="smart-timeline-time timeline-time-wide">
+                        <h1 class="no-margin no-padding text-align-center"><i ng-class="dataItem.icon"></i></h1>
+                    </div>
+                    -->
+                    <div class="smart-timeline-content">
+                        <p ng-if="dataItem.instruction != null && (dataItem.parameters != null || dataItem.response_data != null)">
+                            <button ng-click="vmItem.functions.showInstructionDialog(dataItem);" class="btn txt-color-white btn-primary">{{dataItem.instruction}}</button>
+                        </p>
+                        <p class="no-margin" ng-if="dataItem.instruction != null && (dataItem.parameters == null && dataItem.response_data == null)">
+                            <strong>{{dataItem.instruction}}</strong>
+                        </p>
+                        <div class="custom-scroll monospaced">{{dataItem.supplemental}}</div>
+                        <p class="no-margin">
+                            <strong>Return Code:</strong>&nbsp;{{dataItem.return_code}}
+                        </p>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

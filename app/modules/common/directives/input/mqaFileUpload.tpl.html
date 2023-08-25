@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-sm-12">
+        <hr class="simple">
+        <h3>{{title}}</h3>
+    </div>
+    <div>
+        <fieldset>
+            <section>
+                <label class="label">File input</label>
+                <div class="input input-file">
+                    <span class="button" ngf-select ng-model="uploadFile" ng-multiple="false">Browse</span><input  type="text" placeholder="Include some files" readonly="" ng-model="uploadFile">
+                </div>
+            </section>
+            <section ng-if="showProgress">
+                <p>
+                    Progress Information <span class="txt-color-blue pull-right"><i class="fa fa-warning"></i> {{progressData.perc}} Complete</span>
+                </p>
+                <div class="progress progress-lg">
+                    <div class="progress-bar bg-color-greenLight" role="progressbar" ng-style="{'width': progressData.progressPerc}"></div>
+                </div>
+            </section>
+        </fieldset>
+    </div>
+</div>

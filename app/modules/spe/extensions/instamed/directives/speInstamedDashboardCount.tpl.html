@@ -1,0 +1,27 @@
+<div class="row" id="badges_{{vmCount.id}}">
+    <div class="col-sm-6 col-lg-3">
+        <mqa-dashboard-count div-class="txt-color-white" caption-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.request}" icon="fa-file-text" caption="Total Requests" value="vmCount.data.claimCount.value" id="badge_requests" tooltip="{{vmCount.data.claimCount.tooltip}}"/>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.data.preEditClaimCount.value!=0 ? vmCount.palette.colorNames.pre_edit_fail : vmCount.palette.colorNames.pre_edit}"  caption-class="txt-color-white" icon="fa-exclamation" caption="Pre-Edit Errors" value="vmCount.data.preEditClaimCount.value" id="badge_pre_edit" tooltip="{{vmCount.data.preEditClaimCount.tooltip}}"/>
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+        <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.data.nonComplianceCount.value!=0 ? vmCount.palette.colorNames.non_compliance_fail : vmCount.palette.colorNames.non_compliance}" caption-class="txt-color-white" icon="fa-exclamation" caption="Non-Compliance" value="vmCount.data.nonComplianceCount.value" id="badge_nonCompliance" tooltip="{{vmCount.data.nonComplianceCount.tooltip}}"/>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <mqa-dashboard-count div-class="txt-color-white" caption-class="txt-color-white"  ng-style="{'background-color': vmCount.palette.colorNames.payments}" icon="fa-inbox" caption="{{vmCount.titles.payments}}" value="vmCount.data.paymentCount.value" id="badge_payment" tooltip="{{vmCount.data.paymentCount.tooltip}}"/>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.data.rejectCount.value!=0 ? vmCount.palette.colorNames.reject_fail : vmCount.palette.colorNames.reject}" caption-class="txt-color-white" icon="fa-exclamation" caption="Transactions Rejected" value="vmCount.data.rejectCount.value" id="badge_reject" tooltip="{{vmCount.data.rejectCount.tooltip}}"/>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.data.idfToBeReceivedCount.value!=0 ? vmCount.palette.colorNames.idf_to_be_fail : vmCount.palette.colorNames.idf_to_be}" caption-class="txt-color-white" icon="fa-arrow-right" caption="IDF to be Received" value="vmCount.data.idfToBeReceivedCount.value" id="badge_idf_to_be" tooltip="{{vmCount.data.idfToBeReceivedCount.tooltip}}"/>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.idf_received}" caption-class="txt-color-white" icon="fa-money" caption="IDF Received" value="vmCount.data.paidCount.value" id="badge_paid"  tooltip="{{vmCount.data.paidCount.tooltip}}"/>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.idf_response}" caption-class="txt-color-white" icon="fa-inbox" caption="IDF Responses to BICPS" value="vmCount.data.responseCount.value" id="badge_response" tooltip="{{vmCount.data.responseCount.tooltip}}"/>
+    </div>
+</div>

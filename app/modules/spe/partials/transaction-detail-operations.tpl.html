@@ -1,0 +1,14 @@
+<div class="widget-footer">
+    <button class="btn btn-lg btn-primary btn-default" ng-click="requestResubmit();" ng-show="data.baseTransaction.stateInfo != null && data.baseTransaction.stateInfo.resubmit == 'Y'" ng-disabled="!data.flags.allowResubmit || data.flags.inProgress">
+        <i class="fa fa-recycle"></i>
+        Resubmit
+    </button>
+    <button class="btn btn-lg btn-warning" ng-click="requestRepair();" ng-show="data.baseTransaction.stateInfo != null && data.baseTransaction.stateInfo.repair == 'Y'" ng-disabled="!data.flags.allowRepair || data.flags.inProgress">
+        <i class="fa fa-wrench"></i>
+        Repair
+    </button>
+    <button class="btn btn-lg btn-danger" type="button" ng-click="requestCancellation()"; ng-show="data.baseTransaction.stateInfo != null  && data.baseTransaction.stateInfo.cancel == 'Y'" ng-disabled="!data.flags.allowCancel || data.flags.inProgress">
+        <i class="fa fa-times-circle"></i>
+        Cancel
+    </button>
+</div>

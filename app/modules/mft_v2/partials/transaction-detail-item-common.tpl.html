@@ -1,0 +1,34 @@
+<div>
+<h2 ng-class="{'text-danger': item.result > 0}"> <i ng-class="item.icon" ></i><span class="semi-bold"> {{item.description}}</span>
+    <br>
+       <small class="wrap">{{item.resource}}</small>
+</h2>
+<ul class="list-unstyled">
+       <li ng-if="item.options.disposition">
+           <span class="text-muted">
+               <b>Disposition:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.options.disposition | titleCaseFilter}}</span>
+           </span>
+       </li>
+       <li ng-if="item.options.exists">
+             <span class="text-muted">
+                <b>Exists:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.options.exists | titleCaseFilter}}</span>
+            </span>
+       </li>
+
+    <li ng-if="item.options.recursive">
+           <span class="text-muted">
+               <b>Recursive:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.options.recursive}}</span>
+           </span>
+       </li>            
+       <li ng-if="item.options.correlation">
+           <span class="text-muted">
+               <b>Correlation:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.options.correlation}}</span>
+           </span>
+       </li>
+       <li ng-if="item.info.checkSum">
+           <span class="text-muted">
+               <b>Checksum:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.checkSum}}</span>&nbsp;(<span class="txt-color-darken">{{item.info.checkSumMethod}}</span>)
+           </span>
+       </li>
+</ul>
+</div>

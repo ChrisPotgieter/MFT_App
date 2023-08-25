@@ -1,0 +1,12 @@
+<div>
+    <ul id="sparks" class="">
+        <li class="sparks-info">
+            <h5>Executions <span ng-style="{'color': realtime.palette.color.transfers}">{{realtime.metrics.total.value}}</span></h5>
+            <div class="sparkline hidden-mobile hidden-md hidden-sm" ng-style="{'color': realtime.palette.color.transfers}" mqa-sparkline data="realtime.metrics.total.chartData" config="realtime.chartConfig.total"/>
+        </li>
+        <li class="sparks-info">
+            <h5> Failures <span class="txt-color-red">{{realtime.metrics.failures.value}}</span></h5>
+            <div class="sparkline txt-color-red hidden-mobile hidden-md hidden-sm" mqa-sparkline data="realtime.metrics.failures.chartData" config="realtime.chartConfig.failures"/>
+        </li>
+    </ul>
+</div>

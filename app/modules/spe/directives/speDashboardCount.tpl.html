@@ -1,0 +1,17 @@
+<div id="badges_{{vmCount.id}}">
+    <div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.envelope}" caption-class="txt-color-white" icon="fa-exchange" caption="Total Transfers" value="vmCount.data.transfer_count.value" id="badge_transfers" tooltip="Total No. of MFT Transfers Initiated with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white" icon="fa-exclamation" caption="Total Errors" value="vmCount.data.failure_count.value" id="badge_errors" tooltip="Total No. of Failures"/>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.transform}" caption-class="txt-color-white" icon="fa-building" caption="Senders/Receivers" value="vmCount.data.sender_receiver_count.value" id="badge_parties" tooltip="Sender(s)/Receiver(s)"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="txt-color-white" ng-style="{'background-color': vmCount.palette.colorNames.ack}" caption-class="txt-color-white" icon="fa-file-text-o" caption="Maps/Documents" value="vmCount.data.map_doc_count.value" id="badge_map_doc" tooltip="Maps and Documents"/>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div>
+    <fieldset>
+        <legend class="margin-bottom-5">Filters</legend>
+        <div class="margin-bottom-10">
+            <label for="input_vendor">Company(s):</label>
+            <ui-select id="input_vendor" name="input_vendor" multiple
+                       ng-model="vmDialog.dataModel.filter.vendor" mqa-list="TPCI_VENDOR"
+                       mqa-list-source="1" input-Placeholder="Select the Company(s)"/>
+        </div>
+        <div>
+            <div class="margin-bottom-10">
+                <label for="input_product">Product(s):</label>
+                <ui-select id="input_product" name="input_product" multiple tagging
+                           ng-model="vmDialog.dataModel.filter.product" mqa-tag
+                           input-Placeholder="Select the Product(s)"/>
+            </div>
+            <div class="margin-bottom-10">
+                <label for="input_plan">Plan(s):</label>
+                <ui-select id="input_plan" name="input_plan" tagging multiple
+                           ng-model="vmDialog.dataModel.filter.plan" mqa-tag
+                           input-Placeholder="Enter Plan(s)"/>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="no-margin-bottom">Settings</legend>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-6">
+                <label class="control-label" for="txtTransLimit">Transaction Limit:</label>
+            </div>
+            <div class="col-md-6">
+                <label class="control-label" for="txtBarLimit">Top Limit:</label>
+            </div>
+        </div>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-6" id="div_transLimit">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-table"></i></span>
+                    <input class="form-control" type="number" title="Enter the No. of Transactions to Display" name="txtTransLimit" id="txtTransLimit"  ng-model="vmDialog.dataModel.filter.topCount" min="1" max="5000" required/>
+                </div>
+            </div>
+            <div class="col-md-6" id="div_barLimit">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-bar-chart"></i></span>
+                    <input class="form-control" type="number" title="Enter the No. of Top X Display" name="txtTopLimit" id="txtBarLimit"  ng-model="vmDialog.dataModel.filter.barLimit" min="1" max="10" required/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>&nbsp;</label>
+                <div class="input-group">
+                    <mqa-switch title="Errors Only" label="transErrors" ng-model="vmDialog.dataModel.filter.errors"/>
+                </div>
+            </div>
+
+        </div>
+    </fieldset>
+</div>

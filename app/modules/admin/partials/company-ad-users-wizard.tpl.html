@@ -1,0 +1,31 @@
+<div>
+    <div class ="row">
+        <div class="col-sm-12">
+            <div class="form-group"  id="div_domain" >
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-building fa-lg fa-fw"></i></span>
+                    <select class="form-control"  name="domainSelect"
+                            ng-model="vmStep.model.domainSelect"
+                            ng-change="vmStep.functions.changeDomain(1)">
+                        <option ng-repeat="option in vmStep.model.domains" value="{{option.id}}">{{option.id }}{{vmStep.model.addGridTitle}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row no-margin no-padding">
+        <div class="margin-top-5">
+            <button class="btn btn-default btn-primary" ng-click="vmStep.functions.insertRecord();" type="button" style="margin-top: -30px;" ng-disabled="vmStep.flags.adLoading"><i class="fa" ng-class="vmStep.flags.showAddUser ? 'fa-minus' : 'fa-plus'"></i> Add Users</button>
+        </div>
+    </div>
+    <div >
+        <h3><strong>Current User List</strong></h3>
+        <div class="row">
+            <article class="col-sm-12">
+                <mqa-adm-company-user-list data="vmStep.model.currentUserList" title="Current User List"   grid-options="vmStep.model.currentUserGridOptions"/>
+            </article>
+        </div>
+        
+    </div>
+</div>

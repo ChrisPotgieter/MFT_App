@@ -1,0 +1,27 @@
+<div class="ajax-dropdown notification-dropdown" ng-controller="notificationListCtrl as notifyvm" >
+   <div class="btn-group btn-group-justified" data-toggle="buttons">
+      <label class="btn btn-default" ng-class="{active : notifyvm.functions.isActive(tab.name)}"
+               ng-repeat="tab in notifyvm.model.tabs" ng-click="notifyvm.functions.setTab(tab.name)">
+         <input type="radio" name="activity">
+          <span class='badge bg-color-{{tab.color}} txt-color-white'> {{tab.length}}</span>
+          {{tab.title}}
+        </input>
+      </label>
+   </div>
+
+   <!-- notification content -->
+   <div class="ajax-notifications custom-scroll" ng-switch="notifyvm.model.activeTab">
+         <div data-smart-include="app/modules/auth/partials/notification-tab-fix.tpl.html" ng-switch-when="fix"></div>
+         <div data-smart-include="app/modules/auth/partials/notification-tab-msgs.tpl.html" ng-switch-when="msgs"></div>
+   </div>
+   <!-- end notification content -->
+
+   <!-- footer: refresh area -->
+   <span> Last updated on: {{notifyvm.model.lastUpdate}}
+      <button type="button" ng-click="notifyvm.functions.refresh();" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
+         <i class="fa fa-refresh"></i>
+      </button> 
+      </span>
+   <!-- end footer -->
+
+</div>

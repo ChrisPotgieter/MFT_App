@@ -1,0 +1,32 @@
+<div>
+    <div class="modal-header" ng-if="progressInfo.showHeader != false">
+        <div class='widget-header'><h6><i class='fa {{titleData.icon}}'></i> {{titleData.desc}}</h6></div>
+    </div>
+    <div class="modal-body">
+        <div class="well">
+            <section ng-show="progressInfo.showProgress">
+                <p>
+                    {{progressInfo.title}} <span  ng-class="progressInfo.txtcolor" class="pull-right"><i ng-class="progressInfo.icon"></i> {{progressInfo.description}}</span>
+                </p>
+                <div class="progress progress-lg" style="width: 100%">
+                    <div class="progress-bar" ng-color="progressInfo.bgColor" role="progressbar" ng-style="{'width': progressInfo.perc}"></div>
+                </div>
+            </section>
+            <section ng-show="progressInfo.showLineDisplay">
+                <p>Output</p>
+                <textarea class="form-control" readonly rows="5" ng-model="progressInfo.lines"  ng-list="&#10;" ng-trim="false"/>
+            </section>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-sm-8 text-left">
+                 <button type="button" class="btn btn-{{button.class}}" ng-click="button.action();" ng-if="button.visible" ng-repeat="button in progressInfo.buttons">{{button.caption}}</button>
+            </div>
+            <div class="col-sm-4 text-right">
+                <button type="button" id="submit" class="btn btn-success btn-default" ng-click="closeOK()" ng-disabled="!progressInfo.allowOK" ng-if="progressInfo.showOK">{{progressInfo.OKText}}</button>
+                <button type="button" class="btn btn-danger" ng-click="closeCancel()" ng-disabled="!progressInfo.allowCancel" ng-if="progressInfo.showCancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

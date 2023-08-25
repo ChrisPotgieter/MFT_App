@@ -1,0 +1,24 @@
+<style>
+    #requestGrid .k-grid  .k-grid-header  .k-header  .k-link {
+        height: auto;
+    }
+
+    #requestGrid .k-grid  .k-grid-header  .k-header {
+        white-space: normal;
+    }
+    #requestGrid .k-grid .k-selectable .transactionRepair
+    {
+        /* repair transaction styling */
+        background-color: #006494;
+        color: white;
+    }
+    #requestGrid .k-grid-content
+     {
+         min-height: 100px;
+         max-height: 700px;
+     }
+
+</style>
+<div id="requestGrid">
+    <mqa-kendo-grid data="vmGridDetail.data" options="vmGridDetail.gridOptions" refreshFlag="vmGridDetail.refreshFlag" height="{{vmGridDetail.height}}" function-manager="vmGridDetail.functionManager" rebuild="vmGridDetail.model.rebuild"/>
+</div>

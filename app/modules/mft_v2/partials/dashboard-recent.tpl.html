@@ -1,0 +1,26 @@
+<article class="col-sm-12">
+	<div jarvis-widget id="transaction-data-widget"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+			<header>
+				<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+				<h2>Last {{vm.model.dialogData.filter.topCount}} {{vm.model.transactionTable.desc}}</h2>
+				<ul class="nav nav-tabs pull-right in" id="myTab">
+					<li ng-class="!vm.model.dialogData.filter.errors ? 'active' : ''">
+						<a data-toggle="tab" href="#griddisplay"  ng-click="vm.functions.switchTab(false);"><i
+								class="fa fa-table"></i> <span class="hidden-mobile hidden-tablet">Last Records</span></a>
+					</li>
+					<li ng-class="vm.model.dialogData.filter.errors ? 'active' : ''">
+						<a data-toggle="tab" href="#griddisplay" ng-click="vm.functions.switchTab(true);"><i
+								class="fa fa-exclamation-circle"></i> <span
+								class="hidden-mobile hidden-tablet">Errors</span></a>
+					</li>
+				</ul>
+			</header>
+			<div>
+				<div class="widget-body">
+					<div id="griddisplay">
+						<mft-transaction-grid data="vm.model.transactionTable.data" mode="{{vm.model.tableType}}" refresh-flag="vm.model.transactionTable.refresh"></mft-transaction-grid>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>

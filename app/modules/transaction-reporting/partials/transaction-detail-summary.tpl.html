@@ -1,0 +1,35 @@
+  <div jarvis-widget id="tr-summary-widget" data-widget-colorbutton="false"
+         data-widget-editbutton="false" data-widget-custombutton="false" xmlns="http://www.w3.org/1999/html" data-widget-fullscreenbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" class="padding-5">
+        <header>
+            <span class="widget-icon"> <i class="fa fa-info-circle"></i> </span>
+            <h2>Summary</h2>
+            <ul class="nav nav-tabs pull-right in">
+                <li class="active">
+                    <a data-toggle="tab" href="#summaryTab"> <i class="fa fa-lg fa-info"></i> <span class="hidden-mobile hidden-tablet"> General </span> </a>
+                </li>
+                <!--
+                <li ng-if="summary && summary.indexes && summary.indexes.length > 0">
+                    <a data-toggle="tab" href="#indexTab"> <i class="fa fa-lg fa-database"></i> <span class="hidden-mobile hidden-tablet"> Indexes </span></a>
+                </li>
+                -->
+            </ul>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <div class="tab-content scroll-body" slimscroll="$state.current.data.infoHeight ? {'height': $state.current.data.infoHeight} : {'height':'595'}">
+                    <div class="tab-pane fade active in" id="summaryTab">
+                        <!-- summary content infocontent@content -->
+                        <div data-smart-include="app/modules/transaction-reporting/partials/transaction-detail-summary-info.tpl.html"/>
+                    </div>
+                    <!--
+                    <div class="tab-pane fade in no-padding-bottom" id="indexTab">
+                          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                              <mqa-table-view  rows="summary.indexes" headers="['Element', 'Value']" data-item-template-name="app/modules/transaction-reporting/partials/transaction-detail-summary-indexes-item.tpl.html"rows="rows" headers="headers" footers="footers" data-item-template-name="{{itemTemplateName}}"/>
+                          </div>
+                    </div>
+                    -->
+                </div>
+                <div data-ui-view="operations@content"/>
+            </div>
+        </div>
+    </div>

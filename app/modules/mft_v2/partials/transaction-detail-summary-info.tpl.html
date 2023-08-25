@@ -1,0 +1,8 @@
+<div>
+    <div data-smart-include="app/modules/common/partials/transaction-detail-summary-header.tpl.html"/>
+    <div ng-if="data.info" ng-switch="data.info.type">
+        <div data-smart-include="app/modules/mft_v2/partials/transaction-detail-summary-info-default.tpl.html" ng-switch-when="default"/>
+        <div data-smart-include="app/modules/spe/partials/transaction-detail-summary-info-launcher.tpl.html" ng-switch-when="itx_launcher"/>
+    </div>
+    <div data-smart-include="app/modules/common/partials/transaction-detail-summary-reference.tpl.html"/>
+</div>

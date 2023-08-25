@@ -1,0 +1,94 @@
+<div>
+    <div data-smart-include="app/modules/mft_v2/partials/transaction-detail-item-common.tpl.html"/>
+    <ul class="list-unstyled">
+         <li ng-if="item.info.persistent">
+             <span class="text-muted">
+                 <b>Persistent:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.persistent}}</span>
+             </span>
+         </li>
+         <li ng-if="item.info.messageId">
+             <span class="text-muted">
+                 <b>Message Id:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.messageId}}</span>
+             </span>
+         </li>
+         <li ng-if="item.info.groupId">
+             <span class="text-muted">
+                 <b>Group Id:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.groupId}}</span>
+             </span>
+         </li>
+         <li ng-if="item.info.delimiter">
+             <span class="text-muted">
+                 <b>Delimiter:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.delimiter}}</span>
+             </span>
+         </li>
+         <li ng-if="item.info.delimiterType">
+             <span class="text-muted">
+                 <b>Delimiter Type:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.delimiterType}}</span>
+             </span>
+         </li>
+         <li ng-if="item.info.delimiterPosition">
+             <span class="text-muted">
+                 <b>Delimiter Position:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.delimiterPosition}}</span>
+             </span>
+         </li>
+         <li ng-if="item.info.messageCount">
+             <span class="text-muted">
+                 <b>Message Count:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.messageCount}}</span>
+             </span>
+         </li>
+         <li ng-if="item.info.messageLength">
+             <span class="text-muted">
+                 <b>Message Length:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.messageLength}}</span>
+             </span>
+         </li>
+         <li ng-if="item.info.waitTime">
+             <span class="text-muted">
+                 <b>Wait Time:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.waitTime}}</span>
+             </span>
+         </li>
+         <li ng-if="item.info.encoding">
+             <span class="text-muted">
+                 <b>Encoding:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.encoding}}</span>
+             </span>
+         </li>
+         <li ng-if="item.info.EOL">
+             <span class="text-muted">
+                 <b>EOL:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.EOL}}</span>
+             </span>
+         </li>         
+         <li ng-if="item.info.unrecognisedCodePage">
+            <span class="text-muted">
+                <b>Unrecognized Code Page:</b>&nbsp;&nbsp;<span class="txt-color-darken">{{item.info.unrecognizedCodePage}}</span>
+            </span>
+        </li>
+         <li ng-if="item.info.eofMarker || item.info.setMqProps || item.info.split || item.info.useGroups || item.info.includeDelimiterInMessage || item.info.messageInGroup">
+             <div class="inline-group margin-left-10 padding-left-15">
+                 <label class="checkbox state-disabled" ng-if="item.info.eofMarker">
+                     <input type="checkbox" name="checkbox-inline" ng-model="item.info.eofMarker"  disabled="disabled">
+                     <i></i>EOF Marker
+                 </label>
+                 <label class="checkbox state-disabled" ng-if="item.info.setMqProps">
+                     <input type="checkbox" name="checkbox-inline" ng-model="item.info.setMqProps" disabled="disabled">
+                     <i></i>Set MQ Props
+                 </label>
+                 <label class="checkbox state-disabled" ng-if="item.info.split">
+                     <input type="checkbox" name="checkbox-inline" ng-model="item.info.split" disabled="disabled">
+                     <i></i>Split
+                 </label>
+                 <label class="checkbox state-disabled" ng-if="item.info.useGroups">
+                     <input type="checkbox" name="checkbox-inline" ng-model="item.info.useGroups" disabled="disabled">
+                     <i></i>Use Groups
+                 </label>
+                 <label class="checkbox state-disabled" ng-if="item.includeDelimiterInMessage">
+                     <input type="checkbox" name="checkbox-inline" ng-model="item.includeDelimiterInMessage" disabled="disabled">
+                     <i></i>Include Delimiter
+                 </label>
+                 <label class="checkbox state-disabled" ng-if="item.info.messageInGroup">
+                    <input type="checkbox" name="checkbox-inline" ng-model="item.info.messageInGroup" disabled="disabled">
+                    <i></i>Message In-Group
+                </label>
+
+             </div>
+         </li>
+     </ul>
+</div>

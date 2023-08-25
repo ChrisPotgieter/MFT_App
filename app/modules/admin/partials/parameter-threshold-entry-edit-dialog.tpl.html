@@ -1,0 +1,48 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDetail.functions.cancelRecord();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class="fa {{vmDetail.model.icon}}"></i> {{vmDetail.model.title}}</h6></div>
+
+
+        <!-- STATUS HEADER -->
+
+        <div class="row" ng-if="vmDetail.dataModel.recordStatus == 0">
+            <article class="alert fade in col-md-12 no-margin" ng-class="vmDetail.model.status.class">
+                <h5 class="pull-left">
+                    <i class="fa-fw fa fa-{{vmDetail.model.status.icon}}"></i><span>{{vmDetail.model.status.caption}}</span>
+                </h5>
+                <div class="pull-left">
+                    {{vmDetail.model.status.message}}
+                </div>
+                <div class="pull-right">
+                   <div ng-if="vmDetail.model.status.last_check_date"><b>Last Update:&nbsp;</b>{{vmDetail.model.status.last_check_date}}</div>
+                   <div ng-if="vmDetail.model.status.next_check_date"><b>Next Check:&nbsp;</b>{{vmDetail.model.status.next_check_date}}</div>
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form id="frmThresholdEntryEdit" name="frmThresholdEntryEdit" novalidate class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <div class="col-md-12 col-lg-12 col-sm-12" id="div_code">
+                        <label class="control-label">Code:</label>
+                        <input type="text" placeholder="Code" class="form-control" name="code"
+                               ng-model="vmDetail.dataModel.code" ng-disabled="!vmDetail.model.flags.allowCode">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-9 col-md-9 col-sm-9" id="div_value">
+                        <label class="control-label">{{vmDetail.model.caption}}</label>
+                        <input class="form-control spinner-left" name="input_value" id="input_value" ng-model="vmDetail.dataModel.value" min="{{vmDetail.model.min}}" max="{{vmDetail.model.max}}" mqa-spinner>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div data-smart-include="app/modules/common/partials/common-dialog-edit-footer.tpl.html"/>
+</div>

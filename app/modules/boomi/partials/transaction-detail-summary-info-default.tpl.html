@@ -1,0 +1,66 @@
+<div>
+    <fieldset>
+        <legend class="no-margin padding-bottom-5 padding-top-0">Boomi Information
+            <small><span class="label truncate"
+                         ng-class="data.module_data.module_status >= 90 ? 'bg-color-red': 'bg-color-darken'">{{data.info.status}}</span></small>
+        </legend>
+        <ul class="list-unstyled">
+            <li class="padding-top-10 padding-bottom-5">
+                <span class="text-muted">
+                   <i class="fa fa-laptop"></i> Atom: <span class="txt-color-darken truncate">&nbsp;&nbsp;{{data.module_data.atom_name}} ({{data.module_data.atom_id}})</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-cogs"></i> Process:&nbsp;&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.module_data.process_name}} ({{data.progress.total_steps | number}})</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-code-fork"></i> Process ID:&nbsp;&nbsp;<span class="txt-color-darken">{{data.module_data.process_id}})</span>
+                </span>
+            </li>
+
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-rocket"></i> Execution Mode:&nbsp;&nbsp;<span class="txt-color-darken">&nbsp;{{data.module_data.execution_mode}} ({{data.module_data.execution_type}})</span>
+                </span>
+            </li>
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-user"></i> Account:&nbsp;&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.module_data.account_id}} ({{data.module_data.component_version}})</span>
+                </span>
+            </li>
+        </ul>
+    </fieldset>
+    <fieldset ng-if="data.progress">
+        <legend class="no-padding no-margin margin-bottom-5">Statistics</legend>
+        <ul class="list-unstyled">
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-inbox"></i>&nbsp;Initial Incoming Documents :&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.progress.initial_incoming | number}}</span>
+                    <i class="fa fa-plane"></i>&nbsp;Initial Outgoing Documents:<span class="txt-color-darken">&nbsp;&nbsp;{{data.progress.initial_outgoing | number}}</span>
+                    <i class="fa fa-floppy-o"></i>&nbsp;Initial Incoming Bytes:<span class="txt-color-darken">&nbsp;&nbsp;{{data.progress.initial_bytes | bytesFilter}}</span>
+                </span>
+            </li>
+            <!--
+            <li>
+                <span class="text-muted">
+                    <i class="fa fa-download"></i>&nbsp;Total Incoming Documents :&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.progress.total_incoming | number}}</span>&nbsp;
+                    <i class="fa fa-plane"></i>&nbsp;Total Outgoing Documents :&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.progress.total_outgoing | number}}</span>
+                    <i class="fa fa-exclamation-triangle"></i>&nbsp;Total Error Documents :&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.progress.total_errors | number}}</span>
+                </span>
+            </li>
+            -->
+            <li>
+               <span class="text-muted">
+                   <!--
+                    <i class="fa fa-floppy-o"></i>&nbsp;Total Bytes:<span class="txt-color-darken">&nbsp;&nbsp;{{data.progress.total_bytes | bytesFilter}}</span>
+                    -->
+                    <i class="fa fa-warning"></i>&nbsp;&nbsp;Warnings:<span class="txt-color-darken">&nbsp;&nbsp;{{data.progress.warnings | number}}</span>
+                    <i class="fa fa-exclamation-circle"></i>&nbsp;Failures:<span class="txt-color-darken">&nbsp;{{data.progress.failures | number}}</span>
+                </span>
+            </li>
+        </ul>
+    </fieldset>
+</div>

@@ -1,0 +1,15 @@
+<article class="col-sm-12">
+		<div jarvis-widget id="transaction-data-widget"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+			<header>
+				<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+				<h2>Last {{vm.model.dialogData.filter.topCount}} Requests</h2>
+			</header>
+			<div>
+				<div class="widget-body no-padding">
+					<div id="griddisplay">
+						<xmlsign-wmq-gate-transaction-grid data="vm.model.transactionTable.data" refresh-flag="vm.model.transactionTable.refresh"></xmlsign-wmq-gate-transaction-grid>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>

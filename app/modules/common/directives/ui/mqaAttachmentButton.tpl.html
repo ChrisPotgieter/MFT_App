@@ -1,0 +1,8 @@
+    <div class="btn-group dropdown" uib-dropdown>
+        <a class="btn btn-default" uib-dropdown-toggle><span class="fa fa-paperclip"></span> Attachments</a>
+        <ul class="dropdown-menu">
+            <li ng-repeat="attachment in vmAttachButton.model.data">
+                <a href="" ng-click="vmAttachButton.functions.viewDoc(attachment.id);">{{attachment.description}}...</a>
+            </li>
+        </ul>
+    </div>

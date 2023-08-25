@@ -1,0 +1,116 @@
+<div>
+    <fieldset>
+        <ul class="list-unstyled">
+            <li>
+                <p class="text-muted">
+                    <i class="fa fa-building"></i>&nbsp;&nbsp;<span class="txt-color-darken">Company:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.parentCompany}} - {{vmDetailAbstract.model.balancingRecord.company}} </span>
+                </p>
+            </li>
+            <li>
+                <p class="text-muted">
+                    <span><i class="fa fa-calendar"></i>&nbsp;&nbsp;<span class="txt-color-darken">Batch Date:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.control.mainframeCreateDate| localUTCDateFilter}}</span></span>
+                    <span>&nbsp;</span>
+                    <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span class="txt-color-darken">Last Update:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.status.lastUpdated| localUTCDateFilter}}</span>
+                </p>
+            </li>
+            <li ng-if="vmDetailAbstract.model.overallRecord.endDate">
+                <p class="text-muted">
+                    <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span class="txt-color-darken">Complete Date:&nbsp;&nbsp;{{vmDetailAbstract.model.overallRecord.endDate| localUTCDateFilter}}</span>
+                </p>
+            </li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <ul class="list-unstyled">
+            <li>
+                <p class="text-muted">
+                    <i class="fa fa-inbox"></i>&nbsp;&nbsp;<span class="txt-color-darken">Balancing File:&nbsp;{{vmDetailAbstract.model.balancingRecord.control.fileName}}</span>
+                </p>
+            </li>
+            <li>
+                <p class="text-muted">
+                    <span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken">Claim Count:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.control.claimCount| number}}</span></span>
+                    &nbsp;<span><i class="fa fa-money"></i>&nbsp;&nbsp;<span class="txt-color-darken">Claim Value:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.control.claimAmount| currency}}</span></span>
+                    &nbsp;<span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken">Service Line Count:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.control.serviceLineCount| number}}</span></span>
+                </p>
+            </li>
+            <li>
+                <p class="text-muted">
+                    <span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken">Pre-Edit failed Claim Count:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.request.preEditClaimCount| number}}</span></span>
+                    &nbsp;<span><i class="fa fa-money"></i>&nbsp;&nbsp;<span class="txt-color-darken">Pre-Edit failed Claim Value:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.request.preEditClaimAmount| currency}}</span></span>
+                </p>
+            </li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <legend class="no-padding no-margin margin-bottom-5">{{vmDetailAbstract.model.titles.x12835}}</legend>
+        <ul  class="list-unstyled">
+            <li>
+                <p class="text-muted">
+                    <span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken">Claim Count:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.x12835.totalClaimCount| number}}</span></span>
+                    &nbsp;<span><i class="fa fa-money"></i>&nbsp;&nbsp;<span class="txt-color-darken">Claim Value:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.x12835.totalClaimAmount| currency}}</span></span>
+                </p>
+            </li>
+            <li>
+                <p class="text-muted">
+                    <span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken"> Paid:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.x12835.totalClaimCountPaid| number}}</span></span>
+                    &nbsp;<span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken"> Non-Paid:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.x12835.totalClaimCountNonPaid| number}}</span></span>
+                    &nbsp;<span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken"> Non-Compliant:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.x12835.nonComplainceClaimCount| number}}</span></span>
+                </p>
+            </li>
+            <li>
+                <p class="text-muted">
+                    <span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken"> ST Count:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.x12835.totalTransactionCount| number}}</span></span>
+                    &nbsp;<span><i class="fa fa-money"></i>&nbsp;&nbsp;<span class="txt-color-darken">ST Value:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.x12835.totalTransactionAmount| currency}}</span></span>
+                </p>
+            </li>
+
+        </ul>
+    </fieldset>
+    <fieldset>
+        <legend class="no-padding no-margin margin-bottom-5">{{vmDetailAbstract.model.titles.x12999}}</legend>
+        <ul  class="list-unstyled">
+            <li>
+                <p class="text-muted">
+                    <span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken"> ST Included:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.x12999.totalTransactionsIncluded| number}}</span></span>
+                    &nbsp;<span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken"> ST Received:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.x12999.totalTransactionsReceived| number}}</span></span>
+                    &nbsp;<span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken"> ST Accepted:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.x12999.totalTransactionsAccepted| number}}</span></span>
+                    &nbsp;<span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken"> ST Rejected:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.x12999.totalTransactionsRejected| number}}</span></span>
+                </p>
+            </li>
+            <li>
+                <p class="text-muted">
+                    <span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken"> Claims Rejected:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.x12999.totalRejectedClaimCount| number}}</span></span>
+                </p>
+            </li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <legend class="no-padding no-margin margin-bottom-5">{{vmDetailAbstract.model.titles.partner}}</legend>
+        <ul  class="list-unstyled">
+            <li>
+                <p class="text-muted">
+                    <span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken">Claim Count:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.idf.idfSummary.paymentMethodSummary.totalClaimCount| number}}</span></span>
+                    &nbsp;<span><i class="fa fa-money"></i>&nbsp;&nbsp;<span class="txt-color-darken">Charged Value:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.idf.idfSummary.paymentMethodSummary.totalClaimChargedAmount| currency}}</span></span>
+                   &nbsp;<span><i class="fa fa-money"></i>&nbsp;&nbsp;<span class="txt-color-darken">Paid Value:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.idf.idfSummary.paymentMethodSummary.totalClaimPaymentAmount| currency}}</span></span>
+
+                </p>
+            </li>
+        </ul>
+    </fieldset>
+
+    <fieldset>
+        <legend class="no-padding no-margin margin-bottom-5">{{vmDetailAbstract.model.titles.response}}</legend>
+        <ul  class="list-unstyled">
+            <li>
+                <p class="text-muted">
+                    <span><i class="fa fa-file-text"></i>&nbsp;&nbsp;<span class="txt-color-darken">Claim Count:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.idfResponse.idfResponseSummary.paymentsSummary.totalClaimCount| number}}</span></span>
+                    &nbsp;<span><i class="fa fa-money"></i>&nbsp;&nbsp;<span class="txt-color-darken">Charged Value:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.idfResponse.idfResponseSummary.paymentsSummary.totalClaimChargedAmount| currency}}</span></span>
+					&nbsp;<span><i class="fa fa-money"></i>&nbsp;&nbsp;<span class="txt-color-darken">Paid Value:&nbsp;&nbsp;{{vmDetailAbstract.model.balancingRecord.summary.idfResponse.idfResponseSummary.paymentsSummary.totalClaimPaymentAmount| currency}}</span></span>
+
+                </p>
+            </li>
+        </ul>
+    </fieldset>
+
+</div>

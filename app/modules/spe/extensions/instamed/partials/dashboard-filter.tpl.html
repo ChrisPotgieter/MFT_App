@@ -1,0 +1,37 @@
+<div>
+    <fieldset>
+        <legend class="no-margin-bottom">Filters</legend>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-12">
+                <label class="control-label">{{vmDialog.model.holdingCompany.caption}}:</label>
+            </div>
+        </div>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-12">
+                <ui-select id="input_company" name="input_company"
+                           ng-model="vmDialog.dataModel.filter.holdingCompany" theme="select2"
+                           style="width:100%">
+                    <ui-select-match placeholder="Please select the Holding Company">
+                        {{$select.selected.description}}
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="listItem.code as listItem in vmDialog.model.holdingCompany.options | filter:$select.search">
+                        <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="no-margin-bottom">Settings</legend>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-6" id="div_transLimit">
+                <label  for="txtTransLimit">Transaction Limit:</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-table"></i></span>
+                    <input class="form-control" type="number" title="Enter the No. of Active Transactions to Display" name="txtTransLimit" id="txtTransLimit"  ng-model="vmDialog.dataModel.filter.topCount" min="1" max="5000" required/>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

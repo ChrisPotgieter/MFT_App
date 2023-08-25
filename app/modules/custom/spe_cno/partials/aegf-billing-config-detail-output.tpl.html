@@ -1,0 +1,31 @@
+<div class="padding-10"  style="height: 150px;">
+    <form id="frmConfigEditOutput" name="frmConfigEditOutput" class="form-horizontal" novalidate>
+        <!-- SELECTOR -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="div_input_output_type">
+                    <span class="pull-left">
+                        <label>Output Type:</label>
+                    </span>
+                    <span class="pull-right" ng-if="vmDetail.model.output.type != '3'">
+                        <mqa-switch title="Exclude Header" label="exclude_header" ng-model="vmDetail.dataModel.output.options.exclude_header"/>
+                    </span>
+                    <select class="form-control" id="input_output_type" name="input_output_type" ng-model="vmDetail.model.output.type" ng-change="vmDetail.functions.onOutputTypeChange();">
+                        <option ng-repeat="option in vmDetail.model.output.options"
+                                value={{option.value}}>{{option.name}}
+                        </option>
+                    </select>
+                </div>
+                <!--
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="div_input_output_type">
+                    <input type="hidden" name="hiddenOutputValidation"/>
+                </div>
+                -->
+            </div>
+        </div>
+        <!--- PARAMETERS -->
+        <div class="col-md-12 col-lg-12 col-sm-12" ng-switch="vmDetail.model.output.type">
+            <div smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-output-csv.tpl.html" ng-switch-when="0"/>
+        </div>
+    </form>
+</div>

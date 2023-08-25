@@ -1,0 +1,75 @@
+<div>
+    <fieldset>
+        <legend class="no-margin-bottom">Filters</legend>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-4">
+                <label class="control-label">Map:</label>
+            </div>
+            <div class="col-md-4">
+                <label class="control-label">System:</label>
+            </div>
+            <div class="col-md-4">
+                <label class="control-label">Container:</label>
+            </div>
+        </div>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-4">
+                <ui-select id="input_map" name="input_map"
+                           ng-model="vmDialog.dataModel.filter.map" theme="select2"
+                           style="width:100%">
+                    <ui-select-match placeholder="Please select the Map">
+                        {{$select.selected.description}}
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="listItem.code as listItem in vmDialog.model.maps | filter:$select.search">
+                        <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class="col-md-4">
+                <ui-select id="input_system" name="input_system"
+                           ng-model="vmDialog.dataModel.filter.system" theme="select2"
+                           style="width:100%">
+                    <ui-select-match placeholder="Please select the System">
+                        {{$select.selected.description}}
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="listItem.code as listItem in vmDialog.model.systems | filter:$select.search">
+                        <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class="col-md-4">
+                <ui-select id="input_container" name="input_container"
+                           ng-model="vmDialog.dataModel.filter.container" theme="select2"
+                           style="width:100%">
+                    <ui-select-match placeholder="Please select the Container">
+                        {{$select.selected.description}}
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="listItem.code as listItem in vmDialog.model.containers | filter:$select.search">
+                        <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="no-margin-bottom">Settings</legend>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-6" id="div_transLimit">
+                <label  for="txtTransLimit">Transaction Limit:</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-table"></i></span>
+                    <input class="form-control" type="number" title="Enter the No. of Active Transactions to Display" name="txtTransLimit" id="txtTransLimit"  ng-model="vmDialog.dataModel.filter.topCount" min="1" max="5000" required/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>&nbsp;</label>
+                <div class="input-group">
+                    <mqa-switch title="Job Grouping" label="transGroup" ng-model="vmDialog.dataModel.filter.jobGroup"/>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

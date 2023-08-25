@@ -1,0 +1,11 @@
+<div id="content">
+    <!-- HEADER CONTENT -->
+    <div data-smart-include="app/modules/common/partials/common-dashboard-header.tpl.html"/>
+    <section id="widget-grid" widget-grid>
+        <!-- COMPARISION DASHBOARD -->
+        <div data-smart-include="app/modules/mft_v2/partials/dashboard-compare.tpl.html" ng-if="vm.model.flags.showCompare"/>
+
+        <!--- NO COMPARISION -->
+        <div data-smart-include="app/modules/mft_v2/partials/dashboard-no-compare.tpl.html" ng-if="!vm.model.flags.showCompare"/>
+    </section>
+</div>

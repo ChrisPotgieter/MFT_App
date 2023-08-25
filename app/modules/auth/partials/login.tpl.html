@@ -1,0 +1,110 @@
+<link rel="stylesheet" href="styles/css/lockscreen.min.css"/>
+<style>
+    .full-screen-background-image {
+        z-index: -999;
+        min-height: 100%;
+        min-width: 1024px;
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+</style>
+<div>
+    <img src="styles/img/custom/{{vm.model.splash.image}}" class="full-screen-background-image" alt="Responsive image">
+    <!--
+
+<span id="extr-page-header-space" ng-if="vm.model.flags.allowRegister">
+    <a ui-sref="register" class="btn btn-danger">Create Account</a>
+</span>
+-->
+    <div id="main" role="main">
+    <!-- MAIN CONTENT -->
+        <form class="lockscreen animated flipInX" id="frmLogin" novalidate ng-submit="vm.functions.login();">
+            <div class="logo">
+                <h1 class="semi-bold col-md-8"><img src="styles/img/custom/{{vm.model.splash.logo}}" alt="{{vm.model.product.name}}" /></h1>
+                <h6 class="text-right col-sm-4" ng-style="vm.model.splash.headerColor">
+                    v.{{vm.model.product.version}}
+                </h6>
+            </div>
+            <div class="loginscreen">
+                <div class="bold dialog-footer dialog-flush loginscreen" style="margin-top: -18px; border-bottom: 2px solid">
+                    {{vm.model.product.name}} - {{vm.model.product.environment}} Environment
+                </div>
+                <div class="col-md-3 no-margin no-padding">
+                    <i class="fa fa-lock text-muted text-center" style="font-size: 160px"/>
+                    <div ng-if="vm.model.flags.allowSocial">
+                        <h5 class="text-center"> <small>Or sign in using</small></h5>
+                        <ul class="list-inline text-center">
+                            <li>
+                                <a href-void class="btn btn-danger btn-circle" title="Sign in with Google" ng-click="vm.functions.socialLogin('google');"><i class="fa fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href-void class="btn btn-primary btn-circle" title="Sign in with Facebook" ng-click="vm.functions.socialLogin('facebook');"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href-void class="btn btn-warning btn-circle" title="Sign in with Linked In" ng-click="vm.functions.socialLogin('linkedin')";><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+                <div class="col-md-9">
+                    <div class="row padding-bottom-5 padding-top-10">
+                        <div class="form-group">
+                            <div class="col-sm-12" id="div_login">
+                                <label for="loginCode">Login:</label>
+                                <input class="form-control" ng-model="vm.model.credentials.user" type="text" placeholder="Login Code" name="loginCode" id="loginCode" autofocus>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row padding-bottom-5">
+                        <div class="form-group">
+                            <div class="col-sm-12" id="div_password">
+                                <label for="password">Password:</label>
+                                <input class="form-control" ng-model="vm.model.credentials.password" type="password" placeholder="Password" name="password" id="password" autofocus>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row padding-bottom-5">
+                        <div class="form-group">
+                            <div class="col-sm-12" id="div_companySelect">
+                                <label for="company_select">Company:</label>
+                                <select class="form-control"  name="company_select"
+                                        ng-model="vm.model.credentials.company"
+                                        ng-options="company as company.name for company in vm.model.companies" ng-change="vm.functions.onCompanyChange();" ng-disabled="vm.model.companies.length <= 1" id="company_select">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row padding-bottom-5" ng-show="vm.model.credentials.company.active_directory_domains && vm.model.credentials.company.active_directory_domains.length >= 0">
+                        <div class="form-group">
+                            <div class="col-sm-12" id="div_domainSelect">
+                                <label for="domain_select">Domain:</label>
+                                <select class="form-control" name="domain_select"
+                                        ng-model="vm.model.credentials.domain"
+                                        ng-options="dom.domain for dom in vm.model.credentials.company.active_directory_domains"
+                                        ng-disabled="vm.model.credentials.company.active_directory_domains.length <= 1"
+                                        id="domain_select"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group padding-10">
+                        <button type="submit" id="submit" class="btn btn-default col-sm-12" ng-class="vm.model.buttonClass" ng-disabled="vm.model.flags.inProgress">Sign In</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bold" ng-style="vm.model.splash.footerColor">
+                <div class="font-xs margin-top-5 text-left col-sm-6">
+                    {{vm.model.product.copyright}}
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+

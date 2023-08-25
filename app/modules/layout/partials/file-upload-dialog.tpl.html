@@ -1,0 +1,61 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <div class="modal-header">
+        <div class='widget-header'><h6><i class='fa fa-flag-checkered'></i> Testing Harness</h6></div>
+    </div>
+    <section id="widget-grid" widget-grid>
+        <!-- SELECTOR -->
+        <div class="well no-padding-bottom">
+            <div class="form-group">
+                <div class="row">
+                    <div class="input-group col-sm-12">
+                        <select class="form-control input-lg" name="parameter"
+                                ng-model="vm.selector.selected"
+                                ng-change="vm.functions.onOptionSelect();" ng-disabled="vm.progressInfo.inProgress">
+                            <option value="" disabled selected>Select the Type</option>
+                            <option ng-repeat="option in vm.selector.options" value="{{option.code}}">
+                                {{option.description}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <!--- INFO BOX--->
+                <div class="alert alert-block alert-info" ng-if="vm.selector.record != null">
+
+                    <h4 class="alert-heading"><i class="fa {{vm.selector.record.icon}}"></i>
+                        {{vm.selector.record.description}}</h4>
+                    <ul class="list-unstyled">
+                        <li><strong>Destination:</strong>{{vm.selector.record.type}}</li>
+                        <li><strong>Pattern:</strong>{{vm.selector.record.pattern}}</li>
+                        <li><strong>Max Size:</strong>{{vm.selector.record.maxSize}}</li>
+                    </ul>
+                </div>
+            <div class="alert alert-block alert-danger" ng-show="vm.model.errorFile != null && vm.model.errorFile.length == 1">
+                {{vm.model.errorFile[0].$error}} Error - {{vm.model.errorFile[0].$errorParam}};
+            </div>
+            <!-- START FILE SELECTOR -->
+            <div ng-if="vm.selector.record != null && !vm.progressInfo.inProgress">
+                <button ngf-select="vm.functions.uploadFile($file, $invalidFiles);"
+                        ngf-pattern="'{{vm.selector.record.pattern}}'" ngf-accept="'{{vm.selector.record.pattern}}'"
+                        ngf-multiple="false" ngf-max-size="{{vm.selector.record.maxSize}}">
+                    <span class="fa fa-upload"></span> Select File...
+                </button>
+            </div>
+        </div>
+        <div class="form-group">
+            <!--- PROGRESS DISPLAY -->
+            <div ng-if="vm.progressInfo.inProgress">
+                <mqa-progress-dialog title-data="vm.model.titleData" data="vm.progressInfo"
+                                     on-cancel="vm.functions.cancel" on-ok="vm.functions.ok"
+                                     buttons="vm.model.buttons"></mqa-progress-dialog>
+            </div>
+
+        </div>
+        <!-- end widget grid -->
+    </section>
+</div>

@@ -1,0 +1,23 @@
+<fieldset>
+    <legend class="padding-top-10 no-margin margin-bottom-5">Additional Filtering</legend>
+    <div class="form-group">
+        <label for="input_processNames">Process Names:</label>
+        <ui-select id="input_processNames" name="input_processNames" tagging multiple
+                   ng-model="vm.model.filter.processNames" mqa-tag
+                   input-Placeholder="Enter Process Names"/>
+    </div>
+    <div class="form-group">
+        <label for="input_atom">Atoms:</label>
+        <ui-select id="input_atom" name="input_atom"
+                   ng-model="vm.model.filter.atoms" multiple theme="select2"
+                   style="width:100%">
+            <ui-select-match placeholder="Please select the Atom(s)">
+                {{$item.description}}
+            </ui-select-match>
+            <ui-select-choices
+                    repeat="listItem.code as listItem in vm.model.lists.atom_list | filter:$select.search">
+                <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</fieldset>

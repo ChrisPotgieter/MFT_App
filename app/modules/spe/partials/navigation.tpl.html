@@ -1,0 +1,36 @@
+<aside id="left-panel">
+    <!-- User info -->
+    <div login-info></div>
+    <!-- end user info -->
+    <nav>
+        <!-- NOTE: Notice the gaps after each icon usage <i></i>..
+        Please note that these links work a bit different than
+        traditional href="" links. See documentation for details.
+        -->
+
+        <ul data-smart-menu>
+            <li data-ui-sref-active="active">
+                <a data-ui-sref="app.spe.dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span
+                        class="menu-item-parent">{{getWord('Dashboard')}}</span></a>
+            </li>
+
+            <li mqa-user-menu-option caption="Reporting" icon="fa-file-text-o" base-state=".reporting.transaction.gridview"/>
+            <li mqa-user-menu-option caption="GWID Reporting" icon="fa-file-text-o" base-state=".reporting.gwid.gridview"/>
+            <li data-ui-sref-active="active" mqa-role-security="['ADMIN_ITX_PARTNER']">
+                <a data-ui-sref="app.spe.senderprofile" title="{{getWord('Sender Profiles')}}"><i class="fa fa-lg fa-fw fa-send"></i> <span
+                        class="menu-item-parent">{{getWord('Sender Profiles')}}</span></a>
+            </li>
+            <!--
+            <li data-ui-sref-active="active" mqa-role-security="['admin']">
+                <a data-ui-sref="app.spe.parameters.module" title="{{getWord('Configuration')}}"><i class="fa fa-lg fa-fw fa-cubes"></i> <span
+                        class="menu-item-parent">{{getWord('Configuration')}}}</span></a>
+            </li>
+            -->
+        </ul>
+    </nav>
+
+  <span class="minifyme" data-action="minifyMenu" minify-menu>
+    <i class="fa fa-arrow-circle-left hit"></i>
+  </span>
+
+</aside>

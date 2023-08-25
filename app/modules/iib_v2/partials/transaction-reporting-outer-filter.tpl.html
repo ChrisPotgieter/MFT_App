@@ -1,0 +1,50 @@
+<div>
+    <fieldset ng-show="vm.model.metaSearchFields != null && vm.model.metaSearchFields.length > 0">
+        <legend class="margin-bottom-5 margin-top-5">Meta-Data Filtering</legend>
+        <div class="form-group" ng-repeat="metaIndex in vm.model.metaSearchFields">
+            <label for="input_{{metaIndex.name}}">{{metaIndex.filter.caption}}:</label>
+            <ui-select id="input_{{metaIndex.name}}" name="input_{{metaIndex.name}}" tagging
+                       multiple ng-model="vm.model.filter.inputs[metaIndex.name]" mqa-tag
+                       input-Placeholder="Enter {{metaIndex.filter.caption}}(s) to Find"/>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="margin-bottom-5 margin-top-5">Integration Filtering</legend>
+        <div class="form-group">
+            <label for="input_eg">Integration Server:</label>
+            <ui-select id="input_eg" name="input_eg" ng-model="vm.model.filter.executionGroup" mqa-combo="IIB_EG" mqa-list-source="1" mqa-company-id="{{vm.model.companyId}}" input-Placeholder="Select the Integration Server" ng-disabled="!vm.model.flags.allowEGSelect" required/>
+        </div>
+        <div class="form-group">
+            <label for="input_broker">Container:</label>
+            <ui-select id="input_broker" name="input_broker" ng-model="vm.model.filter.broker" mqa-combo="IIB_BROKER" mqa-list-source="1" mqa-company-id="{{vm.model.companyId}}" input-Placeholder="Select the Container" ng-disabled="!vm.model.flags.allowBrokerSelect" required/>
+        </div>
+        <div class="form-group">
+            <label for="input_mflow_names">Flow Names:</label>
+            <ui-select id="input_mflow_names" name="input_mflow_names" tagging multiple
+                       ng-model="vm.model.filter.flowNames" mqa-tag
+                       input-Placeholder="Enter Partial Message Flow Name(s) to Find"/>
+        </div>
+        <div class="form-group">
+            <label for="input_broker">Node Name:</label>
+            <ui-select id="input_node_names" name="input_node_names" tagging multiple ng-model="vm.model.filter.nodeNames" mqa-tag input-Placeholder="Enter Node Names to Find"/>
+        </div>
+        <div class="form-group">
+            <label for="input_error_codes">Error Codes:</label>
+            <ui-select id="input_error_codes" name="input_error_codes" tagging multiple ng-model="vm.model.filter.errorCodes" mqa-tag input-Placeholder="Enter Error Codes to Find"/>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-12 col-lg-12 col-md-12" id="div_handled">
+                    <mqa-switch title="Exclude Handled" label="va" ng-model="vm.model.filter.excludeHandled"/>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input_supplemental">Supplemental:</label>
+            <input class="form-control" placeholder="Enter Supplemental to Search For..." type="text" id="input_supplemental" ng-model="vm.model.filter.supplemental"/>
+        </div>
+
+    </fieldset>
+
+</div>

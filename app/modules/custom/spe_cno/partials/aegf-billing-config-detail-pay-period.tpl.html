@@ -1,0 +1,55 @@
+<div class="padding-10"  style="height: 900px;">
+    <form id="frmConfigEditPayPeriod" name="frmConfigEditPayPeriod" novalidate>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-8 col-lg-8 col-sm-8">
+                <label for="input_daterange" class="control-label">Pay Period (Years only for Display Referencing Purposes):</label>
+                <div class="input-group">
+                    <input date-range-picker name="input_daterange" id="input_daterange" class="form-control date-picker"
+                           type="text" ng-model="vmDetail.model.pay_period.selectedDateRange"
+                           options="vmDetail.model.pay_period.dateSelectorOptions"/>
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="hidden" name="hdn_select_date"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="div_input_pay_period_type">
+                <label>Pay Type:</label>
+                    <select class="form-control" id="input_pay_period_type" name="input_pay_period_type" ng-model="vmDetail.model.pay_period.type" ng-change="vmDetail.functions.onPayPeriodTypeChange();">
+                        <option ng-repeat="option in vmDetail.model.pay_period.options"
+                            value={{option.value}}>{{option.name}}
+                        </option>
+                    </select>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-4" ng-if="vmDetail.model.pay_period.type == '24'" id="div_input_semi_pay_day">
+                <label for="input_semi_pay_day" class="control-label">2nd Pay Day:</label>
+                <input class="form-control" type="number" name="input_semi_pay_day" id="input_semi_pay_day"  ng-model="vmDetail.model.pay_period.semi_pay_day" min="2" max="25" required="true"/>
+            </div>
+        </div>
+        <div class="row">
+
+             <div class="col-md-2">
+                <label>&nbsp;&nbsp;&nbsp;</label>
+                <button type="button" class="form-control btn bg-color-blueDark txt-color-white" ng-click="vmDetail.functions.onPayPeriodCalculate(true);" ng-disabled="vmDetail.model.pay_period.type == '-1'">
+                    <i class="fa fa-cubes"></i>
+                    Re-Calculate...
+                </button>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="div_input_payperiod">
+                <input type="hidden" name="hiddenPeriodValidation"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12" style="height: 700px">
+                <mqa-kendo-grid id="periodGrid" options="vmDetail.model.pay_period.grid.options" data="vmDetail.model.pay_period.grid.data" function-manager="vmDetail.model.pay_period.grid.functionManager" refresh-flag="vmDetail.model.pay_period.grid.flags.refresh" rebuild="vmDetail.model.pay_period.grid.flags.rebuild"/>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>

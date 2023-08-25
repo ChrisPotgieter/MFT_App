@@ -1,0 +1,63 @@
+<div class="content">
+    <div jarvis-widget id="common-transaction-reporting-filter-widget" data-widget-colorbutton="false"
+         data-widget-editbutton="false" data-widget-custombutton="false" xmlns="http://www.w3.org/1999/html">
+        <header>
+            <span class="widget-icon"> <i class="fa fa-filter"></i> </span>
+
+            <h2>Filter</h2>
+            <ul class="nav nav-tabs pull-right in">
+                <li class="active">
+                    <a data-toggle="tab" href="#filterTab"> <i class="fa fa-lg fa-search"></i></a>
+                </li>
+            </ul>
+        </header>
+        <div>
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+                <form name="inputForm" novalidate>
+                    <div class="custom-scroll tab-content padding-5">
+                        <div class="tab-pane fade active in no-padding-bottom" id="filterTab">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label>Return Top:</label>
+                                    <input class="form-control spinner-left" name="input_spinner" id="input-spinner"
+                                           ng-model="vm.model.filter.topCount" min="0" mqa-spinner>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_daterange">Date Selection:</label>
+                                    <div class="input-group">
+                                        <input date-range-picker name="input_daterange" id="input_daterange"
+                                               class="form-control date-picker" type="text" name="date"
+                                               ng-model="vm.model.filter.dateRange" options="vm.model.dateOptions"
+                                               required/>
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_vendor">Company(s):</label>
+                                    <ui-select id="input_vendor" name="input_vendor" multiple
+                                               ng-model="vm.model.filter.vendor" mqa-list="TPCI_VENDOR"
+                                               mqa-list-source="1" input-Placeholder="Select the Company(s)"/>
+                                </div>
+                                <div>
+                                    <div data-ui-view="customInnerFilter@filter"/>
+                                </div>
+                                <div class="padding-top-10 padding-bottom-10">
+                                    <button class="btn btn-primary btn-default btn-lg col-md-12 col-sm-12 col-lg-12"
+                                            ng-click="vm.functions.refreshData();"
+                                            ng-disabled="vm.model.flags.inProgress || !vm.model.flags.allowSearch">
+                                        <i class="fa fa-lg fa-search"></i>
+                                        Search
+                                    </button>
+                                </div>
+                            </fieldset>
+                            <div>
+                                <div data-ui-view="customOuterFilter@filter"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div>
+    <style>
+        .no-margin-content
+        {
+            margin-right:-20px !important;
+        }
+    </style>
+    <div class="modal-header padding-bottom-5">
+        <div data-smart-include="app/modules/common/partials/common-dialog-modal-header.tpl.html"/>
+    </div>
+    <div class="modal-body">
+        <form id="frmEditTransform" name="frmEditTransform" class="form-horizontal" novalidate>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <label>Function:</label>
+                        <select class="form-control" name="type" ng-model="vmDialog.dataModel.function" ng-change="vmDialog.functions.onFunctionChange();">
+                            <option ng-repeat="option in vmDialog.model.function.options"
+                                    value={{option.value}}>{{option.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <input type="hidden" name="hiddenValidation"/>
+                </div>
+            </div>
+            <!-- PARAMETERS -->
+            <div class="col-md-12 col-lg-12 col-sm-12 row" ng-switch="vmDialog.dataModel.function">
+                <!-- TRIM FUNCTION-->
+                <div ng-switch-when="trim" >
+                    <div smart-include="app/modules/custom/spe_cno/partials/aegf-billing-config-detail-transformation-trim.tpl.html"/>
+                </div>
+                <!-- MASKING FUNCTION-->
+                <div ng-switch-when="mask">
+                    <div smart-include=" app/modules/custom/spe_cno/partials/aegf-billing-config-detail-transformation-mask.tpl.html"/>
+                </div>
+                <!-- PAD FUNCTION-->
+                <div ng-switch-when="pad">
+                    <div smart-include=" app/modules/custom/spe_cno/partials/aegf-billing-config-detail-transformation-pad.tpl.html"/>
+                </div>
+
+                <!-- LENGTH FUNCTION-->
+                <div ng-switch-when="length">
+                    <div smart-include=" app/modules/custom/spe_cno/partials/aegf-billing-config-detail-transformation-length.tpl.html"/>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div data-smart-include="app/modules/common/partials/common-dialog-modal-footer.tpl.html"/>
+</div>

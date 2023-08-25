@@ -1,0 +1,29 @@
+<h3 class="txt-color-blueDark no-padding no-margin margin-top-5">&nbsp;
+    <i class="{{vmDetail.model.operation.icon}}"></i>&nbsp;
+
+    {{vmDetail.model.operation.desc}}
+    <div style="padding-left: 35px;">
+        <div style="font-size: 80%">
+            <ul class="list-inline no-padding no-margin" ng-if="vmDetail.model.headers">
+                <!-- BALANCING DISPLAY -->
+                <li ng-if="vmDetail.model.headers.balancing && vmDetail.model.headers.balancing.link" class="padding-5">
+                    <a ng-click="vmDetail.functions.viewBalancing();" title="Click here to View Balancing Information..." ><span class="label" ng-class="vmDetail.model.headers.balancing.class">{{vmDetail.model.headers.balancing.status}}</span></a>
+                </li>
+                <li ng-if="vmDetail.model.headers.balancing && !vmDetail.model.headers.balancing.link">
+                    <span>{{vmDetail.model.headers.balancing.status}}</span>
+                </li>
+                <li ng-if="vmDetail.model.headers.gwid_summary && vmDetail.model.headers.gwid_summary.total" class="padding-5">
+                    <a ng-click="vmDetail.functions.viewGWIDList(0);" title="Click here to View All Documents..." ><span class="label bg-color-darken">{{vmDetail.model.headers.gwid_summary.total | number}} Total</span></a>
+                </li>
+                <li ng-if="vmDetail.model.headers.gwid_summary && vmDetail.model.headers.gwid_summary.success" class="padding-5">
+                    <a ng-click="vmDetail.functions.viewGWIDList(1);" title="Click here to View Successful Documents..." ><span class="label label-primary">{{vmDetail.model.headers.gwid_summary.success | number}} Successful</span></a>
+                </li>
+                <li ng-if="vmDetail.model.headers.gwid_summary && vmDetail.model.headers.gwid_summary.failed" class="padding-5">
+                    <a ng-click="vmDetail.functions.viewGWIDList(90);" title="Click here to View Failed Documents..." ><span class="label label-danger">{{vmDetail.model.headers.gwid_summary.failed | number}} Failed</span></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    </span>
+</h3>

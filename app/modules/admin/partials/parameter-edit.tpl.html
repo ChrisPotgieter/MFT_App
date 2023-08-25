@@ -1,0 +1,75 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <section id="widget-grid" widget-grid>
+        <!-- SELECTOR -->
+        <div class="well no-padding-bottom">
+            <div class="form-group">
+                <div class="input-group col-sm-12">
+                    <select class="form-control input-lg" name="parameter" ng-model="vm.selector.selected"
+                        ng-change="vm.functions.onOptionSelect();">
+                        <option value="" disabled selected>Select the Setting</option>
+                        <option ng-repeat="option in vm.selector.options" value="{{option.code}}">{{option.description}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!--- MESSAGE BOX--->
+        <div class="alert alert-block alert-info" ng-if="vm.selector.record != null">
+
+            <h4 class="alert-heading"><i class="fa {{vm.selector.record.icon}}"></i> {{vm.selector.record.title}}</h4>
+            <p>
+                {{vm.selector.record.info}}
+            </p>
+        </div>
+
+
+        <!-- START ROW -->
+
+        <div class="row" ng-if="vm.selector.record != null">
+
+            <!-- NEW COL START -->
+            <article class="col-sm-12 col-md-12 col-lg-12">
+
+                <div jarvis-widget id="widget-company-parameter-widget" data-widget-editbutton="false"
+                    data-widget-custombutton="false" data-widget-color="darken" data-widget-deletebutton="false"
+                    data-widget-togglebutton="false" data-widget-colorbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>{{vm.selector.record.title}}</h2>
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div ng-if="vm.selector.record.allowSave">
+                            <div class="widget-body" style="height: inherit;overflow-y: auto;overflow-x: hidden">
+                                <data-ui-view />
+                            </div>
+                            <!-- button panel -->
+                            <div class="widget-footer" ng-if="vm.selector.record.allowSave"
+                                style="margin: 0px -13px 0px;">
+                                <button type="button" id="submit-main" class="btn btn-default btn-primary btn-lg"
+                                    ng-click="vm.functions.onSave();">
+                                    <i class="fa fa-save" />
+                                    Save Changes
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- end widget content -->
+                        <div ng-if="!vm.selector.record.allowSave">
+                            <data-ui-view />
+                        </div>
+
+                    </div>
+                    <!-- end widget div -->
+                </div>
+            </article>
+            <!-- end row -->
+        </div>
+        <!-- end widget grid -->
+    </section>
+</div>

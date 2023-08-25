@@ -1,0 +1,29 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDialog.functions.cancelDialog();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class="fa fa-exchange"></i> Transfer Items</h6></div>
+    </div>
+    <div class="modal-body dialog-content">
+        <!-- EXTENDED FILE SPEC - GRID -->
+        <div  ng-show="vmDialog.model.flags.extended">
+            <mqa-kendo-grid data="vmDialog.model.data" options="vmDialog.model.gridOptions" refreshFlag="vmDialog.model.flags.refreshFlag" ondrill="vmDialog.functions.drill" function-manager="vmDialog.model.functionManager"/>
+        </div>
+        <!-- STANDARD FILE SPEC - DIRECTIVE -->
+        <div ng-repeat="dataItem in vmDialog.model.data" ng-show="!vmDialog.model.flags.extended">
+                <mft-transaction-item data="dataItem"/>
+        </div>
+    </div>
+    <div class="modal-footer" >
+        <div class="row">
+            <button type="button" id="confirmButton" class="btn btn-primary" ng-click="vmDialog.functions.cancelDialog();">
+                OK
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelDialog();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

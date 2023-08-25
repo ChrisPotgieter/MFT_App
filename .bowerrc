@@ -1,0 +1,4 @@
+{
+  "directory": "./plugin/",
+  "timeout": 120000
+}

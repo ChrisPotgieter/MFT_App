@@ -1,0 +1,223 @@
+<div class="row">
+    <!-- STATUS HEADER -->
+    <article class="alert fade in col-md-12" ng-class="vmDetail.model.status.alertClass">
+        <h3 class="col-md-8 alert-heading no-margin">
+            <div class="pull-left">
+                <i ng-class="vmDetail.model.status.icon" class="fa"></i>
+                <span>Boomi Atom: {{vmDetail.model.atom.name}} on {{vmDetail.model.atom.environment_name}}: {{vmDetail.model.status.description}}</span>
+                <span>
+                    <span class="txt-color-white">
+                        <div class="label bg-color-darken  padding-right-10" title="Listener Status">
+                            <span>Listeners</span>
+                            <span class="badge" ng-style="{'background-color': vmDetail.palette.colorNames.bytes}">{{vmDetail.model.statistics.listener.enabled}}</span>
+                            <span class="badge bg-color-red">{{vmDetail.model.statistics.listener.disabled}}</span>
+                        </div>
+                        <div class="label bg-color-darken margin-right-10 margin-left-10" title="Schedule Status">
+                            <span>Schedules</span>
+                            <span class="badge" ng-style="{'background-color': vmDetail.palette.colorNames.bytes}">{{vmDetail.model.statistics.schedule.enabled}}</span>
+                            <span class="badge bg-color-red">{{vmDetail.model.statistics.schedule.disabled}}</span>
+                        </div>
+                        <div class="label bg-color-darken" title="Total Processes">
+                           <span>Processes</span>
+                           <span class="badge" ng-style="{'background-color': vmDetail.palette.colorNames.transfers}">{{vmDetail.model.statistics.process_count}}</span>
+                        </div>
+                    </span>
+                </span>
+                <br>
+                <small>
+                    <span class="label bg-color-darken">{{vmDetail.model.atom.api_info.host_name}}</span>&nbsp;&nbsp;
+                    <span class="label bg-color-darken">{{vmDetail.model.atom.os_name}}</span>&nbsp;&nbsp;
+                    <span class="label bg-color-darken">{{vmDetail.model.atom.type_desc}}</span>
+                    <span class="label bg-color-darken">{{vmDetail.model.atom.classification_desc}}</span>
+                </small>
+                <div ng-if="vmDetail.model.status.problems">
+                    <h6 ng-bind-html="vmDetail.model.status.problems" style="font-weight: normal"/>
+                </div>
+            </div>
+        </h3>
+        <div class="col-md-4">
+            <div class="pull-right">
+                <div><b>Last Restarted:&nbsp;</b>{{vmDetail.model.status.last_restart_time}}</div>
+                <div><b>Last Update:&nbsp;</b>{{vmDetail.model.atom.sys_date}}</div>
+                <div ng-if="vmDetail.model.status.running_time"><b>Running Time:&nbsp;</b>{{vmDetail.model.status.running_time}}</div>
+                <div><b>Force Restart Time:&nbsp;</b>{{vmDetail.model.atom.api_info.force_restart_time}}</div>
+
+
+                <br/>
+                <div class="pull-right">
+                    <!--
+                    <div data-smart-include="app/modules/common/partials/common-cli-operation-button-list.tpl.html" ng-if="vmDetail.model.operations && vmDetail.model.operations.length > 0"/>
+                    -->
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+
+<div class="row">
+    <div class="col-md-12" id="widget-grid" widget-grid>
+        <div id="tab-detail" ng-class="vmDetail.model.flags.showProperties ? 'col-md-7': 'col-md-12'">
+            <div jarvis-widget id="agent-detail-tabs" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-laptop"></i> </span>
+                    <h2>Details</h2>
+                    <div class="jarviswidget-ctrls" role="menu">
+                        <a href="javascript:void(0);" class="button-icon"  rel="tooltip" data-placement="bottom" title="Toggle Properties" ng-click="vmDetail.functions.toggleProperties();"><i class="fa" ng-class="vmDetail.model.flags.showProperties ? 'fa-arrow-right': 'fa-arrow-left'"></i></a>
+                    </div>
+                </header>
+                <div class="modal-body">
+                    <form name="frmAtomDetailEdit" class="form-horizontal" id="frmAtomDetailEdit" novalidate>
+                        <ul id="tabs" class="nav nav-tabs tabs-left bordered">
+                            <li class="active">
+                                <a href="#processes" data-toggle="tab">Processes</a>
+                            </li>
+                            <li ng-if="vmDetail.model.atom.type == 1">
+                                <a href="#cluster" data-toggle="tab">Cluster</a>
+                            </li>
+                            <li>
+                                <a href="#listeners" data-toggle="tab">Services & Listeners</a>
+                            </li>
+
+                            <li>
+                                <a href="#queues" data-toggle="tab">Queues</a>
+                            </li>
+                            <li>
+                                <a href="#certificates" data-toggle="tab">Certificates</a>
+                            </li>
+                            <li>
+                                <a href="#connectors" data-toggle="tab">Connectors & Counters</a>
+                            </li>
+                            <li>
+                                <a href="#notifications" data-toggle="tab">Notifications & Monitoring</a>
+                            </li>
+                        </ul>
+                        <div id="tabContent" class="tab-content padding-10">
+                            <div class="tab-pane fade in active" id="processes">
+                                <div class="row">
+                                    <article class="col-md-12">
+                                        <boomi-process-grid data="vmDetail.model.processes.data" title="Processes" mode="0" refresh-flag="vmDetail.model.processes.refresh"></boomi-process-grid>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="listeners">
+                                <div class="row">
+                                    <article class="col-md-12">
+                                        <boomi-process-grid data="vmDetail.model.listeners.data" title="Listeners" mode="1" refresh-flag="vmDetail.model.listeners.refresh"></boomi-process-grid>
+                                    </article>
+                                </div>
+
+                                <div class="row padding-top-10">
+                                    <article class="col-md-12">
+                                        <boomi-service-grid data="vmDetail.model.services.data" title="Service List" refresh-flag="vmDetail.model.services.refresh"></boomi-service-grid>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="notifications">
+
+                                <!-- MONITORING -->
+                                <div>
+                                    <fieldset>
+                                        <legend class="margin-bottom-5 no-padding">Monitoring</legend>
+                                        <div class="col-md-12 col-lg-12 col-sm-12">
+                                            <div class="form-group">
+                                                <div class="col-sm-12" id="div_jmx">
+                                                    <label class="control-label">JMX URL</label>
+                                                        <input class="form-control" placeholder="JMX URL" type="text"
+                                                               name="txtJmx"
+                                                               ng-model="vmDetail.model.monitor.url" autocomplete="false"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="div_timing">
+                                                <div class="col-lg-4 col-md-4 col-sm-2" id="div_running_refresh">
+                                                    <label class="control-label">Interval Running (Minutes)</label>
+                                                    <input class="form-control spinner-left" name="input_running_refresh" id="input_running_refresh" ng-model="vmDetail.model.monitor.timing.atom_refresh" min="2" max="{{vmDetail.model.monitor.max_timeout}}" mqa-spinner>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-2" id="div_stopped_refresh">
+                                                    <label class="control-label">Interval Stopped (Seconds)</label>
+                                                    <input class="form-control spinner-left" name="input_stopped_refresh" id="input_stopped_refresh" ng-model="vmDetail.model.monitor.timing.atom_stopped" min="10" max="{{vmDetail.model.monitor.max_timeout}}" mqa-spinner>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <!--- NOTIFICATION EVENTS -->
+                                <div>
+                                    <fieldset>
+                                        <legend class="margin-bottom-5 no-padding">Notifications</legend>
+                                        <div class="col-md-12 col-lg-12 col-sm-12" ng-if="vmDetail.model.notification.data != null">
+                                        <mqa-adm-notify-rule-edit company-id="{{vmDetail.model.atom.company_id}}" data="vmDetail.model.notification.data" validation="vmDetail.model.notification.validator"/>
+                                    </div>
+                                    </fieldset>
+                                </div>
+
+                                <!-- BUTTON PANEL -->
+                                <div class="widget-footer dialog-border margin-bottom-5" style="margin-left: -10px; margin-right: -10px;">
+                                    <button type="button" id="submit" class="btn btn-primary" ng-click="vmDetail.functions.saveMonitoring();">
+                                        Update
+                                    </button>
+                                    <button type="button" class="btn btn-danger" ng-click="vmDetail.functions.userNotificationDelete();" ng-if="!vmDetail.model.notification.isNew">
+                                        Clear Notifications...
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="queues">
+
+                                <div class="row">
+                                    <article class="col-md-12">
+                                        <boomi-atom-queue-grid data="vmDetail.model.queues.data" title="Queue List - (Click a cell to Define a Threshold)" refresh-flag="vmDetail.model.queues.refresh" function-manager="vmDetail.model.queues.functionManager" thresholds="vmDetail.model.thresholds"></boomi-atom-queue-grid>
+                                    </article>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="cluster">
+
+                                <div class="row">
+                                    <article class="col-md-12">
+                                        <boomi-atom-cluster-grid data="vmDetail.model.cluster.data" title="Atoms in Cluster" refresh-flag="vmDetail.model.cluster.refresh"></boomi-atom-cluster-grid>
+                                    </article>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="certificates">
+
+                                <div class="row">
+                                    <article class="col-md-12">
+                                        <boomi-atom-cert-grid data="vmDetail.model.certificates.data" title="Certificate List" refresh-flag="vmDetail.model.certificates.refresh"></boomi-atom-cert-grid>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="connectors">
+
+                                <div class="row">
+                                    <article class="col-md-12">
+                                        <boomi-atom-connector-grid data="vmDetail.model.connectors.data" title="Connector List" refresh-flag="vmDetail.model.connectors.refresh"></boomi-atom-connector-grid>
+                                    </article>
+                                </div>
+                                <div class="row padding-top-10">
+                                    <article class="col-md-12">
+                                        <boomi-atom-counter-grid data="vmDetail.model.counters.data" title="Counters" refresh-flag="vmDetail.model.counters.refresh"></boomi-atom-counter-grid>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="property-grid" ng-if="vmDetail.model.flags.showProperties" class="col-md-5">
+            <div jarvis-widget id="atom-detail-property-grid"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-info-circle"></i> </span>
+                    <h2>Properties</h2>
+                </header>
+                <div class="widget-body">
+                    <div class="col-sm-12 col-lg-12 col-md-12 no-padding no-margin">
+                        <mqa-meta-data-grid data="vmDetail.model.propertyGrid.data" options="vmDetail.model.propertyGrid.options"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

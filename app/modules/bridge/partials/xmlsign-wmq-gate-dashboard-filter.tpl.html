@@ -1,0 +1,33 @@
+<div>
+    <fieldset>
+        <legend class="margin-bottom-5">Filters</legend>
+        <div class="margin-bottom-10">
+            <label for="input_sender">Sender(s):</label>
+            <ui-select id="input_sender" name="input_receiver" multiple ng-model="vmDialog.dataModel.filter.senders" mqa-list="BRIDGE_SENDER"   mqa-list-source="1" input-Placeholder="Select Sender(s)"/>
+        </div>
+        <div class="margin-bottom-10">
+                <label for="input_receiver">Receiver(s):</label>
+                <ui-select id="input_receiver" name="input_status" multiple
+                           ng-model="vmDialog.dataModel.filter.receivers" mqa-list="BRIDGE_RECEIVER"
+                           mqa-list-source="1" input-Placeholder="Select Receiver(s)"/>
+        </div>
+        <div>
+                <label for="input_service">Service Group(s):</label>
+                <ui-select id="input_service" name="input_service" multiple
+                           ng-model="vmDialog.dataModel.filter.serviceNames" mqa-list="BRIDGE_SERVICE"
+                           mqa-list-source="1" input-Placeholder="Select Service Group(s)"/>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="no-margin-bottom">Settings</legend>
+        <div class="form-group no-margin-bottom">
+            <div class="col-md-6" id="div_transLimit">
+                <label  for="txtTransLimit">Transaction Limit:</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-table"></i></span>
+                    <input class="form-control" type="number" title="Enter the No. of Active Transactions to Display" name="txtTransLimit" id="txtTransLimit"  ng-model="vmDialog.dataModel.filter.topCount" min="1" max="5000" required/>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

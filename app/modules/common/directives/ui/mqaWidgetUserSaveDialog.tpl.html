@@ -1,0 +1,69 @@
+<section ng-show="vmUserSave.toggleFlag">
+    <div class="row">
+        <div class="alert alert-info"><i class="fa fa-lg fa-save"></i><strong> {{vmUserSave.caption}}</strong></div>
+    </div>
+    <form id="frmSaveSettings" class="form-horizontal" style="height: 160px" novalidate>
+        <div class="col-sm-12">
+            <div class="form-group" id="div_name">
+                <div class="input-group col-sm-12">
+                    <input class="form-control" type="text" name="description" placeholder="Description"
+                           ng-model="vmUserSave.data.config.description" ng-disabled="!vmUserSave.flags.allowEntry">
+                </div>
+            </div>
+            <div class="form-group" id="div_notes">
+                <div class="input-group col-sm-12">
+                    <textarea class="form-control" name="notes" rows="3" ng-model="vmUserSave.data.config.notes" placeholder="Enter Notes"
+                              ng-list="&#10;" ng-trim="false" ng-disabled="!vmUserSave.flags.allowEntry"/>
+                </div>
+            </div>
+            <footer>
+                <div class="form-group">
+                    <div class="col-md-6 no-padding" >
+                        <button type="button" id="userSave_submit" class="btn btn-primary"
+                                ng-click="vmUserSave.functions.onSave();" ng-if="vmUserSave.data.config.id != null">
+                            Save
+                        </button>
+                        <button type="button" id="userSaveAs_submit" class="btn btn-primary"
+                                ng-click="vmUserSave.functions.onSaveAs();">
+                            Save As
+                        </button>
+
+                        <button type="button" class="btn btn-danger" ng-click="vmUserSave.functions.onUserDelete();"
+                                ng-if="vmUserSave.data.config.id != null">
+                            Delete
+                        </button>
+                        <button type="button" class="btn btn-default" ng-click="vmUserSave.functions.onCancel();">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="col-md-6 no-padding" id="div_area">
+                        <div class="input-group col-md-11 well padding-5 padding-bottom-10 pull-right">
+                            <label class="radio radio-inline">
+                                <input type="radio" ng-model="vmUserSave.data.config.areaType" checked value=2 class="radiobox">
+                                <span> Private</span>
+                                </input>
+                            </label>
+                            <label class="radio radio-inline">
+                                <input type="radio" ng-model="vmUserSave.data.config.areaType" value=1 class="radiobox">
+                                <span> Private Default</span>
+                                </input>
+                            </label>
+                            <label class="radio radio-inline" mqa-security="['admin']">
+                                <input type="radio" ng-model="vmUserSave.data.config.areaType" value=3 class="radiobox">
+                                <span> Public</span>
+                                </input>
+                            </label>
+                            <label class="radio radio-inline" mqa-security="['admin']">
+                                <input type="radio" ng-model="vmUserSave.data.config.areaType" value=0 class="radiobox">
+                                <span> Public Default</span>
+                                </input>
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </form>
+    <hr class="dialog-flush"/>
+</section>

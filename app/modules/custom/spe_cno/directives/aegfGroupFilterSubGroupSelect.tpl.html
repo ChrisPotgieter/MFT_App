@@ -1,0 +1,31 @@
+<div>
+    <!-- MULTI-SELECT MODE -->
+    <ui-select id="input_subgroups" name="input_subgroups"
+               ng-model="vmDirective.model.selectedSubGroups" multiple theme="select2" ng-change="vmDirective.functions.subGroupChange(false)"
+               style="width:100%" ng-if="vmDirective.model.options.multiSelect">
+        <ui-select-match placeholder="Please select the SUBGROUP">
+            {{$item.description}}
+        </ui-select-match>
+        <ui-select-choices
+                repeat="listItem.code as listItem in vmDirective.model.subGroups | filter:$select.search">
+            <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+        </ui-select-choices>
+    </ui-select>
+
+    <!-- SINGLE SELECT MODE -->
+    <ui-select id="input_subgroups_single" name="input_subgroups_single"
+               ng-model="vmDirective.model.selectedSubGroups" theme="select2" ng-change="vmDirective.functions.subGroupChange(false)"
+               style="width:100%" ng-if="!vmDirective.model.options.multiSelect">
+        <ui-select-match placeholder="Please select the Sub-Group">
+            <button class="clear-btn" ng-click="vmDirective.functions.clearSub($event, $select)" ng-if="vmDirective.model.options.showClear">
+                <span class="fa fa-remove"></span>
+            </button>
+            <span ng-class="{'clear-btn-offset': vmDirective.model.options.showClear}">{{$select.selected.description || $select.search}}</span>
+        </ui-select-match>
+        <ui-select-choices
+                repeat="listItem.code as listItem in vmDirective.model.subGroups | filter:$select.search">
+            <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+        </ui-select-choices>
+    </ui-select>
+
+</div>

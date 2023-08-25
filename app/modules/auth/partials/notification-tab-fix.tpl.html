@@ -1,0 +1,22 @@
+<div class="smart-form notification-fixit">
+	<ul class="notification-body todo">
+		<li ng-class="{complete: msg.completed}" ng-repeat="msg in notifyvm.model.tabData.fix | orderBy: msg._id | filter: filter  track by msg._id">
+    		<span class="handle todo-picker"> <label class="checkbox">
+            	<input type="checkbox" ng-change="notifyvm.functions.updateItemStatus(msg);" ng-model="msg.userCompleted"
+				   name="checkbox-inline">
+            	<i></i> </label>
+			</span>
+			<span class="msg-body notification-fixit-item" data-ng-click="notifyvm.functions.navigateItem(msg);">
+				<time class="padding-right-10">{{msg.moduleDisplay}}</time>
+				<strong><span class="subject">{{msg.subject}}</span></strong>
+				<hr class="no-margin"/>
+				<span>
+					<span class="msg-body text-muted" ng-bind-html="msg.display"
+						  style="max-height: none; white-space: normal"/>
+				</span>
+				<span class="pull-right font-xs text-muted notification-time"><i>{{msg.timeDisplay}}</i></span>
+			</span>
+
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,17 @@
+<div ng-if="!vmDept.flags.lock">
+    <ui-select id="input_departments" ng-model="vmDept.ngModel" multiple theme="select2" style="width:100%" ng-disabled="vmDept.flags.disabled">
+        <ui-select-match placeholder="All Departments">{{$item.name}}</ui-select-match>
+        <ui-select-choices repeat="listItem.id as listItem in vmDept.departments | filter:$select.search">
+            <div ng-bind-html="listItem.name | highlight: $select.search"></div>
+        </ui-select-choices>
+    </ui-select>
+</div>
+
+<div ng-if="vmDept.flags.lock">
+    <ui-select id="input_departments" ng-model="vmDept.ngModel" multiple theme="select2" style="width:100%" on-select="vmDept.functions.releaseLock($item, $model);" on-remove="vmDept.functions.applyLock($item, $model);">
+        <ui-select-match ui-lock-choice="$item.status == 'locked'" placeholder="All Departments">{{$item.name}}</ui-select-match>
+        <ui-select-choices repeat="listItem.id as listItem in vmDept.departments | filter:$select.search">
+            <div ng-bind-html="listItem.name | highlight: $select.search"></div>
+        </ui-select-choices>
+    </ui-select>
+</div>

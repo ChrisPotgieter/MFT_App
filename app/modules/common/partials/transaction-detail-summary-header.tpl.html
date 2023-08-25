@@ -1,0 +1,24 @@
+<fieldset>
+    <ul class="list-unstyled">
+        <li>
+            <span class="text-muted">
+                <i class="fa fa-calendar"></i>&nbsp;Started:&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.baseTransaction.transDate| localUTCDateFilter : 'YYYY-MM-DD, h:mm:ss:SSS A'}}</span>
+            </span>
+        </li>
+        <li ng-if="data.baseTransaction.completeDate">
+            <span class="text-muted">
+                <i class="fa fa-calendar"></i>&nbsp;Completed:&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.baseTransaction.completeDate| localUTCDateFilter : 'YYYY-MM-DD, h:mm:ss:SSS A'}}</span>
+            </span>
+        </li>
+        <li ng-if="data.baseTransaction.lastUpdate">
+            <span class="text-muted">
+                <i class="fa fa-calendar"></i>&nbsp;Last Update:&nbsp;<span class="txt-color-darken">&nbsp;&nbsp;{{data.baseTransaction.lastUpdate| localUTCDateFilter : 'YYYY-MM-DD, h:mm:ss:SSS A'}}</span>
+            </span>
+        </li>
+        <li ng-if="data.baseTransaction.runTime">
+            <span class="text-muted">
+                <i class="fa fa-clock-o"></i>&nbsp;Running Time:<span class="txt-color-darken truncate">&nbsp;&nbsp;{{data.baseTransaction.runTime}}</span>
+            </span>
+        </li>
+    </ul>
+</fieldset>

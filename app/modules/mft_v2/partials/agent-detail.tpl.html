@@ -1,0 +1,120 @@
+<div class="row">
+    <!-- STATUS HEADER -->
+    <article class="alert fade in col-md-12" ng-class="vmDetail.model.status.alertClass">
+        <h3 class="alert-heading no-margin pull-left">
+            <i ng-class="vmDetail.model.status.icon" class="fa"></i> <span>MFT Agent: {{vmDetail.model.agent.agent_name}}@{{vmDetail.model.agent.queue_manager}}: {{vmDetail.model.status.description}}</span>
+            <br>
+            <span><small style="color:inherit;">{{vmDetail.model.agent.description}}</small></span>
+            <br>
+            <small>
+                <span class="label bg-color-darken" class="label">{{vmDetail.model.agent.host}}</span>&nbsp;&nbsp;
+                <span class="label bg-color-darken">{{vmDetail.model.agent.osname}}</span>&nbsp;&nbsp;
+                <span class="label bg-color-darken">{{vmDetail.model.agent.typeDesc}}</span>
+            </small>
+        </h3>
+        <div class="pull-right">
+            <h7>
+                <div><b>Last Started:&nbsp;</b>{{vmDetail.model.agent.started_time}}</div>
+                <div><b>Last Update:&nbsp;</b>{{vmDetail.model.agent.sys_date}}</div>
+                <div><b>Last Heartbeat:&nbsp;</b>{{vmDetail.model.agent.last_publish_date}}</div>
+            </h7>
+            <br/>
+            <div class="pull-right">
+                <div data-smart-include="app/modules/common/partials/common-cli-operation-button-list.tpl.html" ng-if="vmDetail.model.operations && vmDetail.model.operations.length > 0"/>
+            </div>
+        </div>
+    </article>
+</div>
+
+<div class="row">
+    <div class="col-md-12" id="widget-grid" widget-grid>
+        <div id="tab-detail" ng-class="vmDetail.model.flags.showProperties ? 'col-md-8': 'col-md-12'">
+            <div jarvis-widget id="agent-detail-tabs" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-laptop"></i> </span>
+                    <h2>Details</h2>
+                    <div class="jarviswidget-ctrls" role="menu">
+                        <a href="javascript:void(0);" class="button-icon"  rel="tooltip" data-placement="bottom" title="Toggle Properties" ng-click="vmDetail.functions.toggleProperties();"><i class="fa" ng-class="vmDetail.model.flags.showProperties ? 'fa-arrow-right': 'fa-arrow-left'"></i></a>
+                    </div>
+                </header>
+                <div class="modal-body">
+                    <form name="frmMFTAgentDetailEdit" class="form-horizontal" id="frmMFTAgentDetailEdit" novalidate>
+                        <ul id="tabs" class="nav nav-tabs tabs-left bordered">
+                            <li class="active">
+                                <a href="#general" data-toggle="tab">General</a>
+                            </li>
+                            <li>
+                                <a href="#notifications" data-toggle="tab">Notifications</a>
+                            </li>
+                            <li>
+                                <a href="#monitors" data-toggle="tab" ng-click="vmDetail.functions.refreshMonitors();">Monitors</a>
+                            </li>
+
+                        </ul>
+                        <div id="tabContent" class="tab-content padding-10">
+                            <div class="tab-pane fade in active" id="general">
+
+                                <div class="row">
+                                    <article class="col-md-12">
+                                        <mft-agent-transfer-grid data="vmDetail.model.source_transfers"  title="Source Transfers" refresh-flag="vmDetail.model.flags.refreshSourceTransfers" parent-functions="vmDetail.functions"></mft-agent-transfer-grid>
+                                    </article>
+                                </div>
+
+                                <div class="row padding-top-10">
+                                    <article class="col-md-12">
+                                        <mft-agent-transfer-grid data="vmDetail.model.destination_transfers"  title="Destination Transfers" refresh-flag="vmDetail.model.flags.refreshDestinationTransfers"  parent-functions="vmDetail.functions"></mft-agent-transfer-grid>
+                                    </article>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="notifications">
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-12 col-sm-12" ng-if="vmDetail.model.notification.data != null">
+                                        <mqa-adm-notify-rule-edit company-id="{{vmDetail.model.agent.company_id}}" data="vmDetail.model.notification.data" validation="vmDetail.model.notification.validator"/>
+                                    </div>
+                                </div>
+                                <div class="widget-footer dialog-border" style="margin-left: -10px; margin-right: -10px;">
+                                    <button type="button" id="submit" class="btn btn-primary" ng-click="vmDetail.functions.updateNotification();">
+                                        Update
+                                    </button>
+                                    <button type="button" class="btn btn-danger" ng-click="vmDetail.functions.userNotificationDelete();" ng-if="!vmDetail.model.notification.isNew">
+                                        Clear All
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="monitors">
+                                <div>
+                                    <div class="row">
+                                        <article class="col-md-12">
+                                            <mft-monitor-count data="vmDetail.model.monitors.counts"/>
+                                        </article>
+                                    </div>
+                                    <div class="row">
+                                        <article class="col-md-12">
+                                            <mft-monitor-grid data="vmDetail.model.monitors.data" options="vmDetail.model.monitors.gridOptions" refresh-flag="vmDetail.model.flags.monitorRefresh" function-manager="vmDetail.model.monitors.stateManager"></mft-monitor-grid>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="property-grid" ng-if="vmDetail.model.flags.showProperties" class="col-md-4">
+            <div jarvis-widget id="agent-detail-property-grid"  data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-info-circle"></i> </span>
+                    <h2>Properties</h2>
+                </header>
+                <div class="widget-body">
+                    <div class="col-sm-12 col-lg-12 col-md-12 no-padding no-margin">
+                        <mqa-meta-data-grid data="vmDetail.model.propertyGrid.data" options="vmDetail.model.propertyGrid.options"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

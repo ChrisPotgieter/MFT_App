@@ -1,0 +1,18 @@
+<div class="row" id="badges_main">
+    <div class="col-sm-4 col-lg-4">
+        <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.bytes}"  div-class="txt-color-white" caption-class="txt-color-white"
+                             icon="fa-arrow-circle-up" caption="Running" value="vmCount.data.up" id="badge_up"
+                             tooltip="Total No of Atom(s) Running with this Criteria"/>
+    </div>
+    <div class="col-sm-4 col-lg-4">
+        <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white"
+                             icon="fa-arrow-circle-down" caption="Not Running" value="vmCount.data.down"
+                             id="badge_down" tooltip="Total No of Atom(s) Not Running with this Criteria"/>
+    </div>
+    <div class="col-sm-4 col-lg-4">
+        <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.documents}" div-class="txt-color-white" caption-class="txt-color-white"
+                             icon="fa-warning" caption="Problem" value="vmCount.data.problem"
+                             id="badge_warn" tooltip="Total No of Atom(s) In a Problem State with this Criteria"/>
+    </div>
+</div>
+

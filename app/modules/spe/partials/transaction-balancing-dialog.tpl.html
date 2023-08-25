@@ -1,0 +1,37 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDetail.functions.cancelRecord();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class='{{vmDetail.model.titleData.icon}}'></i> {{vmDetail.model.titleData.description}}</h6></div>
+    </div>
+    <div class="modal-body">
+        <form id="frmSPEBalancing" name="frmSPEBalancing" class="form-horizontal" novalidate>
+            <div class="row">
+                <div class="col-md-12">
+                    <div ng-if="vmDetail.model.display_type == 0">
+                        <mqa-kendo-grid id="balanceGrid" options="vmDetail.model.gridOptions"
+                                        data="vmDetail.model.gridData"
+                                        ondrill="vmDetail.functions.editRecord"
+                                        refresh-flag="vmDetail.model.flags.gridRefresh"></mqa-kendo-grid>
+                    </div>
+                    <div ng-if="vmDetail.model.display_type == 1">
+                        <mqa-chartjs dataset="vmDetail.model.chartSeries" options="vmDetail.model.chartOptions" update-flag="vmDetail.model.flags.chartUpdate" refresh-flag="vmDetail.model.flags.chartRefresh" callback="vmDetail.functions.chartClick" js-object="vmDetail.model.chartObj"/>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDetail.functions.cancelRecord();">
+               OK
+            </button>
+           <button type="button" class="btn btn-default" ng-click="vmDetail.functions.cancelRecord();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

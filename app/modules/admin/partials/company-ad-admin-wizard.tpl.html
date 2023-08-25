@@ -1,0 +1,96 @@
+<div>
+    <h3><strong>Assign the Admin User</strong></h3>
+    <div class="alert alert-block alert-info">
+        <h4 class="alert-heading"><i class="fa fa-info"></i> Please Note:</h4>
+        <p>
+            The user selected here will be assigned a default "Administrative Role" which will be Automatically Created
+            This new Role will have all Permissions
+        </p>
+    </div>
+    <!-- USER GRID -->
+    <div>
+        <div class ="row">
+            <div class="col-sm-12">
+                <div class="form-group" >
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-building fa-lg fa-fw"></i></span>
+                        <select class="form-control"  name="domainSelect"
+                                ng-model="domainSelect"
+                                ng-change="buildUserList()">
+                            <option ng-repeat="option in vm.model.domains" value="{{option.domain}}">{{option.domain}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <article class="col-sm-12">
+                <mqa-adm-company-user-list data="adUsers" title="{{adGridTitle}}"  grid-options="adminUserGridOptions"/>
+            </article>
+        </div>
+    </div>
+    <!-- SYSTEM ADD USER -->
+    <div class="row">
+        <article class="col-sm-12">
+            <div jarvis-widget id="userSelectionWidget" data-widget-color="darken" data-widget-editbutton="false">
+                <header>
+                    <h2>User Details</h2>
+                </header>
+                <div>
+                    <div class="widget-body padding-5">
+                        <form id="adAdminForm" class="form-horizontal">
+                            <fieldset>
+                                <div class="col-sm-12">
+
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div id="div_login">
+                                                <div class="col-sm-4">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-building fa-lg fa-fw"></i></span>
+                                                        <input class="form-control" placeholder="Login Code" type="text" name="loginCode" disabled ng-model="vm.model.adminUser.userId">
+                                                    </div>
+                                                </div>
+                                                <div class="input-group col-sm-8">
+                                                    <input class="form-control" placeholder="Name" type="text" name="name" disabled ng-model="vm.model.adminUser.name">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-sm-12" id="div_email">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+                                                    <input class="form-control " ng-disabled="!inputEmail" type="text" name="emailAddress"
+                                                           placeholder="Email Address"
+                                                           ng-model="vm.model.adminUser.emailAddress">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                         <div class="form-group">
+                                             <div class="col-sm-12" id="div_depts">
+                                                 <div class="input-group">
+                                                      <span class="input-group-addon"><i class="fa fa-sitemap fa-lg fa-fw"></i></span>
+                                                       <ui-select id="departments" name="departments" ng-model="vm.model.adminUser.departments" multiple theme="select2" style="width:100%" ng-change="checkDepts();">
+                                                            <ui-select-match placeholder="Please select Departments">{{$item.name}}</ui-select-match>
+                                                            <ui-select-choices repeat="listItem.id as listItem in departments | filter:$select.search">
+                                                                <div ng-bind-html="listItem.name | highlight: $select.search"></div>
+                                                            </ui-select-choices>
+                                                       </ui-select>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>

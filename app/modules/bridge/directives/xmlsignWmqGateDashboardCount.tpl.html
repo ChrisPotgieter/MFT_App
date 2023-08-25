@@ -1,0 +1,18 @@
+<div>
+        <div class="col-sm-6 col-lg-2">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.requests}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-info" caption="Requests" value="vmCount.data.requests.value" tooltip="Total No. of Requests with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.success}"  div-class="txt-color-white" caption-class="txt-color-white" icon="fa-check" caption="Successful" value="vmCount.data.succeeded.value" tooltip="Total No. of Success Requests with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white" icon="fa-exclamation" caption="Failures" value="vmCount.data.failed.value" tooltip="Total No. of Failures with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.time, 'font-size': '4px'}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-history" caption="Total Runtime" value="vmCount.data.run_time.value" tooltip="{{vmCount.data.run_time.value}} Total Running Time with this Criteria"/>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+            <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.proc_time}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-history" caption="Avg Runtime" value="vmCount.data.avg_runtime.value" tooltip="Average Running Time with this Criteria"/>
+        </div>
+</div>
+

@@ -1,0 +1,651 @@
+/*
+ * It is advised not to edit the smartadmin_production.css
+ * as this will override any changes you make in the 
+ * later versions of this theme. 
+ * 
+ * We advise that you use this CSS to override 
+ * SmartAdmin styles. 
+ * 
+ * Rename the stylesheet to whatever your liking so it will stay
+ * unique to you with each update of SmartAdmin.
+ */
+
+/*
+ * INDEX
+ * 
+ * - HTML
+ * - BODY
+ * - CUSTOM STYLES
+ */
+
+.filter #demo-setting + form > legend + section {
+	display:none;
+}
+
+#filter {
+	display:block;
+	float:right;
+	width:250px;
+	/*position:fixed;
+	top:0px;
+	right:0px;*/
+	border-left: 1px solid #575757;
+	background: #4D5257 !important;
+	-webkit-box-shadow: inset 1px 0px 3px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 1px 0px 10px 2px rgba(0, 0, 0, 0.1);
+	height:100%;
+	overflow:visible;
+	z-index: 999;
+}
+
+.filter #filter {
+	display:block;
+}
+
+.filter #main, .filter #header {
+	margin-right:250px;
+	border-right: 1px solid #0C0C0C;
+}
+
+
+.filter .demo {
+	top: 43px;
+}
+
+
+#filter #filter-handle {
+	content: "";
+	position: absolute;
+	z-index: 99999;
+	left: -31px;
+	top: 54px;
+	display: block;
+	height: 30px;
+	width: 30px;
+	border-radius: 5px 0 0 5px;
+	background: #4D5257;
+	padding: 2px;
+	text-align: center;
+	line-height: 28px;
+	cursor: pointer;
+	border: 1px solid;
+	border-right: 1px solid #575757;
+}
+
+#filter #filter-handle>:first-child {
+	color:#fff;
+	font-size:16px;
+}
+
+/*
+ * ON / OFF reversed
+ */
+.no-filter.filter #filter {
+	right:0px !important;
+}
+
+.no-filter.filter #left-panel,
+.no-filter.filter #main {
+	left:-250px;
+}.no-filter.filter #main {
+	margin-left:-220px;
+	margin-right:250px;
+	
+}
+.no-filter.filter #header {
+	margin-right:250px;
+	margin-left:-220px;
+}
+
+/*
+ * aside-wrap
+ */
+
+#aside-wrap {
+	height:100%;
+    min-height: 100%;
+    position:relative;
+}
+
+/*
+ * SmartPanel Layout
+ */
+
+.smart-panel-header,
+.smart-panel-footer {
+	height:49px;
+    width:100%;
+    top:0px;
+    left:0px;
+    padding:0px 6px;
+	background-color: #f3f3f3;
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#f3f3f3),to(#e2e2e2));
+	background-image: -webkit-linear-gradient(top,#f3f3f3,#e2e2e2);
+	background-image: -webkit-gradient(linear,top left,bottom left,from(#f3f3f3),to(#e2e2e2));
+	background-image: linear-gradient(to bottom,#f3f3f3,#e2e2e2);
+	background-repeat: repeat-x;
+    position:absolute;
+}
+
+.smart-panel-footer {
+	height: 50px;
+	bottom: 0px;
+	display: block;
+	top: auto;
+	background:#3D3A3A;
+	padding:9px 8px;
+}
+
+.smart-panel-body {
+-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height:100%;
+    padding: 54px 5px 54px;
+    overflow:hidden;
+}
+
+#chat-footer {
+	display: none;
+}
+
+/*
+ * TOP AND BOTTOM SECTIONS
+ */
+
+#filter #list, #filter #chat {
+	height:100%;
+	overflow:hidden;
+	padding:3px;
+	color:#fff;
+}
+
+#filter #chat {
+	display:none;
+}
+
+/*
+ * CHAT LIST
+ */
+
+.chat-list {
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+
+.chat-list > li:first-child {
+	margin-top:10px;
+}
+
+.chat-list > li {
+	padding:5px 5px 5px 5px;
+	position:relative;
+	min-height:60px;
+	margin-bottom:15px;
+}
+
+.chat-list > li:hover {
+	background: rgba(0,0,0,0.1);
+}
+
+.chat-list > li > a > img.cuser {
+	width:52px;
+	height:52px;
+	position:absolute;
+	background:#3276b1;
+}
+
+.chat-list > li > span {
+	position: absolute;
+	padding: 3px 4px 3px 3px;
+	line-height: 13px;
+	min-width:20px;
+	text-align:center;
+	font-size: 10px;
+	z-index: 1;
+	border-radius: 50%;
+	top: 1px;
+	left: 44px;
+background: #ff3019; /* Old browsers */
+background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ff3019 0%,#cf0404 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
+
+
+-webkit-box-shadow: 0 2px 5px rgba(0,0,0,.175);
+box-shadow: 0 2px 5px rgba(0,0,0,.175);
+border:1px solid #fff;
+font-weight:bold;
+
+text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+
+
+}
+
+.chat-list > li > div.cinfo {
+	padding-left:60px;
+	padding-right:10px;
+}
+
+.chat-list > li > div.cinfo > a.cuser-name {
+	display:block;
+	color:#fff;
+	font-weight:400;
+	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width:146px;
+	line-height: 12px;
+}
+.chat-list > li > div.cinfo > a.cuser-email {
+	display:block;
+	color:#CFCFCF;
+	font-size:12px;
+	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width:146px;
+}
+
+/*
+ * info icons
+ */
+
+.chat-list > li > div.cinfo > .list-inline a{
+	font-size:14px;
+	color:#CFCFCF;
+	text-decoration:none;
+}.chat-list > li > div.cinfo > .list-inline a:hover {
+	color:#fff;
+}
+
+.chat-list > li > div.cinfo > .list-inline {
+	margin-top:4px;
+}
+
+.chat-list > li > div.cinfo > .list-inline > li {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+.chat-list > li > div.cinfo > .list-inline > li:first-child {
+	padding-left:7px;
+}
+
+/*
+ * CHAT LIST (ONLINE OFF LINE)
+ */
+
+.chat-list > li:after {
+	content:"\f111";
+	display:inline-block;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	position: absolute;
+	right: 5px;
+	top: 26px;
+	color:#47E047;
+	font-size:10px;
+	
+}
+
+.chat-list > li.online:after {
+	color:#47E047;
+}
+
+.chat-list > li.busy:after {
+	color:#ed1c24;
+}
+
+.chat-list > li.away:after {
+	color:#FD9005;
+}
+
+.chat-list > li.offline:after {
+	color:#fafafa;
+}
+
+#chat-user-info {
+	padding-top: 7px;
+	padding-left: 8px;
+}
+
+/*
+ * CUSTOM BUTTON FOR CHAT
+ */
+
+.btn-chat {
+	padding: 0px 6px 1px;
+	font-size: 11px !important;
+	background: #fafafa;
+	color: #333 !important;
+}
+
+.back-list {
+	display:none;
+}
+
+/*
+ * CHATTING
+ */
+
+#chat ul{
+	margin:0px;
+	padding:0px;
+	color:#fff;
+}
+#chat ul li:first-child {
+	margin-top:0px;
+}
+#chat ul li {
+	position: relative;
+	margin:10px 0 20px;
+	list-style: none !important;
+}
+
+#chat ul img {
+	width:30px;	
+	border:2px solid #fff;
+	position:absolute;
+	top:5px;
+}
+
+#chat ul .username {
+	font-size:12px;
+	font-weight:bold;
+	display:block;
+	padding-left:40px;
+} #chat ul .username > span {
+	font-size:10px;
+	font-weight:normal;
+	font-style:italic;
+	line-height:20px;
+	opacity: .5
+}
+
+#chat ul .chat {
+	display:block;
+	margin-left: 40px;
+	padding: 5px;
+	border-radius: 2px;
+	margin-top: 5px;
+	
+	background: #1e5799; /* Old browsers */
+	background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#7db9e8)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+
+}
+
+#chat ul .notme img {
+	right:0px;
+}
+
+#chat ul .notme .username {
+	text-align: right;
+	padding-right: 40px;
+	padding-left: 0px;
+}
+
+#chat ul .notme .username > span {
+	float:left !important;
+	text-align:left;
+}
+
+#chat ul .notme .chat {
+	margin-right:40px;
+	margin-left:0px;
+background: #bfd255; /* Old browsers */
+background: -moz-linear-gradient(top,  #60A728 0%, #81A729 50%, #72aa00 51%, #9ecb2d 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bfd255), color-stop(50%,#8eb92a), color-stop(51%,#72aa00), color-stop(100%,#9ecb2d)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #60A728 0%,#81A729 50%,#72aa00 51%,#9ecb2d 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #60A728 0%,#81A729 50%,#72aa00 51%,#9ecb2d 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #60A728 0%,#81A729 50%,#72aa00 51%,#9ecb2d 100%); /* IE10+ */
+background: linear-gradient(to bottom, #60A728 0%,#81A729 50%,#72aa00 51%,#9ecb2d 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#60A728', endColorstr='#81A729',GradientType=0 ); /* IE6-9 */
+
+
+}
+
+/*
+ * CHAT BOX ENABLED
+ */
+
+.chatting .smart-panel-body {
+	padding-bottom:80px;
+	background:#333;
+	color:#fff;
+}
+
+.chatting #list, .chatting #chat-user-info {
+	display:none;
+}
+
+.chatting #chat,
+.chatting #chat-footer,
+.chatting .back-list {
+	display:block !important;
+}
+
+.chatting .smart-panel-footer>:first-child {
+	display:none;
+}
+
+.chatting .smart-panel-footer {
+	height:76px;
+}
+
+#chat-footer > .chat-input {
+	width: 179px;
+	height: 50px;
+	display: block;
+	position: absolute;
+}
+
+#chat-footer .reply-btn {
+	float: right;
+	position: relative;
+	z-index: 99;
+	margin-right: 3px;
+	margin-top: 0px;
+	padding: 15px 10px;
+	border-radius: 0px;
+}
+
+
+
+/*
+ *  MEDIAS
+ */
+
+	
+	@media (min-width: 980px) {
+
+		/*
+		 * Keep right panel closed
+		 */
+		#filter {
+			right:-251px;
+		}
+		
+		.filter #main, 
+		.filter #header {
+			margin-right:0px;
+			border-right: none;
+		}
+		
+		
+		
+	}
+
+	
+	@media not all and (max-width: 1400px) { 
+
+		.filter #filter {
+			right:0px !important;
+		}
+
+		.filter #main, .filter #header {
+			margin-right:250px;
+			/*border-right: 1px solid #0C0C0C;*/
+		}
+		
+		.no-filter.filter #main, .no-filter.filter #header {
+			margin-right:0px;
+			/*border-right: 1px solid #0C0C0C;*/
+		}
+		
+		.no-filter.filter #filter {
+			right:-250px !important;
+		}
+		
+		.no-filter.filter #header {
+			margin-left:0px;
+		}
+		
+		.no-filter.filter #main {
+			margin-left:220px;
+		}
+		
+		.no-filter.filter #left-panel {
+			left:0px !important;
+		}
+
+	}
+	
+	/*
+	 * 
+	 * MOBILE MENU STARTS FROM HERE ------------------
+	 * 
+	 */	
+	 
+	@media (min-width: 768px) and (max-width: 979px) {
+
+		/*
+		 * Keep right panel closed
+		 */
+		#filter {
+			right:-251px;
+		}
+		
+		.filter #main, 
+		.filter #header {
+			margin-right:0px;
+			border-right: none;
+		}
+		
+		/*
+		 * ON / OFF reversed
+		 */
+		.no-filter.filter #filter {
+			right:0px !important;
+		}
+		
+
+	}
+	
+	
+	@media (min-width: 768px) and (max-width: 880px) {	
+
+		/*
+		 * Keep right panel closed
+		 */
+		#filter {
+			right:-251px;
+		}
+		
+		.filter #main, 
+		.filter #header {
+			margin-right:0px;
+			border-right: none;
+		}
+
+				
+	}
+	
+	@media (max-width: 767px) {
+
+		/*
+		 * Keep right panel closed
+		 */
+		#filter {
+			right:-251px;
+		}
+		
+		.filter #main, 
+		.filter #header {
+			margin-right:0px;
+			border-right: none;
+		}
+
+	}
+	
+	@media only screen and (min-width: 0px) and (max-width: 679px) {
+
+		/*
+		 * Keep right panel closed
+		 */
+		#filter {
+			right:-251px;
+		}
+		
+		.filter #main, 
+		.filter #header {
+			margin-right:0px;
+			border-right: none;
+		}
+
+	}
+	
+	@media (max-width: 480px) {
+
+		/*
+		 * Keep right panel closed
+		 */
+		#filter {
+			right:-250px;
+		}
+		
+		.filter #main, 
+		.filter #header {
+			margin-right:0px;
+			border-right: none;
+		}
+		
+	}
+	
+	@media only screen and (min-width: 320px) and (max-width: 479px) {	
+
+		/*
+		 * Keep right panel closed
+		 */
+		#filter {
+			right:-250px;
+		}
+		
+		.filter #main, 
+		.filter #header {
+			margin-right:0px;
+			border-right: none;
+		}
+		
+	}
+
+
+
+
+

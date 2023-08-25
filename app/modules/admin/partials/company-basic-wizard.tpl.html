@@ -1,0 +1,108 @@
+<h3><strong>Company information</strong></h3>
+<form id="basicForm" class="form-horizontal">
+
+    <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-institution fa-lg fa-fw"></i></span>
+                            <input class="form-control input-lg" placeholder="Company Name" type="text"
+                                   name="companyName"
+                                   ng-model="vm.model.company.name"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw "></i></span>
+                                <input class="form-control input-lg" placeholder="Company Phone" type="text"
+                                       name="companyPhone"
+                                       ng-model="vm.model.company.additional.phone"
+                                >
+                            </div>
+                         </div>
+                    </div>
+                    <div class="col-sm-6" >
+                        <div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+                                <input class="form-control input-lg" type="text" name="companyEmail"
+                                       placeholder="Company Email"
+                                       ng-model="vm.model.company.additional.email"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-globe fa-lg fa-fw"></i></span>
+                            <input class="form-control input-lg" type="text" name="companyUrl"
+                                   placeholder="Company URL"
+                                   ng-model="vm.model.company.additional.url"
+
+                            >
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        <div class="row">
+            <div class="col-sm-12">
+            <div name="deptCompo" class="form-group" ng-class="{'has-error' : deptError == 99, 'has-success':deptError == 1}">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-sitemap   fa-lg fa-fw "></i></span>
+                <ui-select id="input_depts" name="input_depts" tagging multiple mqa-tag
+                           ng-model="vm.model.departmentNames"
+                           input-Placeholder="Type Name of Departments" ng-change="checkDept()"/>
+            </div>
+            
+            
+                        <input type="hidden" name="hiddenDept"/>
+                    </div>
+        </div>
+
+        
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="form-group input-lg" class="checkbox">
+                    <label>
+                        <input name="adCheck" ng-model="vm.model.hasActiveDirectory" type="checkbox"
+                               class="checkbox style-0" ng-change="vm.functions.addActiveDirectoryStep();">
+                        <span></span>
+                    </label>
+                    Use Active Directory Validation
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="form-group input-lg" class="checkbox">
+                    <label>
+                        <input name="defaultCheck" ng-model="vm.model.isDefault" type="checkbox"
+                               class="checkbox style-0" ng-disabled="companies.length <= 1">
+                        <span></span>
+                    </label>
+                    Default Company
+                </div>
+
+            </div>
+        </div>
+</div>
+</form>

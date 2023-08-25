@@ -1,0 +1,44 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vmDetail.functions.cancelRecord();">
+            ×
+        </button>
+        <div class='widget-header'><h6><i class="fa {{vmDetail.model.icon}}"></i> {{vmDetail.model.title}}</h6></div>
+    </div>
+    <div class="modal-body">
+        <form id="frmMetaEntryEdit" name="frmMetaEntryEdit" novalidate class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <div class="col-md-12 col-lg-12 col-sm-12" id="div_key">
+                        <label class="control-label">Key:</label>
+                        <input type="text" placeholder="Enter the Key" class="form-control" name="key"
+                               ng-model="vmDetail.dataModel.key" ng-disabled="!vmDetail.model.flags.allowKey">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 col-lg-12 col-sm-12" id="div_value">
+                        <label class="control-label">Value:</label>
+                        <input type="text" placeholder="Value" class="form-control" name="value"
+                               ng-model="vmDetail.dataModel.value"/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDetail.functions.saveRecord();">
+                {{vmDetail.model.buttonText}}
+            </button>
+
+            <button type="button" class="btn btn-danger" ng-click="vmDetail.functions.userDelete();"
+                    ng-if="vmDetail.dataModel.recordStatus == 0">
+                Delete
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vmDetail.functions.cancelRecord();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

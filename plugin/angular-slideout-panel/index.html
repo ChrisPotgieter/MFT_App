@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html ng-app="demoApp">
+
+<head>
+  <title>Angular Slideout Panel</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="./release/js/angular-slideout-panel.min.js"></script>
+  <script src="demo/demoApp.js"></script>
+  <script src="demo/demoController.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+  <link rel="stylesheet" href="demo/styles.css">
+  <link rel="stylesheet" href="release/css/angular-slideout-panel.min.css">
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+</head>
+
+<body>
+  <header class="navbar navbar-static-top navbar-fixed-top navbar-default" id="top">
+    <div class="container">
+      <div class="navbar-header">
+        <button aria-controls="bs-navbar" aria-expanded="false" class="collapsed navbar-toggle" data-target="#asp-navbar" data-toggle="collapse" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav class="collapse navbar-collapse clearfix">
+        <a class="navbar-brand" href="https://tablelist.github.io/angular-slideout-panel">Angular Slideout Panel</a>
+        <ul class="asp-navbar nav navbar-nav pull-left">
+          <li>
+            <a href="#getting-started">Getting Started</a>
+          </li>
+          <li>
+            <a href="#example">Example</a>
+          </li>
+          <li>
+            <a href="#docs">Docs</a>
+          </li>
+        </ul>
+        <ul class="asp-navbar nav navbar-nav pull-right">
+          <li>
+            <a href="https://github.com/tablelist/angular-slideout-panel">Github Repo</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="container clearfix">
+    <div id="getting-started">
+      <h2>Getting Started</h2>
+      <p>
+        Angular Slideout Panel was built to be as close to a drop-in replacement as possible for Angular Bootstrap's Modal (<a target="_blank" href="https://angular-ui.github.io/bootstrap/#/modal">https://angular-ui.github.io/bootstrap/#/modal</a>).
+      </p>
+      <p>
+        Take a look at the <a href="#docs">docs</a> for the API.
+      </p>
+      <p>
+        Follow these steps to get started.
+      </p>
+      <br>
+      <p>
+        <strong>1) Install via Bower</strong>
+      </p>
+      <pre>
+        <code class="bash">
+bower install angular-slideout-panel --save
+        </code>
+      </pre>
+      <p>
+        <strong>2) Add JS and CSS</strong>
+      </p>
+      <pre>
+        <code class="bash">
+&lt;script src="bower_components/angular-slideout-panel/release/js/angular-slideout-panel.min.js"&gt;&lt;/script&gt;
+
+&lt;link rel="stylesheet" href="bower_components/angular-slideout-panel/release/css/angular-slideout-panel.min.css"&gt;
+        </code>
+      </pre>
+      <p>
+        <strong>3) Add Angular dependency</strong>
+      </p>
+      <pre>
+        <code class="bash">
+angular.module('demoApp', [
+  'angular-slideout-panel'
+]);
+        </code>
+      </pre>
+    </div>
+    <div id="example" ng-controller="demoController">
+      <h2>Example</h2>
+      <div class="demo-buttons clearfix">
+        <button class="btn btn-default pull-left" ng-click="openPanelLeft()">
+          Open a panel on left side
+        </button>
+
+        <button class="btn btn-default pull-right" ng-click="openPanelRight()">
+          Open a panel on right side
+        </button>
+      </div>
+      <div class="demo-tabs clearfix">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#markup" aria-controls="markup" role="tab" data-toggle="tab">
+              Markup
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#javascript" aria-controls="javascript" role="tab" data-toggle="tab">
+              Javascript
+            </a>
+          </li>
+          <li class="pull-right">
+            <a href="https://plnkr.co/edit/30HA7dmU5ycgRrMwovv9?p=preview" target="_blank" class="btn btn-primary">
+              Edit in Plunker
+            </a>
+          </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="markup">
+            <pre>
+              <code class="html">
+  &lt;div id="demo" class="container clearfix" ng-controller="demoController"&gt;
+    &lt;div class="demo-buttons clearfix"&gt;
+      &lt;button class="btn btn-default pull-left" ng-click="openPanelLeft()"&gt;
+        Open a panel on left side
+      &lt;/button&gt;
+
+      &lt;button class="btn btn-default pull-right" ng-click="openPanelRight()"&gt;
+        Open a panel on right side
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+              </code>
+            </pre>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="javascript">
+            <pre>
+              <code class="javascript">
+  angular.module('demoApp', [
+    'angular-slideout-panel'
+  ]);
+
+  angular.module('demoApp').controller('demoCtrl', [
+    '$scope',
+    'angularSlideOutPanel',
+    function($scope, angularSlideOutPanel) {
+      $scope.openPanelLeft = function() {
+        angularSlideOutPanel.open({
+          template: template,
+          openOn: 'left',
+          controller: [
+            '$scope',
+            'user',
+            modalController
+          ],
+          resolve: {
+            user: [
+              function() {
+                return {
+                  firstName: 'Jerry'
+                };
+              }
+            ]
+          }
+        });
+      };
+
+      $scope.openPanelRight = function() {
+        var panelInstance2 = angularSlideOutPanel.open({
+          template: template,
+          openOn: 'right',
+          controller: [
+            '$scope',
+            'user',
+            modalController
+          ],
+          resolve: {
+            user: [
+              function() {
+                return {
+                  firstName: 'Jerry'
+                };
+              }
+            ]
+          }
+        });
+
+        panelInstance2.result
+          .then(function(result) {
+            console.log('panel was closed with result : ', result);
+          }).catch(function(error) {
+            console.log('panel was rejected with error : ', error);
+          });
+      };
+
+      function modalController($scope, user) {
+        $scope.closePanel = function() {
+          $scope.$panelInstance.close('this is from the controller!!');
+        };
+
+        $scope.dismissPanel = function() {
+          $scope.$panelInstance.dismiss('this is from the controller!!');
+        };
+
+        $scope.user = user;
+      }
+    }
+  ]);
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="docs">
+      <h2>Docs</h2>
+      <p>
+        The <code>angularSlideOutPanel</code> service is used to create panels. Creating panels is straightforward: create a template and controller, and reference them when using <code>angularSlideOutPanel</code>.
+      </p>
+      <p>
+        The <code>angularSlideOutPanel</code> has only one method: <code>open(options)</code>.
+      </p>
+      <hr>
+      <div class="clearfix">
+        <div class="col-sm-6">
+          <h3><code>angularSlideOutPanel.open(options)</code></h3>
+        </div>
+        <div class="col-sm-6">
+          <h4>options parameter:</h4>
+          <ul>
+            <li>
+              <code>template</code> (Type: <code>string</code>) Inline template representing the modal's content.
+            </li>
+            <li>
+              <code>templateUrl</code> (Type: <code>string</code>) A path to a template representing modal's content. You need either a <code>template</code> or <code>templateUrl</code>.
+            </li>
+            <li>
+              <code>openOn</code> (Type: <code>string</code>) Either <code>left</code> or <code>right</code>. Changes the side the panel opens on.
+            </li>
+            <li>
+              <code>controller</code> (Type: function|string|array, Example: MyModalController) - A controller for the modal instance, either a controller name as a string, or an inline controller function, optionally wrapped in array notation for dependency
+              injection. Has a special $panelInstance injectable to access the panel instance.
+            </li>
+            <li>
+              <code>resolve</code> (Type: Object) - Members that will be resolved and passed to the controller as locals; it is equivalent of the resolve property in the router.
+            </li>
+          </ul>
+          <h4>return</h4> The <code>open</code> method returns a panel instance, an object with the following properties:
+          <ul>
+            <li>
+              <code>close(result)</code> (Type: <code>function</code>) - Can be used to close a modal, passing a result.
+            </li>
+            <li>
+              <code>dismiss(reason)</code> (Type: <code>function</code>) - Can be used to dismiss a modal, passing a reason.
+            </li>
+            <li>
+              <code>result</code> (Type: <code>promise</code>) - Is resolved when a modal is closed and rejected when a modal is dismissed.
+            </li>
+          </ul>
+          A dependency called <code>$panelInstance</code> can also be injected into your controller, so you can control the panel from there as well. Simply add <code>$panelInstance</code> as a dependency on your controller</code>.
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

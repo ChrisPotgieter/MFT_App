@@ -1,0 +1,40 @@
+  <div>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmDialog.functions.cancelRecord();"> × </button>
+      <div class='widget-header'>
+        <h6>
+          <i class='fa fa-code-fork'></i> {{vmDialog.model.queueHeaderText}} Queue
+        </h6>
+      </div>
+    </div>
+
+
+  <div class="modal-body">
+
+          <form name="frmQueueBinding" id="frmQueueBinding" class="form-horizontal"novalidate>
+            <div class="form-group">
+              <div class="col-lg-6 col-md-6 col-sm-6" id="div_queueName">
+                <label class="control-label">Queue Name:</label>
+                <input class="form-control input-lg" placeholder="Queue Name" type="text" name="queueName" ng-model="vmDialog.dataModel.queue" />
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6" id="div_queueManager">
+                <label class="control-label">Queue Manager:</label>
+                <input class="form-control input-lg" placeholder="Queue Manager" type="text" name="queueManager" ng-model="vmDialog.dataModel.queueManager" />
+              </div>
+            </div>
+           
+          </form>
+
+
+        <div class="modal-footer">
+          <div class="row">
+            <button type="button" id="saveButton" class="btn btn-primary" ng-click="vmDialog.functions.saveRecord();">
+              {{vmDialog.model.buttonText}}
+            </button>
+            <button type="button" class="btn btn-danger" ng-click="vmDialog.functions.userDelete();" ng-if="vmDialog.dataModel.rowId > -1"> Delete </button>
+            <button type="button" class="btn btn-default" ng-click="vmDialog.functions.cancelRecord();"> Cancel </button>
+          </div>
+      </div>
+      
+     
+  

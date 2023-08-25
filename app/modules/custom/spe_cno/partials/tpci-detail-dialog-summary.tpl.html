@@ -1,0 +1,36 @@
+<div>
+    <fieldset class="padding-bottom-10">
+            <div class="row padding-top-10">
+                <div class="col-md-3">
+                    <b>Transaction Id:</b> <span>&nbsp;&nbsp;{{vmDialog.model.base_record._id}}</span>
+                </div>
+                <div class="col-md-3">
+                    <b>Type:</b> <span>&nbsp;&nbsp;<a href="#input" ng-click="vmDialog.functions.setCurrentTab(2);" data-toggle="tab">{{vmDialog.model.entity_desc}}</a></span>
+                </div>
+                <div class="col-md-3">
+                    <b>Received Date:</b><span>&nbsp;{{vmDialog.model.base_record.received_date| localUTCDateFilter}}</span>
+                </div>
+            </div>
+        <div class="row padding-top-10">
+            <div class="col-md-3">
+                <b>Company:</b> <span>&nbsp;&nbsp;{{vmDialog.model.vendor_name}} ({{vmDialog.model.base_record.vendor.code}})</span>
+            </div>
+            <div class="col-md-3">
+                <b>UID:</b> <span>&nbsp;&nbsp;{{vmDialog.model.base_record.vendor.uid}}</span>
+            </div>
+            <div class="col-md-3" ng-if="vmDialog.model.base_record.source_system_id">
+                <b>Source System:</b> <span>&nbsp;&nbsp;{{vmDialog.model.base_record.source_system_id}}</span>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="padding-bottom-5">
+        <mqa-meta-data-grid data="vmDialog.model.insured.data" height="{{vmDialog.model.insured.height}}" options="vmDialog.model.insured.options" id="insured-grid"/>
+    </fieldset>
+
+    <fieldset class="padding-bottom-5">
+        <mqa-meta-data-grid data="vmDialog.model.agent.data" height="{{vmDialog.model.agent.height}}" options="vmDialog.model.agent.options" id="agent-grid"/>
+    </fieldset>
+    <fieldset class="padding-bottom-5">
+        <mqa-meta-data-grid data="vmDialog.model.processing.data" height="{{vmDialog.model.processing.height}}" options="vmDialog.model.processing.options" id="processing-grid" function-manager="vmDialog.functionManager"/>
+    </fieldset>
+</div>

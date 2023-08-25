@@ -1,0 +1,17 @@
+<div>
+    <script id="templateTransaction" type="text/x-kendo-template">
+         <div class="toolbar">
+                <label><b>{{title}}</b></label>
+                <button class="k-button k-button-icontext pull-right margin-right-10" ng-click="functionManager.cancelAll();" ng-show="data.length > 0">
+                    <span class="k-icon k-i-cancel"></span> Cancel All Transfers...
+                </button>
+            </div>
+    </script>
+    <script id="templateNoCancel" type="text/x-kendo-template">
+        <div class="toolbar">
+            <label><b>{{title}}</b></label>
+        </div>
+    </script>
+
+    <mqa-kendo-grid data="vmGridTransferDetail.data" options="vmGridTransferDetail.gridOptions" refreshFlag="vmGridTransferDetail.refreshFlag" height="{{vmGridTransferDetail.height}}" function-manager="vmGridTransferDetail.functionManager"/>
+</div>

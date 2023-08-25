@@ -1,0 +1,72 @@
+<div class="content">
+    <div jarvis-widget id="spe-transaction-reporting-filter-widget" data-widget-colorbutton="false"
+         data-widget-editbutton="false" data-widget-custombutton="false" xmlns="http://www.w3.org/1999/html">
+        <header>
+            <span class="widget-icon"> <i class="fa fa-filter"></i> </span>
+
+            <h2>Filter</h2>
+            <ul class="nav nav-tabs pull-right in">
+                <li class="active">
+                    <a data-toggle="tab" href="#filterTab"> <i class="fa fa-lg fa-search"></i></a>
+                </li>
+            </ul>
+        </header>
+        <div>
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+                <form name="inputForm" novalidate>
+                    <div class="custom-scroll tab-content padding-5">
+                        <div class="tab-pane fade active in no-padding-bottom" id="filterTab">
+                            <fieldset>
+                                <div class="form-group" ng-class="{'has-error': inputForm.input_daterange.$invalid && inputForm.input_daterange.$dirty}">
+                                    <label for="input_daterange">Date Selection:</label>
+                                    <div class="input-group">
+                                        <input date-range-picker name="input_daterange" id="input_daterange" class="form-control date-picker" type="text" name="date" ng-model="vm.model.dateRange" options="vm.model.dateOptions" required/>
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label>Document Type:</label>
+                                    <ui-select id="input_docType" name="input_docType"
+                                               ng-model="vm.model.filter.docType" theme="select2"
+                                               style="width:100%" on-select="vm.functions.changeDocType($item, $model);">
+                                        <ui-select-match placeholder="Please select the Document Type">
+                                            {{$select.selected.description}}
+                                        </ui-select-match>
+                                        <ui-select-choices
+                                                repeat="listItem.code as listItem in vm.model.lists.documentTypes | filter:$select.search">
+                                            <div ng-bind-html="listItem.description | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="form-group" ng-show="vm.model.filter.docType != null">
+                                    <label>Status</label>
+                                    <div class="input-group">
+                                        <div class="col-md-12">
+                                            <label class="radio radio-inline no-margin">
+                                                <input type="radio" class="radiobox" name="radio-inline" ng-model="vm.model.filter.subDocType" value="ALL">
+                                                <span>All</span>
+                                            </label>
+                                            <label ng-repeat="option in vm.model.docOptions" class="radio radio-inline">
+                                                <input type="radio" class="radiobox" name="radio-inline" ng-model="vm.model.filter.subDocType" value="{{option}}">
+                                                <span>{{option}} Only</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="padding-top-10 padding-bottom-10">
+                                    <button class="btn btn-primary btn-default btn-lg col-md-12 col-sm-12 col-lg-12" ng-click="vm.functions.refreshData();" ng-disabled="vm.model.flags.inProgress || vm.model.filter.docType == null">
+                                        <i class="fa fa-lg fa-search"></i>
+                                        Search
+                                    </button>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div>
+    <div class="col-sm-3 col-lg-3">
+        <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.requests}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-cogs" caption="Executions" value="vmCount.data.requests.value" tooltip="Total No. of Executions with this Criteria" on-click="vmCount.functions.onDrill"/>
+    </div>
+    <div class="col-sm-3 col-lg-3">
+        <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.scheduled}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-clock-o" caption="Scheduled" value="vmCount.data.scheduled.value" tooltip="Total No. of Pending Executions in the Next 7 days" on-click="vmCount.functions.onDrill"/>
+    </div>
+    <div class="col-sm-3 col-lg-3">
+        <mqa-dashboard-count ng-style="{'background-color': vmCount.palette.colorNames.success}" div-class="txt-color-white" caption-class="txt-color-white" icon="fa-check" caption="Successful" value="vmCount.data.successful.value" tooltip="Total No. of Successful Executions with this Criteria" on-click="vmCount.functions.onDrill"/>
+    </div>
+    <div class="col-sm-3 col-lg-3">
+        <mqa-dashboard-count div-class="bg-color-red txt-color-white" caption-class="txt-color-white" icon="fa-exclamation" caption="Failed" value="vmCount.data.failed.value" tooltip="Total No. of Failures with this Criteria" on-click="vmCount.functions.onDrill"/>
+    </div>
+</div>
+

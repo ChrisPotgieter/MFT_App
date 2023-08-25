@@ -1,0 +1,46 @@
+<aside id="left-panel">
+  <!-- User info -->
+  <div login-info></div>
+  <!-- end user info -->
+  <nav>
+    <!-- NOTE: Notice the gaps after each icon usage <i></i>..
+        Please note that these links work a bit different than
+        traditional href="" links. See documentation for details.
+        -->
+
+    <ul data-smart-menu>
+      <!-- Dashboard -->
+      <li data-ui-sref-active="active">
+        <a data-ui-sref="app.custom.crs.dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i>
+          <span class="menu-item-parent">{{getWord('Dashboard')}}</span></a>
+      </li>
+      <!-- SSN -->
+      <li data-ui-sref-active="active">
+        <a data-ui-sref="app.custom.crs.parameters.emp_codes" title="{{getWord('Employees')}}"><i
+            class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">{{getWord('Employees')}}</span></a>
+      </li>
+      <!-- LOB -->
+      <li data-ui-sref-active="active">
+        <a data-ui-sref="app.custom.crs.parameters.lob" title="LOB"><i class="fa fa-lg fa-fw fa-suitcase"></i> <span
+            class="menu-item-parent">{{getWord('LOB')}}</span></a>
+      </li>
+      <!-- Group -->
+      <li data-ui-sref-active="active">
+        <a data-ui-sref="app.custom.crs.parameters.emp_groups" title="Groups"><i class="fa fa-lg fa-fw fa-group"></i> <span
+            class="menu-item-parent">{{getWord('Groups')}}</span></a>
+      </li>
+      <!-- Billing -->
+      <li data-ui-sref-active="active">
+        <a data-ui-sref="app.custom.crs.parameters.billing" title="Billing"><i class="fa fa-lg fa-fw fa-dollar"></i>
+          <span class="menu-item-parent">{{getWord('Billing')}}</span></a>
+      </li>
+
+
+    </ul>
+  </nav>
+
+  <span class="minifyme" data-action="minifyMenu" minify-menu>
+    <i class="fa fa-arrow-circle-left hit"></i>
+  </span>
+
+</aside>

@@ -1,0 +1,9 @@
+
+<div class="btn-group hidden-xs">
+    <a class="btn bg-color-blueDark txt-color-white dropdown-toggle btn-default" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-cog"></i> Operations <span class="caret"> </span> </a>
+    <ul class="dropdown-menu pull-right">
+        <li ng-repeat="button in vmDetail.model.operations">
+            <a href="javascript:void(0);" ng-click="vmDetail.functions.confirmCLIOperation(button.click_data);"><i ng-class="button.icon"></i> {{button.description}}</a>
+        </li>
+    </ul>
+</div>
